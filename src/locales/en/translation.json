@@ -234,7 +234,8 @@
       "verifyEmailPage": "Verify email page",
       "warning": "Warning",
       "zipcode": "Zipcode",
-      "delete":"Delete"
+      "delete":"Delete",
+      "payments": "Payments"
   },
   "medical-dashboard": {
       "activity": {

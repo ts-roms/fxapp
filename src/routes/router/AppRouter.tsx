@@ -15,6 +15,7 @@ import RequireAuth from '@app/routes/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
 import DashboardPage from '@app/pages/DashboardPages/DashboardPage';
 import TransactionPage from '@app/pages/TransactionPage';
+import CollectionPage from '@app/pages/CollectionPage';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const KanbanPage = React.lazy(() => import('@app/pages/KanbanPage'));
@@ -27,6 +28,7 @@ const NewsFeed = withLoading(NewsFeedPage);
 const Kanban = withLoading(KanbanPage);
 
 const Transactions = withLoading(TransactionPage);
+const Collections = withLoading(CollectionPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -44,7 +46,7 @@ export const AppRouter: React.FC = () => {
         <Route path={DASHBOARD_PATH} element={protectedLayout}>
           <Route index path={DASHBOARD_PATH} element={<Dashboard />} />
           <Route path="transactions" element={<Transactions />} />
-          <Route path="collections" element={<Transactions />} />
+          <Route path="collections" element={<Collections />} />
           <Route path="funds" element={<Transactions />} />
           <Route path="expenses" element={<Transactions />} />
           <Route path="other-income" element={<Transactions />} />
