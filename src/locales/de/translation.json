@@ -145,6 +145,7 @@
       "medical-dashboard": "Medizinisches Dashboard",
       "dataDisplay": "Datenanzeige",
       "dataTables": "Datentabellen",
+      "transactions": "Transactions",
       "dateTime": "Terminzeit",
       "dateTimePicker": "Datums- und Zeitauswahl",
       "day": "Tag",
@@ -834,7 +835,8 @@
       "editableTable": "Bearbeitbare Tabelle",
       "invite": "Einladen",
       "inviteMessage": "{{name}} hat erfolgreich eingeladen ",
-      "treeTable": "Baumtisch"
+      "treeTable": "Baumtisch",
+      "title": "{{name}}"
   },
   "tabs": {
       "basic": "Grundlegende Registerkarten",
@@ -878,5 +880,8 @@
     "trendingCollections": "Trendige Sammlungen",
     "recentlyAddedNFTs": "Kürzlich hinzugefügte NFTs",
     "trendingCreators": "Angesagte Creator"
+  },
+  "actions": {
+    "new": "New {{name}}"
   }
 }

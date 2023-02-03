@@ -13,21 +13,20 @@ import LockPage from '@app/pages/LockPage';
 import MainLayout from '@app/components/layouts/main/MainLayout/MainLayout';
 import RequireAuth from '@app/routes/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
-import MedicalDashboardPage from '@app/pages/DashboardPages/MedicalDashboardPage';
+import DashboardPage from '@app/pages/DashboardPages/DashboardPage';
+import TransactionPage from '@app/pages/TransactionPage';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const KanbanPage = React.lazy(() => import('@app/pages/KanbanPage'));
-const DataTablesPage = React.lazy(() => import('@app/pages/DataTablesPage'));
 const Logout = React.lazy(() => import('./Logout'));
 
-export const NFT_DASHBOARD_PATH = '/';
-export const MEDICAL_DASHBOARD_PATH = '/';
+export const DASHBOARD_PATH = '/';
 
-const MedicalDashboard = withLoading(MedicalDashboardPage);
+const Dashboard = withLoading(DashboardPage);
 const NewsFeed = withLoading(NewsFeedPage);
 const Kanban = withLoading(KanbanPage);
 
-const DataTables = withLoading(DataTablesPage);
+const Transactions = withLoading(TransactionPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -42,15 +41,27 @@ export const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={MEDICAL_DASHBOARD_PATH} element={protectedLayout}>
-          <Route index path={MEDICAL_DASHBOARD_PATH} element={<MedicalDashboard />} />
-          <Route path="apps">
+        <Route path={DASHBOARD_PATH} element={protectedLayout}>
+          <Route index path={DASHBOARD_PATH} element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions />} />
+          <Route path="collections" element={<Transactions />} />
+          <Route path="funds" element={<Transactions />} />
+          <Route path="expenses" element={<Transactions />} />
+          <Route path="other-income" element={<Transactions />} />
+          <Route path="big-brother" element={<Transactions />} />
+          <Route path="reports" element={<Transactions />} />
+
+          <Route path="configuration">
             <Route path="feed" element={<NewsFeed />} />
             <Route path="kanban" element={<Kanban />} />
+            <Route path="expenses" element={<Kanban />} />
+            <Route path="other-income" element={<Kanban />} />
+            <Route path="custom-fields" element={<Kanban />} />
+            <Route path="users" element={<Kanban />} />
           </Route>
-
-          <Route path="data-tables" element={<DataTables />} />
+          <Route path="audit-trail" element={<Transactions />} />
         </Route>
+
         <Route path="/auth" element={<AuthLayoutFallback />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="sign-up" element={<SignUpPage />} />

@@ -145,6 +145,7 @@
       "medical-dashboard": "Medical Dashboard",
       "dataDisplay": "Data display",
       "dataTables": "Data Tables",
+      "transactions": "Transactions",
       "dateTime": "Date & Time",
       "dateTimePicker": "DateTime Picker",
       "day": "day",
@@ -834,7 +835,8 @@
       "editableTable": "Editable Table",
       "invite": "Invite",
       "inviteMessage": "{{name}} invited successfully",
-      "treeTable": "Tree Table"
+      "treeTable": "Tree Table",
+      "title": "{{name}}"
   },
   "tabs": {
       "basic": "Basic tabs",
@@ -878,5 +880,8 @@
       "trendingCollections": "Trending Collections",
       "recentlyAddedNFTs": "Recently Added NFTs",
       "trendingCreators": "Trending Creators"
+  },
+  "actions": {
+    "new": "New {{name}}"
   }
 }

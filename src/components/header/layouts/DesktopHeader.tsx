@@ -4,7 +4,6 @@ import { NotificationsDropdown } from '../components/notificationsDropdown/Notif
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch';
 import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
-import { HeaderFullscreen } from '../components/HeaderFullscreen/HeaderFullscreen';
 import * as S from '../Header.styles';
 
 interface DesktopHeaderProps {
@@ -15,21 +14,15 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
   const leftSide = isTwoColumnsLayout ? (
     <S.SearchColumn xl={16} xxl={17}>
       <Row justify="space-between">
-        <Col xl={15} xxl={12}>
+        <Col xl={20} xxl={18}>
           <HeaderSearch />
-        </Col>
-        <Col>
-          <S.GHButton />
         </Col>
       </Row>
     </S.SearchColumn>
   ) : (
     <>
-      <Col lg={10} xxl={8}>
+      <Col lg={15} xxl={10}>
         <HeaderSearch />
-      </Col>
-      <Col>
-        <S.GHButton />
       </Col>
     </>
   );
@@ -42,10 +35,6 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
         <Row align="middle" justify="end" gutter={[10, 10]}>
           <Col>
             <Row gutter={[{ xxl: 10 }, { xxl: 10 }]}>
-              <Col>
-                <HeaderFullscreen />
-              </Col>
-
               <Col>
                 <NotificationsDropdown />
               </Col>
