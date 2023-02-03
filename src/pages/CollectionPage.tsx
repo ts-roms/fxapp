@@ -1,5 +1,5 @@
 import { PageTitle } from "@app/components/common/PageTitle/PageTitle"
-import { Collections } from "@app/components/modules/collections/Collections";
+import { Collections } from "@app/components/apps/collections/Collections";
 import { useTranslation } from "react-i18next"
 
 

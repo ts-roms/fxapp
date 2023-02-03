@@ -76,19 +76,8 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
   {
     title: 'Employees',
     key: 'configuration-employees',
+    url: "/configuration/employees",
     icon: <UserSwitchOutlined />,
-    children: [
-      {
-        title: 'Loans',
-        key: 'feed',
-        url: '/configuration/feed',
-      },
-      {
-        title: 'common.kanban',
-        key: 'kanban',
-        url: '/configuration/kanban',
-      },
-    ],
   },
   {
     title: 'Accounting',
