@@ -5,12 +5,19 @@ export interface Tag {
   priority: Priority;
 }
 
+export interface Status {
+  value: string;
+}
+
 export interface BasicTableRow {
   key: number;
+  image?: any;
   name: string;
   age: number;
   address: string;
   tags?: Tag[];
+  branch?: string;
+  status?: string;
 }
 
 export interface Pagination {
@@ -36,6 +43,47 @@ export interface EditableTableData extends BasicTableData {
   data: BasicTableRow[];
 }
 
+export interface TransactionTableRow {
+  key: number;
+  reference: string;
+  employee: string;
+  principal: number;
+  balance: number;
+  disbursedDate: string;
+  disbursedBy: string;
+  loanType: string;
+  status: string;
+}
+export interface TransactionTableData {
+  data: TransactionTableRow[];
+  pagination: Pagination;
+}
+
+export const getTransactionData = (
+  pagination: Pagination,
+): Promise<TransactionTableData> => {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res({
+        data: [
+          {
+            key: 1,
+            reference: 'LO00001',
+            employee: 'Ginger String',
+            principal: 100,
+            balance: 400,
+            disbursedDate: '2022/01/01',
+            disbursedBy: 'Manager',
+            loanType: 'TMP',
+            status: 'Active',
+          },
+        ],
+        pagination: { ...pagination, total: 20 },
+      });
+    }, 1000);
+  });
+};
+
 export const getBasicTableData = (
   pagination: Pagination,
 ): Promise<BasicTableData> => {
@@ -45,6 +93,7 @@ export const getBasicTableData = (
         data: [
           {
             key: 1,
+            image: 'https://via.placeholder.com/260x260',
             name: 'John Brown',
             age: 32,
             address: 'New York No. 1 Lake Park',
@@ -52,16 +101,22 @@ export const getBasicTableData = (
               { value: 'Architect', priority: Priority.LOW },
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 2,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Jim Green',
             age: 42,
             address: 'London No. 1 Lake Park',
             tags: [{ value: 'Doctor', priority: Priority.HIGH }],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 3,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Joe Black',
             age: 32,
             address: 'Sidney No. 1 Lake Park',
@@ -69,9 +124,12 @@ export const getBasicTableData = (
               { value: 'Professor', priority: Priority.INFO },
               { value: 'Architect', priority: Priority.LOW },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 4,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Pavel Green',
             age: 30,
             address: 'New York No. 1 Lake Park',
@@ -79,16 +137,22 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
               { value: 'Architect', priority: Priority.LOW },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 5,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alex Brown',
             age: 26,
             address: 'Minsk',
             tags: [{ value: 'Engineer', priority: Priority.MEDIUM }],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 6,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Josh Black',
             age: 21,
             address: 'New York No. 1 Lake Park',
@@ -96,23 +160,32 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
               { value: 'Architect', priority: Priority.LOW },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 7,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Cris Green',
             age: 22,
             address: 'Sidney No. 1 Lake Park',
             tags: [{ value: 'Architect', priority: Priority.LOW }],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 8,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Jaime Black',
             age: 23,
             address: 'New York No. 1 Lake Park',
             tags: [{ value: 'Engineer', priority: Priority.MEDIUM }],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 9,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alina Brown',
             age: 19,
             address: 'Minsk',
@@ -120,9 +193,12 @@ export const getBasicTableData = (
               { value: 'Professor', priority: Priority.LOW },
               { value: 'Teacher', priority: Priority.INFO },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 10,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Cris Brown',
             age: 25,
             address: 'London',
@@ -130,9 +206,12 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
               { value: 'Teacher', priority: Priority.INFO },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 11,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alina Fens',
             age: 19,
             address: 'Minsk',
@@ -140,9 +219,12 @@ export const getBasicTableData = (
               { value: 'Professor', priority: Priority.LOW },
               { value: 'Teacher', priority: Priority.INFO },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 12,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alex Snak',
             age: 28,
             address: 'Brest',
@@ -150,9 +232,12 @@ export const getBasicTableData = (
               { value: 'Professor', priority: Priority.LOW },
               { value: 'Doctor', priority: Priority.HIGH },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 13,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Pavel Dubrouski',
             age: 26,
             address: 'Minsk',
@@ -162,16 +247,22 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 14,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Jack Donald',
             age: 24,
             address: 'New York',
             tags: [{ value: 'Professor', priority: Priority.LOW }],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 15,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Nik Nest',
             age: 34,
             address: 'London',
@@ -179,9 +270,12 @@ export const getBasicTableData = (
               { value: 'Doctor', priority: Priority.HIGH },
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 16,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Zak Nikls',
             age: 32,
             address: 'Minsk',
@@ -189,9 +283,12 @@ export const getBasicTableData = (
               { value: 'Doctor', priority: Priority.HIGH },
               { value: 'Teacher', priority: Priority.INFO },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 17,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Petr Dan',
             age: 29,
             address: 'Gomel',
@@ -199,9 +296,12 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
               { value: 'Teacher', priority: Priority.INFO },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 18,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alexa Pirs',
             age: 19,
             address: 'Moscow',
@@ -209,9 +309,12 @@ export const getBasicTableData = (
               { value: 'Professor', priority: Priority.LOW },
               { value: 'Doctor', priority: Priority.HIGH },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 19,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Mark Brown',
             age: 25,
             address: 'London',
@@ -219,13 +322,18 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
               { value: 'Doctor', priority: Priority.HIGH },
             ],
+            branch: 'Main',
+            status: 'Active',
           },
           {
             key: 20,
+            image: 'https://via.placeholder.com/260x260',
             name: 'Alex Brons',
             age: 45,
             address: 'Bronx',
             tags: [{ value: 'Professor', priority: Priority.LOW }],
+            branch: 'Main',
+            status: 'Active',
           },
         ],
         pagination: { ...pagination, total: 20 },

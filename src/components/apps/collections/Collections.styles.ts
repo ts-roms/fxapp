@@ -8,3 +8,7 @@ export const CollectionWrapper = styled.div`
 export const Card = styled(CommonCard)`
   margin-bottom: 2rem;
 `;
+
+export const ActionWrapper = styled.div`
+  display: flex;
+`

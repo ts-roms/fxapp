@@ -1,29 +1,33 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { EmployeeForm } from '../Forms/EmployeeForm/EmployeeForm';
+import { TransactionForm } from '../Forms/TransactionForm/TransactionForm';
 
-interface IStepFormModal {
+interface ITransactionModal {
   open: boolean;
   setOpen: (e: boolean) => void;
 }
 
-const StepFormModal: React.FC<IStepFormModal> = (formModal: IStepFormModal) => {
+const TransactionModal: React.FC<ITransactionModal> = (
+  formModal: ITransactionModal,
+) => {
   const { open, setOpen } = formModal;
+
   return (
     <Modal
       centered
       open={open}
       onCancel={() => setOpen(!open)}
-      size="large"
       closable={false}
+      size={'large'}
       footer={null}
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
-      title={'Employee Form'}
+      width={'60%'}
+      title={'Loan Application Form'}
     >
-      <EmployeeForm open={open} setOpen={setOpen} />
+      <TransactionForm open={open} setOpen={setOpen} />
     </Modal>
   );
 };
 
-export default StepFormModal;
+export default TransactionModal;

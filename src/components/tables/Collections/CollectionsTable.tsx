@@ -14,6 +14,8 @@ import { defineColorByPriority } from '@app/utils/utils';
 import { notificationController } from 'controllers/notificationController';
 import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
+import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
+import * as S from './CollectionTable.styles';
 
 const initialPagination: Pagination = {
   current: 1,
@@ -21,6 +23,7 @@ const initialPagination: Pagination = {
 };
 
 export const CollectionsTable: React.FC = () => {
+  const [open, setOpen] = useState(false);
   const [tableData, setTableData] = useState<{
     data: BasicTableRow[];
     pagination: Pagination;

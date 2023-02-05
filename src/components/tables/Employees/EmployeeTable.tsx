@@ -1,16 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Col, Row, Space, TablePaginationConfig } from 'antd';
-import {
-  BasicTableRow,
-  getBasicTableData,
-  Pagination,
-  Tag,
-} from 'api/table.api';
+import { Avatar, Image, Space, TablePaginationConfig } from 'antd';
+import { BasicTableRow, getBasicTableData, Pagination } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { defineColorByPriority } from '@app/utils/utils';
 import { notificationController } from 'controllers/notificationController';
 import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
@@ -72,6 +66,16 @@ export const EmployeeTable: React.FC = () => {
 
   const columns: ColumnsType<BasicTableRow> = [
     {
+      title: 'Image',
+      dataIndex: 'image',
+      render: (image: any) => (
+        <Avatar
+          size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+          icon={<Image src={image} alt={'text'} />}
+        />
+      ),
+    },
+    {
       title: t('common.name'),
       dataIndex: 'name',
       render: (text: string) => <span>{text}</span>,
@@ -123,7 +127,7 @@ export const EmployeeTable: React.FC = () => {
         record.name.includes(value.toString()),
     },
     {
-      title: t('common.age'),
+      title: 'Contact #',
       dataIndex: 'age',
       sorter: (a: BasicTableRow, b: BasicTableRow) => a.age - b.age,
       showSorterTooltip: false,
@@ -133,23 +137,35 @@ export const EmployeeTable: React.FC = () => {
       dataIndex: 'address',
     },
     {
-      title: t('common.tags'),
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (tags: Tag[]) => (
-        <Row gutter={[10, 10]}>
-          {tags.map((tag: Tag) => {
-            return (
-              <Col key={tag.value}>
-                <Status
-                  color={defineColorByPriority(tag.priority)}
-                  text={tag.value.toUpperCase()}
-                />
-              </Col>
-            );
-          })}
-        </Row>
+      title: 'Branch',
+      dataIndex: 'branch',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      render: (status: string) => (
+        <span>
+          <Status text={status} color="" />
+        </span>
       ),
+      filterMode: 'tree',
+      filterSearch: true,
+      filters: [
+        {
+          text: 'Status',
+          value: 'status',
+          children: [
+            {
+              text: 'Active',
+              value: 'Active',
+            },
+            {
+              text: 'Pending',
+              value: 'Pending',
+            },
+          ],
+        },
+      ],
     },
     {
       title: t('tables.actions'),
@@ -173,7 +189,7 @@ export const EmployeeTable: React.FC = () => {
               danger
               onClick={() => handleDeleteRow(record.key)}
             >
-              {t('tables.delete')}
+              Block
             </Button>
           </Space>
         );

@@ -1,29 +1,31 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { EmployeeForm } from '../Forms/EmployeeForm/EmployeeForm';
+import { CollectionForm } from '../Forms/CollectionForm/CollectionForm';
 
-interface IStepFormModal {
+interface ICollectionModal {
   open: boolean;
   setOpen: (e: boolean) => void;
 }
 
-const StepFormModal: React.FC<IStepFormModal> = (formModal: IStepFormModal) => {
+const CollectionModal: React.FC<ICollectionModal> = (
+  formModal: ICollectionModal,
+) => {
   const { open, setOpen } = formModal;
   return (
     <Modal
       centered
       open={open}
       onCancel={() => setOpen(!open)}
-      size="large"
       closable={false}
+      size={'large'}
       footer={null}
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
-      title={'Employee Form'}
+      title={'Payment Form'}
     >
-      <EmployeeForm open={open} setOpen={setOpen} />
+      <CollectionForm open={open} setOpen={setOpen} />
     </Modal>
   );
 };
 
-export default StepFormModal;
+export default CollectionModal;
