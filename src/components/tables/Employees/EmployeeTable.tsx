@@ -30,7 +30,7 @@ export const EmployeeTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getBasicTableData(pagination).then((res) => {
+      getBasicTableData(pagination, initialPagination.pageSize!).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
