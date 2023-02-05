@@ -1,5 +1,5 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { EmployeeForm } from '../Forms/EmployeeForm/EmployeeForm';
+import { EmployeeForm } from '../forms/EmployeeForm/EmployeeForm';
 
 interface IStepFormModal {
   open: boolean;

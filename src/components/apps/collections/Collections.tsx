@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { CollectionsTable } from '@app/components/tables/Collections/CollectionsTable';
-import CollectionModal from '@app/shared/Modal/CollectionModal';
 import { useTranslation } from 'react-i18next';
 import * as S from './Collections.styles';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button } from '@app/components/common/buttons/Button/Button';
+import CollectionModal from '@app/components/modals/modal/CollectionModal';
 
 export const Collections: React.FC = () => {
   const { t } = useTranslation();

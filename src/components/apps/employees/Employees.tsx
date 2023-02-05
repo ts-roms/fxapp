@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
-import StepFormModal from '@app/shared/Modal/StepFormModal';
 import { Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import * as S from './Emloyees.styles';
 import { EmployeeTable } from '@app/components/tables/Employees/EmployeeTable';
+import StepFormModal from '@app/components/modals/modal/StepFormModal';
 
 export const Employees: React.FC = () => {
   const { t } = useTranslation();

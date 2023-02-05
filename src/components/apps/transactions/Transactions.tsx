@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import TransactionModal from '@app/shared/Modal/TransactionModal';
 import { Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { TransactionTable } from '../../tables/Transactions/TransactionTable';
 import * as S from './Transactions.styles';
+import TransactionModal from '@app/components/modals/modal/TransactionModal';
 
 export const Transactions: React.FC = () => {
   const { t } = useTranslation();
