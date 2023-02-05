@@ -3,7 +3,7 @@ import { EmployeeForm } from '../Forms/EmployeeForm/EmployeeForm';
 
 interface IStepFormModal {
   open: boolean;
-  setOpen: (e: any) => void;
+  setOpen: (e: boolean) => void;
 }
 
 const StepFormModal: React.FC<IStepFormModal> = (formModal: IStepFormModal) => {

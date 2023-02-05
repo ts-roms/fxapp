@@ -10,7 +10,7 @@ import { notificationController } from '@app/controllers/notificationController'
 
 interface ITransactionForm {
   open: boolean;
-  setOpen: (e: any) => void;
+  setOpen: (e: boolean) => void;
 }
 
 interface FieldData {
@@ -85,7 +85,7 @@ export const TransactionForm: React.FC<ITransactionForm> = (
         setTimeout(() => {
           notificationController.success({ message: t('common.success') });
           setIsLoading(false);
-          console.log('FIELDS', fields);
+          setOpen(!open)
         }, 3000);
       })
       .catch(() => {

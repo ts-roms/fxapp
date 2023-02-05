@@ -22,7 +22,7 @@ interface FieldData {
 
 interface IEmplopyeeForm {
   open: boolean;
-  setOpen: (e: any) => void;
+  setOpen: (e: boolean) => void;
 }
 
 export const EmployeeForm: React.FC<IEmplopyeeForm> = (
