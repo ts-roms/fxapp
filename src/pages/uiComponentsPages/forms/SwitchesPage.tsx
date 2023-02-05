@@ -40,9 +40,17 @@ const SwitchesPage: React.FC = () => {
         </S.Card>
         <S.Card title={t('switches.icons')}>
           <Space direction="vertical" size={10}>
-            <Switch checkedChildren={t('switches.yes')} unCheckedChildren={t('switches.no')} defaultChecked />
+            <Switch
+              checkedChildren={t('switches.yes')}
+              unCheckedChildren={t('switches.no')}
+              defaultChecked
+            />
             <Switch checkedChildren="1" unCheckedChildren="0" />
-            <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} defaultChecked />
+            <Switch
+              checkedChildren={<CheckOutlined />}
+              unCheckedChildren={<CloseOutlined />}
+              defaultChecked
+            />
           </Space>
         </S.Card>
       </Col>

@@ -7,11 +7,18 @@ import { InputNumber } from '@app/components/common/inputs/InputNumber/InputNumb
 import { Select, Option } from '@app/components/common/selects/Select/Select';
 import { Button } from '@app/components/common/buttons/Button/Button';
 import { Switch } from '@app/components/common/Switch/Switch';
-import { Radio, RadioButton, RadioGroup } from '@app/components/common/Radio/Radio';
+import {
+  Radio,
+  RadioButton,
+  RadioGroup,
+} from '@app/components/common/Radio/Radio';
 import { Slider } from '@app/components/common/Slider/Slider';
 import { Upload, UploadDragger } from '@app/components/common/Upload/Upload';
 import { Rate } from '@app/components/common/Rate/Rate';
-import { Checkbox, CheckboxGroup } from '@app/components/common/Checkbox/Checkbox';
+import {
+  Checkbox,
+  CheckboxGroup,
+} from '@app/components/common/Checkbox/Checkbox';
 import { notificationController } from '@app/controllers/notificationController';
 
 const formItemLayout = {
@@ -65,7 +72,12 @@ export const ValidationForm: React.FC = () => {
         name="select"
         label={t('forms.validationFormLabels.select')}
         hasFeedback
-        rules={[{ required: true, message: t('forms.validationFormLabels.countryError') }]}
+        rules={[
+          {
+            required: true,
+            message: t('forms.validationFormLabels.countryError'),
+          },
+        ]}
       >
         <Select placeholder={t('forms.validationFormLabels.selectCountry')}>
           <Option value="china">{t('forms.validationFormLabels.china')}</Option>
@@ -76,9 +88,18 @@ export const ValidationForm: React.FC = () => {
       <BaseButtonsForm.Item
         name="select-multiple"
         label={t('forms.validationFormLabels.selectMultiple')}
-        rules={[{ required: true, message: t('forms.validationFormLabels.colorError'), type: 'array' }]}
+        rules={[
+          {
+            required: true,
+            message: t('forms.validationFormLabels.colorError'),
+            type: 'array',
+          },
+        ]}
       >
-        <Select mode="multiple" placeholder={t('forms.validationFormLabels.selectColor')}>
+        <Select
+          mode="multiple"
+          placeholder={t('forms.validationFormLabels.selectColor')}
+        >
           <Option value="red">{t('forms.validationFormLabels.red')}</Option>
           <Option value="green">{t('forms.validationFormLabels.green')}</Option>
           <Option value="blue">{t('forms.validationFormLabels.blue')}</Option>
@@ -94,11 +115,18 @@ export const ValidationForm: React.FC = () => {
         <span> {t('forms.validationFormLabels.machines')}</span>
       </BaseButtonsForm.Item>
 
-      <BaseButtonsForm.Item name="switch" label={t('forms.validationFormLabels.switch')} valuePropName="checked">
+      <BaseButtonsForm.Item
+        name="switch"
+        label={t('forms.validationFormLabels.switch')}
+        valuePropName="checked"
+      >
         <Switch />
       </BaseButtonsForm.Item>
 
-      <BaseButtonsForm.Item name="slider" label={t('forms.validationFormLabels.slider')}>
+      <BaseButtonsForm.Item
+        name="slider"
+        label={t('forms.validationFormLabels.slider')}
+      >
         <Slider
           tooltipVisible={false}
           marks={{
@@ -112,7 +140,10 @@ export const ValidationForm: React.FC = () => {
         />
       </BaseButtonsForm.Item>
 
-      <BaseButtonsForm.Item name="radio-group" label={t('forms.validationFormLabels.radioGroup')}>
+      <BaseButtonsForm.Item
+        name="radio-group"
+        label={t('forms.validationFormLabels.radioGroup')}
+      >
         <RadioGroup>
           <Radio value="a">{t('forms.validationFormLabels.item')} 1</Radio>
           <Radio value="b">{t('forms.validationFormLabels.item')} 2</Radio>
@@ -123,16 +154,30 @@ export const ValidationForm: React.FC = () => {
       <BaseButtonsForm.Item
         name="radio-button"
         label={t('forms.validationFormLabels.radioButton')}
-        rules={[{ required: true, message: t('forms.validationFormLabels.itemError') }]}
+        rules={[
+          {
+            required: true,
+            message: t('forms.validationFormLabels.itemError'),
+          },
+        ]}
       >
         <RadioGroup>
-          <RadioButton value="a">{t('forms.validationFormLabels.item')} 1</RadioButton>
-          <RadioButton value="b">{t('forms.validationFormLabels.item')} 2</RadioButton>
-          <RadioButton value="c">{t('forms.validationFormLabels.item')} 3</RadioButton>
+          <RadioButton value="a">
+            {t('forms.validationFormLabels.item')} 1
+          </RadioButton>
+          <RadioButton value="b">
+            {t('forms.validationFormLabels.item')} 2
+          </RadioButton>
+          <RadioButton value="c">
+            {t('forms.validationFormLabels.item')} 3
+          </RadioButton>
         </RadioGroup>
       </BaseButtonsForm.Item>
 
-      <BaseButtonsForm.Item name="checkbox-group" label={t('forms.validationFormLabels.checkboxGroup')}>
+      <BaseButtonsForm.Item
+        name="checkbox-group"
+        label={t('forms.validationFormLabels.checkboxGroup')}
+      >
         <CheckboxGroup>
           <Row>
             <Col span={8}>
@@ -159,7 +204,10 @@ export const ValidationForm: React.FC = () => {
         </CheckboxGroup>
       </BaseButtonsForm.Item>
 
-      <BaseButtonsForm.Item name="rate" label={t('forms.validationFormLabels.rate')}>
+      <BaseButtonsForm.Item
+        name="rate"
+        label={t('forms.validationFormLabels.rate')}
+      >
         <Rate />
       </BaseButtonsForm.Item>
 
@@ -177,7 +225,12 @@ export const ValidationForm: React.FC = () => {
       </BaseButtonsForm.Item>
 
       <BaseButtonsForm.Item label={t('forms.validationFormLabels.dragger')}>
-        <BaseButtonsForm.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+        <BaseButtonsForm.Item
+          name="dragger"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+          noStyle
+        >
           <UploadDragger name="files" action="/upload.do">
             <p>
               <InboxOutlined />

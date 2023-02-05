@@ -10,14 +10,21 @@ interface StatisticsInfoProps {
   prevValue: number;
 }
 
-export const StatisticsInfo: React.FC<StatisticsInfoProps> = ({ name, value, prevValue }) => {
+export const StatisticsInfo: React.FC<StatisticsInfoProps> = ({
+  name,
+  value,
+  prevValue,
+}) => {
   return (
     <Space direction="vertical" size={6}>
       <S.Title>{name}</S.Title>
 
       {prevValue && (
         <S.Text>
-          <S.IconWrapper> {value > prevValue ? <CaretUpOutlined /> : <CaretDownOutlined />}</S.IconWrapper>
+          <S.IconWrapper>
+            {' '}
+            {value > prevValue ? <CaretUpOutlined /> : <CaretDownOutlined />}
+          </S.IconWrapper>
           {getDifference(value, prevValue)}
         </S.Text>
       )}

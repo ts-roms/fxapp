@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/BaseButtonsForm';
 import { BaseButtonsGroup } from '@app/components/common/forms/components/BaseButtonsGroup/BaseButtonsGroup';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 
 export const Form = styled(BaseButtonsForm)`
   width: 16rem;

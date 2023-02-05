@@ -9,9 +9,20 @@ interface PaymentModalProps {
   onCardAdd: (card: CreditCard) => void;
 }
 
-export const AddNewCardModal: React.FC<PaymentModalProps> = ({ isModalVisible, closeModal, onCardAdd }) => {
+export const AddNewCardModal: React.FC<PaymentModalProps> = ({
+  isModalVisible,
+  closeModal,
+  onCardAdd,
+}) => {
   return (
-    <Modal destroyOnClose size="small" visible={isModalVisible} onCancel={closeModal} footer={null} closable={false}>
+    <Modal
+      destroyOnClose
+      size="small"
+      visible={isModalVisible}
+      onCancel={closeModal}
+      footer={null}
+      closable={false}
+    >
       <PaymentForm closeModal={closeModal} onFormFinish={onCardAdd} />
     </Modal>
   );

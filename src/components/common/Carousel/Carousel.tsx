@@ -6,7 +6,18 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export const Carousel = React.forwardRef<Slider, Settings>(
-  ({ slidesToShow = 1, arrows = false, dots = false, infinite = true, centerMode = true, children, ...props }, ref) => {
+  (
+    {
+      slidesToShow = 1,
+      arrows = false,
+      dots = false,
+      infinite = true,
+      centerMode = true,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
     const carouselRef = useRef();
 
     const totalRef = ref || carouselRef;

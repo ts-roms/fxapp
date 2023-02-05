@@ -1,5 +1,9 @@
 import { BREAKPOINTS, media } from '@app/styles/themes/constants';
-import { MediaQueryAllQueryable, MediaQueryMatchers, useMediaQuery } from 'react-responsive';
+import {
+  MediaQueryAllQueryable,
+  MediaQueryMatchers,
+  useMediaQuery,
+} from 'react-responsive';
 
 interface ResponsiveReturnValues {
   isMobile: boolean;
@@ -27,11 +31,15 @@ export const useResponsive = (): ResponsiveReturnValues => {
   });
 
   const tabletOnly = useMediaQuery({
-    query: `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.xl - 0.02}px)`,
+    query: `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${
+      BREAKPOINTS.xl - 0.02
+    }px)`,
   });
 
   const desktopOnly = useMediaQuery({
-    query: `(min-width: ${BREAKPOINTS.xl}px) and (max-width: ${BREAKPOINTS.xxl - 0.02}px)`,
+    query: `(min-width: ${BREAKPOINTS.xl}px) and (max-width: ${
+      BREAKPOINTS.xxl - 0.02
+    }px)`,
   });
 
   return {

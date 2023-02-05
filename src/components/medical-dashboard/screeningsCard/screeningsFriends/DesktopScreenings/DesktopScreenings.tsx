@@ -47,13 +47,18 @@ export const DesktopScreenings: React.FC<DesktopScreeningsProps> = ({
         <Row justify={isVisibleMenu ? 'space-between' : 'center'}>
           {isVisibleMenu && (
             <Col>
-              <S.Title>{t('medical-dashboard.latestScreenings.friends')}</S.Title>
+              <S.Title>
+                {t('medical-dashboard.latestScreenings.friends')}
+              </S.Title>
             </Col>
           )}
 
           {isDesktop && (
             <Col>
-              <LeftOutlined onClick={handleClick} rotate={isVisibleMenu ? 0 : 180} />
+              <LeftOutlined
+                onClick={handleClick}
+                rotate={isVisibleMenu ? 0 : 180}
+              />
             </Col>
           )}
         </Row>

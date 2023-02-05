@@ -16,13 +16,19 @@ interface SecurityCodeFormProps {
   onFinish?: () => void;
 }
 
-export const SecurityCodeForm: React.FC<SecurityCodeFormProps> = ({ onBack, onFinish }) => {
+export const SecurityCodeForm: React.FC<SecurityCodeFormProps> = ({
+  onBack,
+  onFinish,
+}) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const navigateBack = useCallback(() => navigate(-1), [navigate]);
-  const navigateForward = useCallback(() => navigate('/auth/new-password'), [navigate]);
+  const navigateForward = useCallback(
+    () => navigate('/auth/new-password'),
+    [navigate],
+  );
 
   const [securityCode, setSecurityCode] = useState('');
   const [isLoading, setLoading] = useState(false);
@@ -52,8 +58,14 @@ export const SecurityCodeForm: React.FC<SecurityCodeFormProps> = ({ onBack, onFi
             <Image src={VerifyEmailImage} alt="Not found" preview={false} />
           </S.ImageWrapper>
           <Auth.FormTitle>{t('securityCodeForm.title')}</Auth.FormTitle>
-          <S.VerifyEmailDescription>{t('common.verifCodeSent')}</S.VerifyEmailDescription>
-          {isLoading ? <Spin /> : <VerificationCodeInput autoFocus onChange={setSecurityCode} />}
+          <S.VerifyEmailDescription>
+            {t('common.verifCodeSent')}
+          </S.VerifyEmailDescription>
+          {isLoading ? (
+            <Spin />
+          ) : (
+            <VerificationCodeInput autoFocus onChange={setSecurityCode} />
+          )}
           <Link to="/" target="_blank">
             <S.NoCodeText>{t('securityCodeForm.noCode')}</S.NoCodeText>
           </Link>

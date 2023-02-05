@@ -7,10 +7,15 @@ import { StatisticsSelect } from 'components/common/selects/StatisticsSelect/Sta
 
 interface ScreeningsHeaderProps {
   currentStatistics: CurrentStatisticsState;
-  setCurrentStatistics: (func: (state: CurrentStatisticsState) => CurrentStatisticsState) => void;
+  setCurrentStatistics: (
+    func: (state: CurrentStatisticsState) => CurrentStatisticsState,
+  ) => void;
 }
 
-export const ScreeningsHeader: React.FC<ScreeningsHeaderProps> = ({ currentStatistics, setCurrentStatistics }) => {
+export const ScreeningsHeader: React.FC<ScreeningsHeaderProps> = ({
+  currentStatistics,
+  setCurrentStatistics,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -34,7 +39,11 @@ export const ScreeningsHeader: React.FC<ScreeningsHeaderProps> = ({ currentStati
                 bordered={false}
                 shadow
                 placeholder={t('medical-dashboard.latestScreenings.month')}
-                onChange={(month) => setCurrentStatistics((prev) => ({ ...prev, month } as CurrentStatisticsState))}
+                onChange={(month) =>
+                  setCurrentStatistics(
+                    (prev) => ({ ...prev, month } as CurrentStatisticsState),
+                  )
+                }
               />
             </label>
           </Col>
@@ -48,7 +57,10 @@ export const ScreeningsHeader: React.FC<ScreeningsHeaderProps> = ({ currentStati
                 shadow
                 placeholder={t('medical-dashboard.latestScreenings.statistics')}
                 onChange={(statistic) =>
-                  setCurrentStatistics((prev) => ({ ...prev, statistic } as CurrentStatisticsState))
+                  setCurrentStatistics(
+                    (prev) =>
+                      ({ ...prev, statistic } as CurrentStatisticsState),
+                  )
                 }
               />
             </label>

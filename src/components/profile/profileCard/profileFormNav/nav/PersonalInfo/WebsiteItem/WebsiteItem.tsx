@@ -29,7 +29,11 @@ export const WebsiteItem: React.FC<WebsiteItemProps> = () => {
               },
             ]}
           >
-            <OpenURLInput href={`${scheme}${website}`} target="_blank" addonBefore={scheme} />
+            <OpenURLInput
+              href={`${scheme}${website}`}
+              target="_blank"
+              addonBefore={scheme}
+            />
           </BaseButtonsForm.Item>
         );
       }}

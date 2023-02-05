@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { Select as AntSelect } from 'antd';
 import { Dimension } from 'interfaces/interfaces';
 import { normalizeProp } from 'utils/utils';
-import { FONT_WEIGHT, BORDER_RADIUS, FONT_SIZE } from '@app/styles/themes/constants';
+import {
+  FONT_WEIGHT,
+  BORDER_RADIUS,
+  FONT_SIZE,
+} from '@app/styles/themes/constants';
 
 export interface SelectProps {
   width?: Dimension;
@@ -42,7 +46,8 @@ export const Select = styled(AntSelect).withConfig({
     margin-bottom: 0.1875rem;
   }
 
-  &.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  &.ant-select-disabled.ant-select:not(.ant-select-customize-input)
+    .ant-select-selector {
     color: var(--disabled-color);
   }
 

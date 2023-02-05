@@ -4,7 +4,10 @@ import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/Ba
 import { Input } from '@app/components/common/inputs/Input/Input';
 import { CardInputProps } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentMethod/paymentForm/interfaces';
 
-export const CardholderItem: React.FC<CardInputProps> = ({ disabled, handleInputFocus }) => {
+export const CardholderItem: React.FC<CardInputProps> = ({
+  disabled,
+  handleInputFocus,
+}) => {
   const { t } = useTranslation();
 
   return (

@@ -7,7 +7,10 @@ export const BirthdayItem: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <BaseButtonsForm.Item name="birthday" label={t('profile.nav.personalInfo.birthday')}>
+    <BaseButtonsForm.Item
+      name="birthday"
+      label={t('profile.nav.personalInfo.birthday')}
+    >
       <S.BirthdayPicker format="L" />
     </BaseButtonsForm.Item>
   );

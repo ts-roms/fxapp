@@ -1,4 +1,9 @@
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 import { Rate, Typography } from 'antd';
 import styled from 'styled-components';
 import { Card } from '../../../common/Card/Card';

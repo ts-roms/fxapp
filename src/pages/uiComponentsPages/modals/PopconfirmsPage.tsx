@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@app/components/common/buttons/Button/Button';
 import { Popconfirm } from '@app/components/common/Popconfirm/Popconfirm';
-import { TopButtons, LeftButtons, RightButtons, BottomButtons } from '@app/pages/uiComponentsPages/modals/PopoversPage';
+import {
+  TopButtons,
+  LeftButtons,
+  RightButtons,
+  BottomButtons,
+} from '@app/pages/uiComponentsPages/modals/PopoversPage';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';
 import { FONT_SIZE, media } from '@app/styles/themes/constants';

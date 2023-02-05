@@ -15,7 +15,8 @@ export const PaymentMethod: React.FC = () => {
 
   const { isTablet } = useResponsive();
 
-  const handleCardRemove = (cardNumber: string) => setCards(cards.filter((card) => card.number !== cardNumber));
+  const handleCardRemove = (cardNumber: string) =>
+    setCards(cards.filter((card) => card.number !== cardNumber));
 
   const handleCardAdd = (card: CreditCard) => {
     setCards([...cards, card]);
@@ -24,10 +25,16 @@ export const PaymentMethod: React.FC = () => {
   const content = (
     <Row gutter={[32, 32]}>
       <Col span={24}>
-        <BaseForm.Title>{t('profile.nav.payments.paymentMethod')}</BaseForm.Title>
+        <BaseForm.Title>
+          {t('profile.nav.payments.paymentMethod')}
+        </BaseForm.Title>
       </Col>
       <Col span={24}>
-        <PaymentCardsWidget cards={cards} onCardRemove={handleCardRemove} onCardAdd={handleCardAdd} />
+        <PaymentCardsWidget
+          cards={cards}
+          onCardRemove={handleCardRemove}
+          onCardAdd={handleCardAdd}
+        />
       </Col>
     </Row>
   );

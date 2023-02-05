@@ -25,8 +25,14 @@ export const DynamicForm: React.FC = () => {
   ];
 
   const sights: Sight = {
-    Beijing: [t('forms.dynamicFormLabels.tiananmen'), t('forms.dynamicFormLabels.greatWall')],
-    Shanghai: [t('forms.dynamicFormLabels.orientalPearl'), t('forms.dynamicFormLabels.theBund')],
+    Beijing: [
+      t('forms.dynamicFormLabels.tiananmen'),
+      t('forms.dynamicFormLabels.greatWall'),
+    ],
+    Shanghai: [
+      t('forms.dynamicFormLabels.orientalPearl'),
+      t('forms.dynamicFormLabels.theBund'),
+    ],
   };
 
   const onFinish = (values = {}) => {
@@ -56,7 +62,9 @@ export const DynamicForm: React.FC = () => {
       <BaseButtonsForm.Item
         name="area"
         label={t('forms.dynamicFormLabels.area')}
-        rules={[{ required: true, message: t('forms.dynamicFormLabels.areaError') }]}
+        rules={[
+          { required: true, message: t('forms.dynamicFormLabels.areaError') },
+        ]}
       >
         <Select options={areas} onChange={handleChange} />
       </BaseButtonsForm.Item>
@@ -64,13 +72,20 @@ export const DynamicForm: React.FC = () => {
         {(fields, { add, remove }) => (
           <>
             {fields.map((field) => (
-              <Row key={field.key} wrap={false} gutter={[10, 10]} align="middle" justify="space-between">
+              <Row
+                key={field.key}
+                wrap={false}
+                gutter={[10, 10]}
+                align="middle"
+                justify="space-between"
+              >
                 <Col span={12}>
                   <BaseButtonsForm.Item
                     noStyle
                     // eslint-disable-next-line
                     shouldUpdate={(prevValues: any, curValues: any) =>
-                      prevValues.area !== curValues.area || prevValues.sights !== curValues.sights
+                      prevValues.area !== curValues.area ||
+                      prevValues.sights !== curValues.sights
                     }
                   >
                     {() => (
@@ -79,14 +94,21 @@ export const DynamicForm: React.FC = () => {
                         label={t('forms.dynamicFormLabels.sight')}
                         name={[field.name, 'sight']}
                         fieldKey={[field.key, 'sight']}
-                        rules={[{ required: true, message: t('forms.dynamicFormLabels.sightError') }]}
+                        rules={[
+                          {
+                            required: true,
+                            message: t('forms.dynamicFormLabels.sightError'),
+                          },
+                        ]}
                       >
                         <Select disabled={!form.getFieldValue('area')}>
-                          {(sights[form.getFieldValue('area')] || []).map((item) => (
-                            <Option key={item} value={item}>
-                              {item}
-                            </Option>
-                          ))}
+                          {(sights[form.getFieldValue('area')] || []).map(
+                            (item) => (
+                              <Option key={item} value={item}>
+                                {item}
+                              </Option>
+                            ),
+                          )}
                         </Select>
                       </BaseButtonsForm.Item>
                     )}
@@ -98,7 +120,12 @@ export const DynamicForm: React.FC = () => {
                     label={t('forms.dynamicFormLabels.price')}
                     name={[field.name, 'price']}
                     fieldKey={[field.key, 'price']}
-                    rules={[{ required: true, message: t('forms.dynamicFormLabels.priceError') }]}
+                    rules={[
+                      {
+                        required: true,
+                        message: t('forms.dynamicFormLabels.priceError'),
+                      },
+                    ]}
                   >
                     <S.Wrapper>
                       <Input />
@@ -110,7 +137,12 @@ export const DynamicForm: React.FC = () => {
             ))}
 
             <BaseButtonsForm.Item>
-              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                block
+                icon={<PlusOutlined />}
+              >
                 {t('forms.dynamicFormLabels.addSights')}
               </Button>
             </BaseButtonsForm.Item>

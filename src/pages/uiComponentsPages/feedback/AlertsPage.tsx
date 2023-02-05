@@ -31,15 +31,35 @@ const AlertsPage: React.FC = () => {
         </Card>
         <Card title={t('alerts.closable')}>
           <Alert message={t('alerts.warning')} type="warning" closable />
-          <Alert message={t('alerts.error')} description={t('alerts.errorDescription')} type="error" closable />
+          <Alert
+            message={t('alerts.error')}
+            description={t('alerts.errorDescription')}
+            type="error"
+            closable
+          />
         </Card>
         <Card title={t('alerts.icons')}>
           <Alert message={t('alerts.success')} type="success" showIcon />
           <Alert message={t('alerts.info')} type="info" showIcon />
-          <Alert message={t('alerts.warning')} type="warning" showIcon closable />
+          <Alert
+            message={t('alerts.warning')}
+            type="warning"
+            showIcon
+            closable
+          />
           <Alert message={t('alerts.error')} type="error" showIcon />
-          <Alert message={t('alerts.success')} description={t('alerts.successDescription')} type="success" showIcon />
-          <Alert message={t('alerts.info')} description={t('alerts.infoDescription')} type="info" showIcon />
+          <Alert
+            message={t('alerts.success')}
+            description={t('alerts.successDescription')}
+            type="success"
+            showIcon
+          />
+          <Alert
+            message={t('alerts.info')}
+            description={t('alerts.infoDescription')}
+            type="info"
+            showIcon
+          />
           <Alert
             message={t('alerts.warning')}
             description={t('alerts.warningDescription')}
@@ -47,7 +67,12 @@ const AlertsPage: React.FC = () => {
             showIcon
             closable
           />
-          <Alert message={t('alerts.error')} description={t('alerts.errorDescription')} type="error" showIcon />
+          <Alert
+            message={t('alerts.error')}
+            description={t('alerts.errorDescription')}
+            type="error"
+            showIcon
+          />
         </Card>
         <Card title={t('alerts.customActions')}>
           <Alert

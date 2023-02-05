@@ -6,4 +6,6 @@ interface StatusProps {
   text: string;
 }
 
-export const Status: React.FC<StatusProps> = ({ color, text }) => <S.StatusTag color={color}>{text}</S.StatusTag>;
+export const Status: React.FC<StatusProps> = ({ color, text }) => (
+  <S.StatusTag color={color}>{text}</S.StatusTag>
+);

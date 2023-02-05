@@ -9,10 +9,19 @@ interface MoonSunSwitchProps {
   onClickSun: () => void;
 }
 
-export const MoonSunSwitch: React.FC<MoonSunSwitchProps> = ({ isMoonActive, onClickMoon, onClickSun }) => {
+export const MoonSunSwitch: React.FC<MoonSunSwitchProps> = ({
+  isMoonActive,
+  onClickMoon,
+  onClickSun,
+}) => {
   return (
     <S.ButtonGroup $isFirstActive={isMoonActive}>
-      <S.Btn size="small" type="link" icon={<MoonIcon />} onClick={onClickMoon} />
+      <S.Btn
+        size="small"
+        type="link"
+        icon={<MoonIcon />}
+        onClick={onClickMoon}
+      />
       <S.Btn size="small" type="link" icon={<SunIcon />} onClick={onClickSun} />
     </S.ButtonGroup>
   );

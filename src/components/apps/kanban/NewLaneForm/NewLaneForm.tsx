@@ -9,7 +9,10 @@ interface NewLaneFormProps {
   onCancel: () => void;
 }
 
-export const NewLaneForm: React.FC<NewLaneFormProps> = ({ onAdd, onCancel }) => {
+export const NewLaneForm: React.FC<NewLaneFormProps> = ({
+  onAdd,
+  onCancel,
+}) => {
   const { t } = useTranslation();
   const handleSubmit = (values: { title: string }) => {
     onAdd({

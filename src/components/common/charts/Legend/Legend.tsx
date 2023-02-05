@@ -16,7 +16,10 @@ interface LegendProps {
   activeItemIndex: number | null;
 }
 
-export const Legend: React.FC<LegendProps> = ({ legendItems, activeItemIndex }) => {
+export const Legend: React.FC<LegendProps> = ({
+  legendItems,
+  activeItemIndex,
+}) => {
   const theme = useAppSelector((state) => state.theme.theme);
   const colors = getChartColors(themeObject[theme]);
 
@@ -30,7 +33,10 @@ export const Legend: React.FC<LegendProps> = ({ legendItems, activeItemIndex }) 
               <S.LegendTitle>{item.name}</S.LegendTitle>
             </S.LegendDescription>
             <S.Values>{item.value}</S.Values>
-            <Popover content={<S.PopoverContent>{item.description}</S.PopoverContent>} trigger="hover">
+            <Popover
+              content={<S.PopoverContent>{item.description}</S.PopoverContent>}
+              trigger="hover"
+            >
               <S.InfoStyled />
             </Popover>
           </S.LegendInfo>

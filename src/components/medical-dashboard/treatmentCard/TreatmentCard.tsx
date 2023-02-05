@@ -55,7 +55,9 @@ export const TreatmentCard: React.FC = () => {
     />
   );
 
-  const currentEvent = calendar.find((event) => Dates.getDate(event.date).isSame(selectedDate, 'date'));
+  const currentEvent = calendar.find((event) =>
+    Dates.getDate(event.date).isSame(selectedDate, 'date'),
+  );
 
   const panelItem = <TreatmentPanel event={currentEvent} />;
 
@@ -67,10 +69,17 @@ export const TreatmentCard: React.FC = () => {
             <Col md={12}>{calendarItem}</Col>
             <Col md={12}>{panelItem}</Col>
           </>
-        ) : isDateClicked && calendar.some((event) => Dates.getDate(event.date).isSame(selectedDate, 'date')) ? (
+        ) : isDateClicked &&
+          calendar.some((event) =>
+            Dates.getDate(event.date).isSame(selectedDate, 'date'),
+          ) ? (
           <BackButtonWrapper span={24}>
             {panelItem}
-            <BackButton type="text" icon={<ArrowLeftOutlined />} onClick={() => setDateClicked(false)} />
+            <BackButton
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => setDateClicked(false)}
+            />
           </BackButtonWrapper>
         ) : (
           <Col span={24}>{calendarItem}</Col>

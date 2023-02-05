@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { InfoCircleOutlined } from '@ant-design/icons/lib';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 
 interface LegendWrapperProps {
   isSelected: boolean;
@@ -9,7 +14,10 @@ interface LegendWrapperProps {
 export const LegendWrapper = styled.div<LegendWrapperProps>`
   display: flex;
   padding: 0.5rem;
-  background: ${(props) => (props.isSelected ? 'var(--secondary-background-selected-color)' : 'transparent')};
+  background: ${(props) =>
+    props.isSelected
+      ? 'var(--secondary-background-selected-color)'
+      : 'transparent'};
   border-radius: ${BORDER_RADIUS};
 `;
 

@@ -10,7 +10,11 @@ interface PhoneItemsProps {
   verified?: boolean;
 }
 
-export const PhoneItem: React.FC<PhoneItemsProps> = ({ required, onClick, verified }) => {
+export const PhoneItem: React.FC<PhoneItemsProps> = ({
+  required,
+  onClick,
+  verified,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -26,12 +30,18 @@ export const PhoneItem: React.FC<PhoneItemsProps> = ({ required, onClick, verifi
             if (!value || isValidPhoneNumber(value)) {
               return Promise.resolve();
             }
-            return Promise.reject(new Error(t('profile.nav.personalInfo.wrongNumber')));
+            return Promise.reject(
+              new Error(t('profile.nav.personalInfo.wrongNumber')),
+            );
           },
         }),
       ]}
     >
-      <S.PhoneNumberInput disabled={verified} className="ant-input" onClick={onClick} />
+      <S.PhoneNumberInput
+        disabled={verified}
+        className="ant-input"
+        onClick={onClick}
+      />
     </BaseButtonsForm.Item>
   );
 };

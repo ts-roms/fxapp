@@ -11,7 +11,11 @@ interface CheckboxColumnProps {
   setTriggered: (state: boolean) => void;
 }
 
-export const CheckboxColumn: React.FC<CheckboxColumnProps> = ({ column, handleCheck, setTriggered }) => {
+export const CheckboxColumn: React.FC<CheckboxColumnProps> = ({
+  column,
+  handleCheck,
+  setTriggered,
+}) => {
   const [checkedList, setCheckedList] = React.useState<CheckboxValueType[]>([]);
   const [indeterminate, setIndeterminate] = React.useState(false);
   const [checkAll, setCheckAll] = React.useState(false);
@@ -40,10 +44,16 @@ export const CheckboxColumn: React.FC<CheckboxColumnProps> = ({ column, handleCh
 
   return (
     <S.Wrapper>
-      <S.HeaderCol>{column.headerRender ? column.headerRender(column.header, props) : column.header}</S.HeaderCol>
+      <S.HeaderCol>
+        {column.headerRender
+          ? column.headerRender(column.header, props)
+          : column.header}
+      </S.HeaderCol>
       <Checkbox.Group value={checkedList} onChange={onChange}>
         {column.data.map((el, index) => (
-          <S.Col key={index}>{column.dataRender ? column.dataRender(el) : el}</S.Col>
+          <S.Col key={index}>
+            {column.dataRender ? column.dataRender(el) : el}
+          </S.Col>
         ))}
       </Checkbox.Group>
     </S.Wrapper>

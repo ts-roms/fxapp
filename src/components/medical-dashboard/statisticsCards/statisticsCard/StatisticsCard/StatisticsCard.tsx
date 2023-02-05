@@ -18,7 +18,14 @@ interface StatisticsCardProps {
   Icon: React.FC;
 }
 
-export const StatisticsCard: React.FC<StatisticsCardProps> = ({ name, value, prevValue, color, unit, Icon }) => {
+export const StatisticsCard: React.FC<StatisticsCardProps> = ({
+  name,
+  value,
+  prevValue,
+  color,
+  unit,
+  Icon,
+}) => {
   const theme = useAppSelector((state) => state.theme.theme);
   const { isTablet: isTabletOrHigher } = useResponsive();
 
@@ -36,11 +43,19 @@ export const StatisticsCard: React.FC<StatisticsCardProps> = ({ name, value, pre
         <Col flex={1}>
           <Row justify="space-between" align="middle" wrap={false}>
             <Col>
-              <StatisticsInfo name={t(name)} value={value} prevValue={prevValue} />
+              <StatisticsInfo
+                name={t(name)}
+                value={value}
+                prevValue={prevValue}
+              />
             </Col>
 
             <Col>
-              <StatisticsProgress color={themeObject[theme][color]} unit={unit} value={value} />
+              <StatisticsProgress
+                color={themeObject[theme][color]}
+                unit={unit}
+                value={value}
+              />
             </Col>
           </Row>
         </Col>

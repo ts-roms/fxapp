@@ -39,7 +39,9 @@ export const PasswordForm: React.FC = () => {
       <Row gutter={{ md: 15, xl: 30 }}>
         <Col span={24}>
           <BaseButtonsForm.Item>
-            <BaseButtonsForm.Title>{t('profile.nav.securitySettings.changePassword')}</BaseButtonsForm.Title>
+            <BaseButtonsForm.Title>
+              {t('profile.nav.securitySettings.changePassword')}
+            </BaseButtonsForm.Title>
           </BaseButtonsForm.Item>
         </Col>
 

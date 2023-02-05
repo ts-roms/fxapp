@@ -23,7 +23,9 @@ export const ParticipantsDropdown: React.FC<ParticipantsDropdownProps> = ({
     const isExist = selectedParticipantsIds.includes(tag.id);
 
     if (isExist) {
-      setSelectedParticipants(selectedParticipants.filter((item) => item.id !== tag.id));
+      setSelectedParticipants(
+        selectedParticipants.filter((item) => item.id !== tag.id),
+      );
     } else {
       setSelectedParticipants([...selectedParticipants, tag]);
     }
@@ -43,8 +45,12 @@ export const ParticipantsDropdown: React.FC<ParticipantsDropdownProps> = ({
                 e.stopPropagation();
               }}
             >
-              <S.PopoverCheckbox checked={selectedParticipantsIds.includes(participant.id)} />
-              <S.ParticipantAvatar src={participant.avatar ? participant.avatar : StubAvatar} />
+              <S.PopoverCheckbox
+                checked={selectedParticipantsIds.includes(participant.id)}
+              />
+              <S.ParticipantAvatar
+                src={participant.avatar ? participant.avatar : StubAvatar}
+              />
               <S.ParticipantName>{participant.name}</S.ParticipantName>
             </S.ParticipantRow>
           ))}
@@ -58,7 +64,9 @@ export const ParticipantsDropdown: React.FC<ParticipantsDropdownProps> = ({
         <S.ParticipantsWrapper>
           {selectedParticipants.map((participant) => (
             <S.ParticipantRow key={participant.id}>
-              <S.ParticipantAvatar src={participant.avatar ? participant.avatar : StubAvatar} />
+              <S.ParticipantAvatar
+                src={participant.avatar ? participant.avatar : StubAvatar}
+              />
               <S.ParticipantName>{participant.name}</S.ParticipantName>
               <S.RemoveParticipant
                 onClick={(e) => {

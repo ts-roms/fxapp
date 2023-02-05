@@ -20,12 +20,25 @@ export const LaneHeader: React.FC<LaneHeaderProps> = ({
   style,
   cards,
 }) => {
-  const numberOfCards = useMemo(() => (cards?.length ? `${cards.length}` : ''), [cards?.length]);
+  const numberOfCards = useMemo(
+    () => (cards?.length ? `${cards.length}` : ''),
+    [cards?.length],
+  );
   return (
-    <S.Header onDoubleClick={onDoubleClick} editLaneTitle={editLaneTitle} style={style}>
+    <S.Header
+      onDoubleClick={onDoubleClick}
+      editLaneTitle={editLaneTitle}
+      style={style}
+    >
       <S.Title>
         {editLaneTitle ? (
-          <InlineInput value={title} border placeholder={title} resize="vertical" onSave={updateTitle} />
+          <InlineInput
+            value={title}
+            border
+            placeholder={title}
+            resize="vertical"
+            onSave={updateTitle}
+          />
         ) : (
           <>
             {title}

@@ -13,7 +13,13 @@ export interface ButtonProps extends AntButtonProps {
 
 export const Button = React.forwardRef<HTMLElement, ButtonProps>(
   ({ className, severity, noStyle, children, ...props }, ref) => (
-    <S.Button ref={ref} className={className} $noStyle={noStyle} {...props} $severity={severity}>
+    <S.Button
+      ref={ref}
+      className={className}
+      $noStyle={noStyle}
+      {...props}
+      $severity={severity}
+    >
       {children}
     </S.Button>
   ),

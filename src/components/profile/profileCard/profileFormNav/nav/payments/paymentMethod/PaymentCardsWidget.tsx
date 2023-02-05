@@ -12,7 +12,11 @@ interface PaymentCardsWidgetProps {
   onCardAdd: (card: CreditCard) => void;
 }
 
-export const PaymentCardsWidget: React.FC<PaymentCardsWidgetProps> = ({ cards, onCardRemove, onCardAdd }) => {
+export const PaymentCardsWidget: React.FC<PaymentCardsWidgetProps> = ({
+  cards,
+  onCardRemove,
+  onCardAdd,
+}) => {
   const { useMediaQuery } = useResponsive();
 
   const breakpoint = 659.98; // calculated manually according to default card size (290px) and other factors

@@ -1,4 +1,9 @@
-import { BellOutlined, DollarOutlined, SecurityScanOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  BellOutlined,
+  DollarOutlined,
+  SecurityScanOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import React from 'react';
 
 interface ProfileNavItem {

@@ -19,14 +19,19 @@ export const BloodScreeningCard: React.FC = () => {
         mobileOnly && (
           <S.TitleWrapper>
             <div>{t('medical-dashboard.bloodScreening.title')}</div>
-            {!!activeItem?.test && <S.ActiveItem>{activeItem.test}</S.ActiveItem>}
+            {!!activeItem?.test && (
+              <S.ActiveItem>{activeItem.test}</S.ActiveItem>
+            )}
           </S.TitleWrapper>
         )
       }
       padding={0}
     >
       <BloodScreeningChart data={activeItem.yearData} />
-      <BloodScreeningTable activeItem={activeItem} setActiveItem={setActiveItem} />
+      <BloodScreeningTable
+        activeItem={activeItem}
+        setActiveItem={setActiveItem}
+      />
     </S.BloodScreeningCard>
   );
 };

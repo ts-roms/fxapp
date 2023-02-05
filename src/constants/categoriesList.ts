@@ -1,4 +1,10 @@
-export type CategoryType = 'apps' | 'forms' | 'charts' | 'auth' | 'data tables' | 'maps';
+export type CategoryType =
+  | 'apps'
+  | 'forms'
+  | 'charts'
+  | 'auth'
+  | 'data tables'
+  | 'maps';
 
 interface Category {
   name: CategoryType;

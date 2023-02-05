@@ -127,7 +127,9 @@ export const PersonalInfo: React.FC = () => {
         <Row gutter={{ xs: 10, md: 15, xl: 30 }}>
           <Col span={24}>
             <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('profile.nav.personalInfo.title')}</BaseButtonsForm.Title>
+              <BaseButtonsForm.Title>
+                {t('profile.nav.personalInfo.title')}
+              </BaseButtonsForm.Title>
             </BaseButtonsForm.Item>
           </Col>
 
@@ -157,7 +159,9 @@ export const PersonalInfo: React.FC = () => {
 
           <Col span={24}>
             <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('profile.nav.personalInfo.contactInfo')}</BaseButtonsForm.Title>
+              <BaseButtonsForm.Title>
+                {t('profile.nav.personalInfo.contactInfo')}
+              </BaseButtonsForm.Title>
             </BaseButtonsForm.Item>
           </Col>
 
@@ -171,7 +175,9 @@ export const PersonalInfo: React.FC = () => {
 
           <Col span={24}>
             <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('common.address')}</BaseButtonsForm.Title>
+              <BaseButtonsForm.Title>
+                {t('common.address')}
+              </BaseButtonsForm.Title>
             </BaseButtonsForm.Item>
           </Col>
 
@@ -197,7 +203,9 @@ export const PersonalInfo: React.FC = () => {
 
           <Col span={24}>
             <BaseButtonsForm.Item>
-              <BaseButtonsForm.Title>{t('profile.nav.personalInfo.otherInfo')}</BaseButtonsForm.Title>
+              <BaseButtonsForm.Title>
+                {t('profile.nav.personalInfo.otherInfo')}
+              </BaseButtonsForm.Title>
             </BaseButtonsForm.Item>
           </Col>
 

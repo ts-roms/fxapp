@@ -8,7 +8,11 @@ interface StatisticsProgressProps {
   value: number;
 }
 
-export const StatisticsProgress: React.FC<StatisticsProgressProps> = ({ color, value, unit }) => {
+export const StatisticsProgress: React.FC<StatisticsProgressProps> = ({
+  color,
+  value,
+  unit,
+}) => {
   return (
     <Progress
       type="circle"

@@ -16,7 +16,8 @@ export const cardThemes: CardTheme[] = [
   },
   {
     id: 3,
-    background: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1633007328/43064_1_z6kdji.png',
+    background:
+      'https://res.cloudinary.com/lapkinthegod/image/upload/v1633007328/43064_1_z6kdji.png',
   },
   {
     id: 4,
@@ -25,10 +26,12 @@ export const cardThemes: CardTheme[] = [
   },
   {
     id: 5,
-    background: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1633102260/Mask_Group_1_cr4x7l.png',
+    background:
+      'https://res.cloudinary.com/lapkinthegod/image/upload/v1633102260/Mask_Group_1_cr4x7l.png',
   },
   {
     id: 6,
-    background: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1633102263/Rectangle_917_1_ssqdbc.png',
+    background:
+      'https://res.cloudinary.com/lapkinthegod/image/upload/v1633102263/Rectangle_917_1_ssqdbc.png',
   },
 ];

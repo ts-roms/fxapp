@@ -88,7 +88,11 @@ export const FullnessLine = styled.div<FullnessLineProps>`
 
   width: ${(props) => props.width}%;
 
-  background: linear-gradient(90deg, var(--warning-color) 0%, var(--error-color) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--warning-color) 0%,
+    var(--error-color) 100%
+  );
 
   color: var(--text-secondary-color);
 

@@ -36,7 +36,9 @@ export interface EditableTableData extends BasicTableData {
   data: BasicTableRow[];
 }
 
-export const getBasicTableData = (pagination: Pagination): Promise<BasicTableData> => {
+export const getBasicTableData = (
+  pagination: Pagination,
+): Promise<BasicTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
       res({
@@ -232,7 +234,9 @@ export const getBasicTableData = (pagination: Pagination): Promise<BasicTableDat
   });
 };
 
-export const getTreeTableData = (pagination: Pagination): Promise<TreeTableData> => {
+export const getTreeTableData = (
+  pagination: Pagination,
+): Promise<TreeTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
       res({
@@ -496,7 +500,9 @@ export const getTreeTableData = (pagination: Pagination): Promise<TreeTableData>
   });
 };
 
-export const getEditableTableData = (pagination: Pagination): Promise<EditableTableData> => {
+export const getEditableTableData = (
+  pagination: Pagination,
+): Promise<EditableTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
       res({

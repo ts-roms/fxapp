@@ -1,6 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { ScreeningsFriend } from '../ScreeningsFriend/ScreeningsFriend';
-import { CurrentStatisticsState, ScreeningWithDoctors } from '../../ScreeningsCard/ScreeningsCard';
+import {
+  CurrentStatisticsState,
+  ScreeningWithDoctors,
+} from '../../ScreeningsCard/ScreeningsCard';
 import { MobileScreenings } from '../MobileScreenings/MobileScreenings';
 import { DesktopScreenings } from '../DesktopScreenings/DesktopScreenings';
 import { useResponsive } from '@app/hooks/useResponsive';
@@ -9,7 +12,9 @@ import * as S from './ScreeningsFriends.styles';
 interface ScreeningsFriendsProps {
   screenings: ScreeningWithDoctors[];
   currentStatistics: CurrentStatisticsState;
-  setCurrentStatistics: (func: (state: CurrentStatisticsState) => CurrentStatisticsState) => void;
+  setCurrentStatistics: (
+    func: (state: CurrentStatisticsState) => CurrentStatisticsState,
+  ) => void;
   isFirstClick: boolean;
   setFirstClick: (state: boolean) => void;
 }
@@ -72,7 +77,9 @@ export const ScreeningsFriends: React.FC<ScreeningsFriendsProps> = ({
 
   return (
     <S.Wrapper $isVisible={isVisibleMenu}>
-      {mobileOnly && screeningsItems.length > 0 && <MobileScreenings screeningsItems={screeningsItems} />}
+      {mobileOnly && screeningsItems.length > 0 && (
+        <MobileScreenings screeningsItems={screeningsItems} />
+      )}
 
       {isTablet && (
         <DesktopScreenings

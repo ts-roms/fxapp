@@ -10,7 +10,11 @@ interface PaymentCardProps {
   children?: React.ReactNode;
 }
 
-export const PaymentCard: React.FC<PaymentCardProps> = ({ className, cardData, children }) => (
+export const PaymentCard: React.FC<PaymentCardProps> = ({
+  className,
+  cardData,
+  children,
+}) => (
   <S.Wrapper className={className} $background={cardData.background}>
     <Cards {...cardData} />
     {children}

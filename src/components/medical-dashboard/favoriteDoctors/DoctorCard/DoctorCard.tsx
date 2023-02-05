@@ -13,7 +13,13 @@ interface DoctorCardProps {
   date: number;
 }
 
-export const DoctorCard: React.FC<DoctorCardProps> = ({ name, speciality, rating, imgUrl, date }) => {
+export const DoctorCard: React.FC<DoctorCardProps> = ({
+  name,
+  speciality,
+  rating,
+  imgUrl,
+  date,
+}) => {
   const { t } = useTranslation();
 
   const specifity = specifities.find((el) => el.id === speciality)?.name;
@@ -66,7 +72,9 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({ name, speciality, rating
         <Col span={24}>
           <Row justify="space-between" wrap={false}>
             <Col>
-              <S.Title>{t('medical-dashboard.favoriteDoctors.lastVisit')}</S.Title>
+              <S.Title>
+                {t('medical-dashboard.favoriteDoctors.lastVisit')}
+              </S.Title>
             </Col>
 
             <Col>

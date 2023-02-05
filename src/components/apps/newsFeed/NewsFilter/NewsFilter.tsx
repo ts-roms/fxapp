@@ -1,8 +1,19 @@
-import React, { ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
+import React, {
+  ReactNode,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { RangeValue } from 'rc-picker/lib/interface.d';
 import { Tag, ITag } from '@app/components/common/Tag/Tag';
-import { AuthorValidator, TitleValidator, DatesValidator, TagsValidator } from '../Validator';
+import {
+  AuthorValidator,
+  TitleValidator,
+  DatesValidator,
+  TagsValidator,
+} from '../Validator';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { newsTags as defaultTags } from '@app/constants/newsTags';
 import { AppDate, Dates } from '@app/constants/Dates';
@@ -24,7 +35,10 @@ interface Filter {
   selectedTagsIds: Array<string>;
   selectedTags: ITag[];
   dates: [AppDate | null, AppDate | null];
-  updateFilteredField: (field: string, value: [AppDate | null, AppDate | null] | string) => void;
+  updateFilteredField: (
+    field: string,
+    value: [AppDate | null, AppDate | null] | string,
+  ) => void;
   onApply: () => void;
   onReset: () => void;
 }
@@ -61,7 +75,9 @@ const Filter: React.FC<Filter> = ({
         <S.Input
           placeholder={t('newsFeed.authorSearch')}
           value={author}
-          onChange={(event) => updateFilteredField('author', event.target.value)}
+          onChange={(event) =>
+            updateFilteredField('author', event.target.value)
+          }
         />
       </S.InputWrapper>
 
@@ -106,7 +122,12 @@ const Filter: React.FC<Filter> = ({
       {!!selectedTags.length && (
         <S.TagsWrapper>
           {selectedTags.map((tag) => (
-            <Tag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
+            <Tag
+              key={tag.id}
+              title={tag.title}
+              bgColor={tag.bgColor}
+              removeTag={() => onTagClick(tag)}
+            />
           ))}
         </S.TagsWrapper>
       )}
@@ -120,7 +141,10 @@ const Filter: React.FC<Filter> = ({
         dropdownClassName="range-picker"
         value={dates}
         onChange={(dates: RangeValue<AppDate>) =>
-          updateFilteredField('dates', [dates?.length ? dates[0] : null, dates?.length ? dates[1] : null])
+          updateFilteredField('dates', [
+            dates?.length ? dates[0] : null,
+            dates?.length ? dates[1] : null,
+          ])
         }
       />
 
@@ -134,7 +158,11 @@ const Filter: React.FC<Filter> = ({
   );
 };
 
-export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children }) => {
+export const NewsFilter: React.FC<NewsFilterProps> = ({
+  news,
+  newsTags,
+  children,
+}) => {
   const [filterFields, setFilterFields] = useState<{
     author: string;
     title: string;
@@ -153,7 +181,10 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children
   const { t } = useTranslation();
 
   const newsTagData = Object.values(newsTags || defaultTags);
-  const selectedTagsIds = useMemo(() => selectedTags.map((item) => item.id), [selectedTags]);
+  const selectedTagsIds = useMemo(
+    () => selectedTags.map((item) => item.id),
+    [selectedTags],
+  );
 
   const onTagClick = useCallback(
     (tag: ITag) => {
@@ -193,7 +224,9 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children
             new TagsValidator(postTags, selectedTags),
           ];
 
-          return fieldsValidators.map((validator) => validator.validate()).every((i) => i);
+          return fieldsValidators
+            .map((validator) => validator.validate())
+            .every((i) => i);
         });
       }
       setFilteredNews(
@@ -221,7 +254,12 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children
   }, [mobileOnly, filterNews]);
 
   const handleClickReset = useCallback(() => {
-    setFilterFields({ author: '', title: '', dates: [null, null], selectedTags: [] });
+    setFilterFields({
+      author: '',
+      title: '',
+      dates: [null, null],
+      selectedTags: [],
+    });
     filterNews(true);
 
     if (mobileOnly) {
@@ -229,7 +267,10 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children
     }
   }, [filterNews, setFilterFields, mobileOnly]);
 
-  const updateFilteredField = (field: string, value: string | [AppDate | null, AppDate | null]) => {
+  const updateFilteredField = (
+    field: string,
+    value: string | [AppDate | null, AppDate | null],
+  ) => {
     setFilterFields({ ...filterFields, [field]: value });
   };
 
@@ -263,7 +304,9 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({ news, newsTags, children
       </S.TitleWrapper>
 
       <S.ContentWrapper>
-        <S.NewsWrapper>{children({ filteredNews: filteredNews || news })}</S.NewsWrapper>
+        <S.NewsWrapper>
+          {children({ filteredNews: filteredNews || news })}
+        </S.NewsWrapper>
 
         {!mobileOnly && (
           <Filter

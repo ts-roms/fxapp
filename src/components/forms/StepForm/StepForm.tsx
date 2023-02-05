@@ -67,7 +67,11 @@ export const StepForm: React.FC = () => {
     .filter((item) => item.name !== 'prefix')
     .map((item) => ({
       name: formLabels[item.name],
-      value: String(item.name === 'birthday' && item.value ? item.value.format('YYYY-MM-DD') : item.value),
+      value: String(
+        item.name === 'birthday' && item.value
+          ? item.value.format('YYYY-MM-DD')
+          : item.value,
+      ),
     }));
 
   const next = () => {

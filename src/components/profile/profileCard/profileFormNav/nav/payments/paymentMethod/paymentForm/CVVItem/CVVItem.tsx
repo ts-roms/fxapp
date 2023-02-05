@@ -4,7 +4,10 @@ import MaskedInput from 'antd-mask-input';
 import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/BaseButtonsForm';
 import { CardInputProps } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentMethod/paymentForm/interfaces';
 
-export const CVVItem: React.FC<CardInputProps> = ({ disabled, handleInputFocus }) => {
+export const CVVItem: React.FC<CardInputProps> = ({
+  disabled,
+  handleInputFocus,
+}) => {
   const { t } = useTranslation();
 
   return (

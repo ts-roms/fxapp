@@ -27,7 +27,8 @@ const getThemeVariables = (theme: ThemeType) => css`
   --success-color: ${themeObject[theme].success};
   --background-color: ${themeObject[theme].background};
   --secondary-background-color: ${themeObject[theme].secondaryBackground};
-  --secondary-background-selected-color: ${themeObject[theme].secondaryBackgroundSelected};
+  --secondary-background-selected-color: ${themeObject[theme]
+    .secondaryBackgroundSelected};
   --additional-background-color: ${themeObject[theme].additionalBackground};
   --collapse-background-color: ${themeObject[theme].collapseBackground};
   --timeline-background-color: ${themeObject[theme].timelineBackground};
@@ -56,9 +57,11 @@ const getThemeVariables = (theme: ThemeType) => css`
   --text-sider-secondary-color: ${themeObject[theme].textSiderSecondary};
   --subtext-color: ${themeObject[theme].subText};
 
-  --dashboard-map-background-color: ${themeObject[theme].dashboardMapBackground};
+  --dashboard-map-background-color: ${themeObject[theme]
+    .dashboardMapBackground};
   --dashboard-map-circle-color: ${themeObject[theme].dashboardMapCircleColor};
-  --dashboard-map-control-disabled-background-color: ${themeObject[theme].dashboardMapControlDisabledBackground};
+  --dashboard-map-control-disabled-background-color: ${themeObject[theme]
+    .dashboardMapControlDisabledBackground};
 
   --chart-tooltip-label-color: ${themeObject[theme].chartTooltipLabel};
   --chart-color1: ${themeObject[theme].chartColor1};
@@ -107,8 +110,10 @@ export const lightThemeVariables = css`
 
 export const darkThemeVariables = css`
   ${getThemeVariables('dark')}
-  --ant-success-color-deprecated-bg: ${antThemeObject['dark'].successBg} !important;
-  --ant-success-color-deprecated-border: ${antThemeObject['dark'].successBorder} !important;
+  --ant-success-color-deprecated-bg: ${antThemeObject['dark']
+    .successBg} !important;
+  --ant-success-color-deprecated-border: ${antThemeObject['dark']
+    .successBorder} !important;
 `;
 
 export const commonThemeVariables = css`

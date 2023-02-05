@@ -6,8 +6,18 @@ interface BurgerProps {
   onClick: () => void;
 }
 export const Burger: React.FC<BurgerProps> = ({ className, onClick }) => (
-  <svg width="1em" height="1em" viewBox="280 215 400 220" fill="currentColor" className={className} onClick={onClick}>
-    <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top" />
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="280 215 400 220"
+    fill="currentColor"
+    className={className}
+    onClick={onClick}
+  >
+    <path
+      d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+      id="top"
+    />
     <path d="M300,320 L540,320" id="middle" />
     <path
       d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"

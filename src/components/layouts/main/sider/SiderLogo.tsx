@@ -10,7 +10,10 @@ interface SiderLogoProps {
   isSiderCollapsed: boolean;
   toggleSider: () => void;
 }
-export const SiderLogo: React.FC<SiderLogoProps> = ({ isSiderCollapsed, toggleSider }) => {
+export const SiderLogo: React.FC<SiderLogoProps> = ({
+  isSiderCollapsed,
+  toggleSider,
+}) => {
   const { tabletOnly } = useResponsive();
 
   const theme = useAppSelector((state) => state.theme.theme);

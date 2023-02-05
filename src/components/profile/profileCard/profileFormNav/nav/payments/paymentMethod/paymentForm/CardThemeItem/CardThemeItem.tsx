@@ -11,7 +11,10 @@ interface CardThemeItemProps {
   setCardData: (state: CreditCard) => void;
 }
 
-export const CardThemeItem: React.FC<CardThemeItemProps> = ({ cardData, setCardData }) => {
+export const CardThemeItem: React.FC<CardThemeItemProps> = ({
+  cardData,
+  setCardData,
+}) => {
   const { t } = useTranslation();
 
   const handleChange = useCallback(
@@ -25,7 +28,10 @@ export const CardThemeItem: React.FC<CardThemeItemProps> = ({ cardData, setCardD
     () =>
       cardThemes.map((item) => (
         <Col xs={8} md={4} key={item.id}>
-          <S.BackgroundWrapper background={item.background} isActive={cardData.background === item.background}>
+          <S.BackgroundWrapper
+            background={item.background}
+            isActive={cardData.background === item.background}
+          >
             <S.Theme tabIndex={0} onClick={handleChange(item)} />
           </S.BackgroundWrapper>
         </Col>

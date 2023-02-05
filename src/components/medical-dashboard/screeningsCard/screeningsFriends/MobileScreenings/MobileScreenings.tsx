@@ -5,7 +5,9 @@ import { ScreeningsProps } from '../interfaces';
 import * as S from './MobileScreenings.styles';
 import { BREAKPOINTS } from '@app/styles/themes/constants';
 
-export const MobileScreenings: React.FC<ScreeningsProps> = ({ screeningsItems }) => {
+export const MobileScreenings: React.FC<ScreeningsProps> = ({
+  screeningsItems,
+}) => {
   return (
     <S.ScreeningsCarousel
       centerMode={false}

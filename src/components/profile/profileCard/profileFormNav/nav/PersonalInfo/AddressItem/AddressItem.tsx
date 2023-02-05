@@ -7,7 +7,10 @@ export const AddressItem: React.FC<{ number: number }> = ({ number }) => {
   const { t } = useTranslation();
 
   return (
-    <BaseButtonsForm.Item name={`address${number}`} label={`${t('common.address')} ${number}`}>
+    <BaseButtonsForm.Item
+      name={`address${number}`}
+      label={`${t('common.address')} ${number}`}
+    >
       <Input />
     </BaseButtonsForm.Item>
   );

@@ -41,7 +41,10 @@ export const useAutoNightMode = (): void => {
       };
 
       let nextEndTime = getNextTime(nightTime[1]);
-      nextEndTime = nextStartTime > nextEndTime ? nextEndTime + 24 * 3600 * 1000 : nextEndTime;
+      nextEndTime =
+        nextStartTime > nextEndTime
+          ? nextEndTime + 24 * 3600 * 1000
+          : nextEndTime;
 
       timeoutNightEnds = setTimeout(runTimeoutEnd, nextEndTime);
     }

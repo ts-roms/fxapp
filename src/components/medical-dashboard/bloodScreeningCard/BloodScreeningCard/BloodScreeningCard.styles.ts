@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Card } from '@app/components/common/Card/Card';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+} from '@app/styles/themes/constants';
 
 export const BloodScreeningCard = styled(Card)`
   height: 100%;

@@ -10,7 +10,9 @@ interface BloodScreeningChartsProps {
   data: number[];
 }
 
-export const BloodScreeningChart: React.FC<BloodScreeningChartsProps> = ({ data }) => {
+export const BloodScreeningChart: React.FC<BloodScreeningChartsProps> = ({
+  data,
+}) => {
   const theme = useAppSelector((state) => state.theme.theme);
   const { isTablet, isDesktop, isMobile } = useResponsive();
   const months = Dates.getMonths();

@@ -18,10 +18,20 @@ interface PaymentProps {
   currency: CurrencyType;
 }
 
-export const Payment: React.FC<PaymentProps> = ({ src, recipient, date, status, price, currency }) => {
+export const Payment: React.FC<PaymentProps> = ({
+  src,
+  recipient,
+  date,
+  status,
+  price,
+  currency,
+}) => {
   const { t } = useTranslation();
 
-  const paymentStatus = useMemo(() => paymentStatuses.find((item) => item.id === status), [status]);
+  const paymentStatus = useMemo(
+    () => paymentStatuses.find((item) => item.id === status),
+    [status],
+  );
 
   return paymentStatus ? (
     <>
@@ -38,7 +48,10 @@ export const Payment: React.FC<PaymentProps> = ({ src, recipient, date, status, 
         </S.Item>
         <S.Item>
           <S.Subtitle>{t('profile.nav.payments.status.title')}</S.Subtitle>
-          <Status color={defineColorByPriority(paymentStatus.priority)} text={t(paymentStatus.name)} />
+          <Status
+            color={defineColorByPriority(paymentStatus.priority)}
+            text={t(paymentStatus.name)}
+          />
         </S.Item>
         <S.Item>
           <S.Subtitle>{t('profile.nav.payments.date')}</S.Subtitle>

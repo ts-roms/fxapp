@@ -8,14 +8,19 @@ interface TwoFactorSwitchProps {
   setEnabled: (state: boolean) => void;
 }
 
-export const TwoFactorSwitch: React.FC<TwoFactorSwitchProps> = ({ isEnabled, setEnabled }) => {
+export const TwoFactorSwitch: React.FC<TwoFactorSwitchProps> = ({
+  isEnabled,
+  setEnabled,
+}) => {
   const { t } = useTranslation();
 
   return (
     <BaseButtonsForm.Item>
       <Row gutter={[10, 10]} justify="space-between" align="middle">
         <Col span={20}>
-          <BaseButtonsForm.Title>{t('profile.nav.securitySettings.twoFactorAuth')}</BaseButtonsForm.Title>
+          <BaseButtonsForm.Title>
+            {t('profile.nav.securitySettings.twoFactorAuth')}
+          </BaseButtonsForm.Title>
         </Col>
         <Col span={4}>
           <Row justify="end">

@@ -23,7 +23,10 @@ export const SocialLinksItem: React.FC = () => {
               return (
                 <label>
                   <BaseButtonsForm.Item name="twitter">
-                    <ClipboardInput valueToCopy={twitter} addonBefore={<TwitterOutlined />} />
+                    <ClipboardInput
+                      valueToCopy={twitter}
+                      addonBefore={<TwitterOutlined />}
+                    />
                   </BaseButtonsForm.Item>
                 </label>
               );
@@ -46,7 +49,11 @@ export const SocialLinksItem: React.FC = () => {
                       },
                     ]}
                   >
-                    <OpenURLInput href={linkedin} target="_blank" addonBefore={<LinkedinIcon />} />
+                    <OpenURLInput
+                      href={linkedin}
+                      target="_blank"
+                      addonBefore={<LinkedinIcon />}
+                    />
                   </BaseButtonsForm.Item>
                 </label>
               );
@@ -70,7 +77,11 @@ export const SocialLinksItem: React.FC = () => {
                       },
                     ]}
                   >
-                    <OpenURLInput href={facebook} target="_blank" addonBefore={<FacebookIcon />} />
+                    <OpenURLInput
+                      href={facebook}
+                      target="_blank"
+                      addonBefore={<FacebookIcon />}
+                    />
                   </BaseButtonsForm.Item>
                 </label>
               );

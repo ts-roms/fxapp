@@ -9,7 +9,11 @@ export const BarAnimationDelayChart: React.FC = () => {
   const { t } = useTranslation();
   const theme = useAppSelector((state) => state.theme.theme);
 
-  const [data, setData] = useState<{ data1: number[]; data2: number[]; xAxisData: string[] }>({
+  const [data, setData] = useState<{
+    data1: number[];
+    data2: number[];
+    xAxisData: string[];
+  }>({
     data1: [],
     data2: [],
     xAxisData: [],

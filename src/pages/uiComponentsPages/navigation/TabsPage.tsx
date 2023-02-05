@@ -2,14 +2,20 @@ import { useState } from 'react';
 import { Col, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
-import { RadioGroup, RadioButton, RadioChangeEvent } from '@app/components/common/Radio/Radio';
+import {
+  RadioGroup,
+  RadioButton,
+  RadioChangeEvent,
+} from '@app/components/common/Radio/Radio';
 import { Tabs, TabPane } from '@app/components/common/Tabs/Tabs';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';
 
 const TabsPage: React.FC = () => {
   const { t } = useTranslation();
-  const [tabPosition, setTabPosition] = useState<'top' | 'left' | 'right' | 'bottom'>('top');
+  const [tabPosition, setTabPosition] = useState<
+    'top' | 'left' | 'right' | 'bottom'
+  >('top');
 
   const changeTabPosition = (e: RadioChangeEvent) => {
     setTabPosition(e.target.value);

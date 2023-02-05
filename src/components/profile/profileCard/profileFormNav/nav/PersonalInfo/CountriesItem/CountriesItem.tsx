@@ -22,7 +22,12 @@ export const CountriesItem: React.FC = () => {
 
   return (
     <BaseButtonsForm.Item name="country" label={t('common.country')}>
-      <Select showSearch filterOption={(input, option) => option?.value.toLowerCase().includes(input.toLowerCase())}>
+      <Select
+        showSearch
+        filterOption={(input, option) =>
+          option?.value.toLowerCase().includes(input.toLowerCase())
+        }
+      >
         {selectOptions}
       </Select>
     </BaseButtonsForm.Item>

@@ -36,7 +36,9 @@ export const getChartColors = (theme: ITheme): string[] => [
   theme.chartColor5,
 ];
 
-export const getDefaultTooltipStyles = (theme: ITheme): DefaultTooltipStyles => ({
+export const getDefaultTooltipStyles = (
+  theme: ITheme,
+): DefaultTooltipStyles => ({
   borderColor: theme.chartColor1,
   borderWidth: 2,
   borderRadius: Number.parseInt(BORDER_RADIUS),
@@ -47,7 +49,14 @@ export const getDefaultTooltipStyles = (theme: ITheme): DefaultTooltipStyles => 
   },
 });
 
-export const BaseChart: React.FC<BaseChartProps> = ({ option, width, height, onEvents, style, ...props }) => {
+export const BaseChart: React.FC<BaseChartProps> = ({
+  option,
+  width,
+  height,
+  onEvents,
+  style,
+  ...props
+}) => {
   const theme = useAppSelector((state) => state.theme.theme);
   const [loading, setLoading] = useState(true);
 
@@ -70,7 +79,13 @@ export const BaseChart: React.FC<BaseChartProps> = ({ option, width, height, onE
     <ReactECharts
       {...props}
       option={{ ...defaultOption, ...option }}
-      style={{ ...style, height: chartHeight, minHeight: height === '100%' ? 400 : 'unset', width, zIndex: 0 }}
+      style={{
+        ...style,
+        height: chartHeight,
+        minHeight: height === '100%' ? 400 : 'unset',
+        width,
+        zIndex: 0,
+      }}
       onEvents={onEvents}
     />
   );

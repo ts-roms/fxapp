@@ -43,7 +43,12 @@ export const NewPasswordForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initStates}>
+      <BaseForm
+        layout="vertical"
+        onFinish={handleSubmit}
+        requiredMark="optional"
+        initialValues={initStates}
+      >
         <Auth.BackWrapper onClick={() => navigate(-1)}>
           <Auth.BackIcon />
           {t('common.back')}
@@ -68,7 +73,9 @@ export const NewPasswordForm: React.FC = () => {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-                return Promise.reject(new Error(t('common.confirmPasswordError')));
+                return Promise.reject(
+                  new Error(t('common.confirmPasswordError')),
+                );
               },
             }),
           ]}

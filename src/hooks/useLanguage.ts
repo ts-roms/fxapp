@@ -5,7 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 const localLanguage = (localStorage.getItem('lng') as LanguageType) || 'en';
 
-export const useLanguage = (): { language: LanguageType; setLanguage: (locale: LanguageType) => Promise<void> } => {
+export const useLanguage = (): {
+  language: LanguageType;
+  setLanguage: (locale: LanguageType) => Promise<void>;
+} => {
   const { i18n } = useTranslation();
 
   const handleChangeLanguage = useCallback(
@@ -22,7 +25,10 @@ export const useLanguage = (): { language: LanguageType; setLanguage: (locale: L
   }, [handleChangeLanguage]);
 
   return useMemo(
-    () => ({ language: i18n.language as LanguageType, setLanguage: handleChangeLanguage }),
+    () => ({
+      language: i18n.language as LanguageType,
+      setLanguage: handleChangeLanguage,
+    }),
     [handleChangeLanguage, i18n.language],
   );
 };

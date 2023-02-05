@@ -45,14 +45,28 @@ export const NotificationsTypes: React.FC = () => {
       id: 2,
       header: t('profile.nav.notifications.push'),
       headerRender: (text, props) => <Checkbox {...props}>{text}</Checkbox>,
-      data: ['pushMessages', 'pushMentions', 'pushReminders', 'pushAllNews', 'pushImportantNews', 'pushActionRequired'],
+      data: [
+        'pushMessages',
+        'pushMentions',
+        'pushReminders',
+        'pushAllNews',
+        'pushImportantNews',
+        'pushActionRequired',
+      ],
       dataRender: (text) => <Checkbox value={text} />,
     },
     {
       id: 3,
       header: t('profile.nav.notifications.SMS'),
       headerRender: (text, props) => <Checkbox {...props}>{text}</Checkbox>,
-      data: ['smsMessages', 'smsMentions', 'smsReminders', 'smsAllNews', 'smsImportantNews', 'smsActionRequired'],
+      data: [
+        'smsMessages',
+        'smsMentions',
+        'smsReminders',
+        'smsAllNews',
+        'smsImportantNews',
+        'smsActionRequired',
+      ],
       dataRender: (text) => <Checkbox value={text} />,
     },
     {
@@ -100,7 +114,12 @@ export const NotificationsTypes: React.FC = () => {
     >
       <S.Wrapper>
         {options.map((item) => (
-          <CheckboxColumn key={item.id} column={item} handleCheck={handleCheck(item.id)} setTriggered={setTriggered} />
+          <CheckboxColumn
+            key={item.id}
+            column={item}
+            handleCheck={handleCheck(item.id)}
+            setTriggered={setTriggered}
+          />
         ))}
       </S.Wrapper>
     </BaseButtonsForm>

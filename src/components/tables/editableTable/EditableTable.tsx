@@ -14,7 +14,11 @@ const initialPagination: Pagination = {
 
 export const EditableTable: React.FC = () => {
   const [form] = Form.useForm();
-  const [tableData, setTableData] = useState<{ data: BasicTableRow[]; pagination: Pagination; loading: boolean }>({
+  const [tableData, setTableData] = useState<{
+    data: BasicTableRow[];
+    pagination: Pagination;
+    loading: boolean;
+  }>({
     data: [],
     pagination: initialPagination,
     loading: false,
@@ -28,7 +32,11 @@ export const EditableTable: React.FC = () => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
       getEditableTableData(pagination).then((res) => {
         if (isMounted.current) {
-          setTableData({ data: res.data, pagination: res.pagination, loading: false });
+          setTableData({
+            data: res.data,
+            pagination: res.pagination,
+            loading: false,
+          });
         }
       });
     },
@@ -78,7 +86,10 @@ export const EditableTable: React.FC = () => {
   };
 
   const handleDeleteRow = (rowId: number) => {
-    setTableData({ ...tableData, data: tableData.data.filter((item) => item.key !== rowId) });
+    setTableData({
+      ...tableData,
+      data: tableData.data.filter((item) => item.key !== rowId),
+    });
   };
 
   const columns = [
@@ -119,10 +130,18 @@ export const EditableTable: React.FC = () => {
               </>
             ) : (
               <>
-                <Button type="ghost" disabled={editingKey !== 0} onClick={() => edit(record)}>
+                <Button
+                  type="ghost"
+                  disabled={editingKey !== 0}
+                  onClick={() => edit(record)}
+                >
                   {t('common.edit')}
                 </Button>
-                <Button type="default" danger onClick={() => handleDeleteRow(record.key)}>
+                <Button
+                  type="default"
+                  danger
+                  onClick={() => handleDeleteRow(record.key)}
+                >
                   {t('tables.delete')}
                 </Button>
               </>

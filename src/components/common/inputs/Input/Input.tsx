@@ -8,8 +8,10 @@ export interface InputProps extends AntInputProps {
 
 export const { TextArea } = AntInput;
 
-export const Input = React.forwardRef<InputRef, InputProps>(({ className, children, ...props }, ref) => (
-  <S.Input ref={ref} className={className} {...props}>
-    {children}
-  </S.Input>
-));
+export const Input = React.forwardRef<InputRef, InputProps>(
+  ({ className, children, ...props }, ref) => (
+    <S.Input ref={ref} className={className} {...props}>
+      {children}
+    </S.Input>
+  ),
+);

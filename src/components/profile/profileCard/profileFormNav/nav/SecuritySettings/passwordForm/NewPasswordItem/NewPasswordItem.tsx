@@ -26,7 +26,9 @@ export const NewPasswordItem: React.FC = () => {
             if (!value || getFieldValue('password') !== value) {
               return Promise.resolve();
             }
-            return Promise.reject(new Error(t('profile.nav.securitySettings.samePassword')));
+            return Promise.reject(
+              new Error(t('profile.nav.securitySettings.samePassword')),
+            );
           },
         }),
       ]}

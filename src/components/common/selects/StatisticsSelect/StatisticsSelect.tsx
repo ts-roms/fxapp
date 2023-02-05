@@ -4,7 +4,10 @@ import { Option, Select, SelectProps } from '../Select/Select';
 import { getStatistics, Statistic } from 'api/statistics.api';
 import { statistics as configStatistics } from 'constants/config/statistics';
 
-export const StatisticsSelect: React.FC<SelectProps> = ({ className, ...props }) => {
+export const StatisticsSelect: React.FC<SelectProps> = ({
+  className,
+  ...props
+}) => {
   const [statistics, setStatistics] = useState<Statistic[]>([]);
 
   useEffect(() => {
@@ -16,7 +19,9 @@ export const StatisticsSelect: React.FC<SelectProps> = ({ className, ...props })
   const statisticsOptions = useMemo(
     () =>
       statistics.map((statistic) => {
-        const currentStatistic = configStatistics.find((configStat) => configStat.id === statistic.id);
+        const currentStatistic = configStatistics.find(
+          (configStat) => configStat.id === statistic.id,
+        );
 
         return (
           <Option key={statistic.id} value={statistic.id}>

@@ -6,7 +6,10 @@ import { Card } from '@app/components/common/Card/Card';
 import { Payment } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Payment/Payment';
 import { PaymentsTable } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/PaymentsTable/PaymentsTable';
 import { useResponsive } from '@app/hooks/useResponsive';
-import { getPaymentHistory, Payment as IPayment } from '@app/api/paymentHistory.api';
+import {
+  getPaymentHistory,
+  Payment as IPayment,
+} from '@app/api/paymentHistory.api';
 import * as S from './PaymentHistory.styles';
 
 export const PaymentHistory: React.FC = () => {
@@ -40,12 +43,19 @@ export const PaymentHistory: React.FC = () => {
     () => (
       <Row gutter={[32, 32]}>
         <Col span={24}>
-          <BaseForm.Title>{t('profile.nav.payments.paymentHistory')}</BaseForm.Title>
+          <BaseForm.Title>
+            {t('profile.nav.payments.paymentHistory')}
+          </BaseForm.Title>
         </Col>
 
         <Col span={24}>
           <S.ContentWrapper isEmptyHistory={history.length === 0}>
-            {mobileOnly && (history.length > 0 ? payments : <S.Text>{t('profile.nav.payments.noHistory')}</S.Text>)}
+            {mobileOnly &&
+              (history.length > 0 ? (
+                payments
+              ) : (
+                <S.Text>{t('profile.nav.payments.noHistory')}</S.Text>
+              ))}
 
             {isTablet && <PaymentsTable payments={history} />}
           </S.ContentWrapper>

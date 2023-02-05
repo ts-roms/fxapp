@@ -9,7 +9,11 @@ interface HeaderProps {
   isTwoColumnsLayout: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ toggleSider, isSiderOpened, isTwoColumnsLayout }) => {
+export const Header: React.FC<HeaderProps> = ({
+  toggleSider,
+  isSiderOpened,
+  isTwoColumnsLayout,
+}) => {
   const { isTablet } = useResponsive();
 
   return isTablet ? (

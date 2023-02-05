@@ -58,7 +58,10 @@ export const PaymentsTable: React.FC<PaymentsTableProps> = ({ payments }) => {
         dataIndex: 'status',
         key: 'status',
         render: (status: PaymentStatus) => (
-          <Status color={defineColorByPriority(status.priority)} text={t(status.name).toUpperCase()} />
+          <Status
+            color={defineColorByPriority(status.priority)}
+            text={t(status.name).toUpperCase()}
+          />
         ),
         align: 'center',
       },
@@ -73,7 +76,9 @@ export const PaymentsTable: React.FC<PaymentsTableProps> = ({ payments }) => {
         dataIndex: 'details',
         key: 'details',
         align: 'center',
-        render: () => <Button type="link">{t('profile.nav.payments.details')}</Button>,
+        render: () => (
+          <Button type="link">{t('profile.nav.payments.details')}</Button>
+        ),
       },
     ];
   }, [t]);
@@ -88,7 +93,9 @@ export const PaymentsTable: React.FC<PaymentsTableProps> = ({ payments }) => {
             img: payment.imgUrl,
           },
           date: payment.date,
-          status: paymentStatuses.find((status) => status.id === payment.status),
+          status: paymentStatuses.find(
+            (status) => status.id === payment.status,
+          ),
           totalAmount: getCurrencyPrice(payment.amount, payment.currency),
           details: payment,
         };
@@ -96,5 +103,12 @@ export const PaymentsTable: React.FC<PaymentsTableProps> = ({ payments }) => {
     [payments],
   );
 
-  return <S.PaymentHistoryTable size="middle" columns={columns} dataSource={dataSource} pagination={false} />;
+  return (
+    <S.PaymentHistoryTable
+      size="middle"
+      columns={columns}
+      dataSource={dataSource}
+      pagination={false}
+    />
+  );
 };

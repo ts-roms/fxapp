@@ -3,7 +3,11 @@ import { useState } from 'react';
 import { Col, Space, Tag } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Select, Option } from '@app/components/common/selects/Select/Select';
-import { RadioGroup, RadioButton, RadioChangeEvent } from '@app/components/common/Radio/Radio';
+import {
+  RadioGroup,
+  RadioButton,
+  RadioChangeEvent,
+} from '@app/components/common/Radio/Radio';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';
 
@@ -88,7 +92,12 @@ const SelectsPage: React.FC = () => {
             >
               {children}
             </Select>
-            <Select mode="multiple" disabled placeholder={t('selects.pleaseSelect')} defaultValue={['a10', 'c12']}>
+            <Select
+              mode="multiple"
+              disabled
+              placeholder={t('selects.pleaseSelect')}
+              defaultValue={['a10', 'c12']}
+            >
               {children}
             </Select>
           </Space>

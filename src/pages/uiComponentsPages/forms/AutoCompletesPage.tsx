@@ -38,19 +38,29 @@ const AutoCompletesPage: React.FC = () => {
     if (!value || value.indexOf('@') >= 0) {
       res = [];
     } else {
-      res = ['gmail.com', '163.com', 'qq.com'].map((domain) => `${value}@${domain}`);
+      res = ['gmail.com', '163.com', 'qq.com'].map(
+        (domain) => `${value}@${domain}`,
+      );
     }
     setResult(res);
   };
 
   const handleSearch = (searchText: string) => {
-    setOptions(!searchText ? [] : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]);
+    setOptions(
+      !searchText
+        ? []
+        : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)],
+    );
   };
 
   const renderTitle = (title: string) => (
     <span>
       {title}
-      <Link href="https://www.google.com/search?q=antd" target="_blank" rel="noopener noreferrer">
+      <Link
+        href="https://www.google.com/search?q=antd"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         more
       </Link>
     </span>
@@ -71,7 +81,10 @@ const AutoCompletesPage: React.FC = () => {
   const categories = [
     {
       label: renderTitle(t('autoCompletes.libraries')),
-      options: [renderItem(t('autoCompletes.antDesign'), 10000), renderItem(t('autoCompletes.antDesignUI'), 10600)],
+      options: [
+        renderItem(t('autoCompletes.antDesign'), 10000),
+        renderItem(t('autoCompletes.antDesignUI'), 10600),
+      ],
     },
     {
       label: renderTitle(t('autoCompletes.solutions')),
@@ -117,8 +130,14 @@ const AutoCompletesPage: React.FC = () => {
         </S.Card>
         <S.Card title={t('autoCompletes.categories')}>
           <label>
-            <AutoComplete dropdownClassName="certain-category-search-dropdown" options={categories}>
-              <SearchInput placeholder={t('autoCompletes.inputHere')} prefix={null} />
+            <AutoComplete
+              dropdownClassName="certain-category-search-dropdown"
+              options={categories}
+            >
+              <SearchInput
+                placeholder={t('autoCompletes.inputHere')}
+                prefix={null}
+              />
             </AutoComplete>
           </label>
         </S.Card>

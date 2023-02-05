@@ -22,12 +22,13 @@ export const ScreeningsCard: React.FC = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [statistics, setStatistics] = useState<Statistic[]>([]);
   const [screenings, setScreenings] = useState<Screening[]>([]);
-  const [currentStatistics, setCurrentStatistics] = useState<CurrentStatisticsState>({
-    firstUser: 1,
-    secondUser: 3,
-    month: Dates.getToday().get('month'),
-    statistic: 2,
-  });
+  const [currentStatistics, setCurrentStatistics] =
+    useState<CurrentStatisticsState>({
+      firstUser: 1,
+      secondUser: 3,
+      month: Dates.getToday().get('month'),
+      statistic: 2,
+    });
   const [isFirstClick, setFirstClick] = useState(true);
 
   useEffect(() => {
@@ -46,7 +47,9 @@ export const ScreeningsCard: React.FC = () => {
 
   const screeningsWithDoctors = useMemo((): ScreeningWithDoctors[] => {
     return screenings.map((screening) => {
-      const currentDoctor = doctors.find((doctor) => doctor.id === screening.id);
+      const currentDoctor = doctors.find(
+        (doctor) => doctor.id === screening.id,
+      );
 
       return {
         ...screening,
@@ -83,7 +86,9 @@ export const ScreeningsCard: React.FC = () => {
     () =>
       values
         .find((month) => month.monthId === currentStatistics.month)
-        ?.data.find((statistic) => statistic.statisticId === currentStatistics.statistic)?.data,
+        ?.data.find(
+          (statistic) => statistic.statisticId === currentStatistics.statistic,
+        )?.data,
     [currentStatistics.month, currentStatistics.statistic, values],
   );
 
@@ -103,7 +108,12 @@ export const ScreeningsCard: React.FC = () => {
 
   return (
     <S.ScreeningsCard
-      title={<ScreeningsHeader currentStatistics={currentStatistics} setCurrentStatistics={setCurrentStatistics} />}
+      title={
+        <ScreeningsHeader
+          currentStatistics={currentStatistics}
+          setCurrentStatistics={setCurrentStatistics}
+        />
+      }
       padding={0}
     >
       <ScreeningsFriends
@@ -113,7 +123,10 @@ export const ScreeningsCard: React.FC = () => {
         isFirstClick={isFirstClick}
         setFirstClick={setFirstClick}
       />
-      <ScreeningsChart firstUser={getUserStatistic(true)} secondUser={getUserStatistic(false)} />
+      <ScreeningsChart
+        firstUser={getUserStatistic(true)}
+        secondUser={getUserStatistic(false)}
+      />
     </S.ScreeningsCard>
   );
 };

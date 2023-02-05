@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BaseChart, getDefaultTooltipStyles } from '@app/components/common/charts/BaseChart';
+import {
+  BaseChart,
+  getDefaultTooltipStyles,
+} from '@app/components/common/charts/BaseChart';
 import { dashboardPaddings } from '@app/components/medical-dashboard/DashboardCard/DashboardCard';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { Dates } from '@app/constants/Dates';
@@ -84,7 +87,9 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
       formatter: (data: ChartSeriesData) => {
         const currentItem = data[0];
 
-        return `${currentItem.value} ${t('medical-dashboard.activity.kcalBurned')} ${currentItem.name}`;
+        return `${currentItem.value} ${t(
+          'medical-dashboard.activity.kcalBurned',
+        )} ${currentItem.name}`;
       },
     },
   };

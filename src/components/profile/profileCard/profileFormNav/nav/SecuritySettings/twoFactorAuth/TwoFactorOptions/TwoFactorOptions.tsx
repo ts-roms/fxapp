@@ -12,7 +12,10 @@ interface TwoFactorOptionsProps {
   setSelectedOption: (state: TwoFactorAuthOptionState) => void;
 }
 
-export const TwoFactorOptions: React.FC<TwoFactorOptionsProps> = ({ selectedOption, setSelectedOption }) => {
+export const TwoFactorOptions: React.FC<TwoFactorOptionsProps> = ({
+  selectedOption,
+  setSelectedOption,
+}) => {
   const user = useAppSelector((state) => state.user.user);
 
   const { isEmailActive, isPhoneActive } = useMemo(
@@ -38,12 +41,31 @@ export const TwoFactorOptions: React.FC<TwoFactorOptionsProps> = ({ selectedOpti
 
   return (
     <>
-      <RadioGroup value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
-        <S.RadioBtn value="phone" $isActive={isPhoneActive} disabled={user?.phone.verified}>
-          <PhoneItem required={isPhoneActive} onClick={onClickInput('phone')} verified={user?.phone.verified} />
+      <RadioGroup
+        value={selectedOption}
+        onChange={(e) => setSelectedOption(e.target.value)}
+      >
+        <S.RadioBtn
+          value="phone"
+          $isActive={isPhoneActive}
+          disabled={user?.phone.verified}
+        >
+          <PhoneItem
+            required={isPhoneActive}
+            onClick={onClickInput('phone')}
+            verified={user?.phone.verified}
+          />
         </S.RadioBtn>
-        <S.RadioBtn value="email" $isActive={isEmailActive} disabled={user?.email.verified}>
-          <EmailItem required={isEmailActive} onClick={onClickInput('email')} verified={user?.email.verified} />
+        <S.RadioBtn
+          value="email"
+          $isActive={isEmailActive}
+          disabled={user?.email.verified}
+        >
+          <EmailItem
+            required={isEmailActive}
+            onClick={onClickInput('email')}
+            verified={user?.email.verified}
+          />
         </S.RadioBtn>
       </RadioGroup>
     </>

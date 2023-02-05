@@ -10,11 +10,20 @@ interface SearchOverlayProps {
   isFilterVisible: boolean;
 }
 
-export const SearchOverlay: React.FC<SearchOverlayProps> = ({ data, isFilterVisible }) => {
+export const SearchOverlay: React.FC<SearchOverlayProps> = ({
+  data,
+  isFilterVisible,
+}) => {
   return (
     <S.Menu>
       <SearchFilter data={data} isVisible={isFilterVisible}>
-        {(filteredResults) => (filteredResults.length > 0 ? <SearchResults results={filteredResults} /> : <NotFound />)}
+        {(filteredResults) =>
+          filteredResults.length > 0 ? (
+            <SearchResults results={filteredResults} />
+          ) : (
+            <NotFound />
+          )
+        }
       </SearchFilter>
     </S.Menu>
   );

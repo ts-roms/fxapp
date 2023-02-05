@@ -12,14 +12,24 @@ interface DoctorProfileProps {
   rating?: number;
 }
 
-export const DoctorProfile: React.FC<DoctorProfileProps> = ({ avatar, name, speciality }) => {
+export const DoctorProfile: React.FC<DoctorProfileProps> = ({
+  avatar,
+  name,
+  speciality,
+}) => {
   const { t } = useTranslation();
 
   const specifity = specifities.find((el) => el.id === speciality)?.name;
 
   return (
     <S.Profile>
-      <Avatar size="large" src={avatar} icon={<UserOutlined />} alt="Doctor avatar" shape="square" />
+      <Avatar
+        size="large"
+        src={avatar}
+        icon={<UserOutlined />}
+        alt="Doctor avatar"
+        shape="square"
+      />
       <div>
         <S.Info>
           <S.Title>{t('common.doctor')}</S.Title>

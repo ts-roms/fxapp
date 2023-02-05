@@ -7,6 +7,13 @@ export interface SuffixInputProps extends InputProps {
   isVisibleSuffix?: boolean;
 }
 
-export const SuffixInput: React.FC<SuffixInputProps> = ({ suffix, isVisibleSuffix = true, ...props }) => (
-  <Input suffix={<S.Suffix isVisible={isVisibleSuffix}>{suffix}</S.Suffix>} {...props} />
+export const SuffixInput: React.FC<SuffixInputProps> = ({
+  suffix,
+  isVisibleSuffix = true,
+  ...props
+}) => (
+  <Input
+    suffix={<S.Suffix isVisible={isVisibleSuffix}>{suffix}</S.Suffix>}
+    {...props}
+  />
 );

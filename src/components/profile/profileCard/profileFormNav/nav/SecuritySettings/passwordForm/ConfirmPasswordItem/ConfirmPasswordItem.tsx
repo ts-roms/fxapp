@@ -21,7 +21,9 @@ export const ConfirmItemPassword: React.FC = () => {
             if (!value || getFieldValue('newPassword') === value) {
               return Promise.resolve();
             }
-            return Promise.reject(new Error(t('profile.nav.securitySettings.dontMatchPassword')));
+            return Promise.reject(
+              new Error(t('profile.nav.securitySettings.dontMatchPassword')),
+            );
           },
         }),
       ]}

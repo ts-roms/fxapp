@@ -31,7 +31,10 @@ export const getBalance = (id: number): Promise<Balance> => {
   });
 };
 
-export const getTotalEarning = (id: number, currency: CurrencyType): Promise<TotalEarning> => {
+export const getTotalEarning = (
+  id: number,
+  currency: CurrencyType,
+): Promise<TotalEarning> => {
   return new Promise((res) => {
     setTimeout(() => {
       res({

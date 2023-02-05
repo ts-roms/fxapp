@@ -49,7 +49,9 @@ export class DatesValidator extends Validator {
 
   validate(): boolean {
     const [from, to] = this.current;
-    return from ? this.initial.isAfter(from) && this.initial.isBefore(to) : true;
+    return from
+      ? this.initial.isAfter(from) && this.initial.isBefore(to)
+      : true;
   }
 }
 

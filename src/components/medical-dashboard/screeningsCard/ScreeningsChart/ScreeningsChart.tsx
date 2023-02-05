@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BaseChart, getDefaultTooltipStyles } from '@app/components/common/charts/BaseChart';
+import {
+  BaseChart,
+  getDefaultTooltipStyles,
+} from '@app/components/common/charts/BaseChart';
 import { hexToRGB } from '@app/utils/utils';
 import { getMarkAreaData } from '@app/utils/utils';
 import { ChartSeriesData } from '@app/interfaces/interfaces';
@@ -24,13 +27,19 @@ interface ScreeningsChartProps {
 
 const xAxisData = Array.from({ length: 16 }, (_, i) => i + 1);
 
-export const ScreeningsChart: React.FC<ScreeningsChartProps> = ({ firstUser, secondUser }) => {
+export const ScreeningsChart: React.FC<ScreeningsChartProps> = ({
+  firstUser,
+  secondUser,
+}) => {
   const theme = useAppSelector((state) => state.theme.theme);
 
   const { t } = useTranslation();
 
   const option = {
-    color: [themeObject[theme].chartPrimaryGradient, themeObject[theme].chartSecondaryGradient],
+    color: [
+      themeObject[theme].chartPrimaryGradient,
+      themeObject[theme].chartSecondaryGradient,
+    ],
     tooltip: {
       ...getDefaultTooltipStyles(themeObject[theme]),
       trigger: 'axis',
@@ -41,8 +50,12 @@ export const ScreeningsChart: React.FC<ScreeningsChartProps> = ({ firstUser, sec
         const firstUserData = firstUser.data;
         const secondUserData = secondUser.data;
 
-        return `${firstUser.seriesName}: ${firstUserData.value}%  - ${t('common.day')} ${firstUserData.day} <br/>
-                ${secondUser.seriesName}: ${secondUserData.value}% - ${t('common.day')} ${secondUserData.day}
+        return `${firstUser.seriesName}: ${firstUserData.value}%  - ${t(
+          'common.day',
+        )} ${firstUserData.day} <br/>
+                ${secondUser.seriesName}: ${secondUserData.value}% - ${t(
+          'common.day',
+        )} ${secondUserData.day}
         `;
       },
     },

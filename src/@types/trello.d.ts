@@ -4,7 +4,9 @@
   Types for react-trello (https://gist.github.com/G-Rath/b9331e480aff4c613294b0c2682bf034)
 */
 
-declare class ReactTrelloBoard<CardMetaData> extends React.Component<ReactTrello.BoardProps<CardMetaData>> {}
+declare class ReactTrelloBoard<CardMetaData> extends React.Component<
+  ReactTrello.BoardProps<CardMetaData>
+> {}
 
 declare namespace ReactTrello {
   /**
@@ -109,7 +111,11 @@ declare namespace ReactTrello {
     /**
      * Called when a card is clicked: onCardClick(cardId, metadata, laneId)
      */
-    onCardClick?: (cardId: string, metaData: CardMetaData, laneId: string) => void;
+    onCardClick?: (
+      cardId: string,
+      metaData: CardMetaData,
+      laneId: string,
+    ) => void;
     /**
      * Called when a new card is added: onCardAdd(card, laneId)
      */

@@ -71,13 +71,27 @@ const ButtonsPage: React.FC = () => {
           </Button>
           <Button type="primary" icon={<PoweroffOutlined />} loading />
 
-          <Button type="primary" loading={loadings[0]} onClick={() => enterLoading(0)}>
+          <Button
+            type="primary"
+            loading={loadings[0]}
+            onClick={() => enterLoading(0)}
+          >
             {t('buttons.click')}
           </Button>
-          <Button type="primary" icon={<PoweroffOutlined />} loading={loadings[1]} onClick={() => enterLoading(1)}>
+          <Button
+            type="primary"
+            icon={<PoweroffOutlined />}
+            loading={loadings[1]}
+            onClick={() => enterLoading(1)}
+          >
             {t('buttons.click')}
           </Button>
-          <Button type="primary" icon={<PoweroffOutlined />} loading={loadings[2]} onClick={() => enterLoading(2)} />
+          <Button
+            type="primary"
+            icon={<PoweroffOutlined />}
+            loading={loadings[2]}
+            onClick={() => enterLoading(2)}
+          />
         </S.Card>
         <S.Card title={t('buttons.danger')}>
           <Button type="primary" danger>
@@ -132,7 +146,12 @@ const ButtonsPage: React.FC = () => {
           </Tooltip>
 
           <Tooltip title={t('buttons.search')}>
-            <Button type="dashed" shape="circle" icon={<SearchOutlined />} size="large" />
+            <Button
+              type="dashed"
+              shape="circle"
+              icon={<SearchOutlined />}
+              size="large"
+            />
           </Tooltip>
           <Tooltip title={t('buttons.search')}>
             <Button type="dashed" icon={<SearchOutlined />} size="large">

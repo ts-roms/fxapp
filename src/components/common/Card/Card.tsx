@@ -10,7 +10,14 @@ export interface CardProps extends AntCardProps {
   autoHeight?: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ className, padding, size, autoHeight = true, children, ...props }) => {
+export const Card: React.FC<CardProps> = ({
+  className,
+  padding,
+  size,
+  autoHeight = true,
+  children,
+  ...props
+}) => {
   const { isTablet, isDesktop } = useResponsive();
 
   return (
@@ -21,7 +28,9 @@ export const Card: React.FC<CardProps> = ({ className, padding, size, autoHeight
       $padding={
         padding || padding === 0
           ? padding
-          : (isDesktop && defaultPaddings.desktop) || (isTablet && defaultPaddings.tablet) || defaultPaddings.mobile
+          : (isDesktop && defaultPaddings.desktop) ||
+            (isTablet && defaultPaddings.tablet) ||
+            defaultPaddings.mobile
       }
       $autoHeight={autoHeight}
       {...props}

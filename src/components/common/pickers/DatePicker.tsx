@@ -5,6 +5,9 @@ import { AppDate } from 'constants/Dates';
 
 type DatePickerProps = PickerProps<AppDate>;
 
-export const DatePicker = React.forwardRef<React.Component<DatePickerProps>, DatePickerProps>(
-  ({ className, ...props }, ref) => <DayjsDatePicker ref={ref} className={className} {...props} />,
-);
+export const DatePicker = React.forwardRef<
+  React.Component<DatePickerProps>,
+  DatePickerProps
+>(({ className, ...props }, ref) => (
+  <DayjsDatePicker ref={ref} className={className} {...props} />
+));

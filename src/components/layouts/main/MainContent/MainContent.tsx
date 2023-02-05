@@ -16,7 +16,8 @@ export default styled(Content)<HeaderProps>`
   justify-content: space-between;
 
   @media only screen and ${media.md} {
-    padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
+    padding: ${LAYOUT.desktop.paddingVertical}
+      ${LAYOUT.desktop.paddingHorizontal};
   }
 
   @media only screen and ${media.xl} {

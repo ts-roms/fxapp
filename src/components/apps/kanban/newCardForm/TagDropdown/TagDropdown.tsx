@@ -12,7 +12,10 @@ interface TagDropdownProps {
   setSelectedTags: (state: ITag[]) => void;
 }
 
-export const TagDropdown: React.FC<TagDropdownProps> = ({ selectedTags, setSelectedTags }) => {
+export const TagDropdown: React.FC<TagDropdownProps> = ({
+  selectedTags,
+  setSelectedTags,
+}) => {
   const { t } = useTranslation();
 
   const kanbanTagData = Object.values(kanbanTags);
@@ -42,7 +45,9 @@ export const TagDropdown: React.FC<TagDropdownProps> = ({ selectedTags, setSelec
               }}
             >
               <S.PopoverCheckbox checked={selectedTagsIds.includes(tag.id)} />
-              <S.TagWrapper backgroundColor={tag.bgColor}>#{tag.title}</S.TagWrapper>
+              <S.TagWrapper backgroundColor={tag.bgColor}>
+                #{tag.title}
+              </S.TagWrapper>
             </S.EditTagPopoverLine>
           ))}
           <S.RemoveTagWrapper>

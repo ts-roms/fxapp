@@ -55,12 +55,21 @@ export const LockForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm
+        layout="vertical"
+        onFinish={handleSubmit}
+        requiredMark="optional"
+        initialValues={initValues}
+      >
         <S.ContentWrapper>
           <S.Time>{currentTime}</S.Time>
           <S.Date>{currentDate}</S.Date>
           <S.AvatarCircle>
-            <Avatar src={user?.imgUrl} alt="user avatar" size={mobileOnly ? 59 : 77} />
+            <Avatar
+              src={user?.imgUrl}
+              alt="user avatar"
+              size={mobileOnly ? 59 : 77}
+            />
           </S.AvatarCircle>
           <S.Name>{fullName}</S.Name>
         </S.ContentWrapper>
@@ -72,7 +81,11 @@ export const LockForm: React.FC = () => {
           <Auth.FormInputPassword placeholder={t('common.password')} />
         </S.FormItem>
         <BaseForm.Item noStyle>
-          <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
+          <Auth.SubmitButton
+            type="primary"
+            htmlType="submit"
+            loading={isLoading}
+          >
             {t('common.login')}
           </Auth.SubmitButton>
         </BaseForm.Item>

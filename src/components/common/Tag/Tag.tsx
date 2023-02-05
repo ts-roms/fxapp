@@ -14,7 +14,13 @@ interface TagProps {
   removeTag?: () => void;
 }
 
-export const Tag: React.FC<TagProps> = ({ title, color, bgColor, removeTag, ...otherProps }) => {
+export const Tag: React.FC<TagProps> = ({
+  title,
+  color,
+  bgColor,
+  removeTag,
+  ...otherProps
+}) => {
   const style = {
     color: color || 'var(--white)',
     backgroundColor: bgColor ? `var(--${bgColor}-color)` : 'var(--orange)',

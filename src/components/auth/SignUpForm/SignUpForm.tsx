@@ -53,7 +53,12 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm
+        layout="vertical"
+        onFinish={handleSubmit}
+        requiredMark="optional"
+        initialValues={initValues}
+      >
         <S.Title>{t('common.signUp')}</S.Title>
         <Auth.FormItem
           name="firstName"
@@ -100,7 +105,9 @@ export const SignUpForm: React.FC = () => {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-                return Promise.reject(new Error(t('common.confirmPasswordError')));
+                return Promise.reject(
+                  new Error(t('common.confirmPasswordError')),
+                );
               },
             }),
           ]}
@@ -124,7 +131,11 @@ export const SignUpForm: React.FC = () => {
           </BaseForm.Item>
         </Auth.ActionsWrapper>
         <BaseForm.Item noStyle>
-          <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
+          <Auth.SubmitButton
+            type="primary"
+            htmlType="submit"
+            loading={isLoading}
+          >
             {t('common.signUp')}
           </Auth.SubmitButton>
         </BaseForm.Item>

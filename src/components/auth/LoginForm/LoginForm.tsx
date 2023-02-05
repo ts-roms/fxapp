@@ -40,7 +40,12 @@ export const LoginForm: React.FC = () => {
 
   return (
     <Auth.FormWrapper>
-      <BaseForm layout="vertical" onFinish={handleSubmit} requiredMark="optional" initialValues={initValues}>
+      <BaseForm
+        layout="vertical"
+        onFinish={handleSubmit}
+        requiredMark="optional"
+        initialValues={initValues}
+      >
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
         <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
         <Auth.FormItem
@@ -70,11 +75,17 @@ export const LoginForm: React.FC = () => {
             </Auth.FormCheckbox>
           </BaseForm.Item>
           <Link to="/auth/forgot-password">
-            <S.ForgotPasswordText>{t('common.forgotPass')}</S.ForgotPasswordText>
+            <S.ForgotPasswordText>
+              {t('common.forgotPass')}
+            </S.ForgotPasswordText>
           </Link>
         </Auth.ActionsWrapper>
         <BaseForm.Item noStyle>
-          <Auth.SubmitButton type="primary" htmlType="submit" loading={isLoading}>
+          <Auth.SubmitButton
+            type="primary"
+            htmlType="submit"
+            loading={isLoading}
+          >
             {t('common.login')}
           </Auth.SubmitButton>
         </BaseForm.Item>

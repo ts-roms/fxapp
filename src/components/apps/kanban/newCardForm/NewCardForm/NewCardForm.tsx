@@ -23,9 +23,14 @@ interface NewCardFormProps {
   onCancel: () => void;
 }
 
-export const NewCardForm: React.FC<NewCardFormProps> = ({ onAdd, onCancel }) => {
+export const NewCardForm: React.FC<NewCardFormProps> = ({
+  onAdd,
+  onCancel,
+}) => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [selectedParticipants, setSelectedParticipants] = useState<Participant[]>([]);
+  const [selectedParticipants, setSelectedParticipants] = useState<
+    Participant[]
+  >([]);
   const [isLoading, setLoading] = useState(false);
 
   const { t } = useTranslation();
@@ -33,7 +38,11 @@ export const NewCardForm: React.FC<NewCardFormProps> = ({ onAdd, onCancel }) => 
   const onFinish = (values: []) => {
     setLoading(true);
     setTimeout(() => {
-      onAdd({ ...values, tags: selectedTags, participants: selectedParticipants });
+      onAdd({
+        ...values,
+        tags: selectedTags,
+        participants: selectedParticipants,
+      });
       setLoading(false);
     }, 1000);
   };
@@ -53,11 +62,20 @@ export const NewCardForm: React.FC<NewCardFormProps> = ({ onAdd, onCancel }) => 
       <BaseButtonsForm
         name="addCard"
         isFieldsChanged
-        footer={<S.FooterButtons loading={isLoading} size="small" onCancel={onCancel} />}
+        footer={
+          <S.FooterButtons
+            loading={isLoading}
+            size="small"
+            onCancel={onCancel}
+          />
+        }
         onFinish={onFinish}
       >
         {formItems}
-        <TagDropdown selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+        <TagDropdown
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
+        />
         <ParticipantsDropdown
           selectedParticipants={selectedParticipants}
           setSelectedParticipants={setSelectedParticipants}

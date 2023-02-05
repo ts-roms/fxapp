@@ -16,11 +16,17 @@ export const PhoneItem = styled(BaseForm.Item)`
 `;
 
 export const Steps = styled(AntdSteps)`
-  .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  .ant-steps-item-process
+    > .ant-steps-item-container
+    > .ant-steps-item-content
+    > .ant-steps-item-title {
     color: var(--primary-color);
   }
 
-  .ant-steps-item-wait > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  .ant-steps-item-wait
+    > .ant-steps-item-container
+    > .ant-steps-item-content
+    > .ant-steps-item-title {
     color: var(--subtext-color);
   }
 

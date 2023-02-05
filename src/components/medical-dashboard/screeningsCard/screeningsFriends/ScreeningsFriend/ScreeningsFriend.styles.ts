@@ -20,7 +20,8 @@ export const ScreeningsRow = styled(Row)<ScreeningsRowProps>`
   transition: all 0.3s ease;
 
   .ant-typography {
-    font-weight: ${(props) => (props.$isActive ? FONT_WEIGHT.bold : FONT_WEIGHT.regular)};
+    font-weight: ${(props) =>
+      props.$isActive ? FONT_WEIGHT.bold : FONT_WEIGHT.regular};
   }
 `;
 
@@ -39,7 +40,9 @@ export const Name = styled(Typography.Text)<Importance>`
 
   font-weight: ${FONT_WEIGHT.semibold};
 
-  color: ${(props) => (props.$isPrimary && 'var(--primary-color)') || (props.$isSecondary && 'var(--error-color)')};
+  color: ${(props) =>
+    (props.$isPrimary && 'var(--primary-color)') ||
+    (props.$isSecondary && 'var(--error-color)')};
 
   @media only screen and ${media.xl} {
     font-size: ${FONT_SIZE.md};
@@ -49,7 +52,8 @@ export const Name = styled(Typography.Text)<Importance>`
 export const Percentage = styled(Typography.Text)<PercentageProps>`
   font-size: ${FONT_SIZE.xs};
 
-  color: ${(props) => (props.$isDowngrade ? 'var(--error-color)' : 'var(--success-color)')};
+  color: ${(props) =>
+    props.$isDowngrade ? 'var(--error-color)' : 'var(--success-color)'};
 
   @media only screen and ${media.xl} {
     font-size: ${FONT_SIZE.md};

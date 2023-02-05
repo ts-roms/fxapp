@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { SearchDropdown } from '../searchDropdown/SearchDropdown';
 import { Button } from '@app/components/common/buttons/Button/Button';
-import { components as configComponents, Component } from '@app/constants/config/components';
+import {
+  components as configComponents,
+  Component,
+} from '@app/constants/config/components';
 import { categoriesList, CategoryType } from '@app/constants/categoriesList';
 import { useResponsive } from '@app/hooks/useResponsive';
 import * as S from './HeaderSearch.styles';
@@ -31,7 +34,9 @@ export const HeaderSearch: React.FC = () => {
             component.keywords.some((keyword) => keyword.includes(query)),
         );
 
-        return searchResults.length > 0 ? acc.concat({ category: current.name, components: searchResults }) : acc;
+        return searchResults.length > 0
+          ? acc.concat({ category: current.name, components: searchResults })
+          : acc;
       }, [] as CategoryComponents[])
     : null;
 

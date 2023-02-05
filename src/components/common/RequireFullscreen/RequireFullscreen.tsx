@@ -5,12 +5,17 @@ interface RequireFullscreenProps {
   children: (isFullscreen: boolean) => React.ReactNode;
 }
 
-export const RequireFullscreen: React.FC<RequireFullscreenProps> = ({ component, children }) => {
+export const RequireFullscreen: React.FC<RequireFullscreenProps> = ({
+  component,
+  children,
+}) => {
   const [isFullscreen, setFullscreen] = useState(false);
 
   const handleFullScreen = () => {
     if (component?.current) {
-      isFullscreen ? document.exitFullscreen() : component.current.requestFullscreen();
+      isFullscreen
+        ? document.exitFullscreen()
+        : component.current.requestFullscreen();
     }
   };
 
@@ -27,7 +32,10 @@ export const RequireFullscreen: React.FC<RequireFullscreenProps> = ({ component,
     return () => {
       document.removeEventListener('fullscreenchange', onFullScreenChange);
       document.removeEventListener('mozfullscreenchange', onFullScreenChange);
-      document.removeEventListener('webkitfullscreenchange', onFullScreenChange);
+      document.removeEventListener(
+        'webkitfullscreenchange',
+        onFullScreenChange,
+      );
       document.removeEventListener('msfullscreenchange', onFullScreenChange);
     };
   }, []);

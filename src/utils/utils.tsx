@@ -8,7 +8,9 @@ import { ReactComponent as BTCIcon } from '@app/assets/icons/btc.svg';
 export const camelize = (string: string): string => {
   return string
     .split(' ')
-    .map((word, index) => (index === 0 ? word.toLowerCase() : word[0].toUpperCase() + word.slice(1)))
+    .map((word, index) =>
+      index === 0 ? word.toLowerCase() : word[0].toUpperCase() + word.slice(1),
+    )
     .join('');
 };
 
@@ -70,7 +72,8 @@ export const getMarkAreaData = (data: string[] | number[]): MarkArea[][] =>
     },
   ]);
 
-export const capitalize = (word: string): string => `${word[0].toUpperCase()}${word.slice(1)}`;
+export const capitalize = (word: string): string =>
+  `${word[0].toUpperCase()}${word.slice(1)}`;
 
 export const hexToRGB = (hex: string): string => {
   const r = parseInt(hex.slice(1, 3), 16),
@@ -80,11 +83,20 @@ export const hexToRGB = (hex: string): string => {
   return `${r}, ${g}, ${b}`;
 };
 
-export const getDifference = (value: number, prevValue: number): string | null =>
-  prevValue !== 0 ? `${((Math.abs(value - prevValue) / prevValue) * 100).toFixed(0)}%` : '100%';
+export const getDifference = (
+  value: number,
+  prevValue: number,
+): string | null =>
+  prevValue !== 0
+    ? `${((Math.abs(value - prevValue) / prevValue) * 100).toFixed(0)}%`
+    : '100%';
 
-export const normalizeProp = (prop: string | number | [number, number]): string =>
-  typeof prop === 'number' ? `${prop}px` : (Array.isArray(prop) && `${prop[0]}px ${prop[1]}px`) || prop.toString();
+export const normalizeProp = (
+  prop: string | number | [number, number],
+): string =>
+  typeof prop === 'number'
+    ? `${prop}px`
+    : (Array.isArray(prop) && `${prop[0]}px ${prop[1]}px`) || prop.toString();
 
 export const defineColorByPriority = (priority: Priority): string => {
   switch (priority) {
@@ -101,7 +113,10 @@ export const defineColorByPriority = (priority: Priority): string => {
   }
 };
 
-export const defineColorBySeverity = (severity: NotificationType | undefined, rgb = false): string => {
+export const defineColorBySeverity = (
+  severity: NotificationType | undefined,
+  rgb = false,
+): string => {
   const postfix = rgb ? 'rgb-color' : 'color';
   switch (severity) {
     case 'error':
@@ -116,7 +131,9 @@ export const defineColorBySeverity = (severity: NotificationType | undefined, rg
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const mergeBy = (a: any[], b: any[], key: string): any[] =>
-  a.filter((elem) => !b.find((subElem) => subElem[key] === elem[key])).concat(b);
+  a
+    .filter((elem) => !b.find((subElem) => subElem[key] === elem[key]))
+    .concat(b);
 
 export const getSmoothRandom = (factor: number, start: number): number => {
   const halfEnvelope = 1 / factor / 2;

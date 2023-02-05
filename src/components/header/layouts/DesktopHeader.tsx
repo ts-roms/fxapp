@@ -10,7 +10,9 @@ interface DesktopHeaderProps {
   isTwoColumnsLayout: boolean;
 }
 
-export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout }) => {
+export const DesktopHeader: React.FC<DesktopHeaderProps> = ({
+  isTwoColumnsLayout,
+}) => {
   const leftSide = isTwoColumnsLayout ? (
     <S.SearchColumn xl={16} xxl={17}>
       <Row justify="space-between">

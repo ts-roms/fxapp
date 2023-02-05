@@ -12,10 +12,17 @@ interface OpenURLInputProps extends InputProps {
   target?: string;
 }
 
-export const OpenURLInput: React.FC<OpenURLInputProps> = ({ href, target = '_blank', ...props }) => {
+export const OpenURLInput: React.FC<OpenURLInputProps> = ({
+  href,
+  target = '_blank',
+  ...props
+}) => {
   const { t } = useTranslation();
 
-  const isMatch = useMemo(() => new RegExp(websitePattern).test(href || ' '), [href]);
+  const isMatch = useMemo(
+    () => new RegExp(websitePattern).test(href || ' '),
+    [href],
+  );
 
   return (
     <SuffixInput

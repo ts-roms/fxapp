@@ -1,5 +1,8 @@
 import React from 'react';
-import { BaseChart, getDefaultTooltipStyles } from '@app/components/common/charts/BaseChart';
+import {
+  BaseChart,
+  getDefaultTooltipStyles,
+} from '@app/components/common/charts/BaseChart';
 import { getMarkAreaData, hexToRGB } from '@app/utils/utils';
 import { ChartData, xData } from '@app/interfaces/interfaces';
 import { useAppSelector } from '@app/hooks/reduxHooks';
@@ -18,7 +21,10 @@ export const CovidChart: React.FC<{
   const theme = useAppSelector((state) => state.theme.theme);
 
   const option = {
-    color: [themeObject[theme].chartPrimaryGradient, themeObject[theme].chartSecondaryGradientSpecular],
+    color: [
+      themeObject[theme].chartPrimaryGradient,
+      themeObject[theme].chartSecondaryGradientSpecular,
+    ],
     grid: [
       {
         top: 10,

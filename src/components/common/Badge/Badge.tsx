@@ -10,7 +10,12 @@ interface BadgeProps extends AntBadgeProps {
   severity?: NotificationType;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ className, severity, children, ...props }) => (
+export const Badge: React.FC<BadgeProps> = ({
+  className,
+  severity,
+  children,
+  ...props
+}) => (
   <S.Badge className={className} {...(severity && { severity })} {...props}>
     {children}
   </S.Badge>

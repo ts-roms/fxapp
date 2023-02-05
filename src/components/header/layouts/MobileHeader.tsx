@@ -11,7 +11,10 @@ interface MobileHeaderProps {
   isSiderOpened: boolean;
 }
 
-export const MobileHeader: React.FC<MobileHeaderProps> = ({ toggleSider, isSiderOpened }) => {
+export const MobileHeader: React.FC<MobileHeaderProps> = ({
+  toggleSider,
+  isSiderOpened,
+}) => {
   return (
     <Row justify="space-between" align="middle">
       <Col>

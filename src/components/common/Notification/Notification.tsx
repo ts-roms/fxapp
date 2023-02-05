@@ -1,6 +1,11 @@
 import React from 'react';
 import { Space } from 'antd';
-import { CheckCircleFilled, ExclamationCircleFilled, InfoCircleFilled, WarningFilled } from '@ant-design/icons';
+import {
+  CheckCircleFilled,
+  ExclamationCircleFilled,
+  InfoCircleFilled,
+  WarningFilled,
+} from '@ant-design/icons';
 import * as S from './Notification.styles';
 
 interface Icons {
@@ -11,7 +16,12 @@ interface Icons {
   mention: React.ReactNode;
 }
 
-export type NotificationType = 'info' | 'mention' | 'success' | 'warning' | 'error';
+export type NotificationType =
+  | 'info'
+  | 'mention'
+  | 'success'
+  | 'warning'
+  | 'error';
 
 interface NotificationProps {
   type: NotificationType;
@@ -20,7 +30,12 @@ interface NotificationProps {
   mentionIconSrc?: React.ReactNode;
 }
 
-export const Notification: React.FC<NotificationProps> = ({ type, mentionIconSrc, title, description }) => {
+export const Notification: React.FC<NotificationProps> = ({
+  type,
+  mentionIconSrc,
+  title,
+  description,
+}) => {
   const icons: Icons = {
     info: <InfoCircleFilled />,
     success: <CheckCircleFilled />,
@@ -33,7 +48,11 @@ export const Notification: React.FC<NotificationProps> = ({ type, mentionIconSrc
 
   return (
     <S.SpaceWrapper type={type} align="start" size="middle">
-      {mentionIconSrc ? <S.NotificationIcon src={icon} alt="User icon" /> : icon}
+      {mentionIconSrc ? (
+        <S.NotificationIcon src={icon} alt="User icon" />
+      ) : (
+        icon
+      )}
       <Space direction="vertical">
         <S.Title>{title}</S.Title>
         <S.Description>{description}</S.Description>

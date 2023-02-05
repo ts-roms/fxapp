@@ -7,7 +7,9 @@ import { useTranslation } from 'react-i18next';
 interface AddNewCardButtonProps {
   onCardAdd: (card: CreditCard) => void;
 }
-export const AddNewCardButton: React.FC<AddNewCardButtonProps> = ({ onCardAdd }) => {
+export const AddNewCardButton: React.FC<AddNewCardButtonProps> = ({
+  onCardAdd,
+}) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const openModal = () => setModalVisible(true);
@@ -20,7 +22,11 @@ export const AddNewCardButton: React.FC<AddNewCardButtonProps> = ({ onCardAdd })
       <S.AddBtn type="ghost" onClick={openModal}>
         {t('profile.nav.payments.addNewCard')}
       </S.AddBtn>
-      <AddNewCardModal isModalVisible={isModalVisible} closeModal={closeModal} onCardAdd={onCardAdd} />
+      <AddNewCardModal
+        isModalVisible={isModalVisible}
+        closeModal={closeModal}
+        onCardAdd={onCardAdd}
+      />
     </>
   );
 };

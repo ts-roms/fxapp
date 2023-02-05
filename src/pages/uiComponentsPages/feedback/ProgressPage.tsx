@@ -3,7 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Col } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Progress } from '@app/components/common/Progress/Progress';
-import { Button, ButtonGroup } from '@app/components/common/buttons/Button/Button';
+import {
+  Button,
+  ButtonGroup,
+} from '@app/components/common/buttons/Button/Button';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';
 
@@ -16,7 +19,10 @@ const ProgressPage: React.FC = () => {
   const successColor = 'var(--success-color)';
   const errorColor = 'var(--error-color)';
 
-  const dynamicSuccessColor = useMemo(() => (percent === 100 ? successColor : primaryColor), [percent]);
+  const dynamicSuccessColor = useMemo(
+    () => (percent === 100 ? successColor : primaryColor),
+    [percent],
+  );
 
   const increase = () => {
     let newPercent = percent + 10;
@@ -47,12 +53,21 @@ const ProgressPage: React.FC = () => {
         </S.Card>
         <S.Card title={t('progress.circle')}>
           <Progress type="circle" percent={75} strokeColor={primaryColor} />
-          <Progress type="circle" percent={70} status="exception" strokeColor={errorColor} />
+          <Progress
+            type="circle"
+            percent={70}
+            status="exception"
+            strokeColor={errorColor}
+          />
           <Progress type="circle" percent={100} strokeColor={successColor} />
         </S.Card>
         <S.Card title={t('progress.dynamic')}>
           <div>
-            <Progress percent={percent} type="circle" strokeColor={dynamicSuccessColor} />
+            <Progress
+              percent={percent}
+              type="circle"
+              strokeColor={dynamicSuccessColor}
+            />
             <Progress percent={percent} strokeColor={dynamicSuccessColor} />
             <ButtonGroup>
               <Button onClick={decrease} icon={<MinusOutlined />} />
@@ -62,7 +77,12 @@ const ProgressPage: React.FC = () => {
         </S.Card>
         <S.Card title={t('progress.medical-dashboard')}>
           <Progress type="dashboard" percent={75} strokeColor={primaryColor} />
-          <Progress type="dashboard" percent={75} gapDegree={30} strokeColor={primaryColor} />
+          <Progress
+            type="dashboard"
+            percent={75}
+            gapDegree={30}
+            strokeColor={primaryColor}
+          />
         </S.Card>
         <S.Card title={t('progress.gradient')}>
           <div>

@@ -21,7 +21,8 @@ export const getPaymentHistory = (): Promise<Payment[]> => {
           status: 1,
           amount: 500,
           currency: 'USD',
-          imgUrl: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png',
+          imgUrl:
+            'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png',
         },
         {
           id: 2,
@@ -30,7 +31,8 @@ export const getPaymentHistory = (): Promise<Payment[]> => {
           status: 2,
           amount: 40,
           currency: 'USD',
-          imgUrl: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988456/Ellipse_73_zanfs3.png',
+          imgUrl:
+            'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988456/Ellipse_73_zanfs3.png',
         },
         {
           id: 3,
@@ -39,7 +41,8 @@ export const getPaymentHistory = (): Promise<Payment[]> => {
           status: 3,
           amount: 1200,
           currency: 'USD',
-          imgUrl: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988460/Ellipse_73_1_hhfpzj.png',
+          imgUrl:
+            'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988460/Ellipse_73_1_hhfpzj.png',
         },
         {
           id: 4,
@@ -48,7 +51,8 @@ export const getPaymentHistory = (): Promise<Payment[]> => {
           status: 4,
           amount: 190,
           currency: 'USD',
-          imgUrl: 'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png',
+          imgUrl:
+            'https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png',
         },
       ]);
     }, 0);

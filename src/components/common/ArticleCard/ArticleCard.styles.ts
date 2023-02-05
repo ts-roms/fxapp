@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { Typography } from 'antd';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 
 export const Header = styled.div`
   height: 5.5rem;

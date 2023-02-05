@@ -23,8 +23,10 @@ const ProfileLayout: React.FC = () => {
 
   const { isTablet } = useResponsive();
 
-  const isTitleShown = isTabletOrHigher || (mobileOnly && location.pathname === '/profile');
-  const isMenuShown = isTabletOrHigher || (mobileOnly && location.pathname !== '/profile');
+  const isTitleShown =
+    isTabletOrHigher || (mobileOnly && location.pathname === '/profile');
+  const isMenuShown =
+    isTabletOrHigher || (mobileOnly && location.pathname !== '/profile');
 
   useEffect(() => {
     isTablet && location.pathname === '/profile' && navigate('personal-info');
@@ -34,7 +36,11 @@ const ProfileLayout: React.FC = () => {
     <>
       <PageTitle>{t('profile.title')}</PageTitle>
       {!isTitleShown && (
-        <Btn icon={<LeftOutlined />} type="text" onClick={() => navigate('/profile')}>
+        <Btn
+          icon={<LeftOutlined />}
+          type="text"
+          onClick={() => navigate('/profile')}
+        >
           {t('common.back')}
         </Btn>
       )}

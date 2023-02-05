@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Col, Row, Space, TablePaginationConfig } from 'antd';
-import { BasicTableRow, getBasicTableData, Pagination, Tag } from 'api/table.api';
+import {
+  BasicTableRow,
+  getBasicTableData,
+  Pagination,
+  Tag,
+} from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
@@ -16,7 +21,11 @@ const initialPagination: Pagination = {
 };
 
 export const BasicTable: React.FC = () => {
-  const [tableData, setTableData] = useState<{ data: BasicTableRow[]; pagination: Pagination; loading: boolean }>({
+  const [tableData, setTableData] = useState<{
+    data: BasicTableRow[];
+    pagination: Pagination;
+    loading: boolean;
+  }>({
     data: [],
     pagination: initialPagination,
     loading: false,
@@ -29,7 +38,11 @@ export const BasicTable: React.FC = () => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
       getBasicTableData(pagination).then((res) => {
         if (isMounted.current) {
-          setTableData({ data: res.data, pagination: res.pagination, loading: false });
+          setTableData({
+            data: res.data,
+            pagination: res.pagination,
+            loading: false,
+          });
         }
       });
     },
@@ -50,7 +63,9 @@ export const BasicTable: React.FC = () => {
       data: tableData.data.filter((item) => item.key !== rowId),
       pagination: {
         ...tableData.pagination,
-        total: tableData.pagination.total ? tableData.pagination.total - 1 : tableData.pagination.total,
+        total: tableData.pagination.total
+          ? tableData.pagination.total - 1
+          : tableData.pagination.total,
       },
     });
   };
@@ -104,7 +119,8 @@ export const BasicTable: React.FC = () => {
           ],
         },
       ],
-      onFilter: (value: string | number | boolean, record: BasicTableRow) => record.name.includes(value.toString()),
+      onFilter: (value: string | number | boolean, record: BasicTableRow) =>
+        record.name.includes(value.toString()),
     },
     {
       title: t('common.age'),
@@ -125,7 +141,10 @@ export const BasicTable: React.FC = () => {
           {tags.map((tag: Tag) => {
             return (
               <Col key={tag.value}>
-                <Status color={defineColorByPriority(tag.priority)} text={tag.value.toUpperCase()} />
+                <Status
+                  color={defineColorByPriority(tag.priority)}
+                  text={tag.value.toUpperCase()}
+                />
               </Col>
             );
           })}
@@ -142,12 +161,18 @@ export const BasicTable: React.FC = () => {
             <Button
               type="ghost"
               onClick={() => {
-                notificationController.info({ message: t('tables.inviteMessage', { name: record.name }) });
+                notificationController.info({
+                  message: t('tables.inviteMessage', { name: record.name }),
+                });
               }}
             >
               {t('tables.invite')}
             </Button>
-            <Button type="default" danger onClick={() => handleDeleteRow(record.key)}>
+            <Button
+              type="default"
+              danger
+              onClick={() => handleDeleteRow(record.key)}
+            >
               {t('tables.delete')}
             </Button>
           </Space>

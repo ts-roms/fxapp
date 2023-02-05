@@ -108,9 +108,11 @@ export const BaseFormItem = styled(Form.Item)<FormItemProps>`
   }
 
   &.ant-form-item-has-success.ant-form-item-has-feedback .ant-input,
-  &.ant-form-item-has-success.ant-form-item-has-feedback .ant-input-affix-wrapper,
+  &.ant-form-item-has-success.ant-form-item-has-feedback
+    .ant-input-affix-wrapper,
   &.ant-form-item-has-success.ant-form-item-has-feedback .ant-input:hover,
-  &.ant-form-item-has-success.ant-form-item-has-feedback .ant-input-affix-wrapper:hover {
+  &.ant-form-item-has-success.ant-form-item-has-feedback
+    .ant-input-affix-wrapper:hover {
     border-color: var(--success-color);
   }
 `;

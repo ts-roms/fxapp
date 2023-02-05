@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useResponsive } from 'hooks/useResponsive';
 import * as S from './BloodScreeningTable.styles';
-import { BloodTestResult, flags, results } from '@app/constants/bloodTestResults';
+import {
+  BloodTestResult,
+  flags,
+  results,
+} from '@app/constants/bloodTestResults';
 import { ColumnsType } from 'antd/es/table';
 
 interface BloodScreeningTableProps {
@@ -10,7 +14,10 @@ interface BloodScreeningTableProps {
   setActiveItem: (item: BloodTestResult) => void;
 }
 
-export const BloodScreeningTable: React.FC<BloodScreeningTableProps> = ({ activeItem, setActiveItem }) => {
+export const BloodScreeningTable: React.FC<BloodScreeningTableProps> = ({
+  activeItem,
+  setActiveItem,
+}) => {
   const { isTablet, isDesktop } = useResponsive();
   const { t } = useTranslation();
   const [dataSource] = useState<BloodTestResult[]>(results);
@@ -20,17 +27,23 @@ export const BloodScreeningTable: React.FC<BloodScreeningTableProps> = ({ active
       title: t('medical-dashboard.bloodScreening.test'),
       dataIndex: 'test',
       width: '30%',
-      render: (test: string, { key }) => <S.Text $isActive={activeItem.key === key}>{test}</S.Text>,
+      render: (test: string, { key }) => (
+        <S.Text $isActive={activeItem.key === key}>{test}</S.Text>
+      ),
     },
     {
       title: t('medical-dashboard.bloodScreening.result'),
       dataIndex: 'result',
-      render: (result: number, { key }) => <S.Text $isActive={activeItem.key === key}>{result}</S.Text>,
+      render: (result: number, { key }) => (
+        <S.Text $isActive={activeItem.key === key}>{result}</S.Text>
+      ),
     },
     {
       title: t('medical-dashboard.bloodScreening.units'),
       dataIndex: 'units',
-      render: (units, { key }) => <S.Text $isActive={activeItem.key === key}>{units}</S.Text>,
+      render: (units, { key }) => (
+        <S.Text $isActive={activeItem.key === key}>{units}</S.Text>
+      ),
     },
     {
       title: t('medical-dashboard.bloodScreening.flag'),

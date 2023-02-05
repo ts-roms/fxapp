@@ -11,9 +11,15 @@ interface SearchFilterProps {
   children: (filteredResults: CategoryComponents[]) => React.ReactNode;
 }
 
-export const SearchFilter: React.FC<SearchFilterProps> = ({ data, isVisible, children }) => {
+export const SearchFilter: React.FC<SearchFilterProps> = ({
+  data,
+  isVisible,
+  children,
+}) => {
   const [selectedFilter, setSelectedFilter] = useState<CategoryType[]>([]);
-  const [filteredResults, setFilteredResults] = useState<CategoryComponents[] | null>(data);
+  const [filteredResults, setFilteredResults] = useState<
+    CategoryComponents[] | null
+  >(data);
 
   const { t } = useTranslation();
 
@@ -32,7 +38,11 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({ data, isVisible, chi
   useEffect(() => {
     if (data) {
       if (selectedFilter.length > 0) {
-        setFilteredResults(data.filter((component) => selectedFilter.some((filter) => filter === component.category)));
+        setFilteredResults(
+          data.filter((component) =>
+            selectedFilter.some((filter) => filter === component.category),
+          ),
+        );
       } else {
         setFilteredResults(data);
       }
@@ -44,7 +54,11 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({ data, isVisible, chi
   return (
     <>
       <S.FilterWrapper isVisible={isVisible}>
-        <S.CheckboxGroup onChange={(checkedValues) => setSelectedFilter(checkedValues as CategoryType[])}>
+        <S.CheckboxGroup
+          onChange={(checkedValues) =>
+            setSelectedFilter(checkedValues as CategoryType[])
+          }
+        >
           <Row>{filterElements}</Row>
         </S.CheckboxGroup>
       </S.FilterWrapper>

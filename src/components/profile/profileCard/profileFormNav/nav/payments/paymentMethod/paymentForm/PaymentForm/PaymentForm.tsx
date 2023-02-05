@@ -26,7 +26,10 @@ interface PaymentFormProps {
   onFormFinish: (card: CreditCard) => void;
 }
 
-export const PaymentForm: React.FC<PaymentFormProps> = ({ closeModal, onFormFinish }) => {
+export const PaymentForm: React.FC<PaymentFormProps> = ({
+  closeModal,
+  onFormFinish,
+}) => {
   const [cardData, setCardData] = useState<CreditCard>(clearCardData);
   const [isLoading, setLoading] = useState(false);
   const [isFieldsChanged, setFieldsChanged] = useState(false);

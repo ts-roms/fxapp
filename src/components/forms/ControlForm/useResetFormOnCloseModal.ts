@@ -1,7 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { FormInstance } from 'antd';
 
-export const useResetFormOnCloseModal = ({ form, visible }: { form: FormInstance; visible: boolean }): void => {
+export const useResetFormOnCloseModal = ({
+  form,
+  visible,
+}: {
+  form: FormInstance;
+  visible: boolean;
+}): void => {
   const prevVisibleRef = useRef<boolean>();
   useEffect(() => {
     prevVisibleRef.current = visible;

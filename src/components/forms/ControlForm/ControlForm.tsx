@@ -63,7 +63,11 @@ export const ControlForm: React.FC = () => {
             <Button htmlType="submit" type="primary" loading={isLoading}>
               {t('common.submit')}
             </Button>
-            <S.AddUserButton type="default" htmlType="button" onClick={showUserModal}>
+            <S.AddUserButton
+              type="default"
+              htmlType="button"
+              onClick={showUserModal}
+            >
               {t('forms.controlFormLabels.addUser')}
             </S.AddUserButton>
           </BaseButtonsForm.Item>
@@ -74,7 +78,12 @@ export const ControlForm: React.FC = () => {
         <BaseButtonsForm.Item
           name="group"
           label={t('forms.controlFormLabels.groupName')}
-          rules={[{ required: true, message: t('forms.controlFormLabels.groupNameError') }]}
+          rules={[
+            {
+              required: true,
+              message: t('forms.controlFormLabels.groupNameError'),
+            },
+          ]}
         >
           <Input />
         </BaseButtonsForm.Item>

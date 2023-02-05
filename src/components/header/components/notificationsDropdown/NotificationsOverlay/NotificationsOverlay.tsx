@@ -5,7 +5,10 @@ import { Col, Row, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { Notification } from 'components/common/Notification/Notification';
 import { capitalize } from 'utils/utils';
-import { Mention, Notification as NotificationType } from 'api/notifications.api';
+import {
+  Mention,
+  Notification as NotificationType,
+} from 'api/notifications.api';
 import { notificationsSeverities } from 'constants/notificationsSeverities';
 import * as S from './NotificationsOverlay.styles';
 
@@ -24,7 +27,9 @@ export const NotificationsOverlay: React.FC<NotificationsOverlayProps> = ({
   const noticesList = useMemo(
     () =>
       notifications.map((notification, index) => {
-        const type = notificationsSeverities.find((dbSeverity) => dbSeverity.id === notification.id)?.name;
+        const type = notificationsSeverities.find(
+          (dbSeverity) => dbSeverity.id === notification.id,
+        )?.name;
 
         return (
           <Notification

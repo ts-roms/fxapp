@@ -9,7 +9,12 @@ interface EmailItemProps extends FormItemProps {
   onClick?: () => void;
 }
 
-export const EmailItem: React.FC<EmailItemProps> = ({ required, onClick, verified, ...props }) => {
+export const EmailItem: React.FC<EmailItemProps> = ({
+  required,
+  onClick,
+  verified,
+  ...props
+}) => {
   const { t } = useTranslation();
 
   return (

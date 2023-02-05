@@ -46,7 +46,10 @@ const BadgesPage: React.FC = () => {
           <br />
           <Badge status="default" text={t('dataDisplay.badges.default')} />
           <br />
-          <Badge status="processing" text={t('dataDisplay.badges.processing')} />
+          <Badge
+            status="processing"
+            text={t('dataDisplay.badges.processing')}
+          />
           <br />
           <Badge status="warning" text={t('dataDisplay.badges.warning')} />
         </S.Card>

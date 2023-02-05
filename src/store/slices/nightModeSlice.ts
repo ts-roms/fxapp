@@ -22,21 +22,27 @@ const initialState: NightModeState = {
   nightTime: currentNightTime,
 };
 
-export const setNightMode = createAction<PrepareAction<boolean>>('nightMode/setNightMode', (isNightMode) => {
-  localStorage.setItem('nightMode', JSON.stringify(isNightMode));
+export const setNightMode = createAction<PrepareAction<boolean>>(
+  'nightMode/setNightMode',
+  (isNightMode) => {
+    localStorage.setItem('nightMode', JSON.stringify(isNightMode));
 
-  return {
-    payload: isNightMode,
-  };
-});
+    return {
+      payload: isNightMode,
+    };
+  },
+);
 
-export const setNightTime = createAction<PrepareAction<number[]>>('nightMode/setNightTime', (nightTime) => {
-  localStorage.setItem('nightTime', JSON.stringify(nightTime));
+export const setNightTime = createAction<PrepareAction<number[]>>(
+  'nightMode/setNightTime',
+  (nightTime) => {
+    localStorage.setItem('nightTime', JSON.stringify(nightTime));
 
-  return {
-    payload: nightTime,
-  };
-});
+    return {
+      payload: nightTime,
+    };
+  },
+);
 
 export const nightModeSlice = createSlice({
   name: 'nightMode',

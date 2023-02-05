@@ -15,7 +15,8 @@ export const RightSideCol = styled(Col)`
 
 export const LeftSideCol = styled(Col)`
   @media only screen and ${media.xl} {
-    padding: ${LAYOUT.desktop.paddingVertical} ${LAYOUT.desktop.paddingHorizontal};
+    padding: ${LAYOUT.desktop.paddingVertical}
+      ${LAYOUT.desktop.paddingHorizontal};
     height: calc(100vh - ${LAYOUT.desktop.headerHeight});
     overflow: auto;
   }

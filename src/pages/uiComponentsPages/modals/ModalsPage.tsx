@@ -2,17 +2,28 @@ import { useState } from 'react';
 import { Col } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@app/components/common/buttons/Button/Button';
-import { Modal, InfoModal, SuccessModal, WarningModal, ErrorModal } from '@app/components/common/Modal/Modal';
+import {
+  Modal,
+  InfoModal,
+  SuccessModal,
+  WarningModal,
+  ErrorModal,
+} from '@app/components/common/Modal/Modal';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';
 
 const ModalsPage: React.FC = () => {
   const { t } = useTranslation();
-  const [isBasicModalVisible, setIsBasicModalVisible] = useState<boolean>(false);
-  const [isSmallModalVisible, setIsSmallModalVisible] = useState<boolean>(false);
-  const [isMiddleModalVisible, setIsMiddleModalVisible] = useState<boolean>(false);
-  const [isLargeModalVisible, setIsLargeModalVisible] = useState<boolean>(false);
-  const [isFullscreenModalVisible, setIsFullscreenModalVisible] = useState<boolean>(false);
+  const [isBasicModalVisible, setIsBasicModalVisible] =
+    useState<boolean>(false);
+  const [isSmallModalVisible, setIsSmallModalVisible] =
+    useState<boolean>(false);
+  const [isMiddleModalVisible, setIsMiddleModalVisible] =
+    useState<boolean>(false);
+  const [isLargeModalVisible, setIsLargeModalVisible] =
+    useState<boolean>(false);
+  const [isFullscreenModalVisible, setIsFullscreenModalVisible] =
+    useState<boolean>(false);
 
   const success = () => {
     SuccessModal({
@@ -71,7 +82,10 @@ const ModalsPage: React.FC = () => {
           <Button type="primary" onClick={() => setIsLargeModalVisible(true)}>
             {t('modals.large')}
           </Button>
-          <Button type="primary" onClick={() => setIsFullscreenModalVisible(true)}>
+          <Button
+            type="primary"
+            onClick={() => setIsFullscreenModalVisible(true)}
+          >
             {t('modals.fullscreen')}
           </Button>
           <Modal

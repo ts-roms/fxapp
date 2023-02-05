@@ -13,12 +13,24 @@ import { BREAKPOINTS } from '@app/styles/themes/constants';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const NextArrow = (props: any) => {
   const { className, style, onClick } = props;
-  return <S.SliderArrow className={className} style={{ ...style, display: 'block' }} onClick={onClick} />;
+  return (
+    <S.SliderArrow
+      className={className}
+      style={{ ...style, display: 'block' }}
+      onClick={onClick}
+    />
+  );
 };
 
 const PrevArrow = (props: any) => {
   const { className, style, onClick } = props;
-  return <S.SliderArrow className={className} style={{ ...style, display: 'block' }} onClick={onClick} />;
+  return (
+    <S.SliderArrow
+      className={className}
+      style={{ ...style, display: 'block' }}
+      onClick={onClick}
+    />
+  );
 };
 
 export const FavoritesDoctorsCard: React.FC = () => {
@@ -44,7 +56,10 @@ export const FavoritesDoctorsCard: React.FC = () => {
   );
 
   return (
-    <DashboardCard title={t('medical-dashboard.favoriteDoctors.title')} padding="0 20px">
+    <DashboardCard
+      title={t('medical-dashboard.favoriteDoctors.title')}
+      padding="0 20px"
+    >
       {doctors.length > 0 && calendar.length > 0 && (
         <S.CarouselWrapper>
           <Carousel
@@ -104,7 +119,9 @@ export const FavoritesDoctorsCard: React.FC = () => {
             ]}
           >
             {pastEvents.map((event) => {
-              const currentDoctor = doctors.find((doctor) => doctor.id === event.doctor);
+              const currentDoctor = doctors.find(
+                (doctor) => doctor.id === event.doctor,
+              );
 
               return (
                 <div key={currentDoctor?.id}>

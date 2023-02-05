@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Col, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Radio, RadioGroup, RadioButton, RadioChangeEvent } from '@app/components/common/Radio/Radio';
+import {
+  Radio,
+  RadioGroup,
+  RadioButton,
+  RadioChangeEvent,
+} from '@app/components/common/Radio/Radio';
 import { Button } from '@app/components/common/buttons/Button/Button';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import * as S from '@app/pages/uiComponentsPages//UIComponentsPage.styles';

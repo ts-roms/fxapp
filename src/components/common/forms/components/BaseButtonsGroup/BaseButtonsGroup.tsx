@@ -9,7 +9,12 @@ interface BaseButtonsGroupProps extends ComponentProps<typeof Button> {
   loading?: boolean;
 }
 
-export const BaseButtonsGroup: React.FC<BaseButtonsGroupProps> = ({ className, onCancel, loading, ...props }) => {
+export const BaseButtonsGroup: React.FC<BaseButtonsGroupProps> = ({
+  className,
+  onCancel,
+  loading,
+  ...props
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -20,7 +25,13 @@ export const BaseButtonsGroup: React.FC<BaseButtonsGroupProps> = ({ className, o
         </Button>
       </Col>
       <Col span={12}>
-        <Button block type="primary" loading={loading} htmlType="submit" {...props}>
+        <Button
+          block
+          type="primary"
+          loading={loading}
+          htmlType="submit"
+          {...props}
+        >
           {t('common.save')}
         </Button>
       </Col>

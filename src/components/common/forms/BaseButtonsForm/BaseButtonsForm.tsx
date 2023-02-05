@@ -1,5 +1,9 @@
 import React from 'react';
-import { BaseForm, BaseFormInterface, BaseFormProps } from '@app/components/common/forms//BaseForm/BaseForm';
+import {
+  BaseForm,
+  BaseFormInterface,
+  BaseFormProps,
+} from '@app/components/common/forms//BaseForm/BaseForm';
 import { BaseButtonsGroup } from '@app/components/common/forms/components/BaseButtonsGroup/BaseButtonsGroup';
 import { BaseFormTitle } from '@app/components/common/forms/components/BaseFormTitle/BaseFormTitle';
 import { BaseFormItem } from '@app/components/common/forms/components/BaseFormItem/BaseFormItem';
@@ -32,7 +36,8 @@ export const BaseButtonsForm: BaseFormInterface<BaseButtonsFormProps> = ({
   return (
     <BaseForm form={currentForm} {...props}>
       {children}
-      {isFieldsChanged && (footer || <BaseButtonsGroup loading={loading} onCancel={onCancel} />)}
+      {isFieldsChanged &&
+        (footer || <BaseButtonsGroup loading={loading} onCancel={onCancel} />)}
     </BaseForm>
   );
 };

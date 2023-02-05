@@ -44,7 +44,10 @@ export const Button = styled(AntButton)<BtnProps>`
         &:hover {
           background: var(--background-color);
 
-          border-color: rgba(${defineColorBySeverity(props.$severity, true)}, 0.9);
+          border-color: rgba(
+            ${defineColorBySeverity(props.$severity, true)},
+            0.9
+          );
 
           color: rgba(${defineColorBySeverity(props.$severity, true)}, 0.9);
         }
@@ -52,7 +55,10 @@ export const Button = styled(AntButton)<BtnProps>`
         &:focus {
           background: var(--background-color);
 
-          border-color: rgba(${defineColorBySeverity(props.$severity, true)}, 0.9);
+          border-color: rgba(
+            ${defineColorBySeverity(props.$severity, true)},
+            0.9
+          );
 
           color: rgba(${defineColorBySeverity(props.$severity, true)}, 0.9);
         }

@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 import { Input as AntInput, Button, Checkbox } from 'antd';
-import { SearchOutlined, PlusCircleFilled, CloseOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  PlusCircleFilled,
+  CloseOutlined,
+} from '@ant-design/icons';
 import { DayjsDatePicker } from '@app/components/common/pickers/DayjsDatePicker';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 
 export const AddTagText = styled.span`
   color: var(--text-main-color);

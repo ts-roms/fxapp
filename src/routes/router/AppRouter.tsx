@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // no lazy loading for auth pages to avoid flickering
-const AuthLayout = React.lazy(() => import('@app/components/layouts/AuthLayout/AuthLayout'));
+const AuthLayout = React.lazy(
+  () => import('@app/components/layouts/AuthLayout/AuthLayout'),
+);
 import LoginPage from '@app/pages/LoginPage';
 import SignUpPage from '@app/pages/SignUpPage';
 import ForgotPasswordPage from '@app/pages/ForgotPasswordPage';
@@ -19,6 +21,7 @@ import CollectionPage from '@app/pages/CollectionPage';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const KanbanPage = React.lazy(() => import('@app/pages/KanbanPage'));
+const EmployeePage = React.lazy(() => import('@app/pages/EmployeePage'));
 const Logout = React.lazy(() => import('./Logout'));
 
 export const DASHBOARD_PATH = '/';
@@ -29,6 +32,9 @@ const Kanban = withLoading(KanbanPage);
 
 const Transactions = withLoading(TransactionPage);
 const Collections = withLoading(CollectionPage);
+
+// Configuration
+const Employee = withLoading(EmployeePage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -54,6 +60,7 @@ export const AppRouter: React.FC = () => {
           <Route path="reports" element={<Transactions />} />
 
           <Route path="configuration">
+            <Route path="employees" element={<Employee />} />
             <Route path="feed" element={<NewsFeed />} />
             <Route path="kanban" element={<Kanban />} />
             <Route path="expenses" element={<Kanban />} />

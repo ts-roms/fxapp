@@ -15,7 +15,11 @@ const AdvancedFormsPage: React.FC = () => {
       <PageTitle>{t('common.advancedForms')}</PageTitle>
       <Row gutter={[30, 30]}>
         <Col xs={24} sm={24} xl={10}>
-          <Card id="validation form" title={t('forms.validationForm')} padding="1.25rem">
+          <Card
+            id="validation form"
+            title={t('forms.validationForm')}
+            padding="1.25rem"
+          >
             <ValidationForm />
           </Card>
         </Col>
@@ -23,17 +27,29 @@ const AdvancedFormsPage: React.FC = () => {
         <Col xs={24} sm={24} xl={14}>
           <Row gutter={[30, 30]}>
             <Col span={24}>
-              <Card id="control-form" title={t('forms.controlForm')} padding="1.25rem">
+              <Card
+                id="control-form"
+                title={t('forms.controlForm')}
+                padding="1.25rem"
+              >
                 <ControlForm />
               </Card>
             </Col>
             <Col span={24}>
-              <Card id="dynamic-form" title={t('forms.dynamicForm')} padding="1.25rem">
+              <Card
+                id="dynamic-form"
+                title={t('forms.dynamicForm')}
+                padding="1.25rem"
+              >
                 <DynamicForm />
               </Card>
             </Col>
             <Col span={24}>
-              <Card id="step-form" title={t('forms.stepForm')} padding="1.25rem">
+              <Card
+                id="step-form"
+                title={t('forms.stepForm')}
+                padding="1.25rem"
+              >
                 <StepForm />
               </Card>
             </Col>

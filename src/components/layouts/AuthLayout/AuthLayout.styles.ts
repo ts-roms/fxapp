@@ -5,7 +5,12 @@ import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { Input as CommonInput } from '@app/components/common/inputs/Input/Input';
 import { InputPassword as CommonInputPassword } from '@app/components/common/inputs/InputPassword/InputPassword';
 import loginBackground from '@app/assets/images/login-bg.webp';
-import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE,
+  FONT_WEIGHT,
+  media,
+} from '@app/styles/themes/constants';
 
 export const Wrapper = styled.div`
   height: 100vh;

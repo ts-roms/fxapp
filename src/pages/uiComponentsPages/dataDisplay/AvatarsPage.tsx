@@ -25,15 +25,30 @@ const AvatarsPage: React.FC = () => {
           <Avatar size={45} shape="square" icon={<UserOutlined />} />
         </S.Card>
         <S.Card title={t('dataDisplay.avatars.groups')}>
-          <Group maxCount={2} size={45} maxStyle={{ color: BASE_COLORS.red, backgroundColor: BASE_COLORS.orange }}>
+          <Group
+            maxCount={2}
+            size={45}
+            maxStyle={{
+              color: BASE_COLORS.red,
+              backgroundColor: BASE_COLORS.orange,
+            }}
+          >
             <Avatar size={45} src="https://joeschmoe.io/api/v1/random" />
             <Avatar size={45} style={{ backgroundColor: BASE_COLORS.red }}>
               K
             </Avatar>
             <Tooltip title={t('dataDisplay.avatars.user')} placement="top">
-              <Avatar size={45} style={{ backgroundColor: BASE_COLORS.green }} icon={<UserOutlined />} />
+              <Avatar
+                size={45}
+                style={{ backgroundColor: BASE_COLORS.green }}
+                icon={<UserOutlined />}
+              />
             </Tooltip>
-            <Avatar size={45} style={{ backgroundColor: BASE_COLORS.blue }} icon={<AntDesignOutlined />} />
+            <Avatar
+              size={45}
+              style={{ backgroundColor: BASE_COLORS.blue }}
+              icon={<AntDesignOutlined />}
+            />
           </Group>
         </S.Card>
         <S.Card title={t('dataDisplay.avatars.badge')}>

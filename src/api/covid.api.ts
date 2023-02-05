@@ -12,9 +12,13 @@ export interface CoronaData {
   active: number;
 }
 
-export const getCovidData = async (): Promise<{ data: CoronaData[] } | undefined> => {
+export const getCovidData = async (): Promise<
+  { data: CoronaData[] } | undefined
+> => {
   try {
-    const response = await axios.get<{ data: CoronaData[] }>('https://corona-api.com/timeline');
+    const response = await axios.get<{ data: CoronaData[] }>(
+      'https://corona-api.com/timeline',
+    );
 
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

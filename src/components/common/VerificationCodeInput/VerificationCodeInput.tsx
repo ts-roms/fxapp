@@ -11,7 +11,9 @@ interface VerificationCodeInputProps {
   onBlur?: () => void;
 }
 
-export const VerificationCodeInput: React.FC<VerificationCodeInputProps> = (props) => {
+export const VerificationCodeInput: React.FC<VerificationCodeInputProps> = (
+  props,
+) => {
   return (
     <S.CodeInput
       removeDefaultStyles

@@ -11,7 +11,11 @@ interface SiderContentProps {
 
 const sidebarNavFlat = sidebarNavigation.reduce(
   (result: SidebarNavigationItem[], current) =>
-    result.concat(current.children && current.children.length > 0 ? current.children : current),
+    result.concat(
+      current.children && current.children.length > 0
+        ? current.children
+        : current,
+    ),
   [],
 );
 
@@ -19,13 +23,17 @@ const SiderMenu: React.FC<SiderContentProps> = ({ setCollapsed }) => {
   const { t } = useTranslation();
   const location = useLocation();
 
-  const currentMenuItem = sidebarNavFlat.find(({ url }) => url === location.pathname);
-  const defaultSelectedKeys = currentMenuItem ? [currentMenuItem.key] : [];
+  const currentMenuItem = sidebarNavFlat.find(
+    ({ url }) => url === location.pathname,
+  );
+  const defaultSelectedKeys =
+    currentMenuItem && currentMenuItem.key ? [currentMenuItem.key] : [];
 
   const openedSubmenu = sidebarNavigation.find(({ children }) =>
     children?.some(({ url }) => url === location.pathname),
   );
-  const defaultOpenKeys = openedSubmenu ? [openedSubmenu.key] : [];
+  const defaultOpenKeys =
+    openedSubmenu && openedSubmenu.key ? [openedSubmenu.key] : [];
 
   return (
     <S.Menu

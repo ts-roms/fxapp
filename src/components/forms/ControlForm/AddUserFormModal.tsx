@@ -11,7 +11,10 @@ interface AddUserFormModalProps {
   onCancel: () => void;
 }
 
-export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({ visible, onCancel }) => {
+export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({
+  visible,
+  onCancel,
+}) => {
   const [form] = BaseForm.useForm();
   const { t } = useTranslation();
 
@@ -25,7 +28,12 @@ export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({ visible, onC
   };
 
   return (
-    <Modal title={t('forms.controlFormLabels.newUser')} visible={visible} onOk={onOk} onCancel={onCancel}>
+    <Modal
+      title={t('forms.controlFormLabels.newUser')}
+      visible={visible}
+      onOk={onOk}
+      onCancel={onCancel}
+    >
       <BaseForm form={form} layout="vertical" name="userForm">
         <BaseForm.Item
           name="name"

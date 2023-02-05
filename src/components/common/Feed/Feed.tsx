@@ -10,7 +10,12 @@ export interface FeedProps {
   target?: string;
 }
 
-export const Feed: React.FC<FeedProps> = ({ next, hasMore, target = 'main-content', children }) => {
+export const Feed: React.FC<FeedProps> = ({
+  next,
+  hasMore,
+  target = 'main-content',
+  children,
+}) => {
   return (
     <InfiniteScroll
       dataLength={children.length}

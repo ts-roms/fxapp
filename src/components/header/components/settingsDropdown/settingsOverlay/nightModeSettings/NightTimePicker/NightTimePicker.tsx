@@ -9,7 +9,10 @@ interface NightTimePickerProps {
   setNightTime: (nightTime: number[]) => void;
 }
 
-export const NightTimePicker: React.FC<NightTimePickerProps> = ({ nightTime, setNightTime }) => {
+export const NightTimePicker: React.FC<NightTimePickerProps> = ({
+  nightTime,
+  setNightTime,
+}) => {
   const { t } = useTranslation();
 
   return (

@@ -11,7 +11,12 @@ interface DataRow {
   fromDatasetId: string;
   transform: {
     type: string;
-    config: { and: [{ dimension: string; gte: number }, { dimension: string; '=': string }] };
+    config: {
+      and: [
+        { dimension: string; gte: number },
+        { dimension: string; '=': string },
+      ];
+    };
   };
 }
 
@@ -49,7 +54,13 @@ export const LineRaceChart: React.FC = () => {
   const theme = useAppSelector((state) => state.theme.theme);
 
   const runAnimation = useCallback(() => {
-    const countries = ['Finland', 'Germany', 'Iceland', 'Norway', 'United Kingdom'];
+    const countries = [
+      'Finland',
+      'Germany',
+      'Iceland',
+      'Norway',
+      'United Kingdom',
+    ];
     const datasetWithFilters: DataRow[] = [];
     const seriesList: SeriesRow[] = [];
 

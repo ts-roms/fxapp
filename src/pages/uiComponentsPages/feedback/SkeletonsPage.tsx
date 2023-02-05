@@ -70,13 +70,31 @@ const SkeletonsPage: React.FC = () => {
         <S.Card title={t('skeletons.customization')}>
           <div>
             <Space wrap>
-              <SkeletonButton active={state.active} size={state.size} shape={state.buttonShape} block={state.block} />
-              <SkeletonAvatar active={state.active} size={state.size} shape={state.avatarShape} />
-              <SkeletonInput style={{ width: 200 }} active={state.active} size={state.size} />
+              <SkeletonButton
+                active={state.active}
+                size={state.size}
+                shape={state.buttonShape}
+                block={state.block}
+              />
+              <SkeletonAvatar
+                active={state.active}
+                size={state.size}
+                shape={state.avatarShape}
+              />
+              <SkeletonInput
+                style={{ width: 200 }}
+                active={state.active}
+                size={state.size}
+              />
             </Space>
             <br />
             <br />
-            <SkeletonButton active={state.active} size={state.size} shape={state.buttonShape} block={state.block} />
+            <SkeletonButton
+              active={state.active}
+              size={state.size}
+              shape={state.buttonShape}
+              block={state.block}
+            />
             <br />
             <br />
             <SkeletonImage />
@@ -90,22 +108,44 @@ const SkeletonsPage: React.FC = () => {
               </FormItem>
               <FormItem label={t('skeletons.size')}>
                 <Radio.Group value={state.size} onChange={handleSizeChange}>
-                  <Radio.Button value="default">{t('skeletons.default')}</Radio.Button>
-                  <Radio.Button value="large">{t('skeletons.large')}</Radio.Button>
-                  <Radio.Button value="small">{t('skeletons.small')}</Radio.Button>
+                  <Radio.Button value="default">
+                    {t('skeletons.default')}
+                  </Radio.Button>
+                  <Radio.Button value="large">
+                    {t('skeletons.large')}
+                  </Radio.Button>
+                  <Radio.Button value="small">
+                    {t('skeletons.small')}
+                  </Radio.Button>
                 </Radio.Group>
               </FormItem>
               <FormItem label={t('skeletons.buttonShape')}>
-                <Radio.Group value={state.buttonShape} onChange={handleShapeChange('buttonShape')}>
-                  <Radio.Button value="default">{t('skeletons.default')}</Radio.Button>
-                  <Radio.Button value="round">{t('skeletons.round')}</Radio.Button>
-                  <Radio.Button value="circle">{t('skeletons.circle')}</Radio.Button>
+                <Radio.Group
+                  value={state.buttonShape}
+                  onChange={handleShapeChange('buttonShape')}
+                >
+                  <Radio.Button value="default">
+                    {t('skeletons.default')}
+                  </Radio.Button>
+                  <Radio.Button value="round">
+                    {t('skeletons.round')}
+                  </Radio.Button>
+                  <Radio.Button value="circle">
+                    {t('skeletons.circle')}
+                  </Radio.Button>
                 </Radio.Group>
               </FormItem>
               <FormItem label={t('skeletons.avatarShape')}>
-                <Radio.Group value={state.avatarShape} onChange={handleShapeChange('avatarShape')}>
-                  <Radio.Button value="square">{t('skeletons.square')}</Radio.Button>
-                  <Radio.Button value="circle">{t('skeletons.circle')}</Radio.Button>
+                <Radio.Group
+                  value={state.avatarShape}
+                  onChange={handleShapeChange('avatarShape')}
+                >
+                  <Radio.Button value="square">
+                    {t('skeletons.square')}
+                  </Radio.Button>
+                  <Radio.Button value="circle">
+                    {t('skeletons.circle')}
+                  </Radio.Button>
                 </Radio.Group>
               </FormItem>
             </Form>

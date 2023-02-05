@@ -23,7 +23,8 @@ export const Pagination = styled(AntdPagination)`
     color: var(--disabled-color);
   }
 
-  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  .ant-select-disabled.ant-select:not(.ant-select-customize-input)
+    .ant-select-selector {
     color: var(--disabled-color);
   }
 `;

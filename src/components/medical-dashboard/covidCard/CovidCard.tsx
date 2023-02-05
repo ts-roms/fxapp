@@ -52,8 +52,16 @@ export const CovidCard: React.FC = () => {
   );
 
   return (
-    <DashboardCard id="covid" title={t('medical-dashboard.covid.title')} padding={0}>
-      {data ? <CovidChart confirmed={confirmed} deaths={deaths} dateArr={dateArr} /> : <NotFound />}
+    <DashboardCard
+      id="covid"
+      title={t('medical-dashboard.covid.title')}
+      padding={0}
+    >
+      {data ? (
+        <CovidChart confirmed={confirmed} deaths={deaths} dateArr={dateArr} />
+      ) : (
+        <NotFound />
+      )}
     </DashboardCard>
   );
 };

@@ -5,7 +5,11 @@ import { Dropdown } from '@app/components/common/Dropdown/Dropdown';
 import { Button } from '@app/components/common/buttons/Button/Button';
 import { ParticipantsDropdown } from '@app/components/apps/kanban/newCardForm/ParticipantsDropdown/ParticipantsDropdown';
 import { TagDropdown } from '@app/components/apps/kanban/newCardForm/TagDropdown/TagDropdown';
-import { CardState, Tag as ITag, Participant as IParticipant } from '@app/components/apps/kanban/interfaces';
+import {
+  CardState,
+  Tag as ITag,
+  Participant as IParticipant,
+} from '@app/components/apps/kanban/interfaces';
 import * as S from './Card.styles';
 
 interface CardProps {
@@ -28,7 +32,11 @@ interface EditPopoverProps {
   onArchive: () => void;
 }
 
-const EditPopover: React.FC<EditPopoverProps> = ({ onDelete, onArchive, ...props }) => {
+const EditPopover: React.FC<EditPopoverProps> = ({
+  onDelete,
+  onArchive,
+  ...props
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -82,8 +90,17 @@ export const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <S.CardWrapper data-id={id} onClick={onClick} style={style} className={className}>
-      <S.CollapseCard onChange={onArrowPress} bordered={false} defaultActiveKey={['1']}>
+    <S.CardWrapper
+      data-id={id}
+      onClick={onClick}
+      style={style}
+      className={className}
+    >
+      <S.CollapseCard
+        onChange={onArrowPress}
+        bordered={false}
+        defaultActiveKey={['1']}
+      >
         <S.CardContent
           showArrow={false}
           key="1"
@@ -109,9 +126,18 @@ export const Card: React.FC<CardProps> = ({
                 )}
               </S.CardTitle>
               <S.CardRightContent>
-                <Button noStyle type="text" icon={<S.ArrowDownIcon $expanded={isExpanded} />} />
+                <Button
+                  noStyle
+                  type="text"
+                  icon={<S.ArrowDownIcon $expanded={isExpanded} />}
+                />
                 <Dropdown
-                  overlay={<EditPopover onDelete={onDeleteCard} onArchive={onDeleteCard} />}
+                  overlay={
+                    <EditPopover
+                      onDelete={onDeleteCard}
+                      onArchive={onDeleteCard}
+                    />
+                  }
                   placement="bottomRight"
                   trigger={['click']}
                 >
@@ -146,7 +172,10 @@ export const Card: React.FC<CardProps> = ({
           </S.CardFooter>
 
           <S.ParticipantsWrapper>
-            <ParticipantsDropdown selectedParticipants={participants} setSelectedParticipants={updateParticipants} />
+            <ParticipantsDropdown
+              selectedParticipants={participants}
+              setSelectedParticipants={updateParticipants}
+            />
           </S.ParticipantsWrapper>
         </S.CardContent>
       </S.CollapseCard>

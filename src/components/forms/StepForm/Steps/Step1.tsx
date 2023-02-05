@@ -11,14 +11,18 @@ export const Step1: React.FC = () => {
       <BaseForm.Item
         name="login"
         label={t('forms.stepFormLabels.login')}
-        rules={[{ required: true, message: t('forms.stepFormLabels.loginError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.loginError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>
       <BaseForm.Item
         name="password"
         label={t('common.password')}
-        rules={[{ required: true, message: t('forms.stepFormLabels.passwordError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.passwordError') },
+        ]}
       >
         <InputPassword />
       </BaseForm.Item>
@@ -33,7 +37,9 @@ export const Step1: React.FC = () => {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error(t('common.confirmPasswordError')));
+              return Promise.reject(
+                new Error(t('common.confirmPasswordError')),
+              );
             },
           }),
         ]}

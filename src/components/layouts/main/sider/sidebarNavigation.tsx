@@ -76,7 +76,7 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
   {
     title: 'Employees',
     key: 'configuration-employees',
-    url: "/configuration/employees",
+    url: '/configuration/employees',
     icon: <UserSwitchOutlined />,
   },
   {

@@ -25,7 +25,9 @@ export const TreatmentPanel: React.FC<TreatmentPanelProps> = ({ event }) => {
       date: event.date,
       imgUrl: currentDoctor.imgUrl,
       phone: currentDoctor.phone,
-      speciality: specifities.find(({ id }) => id === currentDoctor.specifity)?.name || '',
+      speciality:
+        specifities.find(({ id }) => id === currentDoctor.specifity)?.name ||
+        '',
     };
 
     return <TreatmentDoctor doctor={doctor} />;

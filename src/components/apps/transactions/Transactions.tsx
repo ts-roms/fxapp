@@ -15,7 +15,11 @@ export const Transactions: React.FC = () => {
         padding="1.25rem 1.25rem 0"
         extra={
           <>
-            <Button type="ghost" icon={<PlusOutlined />} onClick={() => console.log('Add new transaction')}>
+            <Button
+              type="ghost"
+              icon={<PlusOutlined />}
+              onClick={() => console.log('Add new transaction')}
+            >
               {t('actions.new', { name: 'Transaction' })}
             </Button>
           </>

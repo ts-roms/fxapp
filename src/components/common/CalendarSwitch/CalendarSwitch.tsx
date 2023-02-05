@@ -11,7 +11,12 @@ interface CalendarSwitchProps {
   onToday: () => void;
 }
 
-export const CalendarSwitch: React.FC<CalendarSwitchProps> = ({ dateFormatted, onIncrease, onDecrease, onToday }) => {
+export const CalendarSwitch: React.FC<CalendarSwitchProps> = ({
+  dateFormatted,
+  onIncrease,
+  onDecrease,
+  onToday,
+}) => {
   const { t } = useTranslation();
 
   return (

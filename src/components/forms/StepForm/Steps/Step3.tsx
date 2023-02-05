@@ -11,35 +11,45 @@ export const Step3: React.FC = () => {
       <BaseForm.Item
         name="address1"
         label={`${t('common.address')} 1`}
-        rules={[{ required: true, message: t('forms.stepFormLabels.addressError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.addressError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>
       <BaseForm.Item
         name="address2"
         label={`${t('common.address')} 2`}
-        rules={[{ required: true, message: t('forms.stepFormLabels.addressError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.addressError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>
       <BaseForm.Item
         name="zipCode"
         label={t('common.zipcode')}
-        rules={[{ required: true, message: t('forms.stepFormLabels.zipCodeError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.zipCodeError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>
       <BaseForm.Item
         name="city"
         label={t('common.city')}
-        rules={[{ required: true, message: t('forms.stepFormLabels.cityError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.cityError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>
       <BaseForm.Item
         name="country"
         label={t('common.country')}
-        rules={[{ required: true, message: t('forms.stepFormLabels.countryError') }]}
+        rules={[
+          { required: true, message: t('forms.stepFormLabels.countryError') },
+        ]}
       >
         <Input />
       </BaseForm.Item>

@@ -5,7 +5,11 @@ import { FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
 export const Steps = styled(AntdSteps)`
   font-size: unset;
 
-  & .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  &
+    .ant-steps-item-process
+    > .ant-steps-item-container
+    > .ant-steps-item-content
+    > .ant-steps-item-title {
     color: var(--primary-color);
     font-weight: ${FONT_WEIGHT.semibold};
     font-size: ${FONT_SIZE.xs};
@@ -16,7 +20,10 @@ export const Steps = styled(AntdSteps)`
     }
   }
 
-  .ant-steps-item-wait > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+  .ant-steps-item-wait
+    > .ant-steps-item-container
+    > .ant-steps-item-content
+    > .ant-steps-item-title {
     color: var(--text-main-color);
     font-weight: ${FONT_WEIGHT.semibold};
     font-size: ${FONT_SIZE.xs};

@@ -12,7 +12,11 @@ const initialPagination: Pagination = {
 };
 
 export const TreeTable: React.FC = () => {
-  const [tableData, setTableData] = useState<{ data: TreeTableRow[]; pagination: Pagination; loading: boolean }>({
+  const [tableData, setTableData] = useState<{
+    data: TreeTableRow[];
+    pagination: Pagination;
+    loading: boolean;
+  }>({
     data: [],
     pagination: initialPagination,
     loading: false,
@@ -25,7 +29,11 @@ export const TreeTable: React.FC = () => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
       getTreeTableData(pagination).then((res) => {
         if (isMounted.current) {
-          setTableData({ data: res.data, pagination: res.pagination, loading: false });
+          setTableData({
+            data: res.data,
+            pagination: res.pagination,
+            loading: false,
+          });
         }
       });
     },
@@ -44,7 +52,11 @@ export const TreeTable: React.FC = () => {
     onChange: (selectedRowKeys: Key[], selectedRows: DefaultRecordType[]) => {
       console.log(selectedRowKeys, selectedRows);
     },
-    onSelect: (record: DefaultRecordType, selected: boolean, selectedRows: DefaultRecordType[]) => {
+    onSelect: (
+      record: DefaultRecordType,
+      selected: boolean,
+      selectedRows: DefaultRecordType[],
+    ) => {
       console.log(record, selected, selectedRows);
     },
     onSelectAll: (selected: boolean, selectedRows: DefaultRecordType[]) => {
