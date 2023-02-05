@@ -53,6 +53,8 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     { name: 'loanOfficer', value: '' },
     { name: 'salaryRange', value: '' },
     { name: 'description', value: '' },
+    { name: 'customFields', value: '' },
+    
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
@@ -78,6 +80,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     loanOfficer: t('forms.fields.field', { name: 'Loan Officer' }),
     salaryRange: t('forms.fields.field', { name: 'Salary Range' }),
     description: t('forms.fields.field', { name: 'Note' }),
+    customFields: t('forms.fields.field', { name: 'Custom Fields' }),
   };
 
   const formValues = fields
@@ -107,6 +110,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
       notificationController.success({ message: t('common.success') });
       setIsLoading(false);
       setCurrent(0);
+      setOpen(!open)
     }, 1500);
   };
 

@@ -2,9 +2,10 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Col, Row, Space, TablePaginationConfig } from 'antd';
 import {
   BasicTableRow,
-  getBasicTableData,
+  getTransactionData,
   Pagination,
   Tag,
+  TransactionTableRow,
 } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
@@ -22,7 +23,7 @@ const initialPagination: Pagination = {
 
 export const TransactionTable: React.FC = () => {
   const [tableData, setTableData] = useState<{
-    data: BasicTableRow[];
+    data: TransactionTableRow[];
     pagination: Pagination;
     loading: boolean;
   }>({
@@ -36,7 +37,7 @@ export const TransactionTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getBasicTableData(pagination).then((res) => {
+      getTransactionData(pagination).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
@@ -72,8 +73,13 @@ export const TransactionTable: React.FC = () => {
 
   const columns: ColumnsType<BasicTableRow> = [
     {
+      title: 'Reference',
+      dataIndex: 'reference',
+      render: (reference: string) => <Button type='link'>{reference}</Button>
+    },
+    {
       title: t('common.name'),
-      dataIndex: 'name',
+      dataIndex: 'employee',
       render: (text: string) => <span>{text}</span>,
       filterMode: 'tree',
       filterSearch: true,
@@ -123,33 +129,34 @@ export const TransactionTable: React.FC = () => {
         record.name.includes(value.toString()),
     },
     {
-      title: t('common.age'),
-      dataIndex: 'age',
-      sorter: (a: BasicTableRow, b: BasicTableRow) => a.age - b.age,
-      showSorterTooltip: false,
+      title: 'Principal',
+      dataIndex: 'principal',
+      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>
     },
     {
-      title: t('common.address'),
-      dataIndex: 'address',
+      title: 'Balance',
+      dataIndex: 'balance',
+      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>
     },
     {
-      title: t('common.tags'),
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (tags: Tag[]) => (
-        <Row gutter={[10, 10]}>
-          {tags.map((tag: Tag) => {
-            return (
-              <Col key={tag.value}>
-                <Status
-                  color={defineColorByPriority(tag.priority)}
-                  text={tag.value.toUpperCase()}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      ),
+      title: 'Disbursed Date',
+      dataIndex: 'disbursedDate',
+      render: (disbursedDate: string) => <span>{disbursedDate}</span> 
+    },
+    {
+      title: 'Disbursed By',
+      dataIndex: 'disbursedBy',
+      render: (disbursedBy: string) => <span>{disbursedBy}</span> 
+    },
+    {
+      title: 'Loan Type',
+      dataIndex: 'loanType',
+      render: (text: string) => <span>{text}</span>
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      render: (status: string) => <span><Status text={status} color="" /></span>,
     },
     {
       title: t('tables.actions'),
@@ -167,13 +174,6 @@ export const TransactionTable: React.FC = () => {
               }}
             >
               {t('tables.invite')}
-            </Button>
-            <Button
-              type="default"
-              danger
-              onClick={() => handleDeleteRow(record.key)}
-            >
-              {t('tables.delete')}
             </Button>
           </Space>
         );

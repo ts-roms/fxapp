@@ -9,7 +9,7 @@ import { Select } from '@app/components/common/selects/Select/Select';
 export const Step3: React.FC = () => {
   const { t } = useTranslation();
 
-  const branches = [{ label: 'Main', value: 'Mail' }];
+  const branches = [{ label: 'Main', value: 'Main' }];
 
   return (
     <S.FormContent>
@@ -22,7 +22,7 @@ export const Step3: React.FC = () => {
               {
                 required: true,
                 message: t('forms.stepFormLabels.fieldError', {
-                  field: 'Joining Date',
+                  field: t('forms.fields.field', { name: 'Joining Date' }),
                 }),
               },
             ]}
@@ -38,7 +38,7 @@ export const Step3: React.FC = () => {
               {
                 required: true,
                 message: t('forms.stepFormLabels.fieldError', {
-                  field: 'Branch',
+                  field: t('forms.fields.field', { name: 'Branch' }),
                 }),
               },
             ]}
@@ -58,7 +58,7 @@ export const Step3: React.FC = () => {
               {
                 required: true,
                 message: t('forms.stepFormLabels.fieldError', {
-                  field: 'Loan Officer',
+                  field: t('forms.fields.field', { name: 'Loan Officer' }),
                 }),
               },
             ]}
@@ -76,7 +76,7 @@ export const Step3: React.FC = () => {
               {
                 required: true,
                 message: t('forms.stepFormLabels.fieldError', {
-                  field: 'Salary Range',
+                  field: t('forms.fields.field', { name: 'Salary Range' }),
                 }),
               },
             ]}
@@ -90,7 +90,6 @@ export const Step3: React.FC = () => {
             label={
               t('forms.fields.field', { name: 'Description' }) + ' (optional)'
             }
-            rules={[{ required: false }]}
           >
             <TextArea />
           </BaseForm.Item>
@@ -99,11 +98,10 @@ export const Step3: React.FC = () => {
       <Row>
         <Col md={12}>
           <BaseForm.Item
-            name="custom_fields"
+            name="customFields"
             label={
               t('forms.fields.field', { name: 'Custom Fields' }) + ' (optional)'
             }
-            rules={[{ required: false }]}
           >
             <TextArea />
           </BaseForm.Item>
