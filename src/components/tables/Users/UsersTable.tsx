@@ -1,27 +1,28 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Space, TablePaginationConfig } from 'antd';
+import { Col, Row, Space, TablePaginationConfig } from 'antd';
 import {
   BasicTableRow,
-  getTransactionData,
+  getBasicTableData,
   Pagination,
-  TransactionTableRow,
+  Tag,
 } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { defineColorByPriority } from '@app/utils/utils';
 import { notificationController } from 'controllers/notificationController';
 import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
 
 const initialPagination: Pagination = {
   current: 1,
-  pageSize: 10,
+  pageSize: 5,
 };
 
-export const TransactionTable: React.FC = () => {
+export const UsersTable: React.FC = () => {
   const [tableData, setTableData] = useState<{
-    data: TransactionTableRow[];
+    data: BasicTableRow[];
     pagination: Pagination;
     loading: boolean;
   }>({
@@ -35,7 +36,7 @@ export const TransactionTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getTransactionData(pagination, initialPagination.pageSize!).then((res) => {
+      getBasicTableData(pagination).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
@@ -71,13 +72,8 @@ export const TransactionTable: React.FC = () => {
 
   const columns: ColumnsType<BasicTableRow> = [
     {
-      title: 'Reference',
-      dataIndex: 'reference',
-      render: (reference: string) => <Button type="link">{reference}</Button>,
-    },
-    {
       title: t('common.name'),
-      dataIndex: 'employee',
+      dataIndex: 'name',
       render: (text: string) => <span>{text}</span>,
       filterMode: 'tree',
       filterSearch: true,
@@ -127,37 +123,32 @@ export const TransactionTable: React.FC = () => {
         record.name.includes(value.toString()),
     },
     {
-      title: 'Principal',
-      dataIndex: 'principal',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
+      title: t('common.age'),
+      dataIndex: 'age',
+      sorter: (a: BasicTableRow, b: BasicTableRow) => a.age - b.age,
+      showSorterTooltip: false,
     },
     {
-      title: 'Balance',
-      dataIndex: 'balance',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
+      title: t('common.address'),
+      dataIndex: 'address',
     },
     {
-      title: 'Disbursed Date',
-      dataIndex: 'disbursedDate',
-      render: (disbursedDate: string) => <span>{disbursedDate}</span>,
-    },
-    {
-      title: 'Disbursed By',
-      dataIndex: 'disbursedBy',
-      render: (disbursedBy: string) => <span>{disbursedBy}</span>,
-    },
-    {
-      title: 'Loan Type',
-      dataIndex: 'loanType',
-      render: (text: string) => <span>{text}</span>,
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      render: (status: string) => (
-        <span>
-          <Status text={status} color="" />
-        </span>
+      title: t('common.tags'),
+      key: 'tags',
+      dataIndex: 'tags',
+      render: (tags: Tag[]) => (
+        <Row gutter={[10, 10]}>
+          {tags.map((tag: Tag) => {
+            return (
+              <Col key={tag.value}>
+                <Status
+                  color={defineColorByPriority(tag.priority)}
+                  text={tag.value.toUpperCase()}
+                />
+              </Col>
+            );
+          })}
+        </Row>
       ),
     },
     {
@@ -176,6 +167,13 @@ export const TransactionTable: React.FC = () => {
               }}
             >
               {t('tables.invite')}
+            </Button>
+            <Button
+              type="default"
+              danger
+              onClick={() => handleDeleteRow(record.key)}
+            >
+              {t('tables.delete')}
             </Button>
           </Space>
         );

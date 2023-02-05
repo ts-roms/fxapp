@@ -74,10 +74,31 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     key: 'configuration',
   },
   {
-    title: 'Employees',
-    key: 'configuration-employees',
-    url: '/configuration/employees',
+    title: 'Application',
+    key: 'application-config',
     icon: <UserSwitchOutlined />,
+    children: [
+      {
+        title: 'Employees',
+        key: 'application-employees',
+        url: 'application/employees',
+      },
+      {
+        title: 'Expenses',
+        key: 'application-expenses',
+        url: 'application/expenses',
+      },
+      {
+        title: 'Other Income',
+        key: 'application-other-income',
+        url: 'application/other-income',
+      },
+      {
+        title: 'Custom Fields',
+        key: 'application-custom-fields',
+        url: 'application/custom-fields',
+      },
+    ],
   },
   {
     title: 'Accounting',
@@ -97,28 +118,21 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     ],
   },
   {
-    title: 'Expenses',
-    key: 'configuration-expenses',
-    url: '/configuration/expenses',
+    title: 'System',
+    key: 'system-configuration',
     icon: <AuditOutlined />,
-  },
-  {
-    title: 'Other Income',
-    key: 'configuration-other-income',
-    url: '/configuration/other-income',
-    icon: <AuditOutlined />,
-  },
-  {
-    title: 'Custom Fields',
-    key: 'configuration-custom-fields',
-    url: '/configuration/custom-fields',
-    icon: <AuditOutlined />,
-  },
-  {
-    title: 'Users',
-    key: 'configuration-users',
-    url: '/configuration/users',
-    icon: <AuditOutlined />,
+    children: [
+      {
+        title: 'Users',
+        key: 'users-system-configuration',
+        url: '/system/users',
+      },
+      {
+        title: 'Branches',
+        key: 'branches-system-configuration',
+        url: '/system/branches',
+      },
+    ],
   },
   {
     title: 'Audit Trail',

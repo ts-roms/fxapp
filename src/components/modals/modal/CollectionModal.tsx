@@ -1,5 +1,5 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { CollectionForm } from '../Forms/CollectionForm/CollectionForm';
+import { CollectionForm } from '../forms/CollectionForm/CollectionForm';
 
 interface ICollectionModal {
   open: boolean;

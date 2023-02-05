@@ -1,5 +1,5 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { TransactionForm } from '../Forms/TransactionForm/TransactionForm';
+import { TransactionForm } from '../forms/TransactionForm/TransactionForm';
 
 interface ITransactionModal {
   open: boolean;

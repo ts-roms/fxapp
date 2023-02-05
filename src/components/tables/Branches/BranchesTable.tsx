@@ -2,16 +2,15 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Space, TablePaginationConfig } from 'antd';
 import {
   BasicTableRow,
-  getTransactionData,
+  getBranchesData,
+  BranchesTableRow,
   Pagination,
-  TransactionTableRow,
 } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { notificationController } from 'controllers/notificationController';
-import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
 
 const initialPagination: Pagination = {
@@ -19,9 +18,9 @@ const initialPagination: Pagination = {
   pageSize: 10,
 };
 
-export const TransactionTable: React.FC = () => {
+export const BranchesTable: React.FC = () => {
   const [tableData, setTableData] = useState<{
-    data: TransactionTableRow[];
+    data: BranchesTableRow[];
     pagination: Pagination;
     loading: boolean;
   }>({
@@ -35,7 +34,7 @@ export const TransactionTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getTransactionData(pagination, initialPagination.pageSize!).then((res) => {
+      getBranchesData(pagination, initialPagination.pageSize!).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
@@ -71,94 +70,17 @@ export const TransactionTable: React.FC = () => {
 
   const columns: ColumnsType<BasicTableRow> = [
     {
-      title: 'Reference',
-      dataIndex: 'reference',
-      render: (reference: string) => <Button type="link">{reference}</Button>,
+      title: 'Name',
+      dataIndex: 'name',
     },
     {
-      title: t('common.name'),
-      dataIndex: 'employee',
-      render: (text: string) => <span>{text}</span>,
-      filterMode: 'tree',
-      filterSearch: true,
-      filters: [
-        {
-          text: t('common.firstName'),
-          value: 'firstName',
-          children: [
-            {
-              text: 'Joe',
-              value: 'Joe',
-            },
-            {
-              text: 'Pavel',
-              value: 'Pavel',
-            },
-            {
-              text: 'Jim',
-              value: 'Jim',
-            },
-            {
-              text: 'Josh',
-              value: 'Josh',
-            },
-          ],
-        },
-        {
-          text: t('common.lastName'),
-          value: 'lastName',
-          children: [
-            {
-              text: 'Green',
-              value: 'Green',
-            },
-            {
-              text: 'Black',
-              value: 'Black',
-            },
-            {
-              text: 'Brown',
-              value: 'Brown',
-            },
-          ],
-        },
-      ],
-      onFilter: (value: string | number | boolean, record: BasicTableRow) =>
-        record.name.includes(value.toString()),
+      title: 'Note',
+      dataIndex: 'note',
     },
     {
-      title: 'Principal',
-      dataIndex: 'principal',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
-    },
-    {
-      title: 'Balance',
-      dataIndex: 'balance',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
-    },
-    {
-      title: 'Disbursed Date',
-      dataIndex: 'disbursedDate',
-      render: (disbursedDate: string) => <span>{disbursedDate}</span>,
-    },
-    {
-      title: 'Disbursed By',
-      dataIndex: 'disbursedBy',
-      render: (disbursedBy: string) => <span>{disbursedBy}</span>,
-    },
-    {
-      title: 'Loan Type',
-      dataIndex: 'loanType',
-      render: (text: string) => <span>{text}</span>,
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      render: (status: string) => (
-        <span>
-          <Status text={status} color="" />
-        </span>
-      ),
+      title: 'Default',
+      dataIndex: 'default',
+      render: (isDefault: boolean) => <span>{isDefault ? 'Yes' : 'No'}</span>
     },
     {
       title: t('tables.actions'),
@@ -176,6 +98,13 @@ export const TransactionTable: React.FC = () => {
               }}
             >
               {t('tables.invite')}
+            </Button>
+            <Button
+              type="default"
+              danger
+              onClick={() => handleDeleteRow(record.key)}
+            >
+              {t('tables.delete')}
             </Button>
           </Space>
         );
