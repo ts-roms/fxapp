@@ -81,24 +81,24 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
       {
         title: 'Employees',
         key: 'application-employees',
-        url: 'application/employees'
+        url: 'application/employees',
       },
       {
         title: 'Expenses',
         key: 'application-expenses',
-        url: 'application/expenses'
+        url: 'application/expenses',
       },
       {
         title: 'Other Income',
         key: 'application-other-income',
-        url: 'application/other-income'
+        url: 'application/other-income',
       },
       {
         title: 'Custom Fields',
         key: 'application-custom-fields',
-        url: 'application/custom-fields'
-      }
-    ]
+        url: 'application/custom-fields',
+      },
+    ],
   },
   {
     title: 'Accounting',
@@ -125,14 +125,14 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
       {
         title: 'Users',
         key: 'users-system-configuration',
-        url: '/system/users'
+        url: '/system/users',
       },
       {
         title: 'Branches',
         key: 'branches-system-configuration',
-        url: '/system/branches'
-      }
-    ]
+        url: '/system/branches',
+      },
+    ],
   },
   {
     title: 'Audit Trail',

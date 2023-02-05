@@ -17,7 +17,7 @@ export const Users: React.FC = () => {
             <Button
               type={'ghost'}
               icon={<PlusOutlined />}
-              onClick={() => console.log("CLICK")}
+              onClick={() => console.log('CLICK')}
             >
               {t('actions.new', { name: 'Users' })}
             </Button>
@@ -27,5 +27,5 @@ export const Users: React.FC = () => {
         <UsersTable />
       </S.Card>
     </S.MainWrapper>
-  )
-}
+  );
+};

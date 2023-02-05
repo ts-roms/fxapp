@@ -18,7 +18,7 @@ export const Collections: React.FC = () => {
         padding="1.25rem 1.25rem 0"
         extra={
           <S.ActionWrapper>
-           <Button
+            <Button
               type="ghost"
               icon={<DownloadOutlined />}
               style={{

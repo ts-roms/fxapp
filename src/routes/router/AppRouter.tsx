@@ -42,7 +42,6 @@ const Employee = withLoading(EmployeePage);
 const Branches = withLoading(BranchesPage);
 const Users = withLoading(UsersPage);
 
-
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
 

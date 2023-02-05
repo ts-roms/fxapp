@@ -11,4 +11,4 @@ export const Card = styled(CommonCard)`
 
 export const ActionWrapper = styled.div`
   display: flex;
-`
+`;

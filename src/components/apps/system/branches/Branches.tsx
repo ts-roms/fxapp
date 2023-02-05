@@ -17,7 +17,7 @@ export const Branches: React.FC = () => {
             <Button
               type={'ghost'}
               icon={<PlusOutlined />}
-              onClick={() => console.log("CLICK")}
+              onClick={() => console.log('CLICK')}
             >
               {t('actions.new', { name: 'Branch' })}
             </Button>
@@ -27,5 +27,5 @@ export const Branches: React.FC = () => {
         <BranchesTable />
       </S.Card>
     </S.MainWrapper>
-  )
-}
+  );
+};
