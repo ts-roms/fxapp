@@ -1,10 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Avatar, Image, Space, TablePaginationConfig } from 'antd';
-import {
-  BasicTableRow,
-  getBasicTableData,
-  Pagination,
-} from 'api/table.api';
+import { BasicTableRow, getBasicTableData, Pagination } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
@@ -72,10 +68,12 @@ export const EmployeeTable: React.FC = () => {
     {
       title: 'Image',
       dataIndex: 'image',
-      render: (image: any) => <Avatar
-        size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
-        icon={<Image src={image} alt={"text"} />}
-      />
+      render: (image: any) => (
+        <Avatar
+          size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+          icon={<Image src={image} alt={'text'} />}
+        />
+      ),
     },
     {
       title: t('common.name'),
@@ -145,7 +143,11 @@ export const EmployeeTable: React.FC = () => {
     {
       title: 'Status',
       dataIndex: 'status',
-      render: (status: string) => <span><Status text={status} color="" /></span>,
+      render: (status: string) => (
+        <span>
+          <Status text={status} color="" />
+        </span>
+      ),
       filterMode: 'tree',
       filterSearch: true,
       filters: [
@@ -155,15 +157,15 @@ export const EmployeeTable: React.FC = () => {
           children: [
             {
               text: 'Active',
-              value: 'Active'
+              value: 'Active',
             },
             {
               text: 'Pending',
-              value: 'Pending'
-            }
-          ]
-        }
-      ]
+              value: 'Pending',
+            },
+          ],
+        },
+      ],
     },
     {
       title: t('tables.actions'),

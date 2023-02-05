@@ -6,7 +6,7 @@ export interface Tag {
 }
 
 export interface Status {
-  value: string
+  value: string;
 }
 
 export interface BasicTableRow {
@@ -60,7 +60,7 @@ export interface TransactionTableData {
 }
 
 export const getTransactionData = (
-  pagination: Pagination
+  pagination: Pagination,
 ): Promise<TransactionTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
@@ -75,14 +75,14 @@ export const getTransactionData = (
             disbursedDate: '2022/01/01',
             disbursedBy: 'Manager',
             loanType: 'TMP',
-            status: 'Active'
-          }
+            status: 'Active',
+          },
         ],
-        pagination: {...pagination, total: 20 }
-      })
+        pagination: { ...pagination, total: 20 },
+      });
     }, 1000);
-  })
-}
+  });
+};
 
 export const getBasicTableData = (
   pagination: Pagination,
@@ -102,7 +102,7 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 2,
@@ -112,7 +112,7 @@ export const getBasicTableData = (
             address: 'London No. 1 Lake Park',
             tags: [{ value: 'Doctor', priority: Priority.HIGH }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 3,
@@ -125,7 +125,7 @@ export const getBasicTableData = (
               { value: 'Architect', priority: Priority.LOW },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 4,
@@ -138,7 +138,7 @@ export const getBasicTableData = (
               { value: 'Architect', priority: Priority.LOW },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 5,
@@ -148,7 +148,7 @@ export const getBasicTableData = (
             address: 'Minsk',
             tags: [{ value: 'Engineer', priority: Priority.MEDIUM }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 6,
@@ -161,7 +161,7 @@ export const getBasicTableData = (
               { value: 'Architect', priority: Priority.LOW },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 7,
@@ -171,7 +171,7 @@ export const getBasicTableData = (
             address: 'Sidney No. 1 Lake Park',
             tags: [{ value: 'Architect', priority: Priority.LOW }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 8,
@@ -181,7 +181,7 @@ export const getBasicTableData = (
             address: 'New York No. 1 Lake Park',
             tags: [{ value: 'Engineer', priority: Priority.MEDIUM }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 9,
@@ -194,7 +194,7 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 10,
@@ -207,7 +207,7 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 11,
@@ -220,7 +220,7 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 12,
@@ -233,7 +233,7 @@ export const getBasicTableData = (
               { value: 'Doctor', priority: Priority.HIGH },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 13,
@@ -248,7 +248,7 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 14,
@@ -258,7 +258,7 @@ export const getBasicTableData = (
             address: 'New York',
             tags: [{ value: 'Professor', priority: Priority.LOW }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 15,
@@ -271,7 +271,7 @@ export const getBasicTableData = (
               { value: 'Engineer', priority: Priority.MEDIUM },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 16,
@@ -284,7 +284,7 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 17,
@@ -297,7 +297,7 @@ export const getBasicTableData = (
               { value: 'Teacher', priority: Priority.INFO },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 18,
@@ -310,7 +310,7 @@ export const getBasicTableData = (
               { value: 'Doctor', priority: Priority.HIGH },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 19,
@@ -323,7 +323,7 @@ export const getBasicTableData = (
               { value: 'Doctor', priority: Priority.HIGH },
             ],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
           {
             key: 20,
@@ -333,7 +333,7 @@ export const getBasicTableData = (
             address: 'Bronx',
             tags: [{ value: 'Professor', priority: Priority.LOW }],
             branch: 'Main',
-            status: 'Active'
+            status: 'Active',
           },
         ],
         pagination: { ...pagination, total: 20 },

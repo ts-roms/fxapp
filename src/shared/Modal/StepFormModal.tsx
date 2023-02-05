@@ -3,8 +3,7 @@ import { EmployeeForm } from '../Forms/EmployeeForm/EmployeeForm';
 
 interface IStepFormModal {
   open: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setOpen: any;
+  setOpen: (e: any) => void;
 }
 
 const StepFormModal: React.FC<IStepFormModal> = (formModal: IStepFormModal) => {
@@ -20,6 +19,7 @@ const StepFormModal: React.FC<IStepFormModal> = (formModal: IStepFormModal) => {
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
+      title={'Employee Form'}
     >
       <EmployeeForm open={open} setOpen={setOpen} />
     </Modal>

@@ -1,17 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Col, Row, Space, TablePaginationConfig } from 'antd';
+import { Space, TablePaginationConfig } from 'antd';
 import {
   BasicTableRow,
   getTransactionData,
   Pagination,
-  Tag,
   TransactionTableRow,
 } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { defineColorByPriority } from '@app/utils/utils';
 import { notificationController } from 'controllers/notificationController';
 import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
@@ -75,7 +73,7 @@ export const TransactionTable: React.FC = () => {
     {
       title: 'Reference',
       dataIndex: 'reference',
-      render: (reference: string) => <Button type='link'>{reference}</Button>
+      render: (reference: string) => <Button type="link">{reference}</Button>,
     },
     {
       title: t('common.name'),
@@ -131,32 +129,36 @@ export const TransactionTable: React.FC = () => {
     {
       title: 'Principal',
       dataIndex: 'principal',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>
+      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
     },
     {
       title: 'Balance',
       dataIndex: 'balance',
-      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>
+      render: (text: string) => <span>P {Number(text).toFixed(2)}</span>,
     },
     {
       title: 'Disbursed Date',
       dataIndex: 'disbursedDate',
-      render: (disbursedDate: string) => <span>{disbursedDate}</span> 
+      render: (disbursedDate: string) => <span>{disbursedDate}</span>,
     },
     {
       title: 'Disbursed By',
       dataIndex: 'disbursedBy',
-      render: (disbursedBy: string) => <span>{disbursedBy}</span> 
+      render: (disbursedBy: string) => <span>{disbursedBy}</span>,
     },
     {
       title: 'Loan Type',
       dataIndex: 'loanType',
-      render: (text: string) => <span>{text}</span>
+      render: (text: string) => <span>{text}</span>,
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      render: (status: string) => <span><Status text={status} color="" /></span>,
+      render: (status: string) => (
+        <span>
+          <Status text={status} color="" />
+        </span>
+      ),
     },
     {
       title: t('tables.actions'),
