@@ -85,7 +85,7 @@ export const TransactionForm: React.FC<ITransactionForm> = (
         setTimeout(() => {
           notificationController.success({ message: t('common.success') });
           setIsLoading(false);
-          setOpen(!open)
+          setOpen(!open);
         }, 3000);
       })
       .catch(() => {

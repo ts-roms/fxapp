@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BaseForm } from "@app/components/common/forms/BaseForm/BaseForm";
+import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import * as S from './CollectionForm.styles';
 import { Button } from '@app/components/common/buttons/Button/Button';
 import { mergeBy } from '@app/utils/utils';
@@ -24,7 +24,7 @@ interface FormValues {
 }
 
 export const CollectionForm: React.FC<ICollectionForm> = (
-  collectionForm: ICollectionForm
+  collectionForm: ICollectionForm,
 ) => {
   const { t } = useTranslation();
 
@@ -37,8 +37,8 @@ export const CollectionForm: React.FC<ICollectionForm> = (
     { name: 'receiptNo', value: '' },
     { name: 'collectionDate', value: '' },
     { name: 'description', value: '' },
-    { name: 'customFields', value: '' }
-  ])
+    { name: 'customFields', value: '' },
+  ]);
 
   const fieldUi: FormValues = {
     loanId: t('forms.fields.field', { name: 'Loan ID' }),
@@ -46,8 +46,8 @@ export const CollectionForm: React.FC<ICollectionForm> = (
     receiptNo: t('forms.fields.field', { name: 'Receipt No' }),
     collectionDate: t('forms.fields.field', { name: 'Payment Date' }),
     description: t('forms.fields.field', { name: 'Description' }),
-    customFields: t('forms.fields.field', { name: 'Custom Fields' })
-  }
+    customFields: t('forms.fields.field', { name: 'Custom Fields' }),
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -58,14 +58,14 @@ export const CollectionForm: React.FC<ICollectionForm> = (
         setTimeout(() => {
           notificationController.success({ message: t('common.success') });
           setIsLoading(false);
-          setOpen(!open)
+          setOpen(!open);
         }, 3000);
       })
       .catch(() => {
         notificationController.error({ message: t('common.error') });
         setIsLoading(false);
       });
-  }
+  };
 
   return (
     <BaseForm
@@ -214,5 +214,5 @@ export const CollectionForm: React.FC<ICollectionForm> = (
         ) : null}
       </S.ActionWrapper>
     </BaseForm>
-  )
-}
+  );
+};

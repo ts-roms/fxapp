@@ -19,7 +19,7 @@ export const Transactions: React.FC = () => {
         title={t('tables.title', { name: 'Transactions' })}
         padding="1.25rem 1.25rem 0"
         extra={
-          <>
+          <S.ActionWrapper>
             <Button
               type="ghost"
               icon={<PlusOutlined />}
@@ -27,7 +27,7 @@ export const Transactions: React.FC = () => {
             >
               {t('actions.new', { name: 'Transaction' })}
             </Button>
-          </>
+          </S.ActionWrapper>
         }
       >
         <TransactionTable />

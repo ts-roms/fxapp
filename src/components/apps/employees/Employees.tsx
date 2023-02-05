@@ -18,7 +18,7 @@ export const Employees: React.FC = () => {
         title={t('tables.title', { name: 'Employees' })}
         padding="1.25rem 1.25rem 0"
         extra={
-          <React.Fragment>
+          <S.ActionWrapper>
             <Button
               type="ghost"
               icon={<DownloadOutlined />}
@@ -35,7 +35,7 @@ export const Employees: React.FC = () => {
             >
               {t('actions.new', { name: 'Employee' })}
             </Button>
-          </React.Fragment>
+          </S.ActionWrapper>
         }
       >
         <EmployeeTable />
