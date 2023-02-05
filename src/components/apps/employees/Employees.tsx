@@ -11,7 +11,7 @@ export const Employees: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <S.EmployeesWrapper>
+    <S.MainWrapper>
       <StepFormModal open={open} setOpen={setOpen} />
       <S.Card
         id="transaction-table"
@@ -40,6 +40,6 @@ export const Employees: React.FC = () => {
       >
         <EmployeeTable />
       </S.Card>
-    </S.EmployeesWrapper>
+    </S.MainWrapper>
   );
 };

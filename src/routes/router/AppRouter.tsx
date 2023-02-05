@@ -24,6 +24,10 @@ const KanbanPage = React.lazy(() => import('@app/pages/KanbanPage'));
 const EmployeePage = React.lazy(() => import('@app/pages/EmployeePage'));
 const Logout = React.lazy(() => import('./Logout'));
 
+// System Configuration
+const BranchesPage = React.lazy(() => import('@app/pages/BranchesPage'));
+const UsersPage = React.lazy(() => import('@app/pages/UsersPage'));
+
 export const DASHBOARD_PATH = '/';
 
 const Dashboard = withLoading(DashboardPage);
@@ -33,8 +37,11 @@ const Kanban = withLoading(KanbanPage);
 const Transactions = withLoading(TransactionPage);
 const Collections = withLoading(CollectionPage);
 
-// Configuration
+// System Configuration
 const Employee = withLoading(EmployeePage);
+const Branches = withLoading(BranchesPage);
+const Users = withLoading(UsersPage);
+
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -59,14 +66,17 @@ export const AppRouter: React.FC = () => {
           <Route path="big-brother" element={<Transactions />} />
           <Route path="reports" element={<Transactions />} />
 
-          <Route path="configuration">
+          <Route path="application">
             <Route path="employees" element={<Employee />} />
             <Route path="feed" element={<NewsFeed />} />
             <Route path="kanban" element={<Kanban />} />
             <Route path="expenses" element={<Kanban />} />
             <Route path="other-income" element={<Kanban />} />
             <Route path="custom-fields" element={<Kanban />} />
-            <Route path="users" element={<Kanban />} />
+          </Route>
+          <Route path="system">
+            <Route path="users" element={<Users />} />
+            <Route path="branches" element={<Branches />} />
           </Route>
           <Route path="audit-trail" element={<Transactions />} />
         </Route>
