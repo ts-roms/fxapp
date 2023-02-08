@@ -7,4 +7,5 @@ export const FormContent = styled.div`
   margin: 1.25rem 0.5rem;
 `;
 
-export const SpinnerContainer = styled.div``
+export const SpinnerContainer = styled.div`
+`;

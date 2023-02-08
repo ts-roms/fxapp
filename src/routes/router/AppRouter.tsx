@@ -82,7 +82,6 @@ export const AppRouter: React.FC = () => {
 
         <Route path="/auth" element={<AuthLayoutFallback />}>
           <Route path="login" element={<LoginPage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
           <Route
             path="lock"
             element={
