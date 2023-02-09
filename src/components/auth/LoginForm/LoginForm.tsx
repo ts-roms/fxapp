@@ -5,19 +5,17 @@ import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { doLogin } from '@app/store/slices/authSlice';
 import { notificationController } from '@app/controllers/notificationController';
-import { ReactComponent as FacebookIcon } from '@app/assets/icons/facebook.svg';
-import { ReactComponent as GoogleIcon } from '@app/assets/icons/google.svg';
 import * as S from './LoginForm.styles';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 
 interface LoginFormData {
-  email: string;
+  username: string;
   password: string;
 }
 
 export const initValues: LoginFormData = {
-  email: '',
-  password: '',
+  username: 'superadmin',
+  password: 'aaAA@@123444',
 };
 
 export const LoginForm: React.FC = () => {
@@ -49,13 +47,11 @@ export const LoginForm: React.FC = () => {
         <Auth.FormTitle>{t('common.login')}</Auth.FormTitle>
         <S.LoginDescription>{t('login.loginInfo')}</S.LoginDescription>
         <Auth.FormItem
-          name="email"
+          name="username"
           label={t('common.email')}
           rules={[
             { required: true, message: t('common.requiredField') },
-            {
-              type: 'email',
-              message: t('common.notValidEmail'),
+            { message: t('common.notValidEmail'),
             },
           ]}
         >
@@ -69,6 +65,11 @@ export const LoginForm: React.FC = () => {
           <Auth.FormInputPassword placeholder={t('common.password')} />
         </Auth.FormItem>
         <Auth.ActionsWrapper>
+          <BaseForm.Item name="rememberMe" valuePropName="checked" noStyle>
+            <Auth.FormCheckbox>
+              <S.RememberMeText>{t('login.rememberMe')}</S.RememberMeText>
+            </Auth.FormCheckbox>
+          </BaseForm.Item>
           <Link to="/auth/forgot-password">
             <S.ForgotPasswordText>
               {t('common.forgotPass')}
