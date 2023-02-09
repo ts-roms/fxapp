@@ -58,19 +58,6 @@ export const TransactionTable: React.FC = () => {
     fetch(pagination);
   };
 
-  const handleDeleteRow = (rowId: number) => {
-    setTableData({
-      ...tableData,
-      data: tableData.data.filter((item) => item.key !== rowId),
-      pagination: {
-        ...tableData.pagination,
-        total: tableData.pagination.total
-          ? tableData.pagination.total - 1
-          : tableData.pagination.total,
-      },
-    });
-  };
-
   const columns: ColumnsType<BasicTableRow> = [
     {
       title: 'Reference',

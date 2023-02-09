@@ -12,6 +12,8 @@ import NewPasswordPage from '@app/pages/NewPasswordPage';
 import LockPage from '@app/pages/LockPage';
 
 import MainLayout from '@app/components/layouts/main/MainLayout/MainLayout';
+import ProfileLayout from '@app/components/profile/ProfileLayout';
+
 import RequireAuth from '@app/routes/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
 import DashboardPage from '@app/pages/DashboardPages/DashboardPage';
@@ -21,6 +23,9 @@ import CollectionPage from '@app/pages/CollectionPage';
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const KanbanPage = React.lazy(() => import('@app/pages/KanbanPage'));
 const EmployeePage = React.lazy(() => import('@app/pages/EmployeePage'));
+const PersonalInfoPage = React.lazy(
+  () => import('@app/pages/PersonalInfoPage'),
+);
 const Logout = React.lazy(() => import('./Logout'));
 
 // System Configuration
@@ -30,6 +35,7 @@ const UsersPage = React.lazy(() => import('@app/pages/UsersPage'));
 export const DASHBOARD_PATH = '/';
 
 const Dashboard = withLoading(DashboardPage);
+const PersonalInfo = withLoading(PersonalInfoPage);
 const NewsFeed = withLoading(NewsFeedPage);
 const Kanban = withLoading(KanbanPage);
 
@@ -71,6 +77,9 @@ export const AppRouter: React.FC = () => {
             <Route path="expenses" element={<Kanban />} />
             <Route path="other-income" element={<Kanban />} />
             <Route path="custom-fields" element={<Kanban />} />
+          </Route>
+          <Route path="profile" element={<ProfileLayout />}>
+            <Route path="personal-info" element={<PersonalInfo />} />
           </Route>
           <Route path="system">
             <Route path="users" element={<Users />} />

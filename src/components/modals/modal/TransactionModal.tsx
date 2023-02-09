@@ -22,7 +22,7 @@ const TransactionModal: React.FC<ITransactionModal> = (
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
-      width={'60%'}
+      width={'70%'}
       title={'Loan Application Form'}
     >
       <TransactionForm open={open} setOpen={setOpen} />
