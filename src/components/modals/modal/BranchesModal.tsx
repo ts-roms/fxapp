@@ -6,9 +6,7 @@ interface IBranchesModal {
   setOpen: (e: boolean) => void;
 }
 
-const BranchesModal: React.FC<IBranchesModal> = (
-  formModal: IBranchesModal,
-) => {
+const BranchesModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
   const { open, setOpen } = formModal;
   return (
     <Modal

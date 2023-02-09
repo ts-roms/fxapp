@@ -7,12 +7,12 @@ import { InputNumber } from '@app/components/common/inputs/InputNumber/InputNumb
 import { useResetFormOnCloseModal } from './useResetFormOnCloseModal';
 
 interface AddUserFormModalProps {
-  visible: boolean;
+  open: boolean;
   onCancel: () => void;
 }
 
 export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({
-  visible,
+  open,
   onCancel,
 }) => {
   const [form] = BaseForm.useForm();
@@ -20,7 +20,7 @@ export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({
 
   useResetFormOnCloseModal({
     form,
-    visible,
+    open,
   });
 
   const onOk = () => {
@@ -30,7 +30,7 @@ export const AddUserFormModal: React.FC<AddUserFormModalProps> = ({
   return (
     <Modal
       title={t('forms.controlFormLabels.newUser')}
-      visible={visible}
+      open={open}
       onOk={onOk}
       onCancel={onCancel}
     >

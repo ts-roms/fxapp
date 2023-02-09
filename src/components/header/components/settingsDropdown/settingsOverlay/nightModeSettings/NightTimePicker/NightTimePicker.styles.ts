@@ -9,3 +9,7 @@ export const PickerLabel = styled(Typography.Text)`
     font-size: 1rem;
   }
 `;
+
+export const Wrapper = styled.div`
+  margin-top: 1.5rem;
+`;

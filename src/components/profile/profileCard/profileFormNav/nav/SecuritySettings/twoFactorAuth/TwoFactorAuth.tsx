@@ -102,7 +102,7 @@ export const TwoFactorAuth: React.FC = () => {
       </BaseButtonsForm>
       <S.AuthModal
         destroyOnClose
-        visible={isClickedVerify}
+        open={isClickedVerify}
         footer={false}
         closable={false}
         onCancel={() => setClickedVerify(false)}

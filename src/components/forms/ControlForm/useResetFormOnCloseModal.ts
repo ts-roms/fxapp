@@ -3,20 +3,20 @@ import { FormInstance } from 'antd';
 
 export const useResetFormOnCloseModal = ({
   form,
-  visible,
+  open,
 }: {
   form: FormInstance;
-  visible: boolean;
+  open: boolean;
 }): void => {
-  const prevVisibleRef = useRef<boolean>();
+  const prevOpenRef = useRef<boolean>();
   useEffect(() => {
-    prevVisibleRef.current = visible;
-  }, [visible]);
-  const prevVisible = prevVisibleRef.current;
+    prevOpenRef.current = open;
+  }, [open]);
+  const prevOpen = prevOpenRef.current;
 
   useEffect(() => {
-    if (!visible && prevVisible) {
+    if (!open && prevOpen) {
       form.resetFields();
     }
-  }, [visible, form, prevVisible]);
+  }, [open, form, prevOpen]);
 };

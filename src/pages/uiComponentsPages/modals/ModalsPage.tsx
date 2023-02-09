@@ -63,7 +63,7 @@ const ModalsPage: React.FC = () => {
           </Button>
           <Modal
             title={t('modals.basic')}
-            visible={isBasicModalVisible}
+            open={isBasicModalVisible}
             onOk={() => setIsBasicModalVisible(false)}
             onCancel={() => setIsBasicModalVisible(false)}
           >
@@ -91,7 +91,7 @@ const ModalsPage: React.FC = () => {
           <Modal
             title={t('modals.smallTitle')}
             centered
-            visible={isSmallModalVisible}
+            open={isSmallModalVisible}
             onOk={() => setIsSmallModalVisible(false)}
             onCancel={() => setIsSmallModalVisible(false)}
             size="small"
@@ -103,7 +103,7 @@ const ModalsPage: React.FC = () => {
           <Modal
             title={t('modals.middleTitle')}
             centered
-            visible={isMiddleModalVisible}
+            open={isMiddleModalVisible}
             onOk={() => setIsMiddleModalVisible(false)}
             onCancel={() => setIsMiddleModalVisible(false)}
             size="medium"
@@ -115,7 +115,7 @@ const ModalsPage: React.FC = () => {
           <Modal
             title={t('modals.largeTitle')}
             centered
-            visible={isLargeModalVisible}
+            open={isLargeModalVisible}
             onOk={() => setIsLargeModalVisible(false)}
             onCancel={() => setIsLargeModalVisible(false)}
             size="large"
@@ -127,7 +127,7 @@ const ModalsPage: React.FC = () => {
           <Modal
             title={t('modals.fullscreenTitle')}
             centered
-            visible={isFullscreenModalVisible}
+            open={isFullscreenModalVisible}
             onOk={() => setIsFullscreenModalVisible(false)}
             onCancel={() => setIsFullscreenModalVisible(false)}
             width={'100%'}
