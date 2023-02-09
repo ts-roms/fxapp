@@ -8,6 +8,7 @@ import { Input } from '@app/components/common/inputs/Input/Input';
 import { useTranslation } from 'react-i18next';
 import TextArea from 'antd/lib/input/TextArea';
 import { notificationController } from '@app/controllers/notificationController';
+import { BulkCollectionTable } from '../../tables/collection/BulkCollectionTable';
 
 interface ICollectionForm {
   open: boolean;
@@ -23,7 +24,7 @@ interface FormValues {
   [key: string]: string | undefined;
 }
 
-export const CollectionForm: React.FC<ICollectionForm> = (
+export const BulkCollectionForm: React.FC<ICollectionForm> = (
   collectionForm: ICollectionForm,
 ) => {
   const { t } = useTranslation();
@@ -82,95 +83,7 @@ export const CollectionForm: React.FC<ICollectionForm> = (
       }}
     >
       <S.FormContent>
-        <Row justify={'space-between'} align={'middle'}>
-          <Col xxl={12}>
-            <BaseForm.Item
-              name="loanId"
-              label={fieldUi.loanId}
-              rules={[
-                {
-                  required: true,
-                  message: t('forms.stepFormLabels.fieldError', {
-                    field: 'Loan Id',
-                  }),
-                },
-              ]}
-              style={{
-                width: 400,
-              }}
-            >
-              <Input placeholder={fieldUi.loanId} />
-            </BaseForm.Item>
-          </Col>
-          <Col></Col>
-        </Row>
-        <Row justify={'space-between'} align={'middle'}>
-          <Col xxl={12}>
-            <BaseForm.Item
-              name="amount"
-              label={fieldUi.amount}
-              rules={[
-                {
-                  required: true,
-                  message: t('forms.stepFormLabels.fieldError', {
-                    field: 'Amount',
-                  }),
-                },
-              ]}
-              style={{
-                width: 320,
-              }}
-            >
-              <Input placeholder={fieldUi.amount} />
-            </BaseForm.Item>
-          </Col>
-          <Col xxl={12}>
-            <BaseForm.Item
-              name="receiptNo"
-              label={fieldUi.receiptNo}
-              style={{
-                width: 320,
-              }}
-            >
-              <Input placeholder={fieldUi.receiptNo} />
-            </BaseForm.Item>
-          </Col>
-        </Row>
-        <Row justify={'space-between'} align={'middle'}>
-          <Col xxl={12}>
-            <BaseForm.Item
-              name="collectionDate"
-              label={fieldUi.collectionDate}
-              rules={[
-                {
-                  required: true,
-                  message: t('forms.stepFormLabels.fieldError', {
-                    field: 'Collection Date',
-                  }),
-                },
-              ]}
-              style={{
-                width: 320,
-              }}
-            >
-              <Input placeholder={fieldUi.collectionDate} />
-            </BaseForm.Item>
-          </Col>
-          <Col xxl={12}>
-            <BaseForm.Item
-              name="description"
-              label={fieldUi.description}
-              style={{
-                width: 320,
-              }}
-            >
-              <TextArea placeholder={fieldUi.description} />
-            </BaseForm.Item>
-          </Col>
-        </Row>
-        <Row justify={'space-between'} align={'middle'}>
-          <Col>{fieldUi.customFields}</Col>
-        </Row>
+        <BulkCollectionTable />
       </S.FormContent>
       <S.ActionWrapper>
         <Button

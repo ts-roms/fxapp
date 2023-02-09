@@ -12,7 +12,7 @@ const initialPagination: Pagination = {
   pageSize: 4,
 };
 
-export const EditableTable: React.FC = () => {
+export const BulkCollectionTable: React.FC = () => {
   const [form] = Form.useForm();
   const [tableData, setTableData] = useState<{
     data: BasicTableRow[];
