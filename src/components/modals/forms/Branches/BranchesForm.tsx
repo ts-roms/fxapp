@@ -33,12 +33,12 @@ export const BranchesForm: React.FC<IBranchesForm> = (
   const [form] = BaseForm.useForm();
   const [fields, setFields] = useState<FieldData[]>([
     { name: 'name', value: '' },
-    { name: 'note', value: '' }
+    { name: 'note', value: '' },
   ]);
 
   const fieldUi: FormValues = {
     name: t('forms.fields.field', { name: `Branch Name` }),
-    note: t('forms.fields.field', { name: `Note` })
+    note: t('forms.fields.field', { name: `Note` }),
   };
 
   const handleSubmit = (e: any) => {

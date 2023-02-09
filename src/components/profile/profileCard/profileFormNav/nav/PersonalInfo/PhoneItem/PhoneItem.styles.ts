@@ -2,7 +2,7 @@ import { BORDER_RADIUS } from '@app/styles/themes/constants';
 import PhoneInput from 'react-phone-number-input/input';
 import styled from 'styled-components';
 
-export const PhoneNumberInput = styled(PhoneInput)`
+export const PhoneNumberInput = styled(PhoneInput as any)`
   height: 50px;
   width: 100%;
   padding: 8px 11px;

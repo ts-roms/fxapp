@@ -40,11 +40,11 @@ export interface AuthResponse {
   data: LoginResponse;
 }
 
-export const login = (loginPayload: LoginRequest): Promise<AuthResponse> => httpApi
-  .post<AuthResponse>('api/v1/user/login', { ...loginPayload })
-  .then(({ data }) => data)
-  .catch((e) => e);
-  
+export const login = (loginPayload: LoginRequest): Promise<AuthResponse> =>
+  httpApi
+    .post<AuthResponse>('api/v1/user/login', { ...loginPayload })
+    .then(({ data }) => data)
+    .catch((e) => e);
 
 export const signUp = (signUpData: SignUpRequest): Promise<undefined> =>
   httpApi.post<undefined>('signUp', { ...signUpData }).then(({ data }) => data);
