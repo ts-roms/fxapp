@@ -6,7 +6,6 @@ const AuthLayout = React.lazy(
   () => import('@app/components/layouts/AuthLayout/AuthLayout'),
 );
 import LoginPage from '@app/pages/LoginPage';
-import SignUpPage from '@app/pages/SignUpPage';
 import ForgotPasswordPage from '@app/pages/ForgotPasswordPage';
 import SecurityCodePage from '@app/pages/SecurityCodePage';
 import NewPasswordPage from '@app/pages/NewPasswordPage';

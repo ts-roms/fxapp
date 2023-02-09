@@ -1,8 +1,6 @@
-import { Space } from 'antd';
 import React from 'react';
-import { TimeRangePicker } from 'components/common/pickers/TimeRangePicker';
+import { NightTimeSlider } from '@app/components/header/dropdowns/settingsDropdown/settingsOverlay/nightModeSettings/NightTimeSlider/NightTimeSlider';
 import * as S from './NightTimePicker.styles';
-import { useTranslation } from 'react-i18next';
 
 interface NightTimePickerProps {
   nightTime: number[];
@@ -13,15 +11,13 @@ export const NightTimePicker: React.FC<NightTimePickerProps> = ({
   nightTime,
   setNightTime,
 }) => {
-  const { t } = useTranslation();
-
   return (
-    <>
-      <Space size={[50, 20]} style={{ marginTop: '0.5rem' }}>
-        <S.PickerLabel>{t('header.nightMode.from')}</S.PickerLabel>
-        <S.PickerLabel>{t('header.nightMode.to')}</S.PickerLabel>
-      </Space>
-      <TimeRangePicker timeRange={nightTime} setTimeRange={setNightTime} />
-    </>
+    <S.Wrapper>
+      <NightTimeSlider
+        from={nightTime[0]}
+        to={nightTime[1]}
+        setNightTime={setNightTime}
+      />
+    </S.Wrapper>
   );
 };

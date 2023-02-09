@@ -281,8 +281,8 @@ export const NewsFilter: React.FC<NewsFilterProps> = ({
           <Dropdown
             placement="bottomLeft"
             trigger={['click']}
-            visible={overlayVisible}
-            onVisibleChange={(visible) => setOverlayVisible(visible)}
+            open={overlayVisible}
+            onOpenChange={(visible) => setOverlayVisible(visible)}
             overlay={
               <Filter
                 author={author}

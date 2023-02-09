@@ -61,7 +61,7 @@ export interface TransactionTableData {
 
 export const getTransactionData = (
   pagination: Pagination,
-  pageSize: number
+  pageSize: number,
 ): Promise<TransactionTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
@@ -97,37 +97,36 @@ export interface BranchesTableData {
   pagination: Pagination;
 }
 
-
 export const getBranchesData = (
   pagination: Pagination,
-  pageSize: number
+  pageSize: number,
 ): Promise<BranchesTableData> => {
   return new Promise((res) => {
     setTimeout(() => {
       res({
-        data: [ 
+        data: [
           {
             key: 1,
             name: 'Main',
             note: 'This is test main branch',
-            default: true
+            default: true,
           },
           {
             key: 2,
             name: 'Branch 1',
             note: 'This is test branch 1',
-            default: false
-          }
+            default: false,
+          },
         ],
-        pagination: { ...pagination, total: pageSize}
-      })
-    }, 1000)
-  })
-}
+        pagination: { ...pagination, total: pageSize },
+      });
+    }, 1000);
+  });
+};
 
 export const getBasicTableData = (
   pagination: Pagination,
-  pageSize: number
+  pageSize: number,
 ): Promise<BasicTableData> => {
   return new Promise((res) => {
     setTimeout(() => {

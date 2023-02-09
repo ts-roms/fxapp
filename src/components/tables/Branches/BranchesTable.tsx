@@ -80,7 +80,7 @@ export const BranchesTable: React.FC = () => {
     {
       title: 'Default',
       dataIndex: 'default',
-      render: (isDefault: boolean) => <span>{isDefault ? 'Yes' : 'No'}</span>
+      render: (isDefault: boolean) => <span>{isDefault ? 'Yes' : 'No'}</span>,
     },
     {
       title: t('tables.actions'),

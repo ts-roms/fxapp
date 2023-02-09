@@ -51,8 +51,7 @@ export const LoginForm: React.FC = () => {
           label={t('common.email')}
           rules={[
             { required: true, message: t('common.requiredField') },
-            { message: t('common.notValidEmail'),
-            },
+            { message: t('common.notValidEmail') },
           ]}
         >
           <Auth.FormInput placeholder={t('common.email')} />

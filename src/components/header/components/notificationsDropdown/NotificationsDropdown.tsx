@@ -24,7 +24,7 @@ export const NotificationsDropdown: React.FC = () => {
           setNotifications={setNotifications}
         />
       }
-      onVisibleChange={setOpened}
+      onOpenChange={setOpened}
     >
       <HeaderActionWrapper>
         <Button
