@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // no lazy loading for auth pages to avoid flickering
 const AuthLayout = React.lazy(
@@ -28,6 +28,9 @@ const PersonalInfoPage = React.lazy(
 );
 const Logout = React.lazy(() => import('./Logout'));
 
+const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
+const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
+
 // System Configuration
 const BranchesPage = React.lazy(() => import('@app/pages/BranchesPage'));
 const UsersPage = React.lazy(() => import('@app/pages/UsersPage'));
@@ -41,6 +44,9 @@ const Kanban = withLoading(KanbanPage);
 
 const Transactions = withLoading(TransactionPage);
 const Collections = withLoading(CollectionPage);
+
+const ServerError = withLoading(ServerErrorPage);
+const Error404 = withLoading(Error404Page);
 
 // System Configuration
 const Employee = withLoading(EmployeePage);
@@ -103,6 +109,9 @@ export const AppRouter: React.FC = () => {
           <Route path="new-password" element={<NewPasswordPage />} />
         </Route>
         <Route path="/logout" element={<LogoutFallback />} />
+        <Route path="404" element={<Error404 />} />
+        <Route path="server-error" element={<ServerError />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </BrowserRouter>
   );

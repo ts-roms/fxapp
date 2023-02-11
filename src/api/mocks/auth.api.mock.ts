@@ -10,7 +10,7 @@ httpApiMock.onPost('login').reply((config) => {
     return [
       200,
       {
-        token: 'bearerToken',
+        accessToken: '',
         user: {
           id: 1,
           firstName: 'Chris',
