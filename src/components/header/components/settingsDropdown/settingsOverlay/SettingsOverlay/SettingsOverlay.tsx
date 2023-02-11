@@ -22,22 +22,10 @@ export const SettingsOverlay: React.FC = ({ ...props }) => {
         defaultActiveKey="themePicker"
       >
         <DropdownCollapse.Panel
-          header={t('header.changeLanguage')}
-          key="languagePicker"
-        >
-          <LanguagePicker />
-        </DropdownCollapse.Panel>
-        <DropdownCollapse.Panel
           header={t('header.changeTheme')}
           key="themePicker"
         >
           <ThemePicker />
-        </DropdownCollapse.Panel>
-        <DropdownCollapse.Panel
-          header={t('header.nightMode.title')}
-          key="nightMode"
-        >
-          <NightModeSettings />
         </DropdownCollapse.Panel>
       </DropdownCollapse>
       {isPWASupported && (

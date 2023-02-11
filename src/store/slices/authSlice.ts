@@ -32,8 +32,8 @@ export const doLogin = createAsyncThunk(
   async (loginPayload: LoginRequest, { dispatch }) =>
     login(loginPayload).then((res) => {
       dispatch(setUser(res.data.user));
-      persistToken(res.data.token);
-      return res.data.token;
+      persistToken(res.data.accessToken);
+      return res.data.accessToken;
     }),
 );
 
