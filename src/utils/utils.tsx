@@ -239,3 +239,11 @@ export const getPaymentCardTypeIcon = (type: string): string | null => {
       return null;
   }
 };
+
+export const extractData = (formData: any) => {
+  const field = {};
+  formData.map((data: any) => {
+    return {...field, [data.name]: data.value}
+  })
+  return field;
+}

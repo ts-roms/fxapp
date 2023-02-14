@@ -444,7 +444,8 @@
       "salutation": "Salutation",
       "salutationError": "Salutation is required",
       "zipCodeError": "Zip code is required",
-      "fieldError": "{{field}} is required"
+      "fieldError": "{{field}} is required",
+      "submit": "Submit"
     },
     "validationForm": "Validation form",
     "validationFormLabels": {

@@ -444,7 +444,8 @@
       "salutation": "Anrede",
       "salutationError": "Anrede ist erforderlich",
       "zipCodeError": "Postleitzahl ist erforderlich",
-      "fieldError": "{{field}} is required"
+      "fieldError": "{{field}} is required",
+      "submit": "Submit"
     },
     "validationForm": "Validierungsformular",
     "validationFormLabels": {

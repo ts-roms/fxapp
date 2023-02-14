@@ -34,7 +34,7 @@ export const Step2: React.FC = () => {
       <Row justify={'space-between'} align={'middle'}>
         <Col xxl={12}>
           <S.PhoneItem
-            name="phone"
+            name="contactNumber"
             label={t('forms.fields.field', { name: 'Contact number' })}
             rules={[
               {
