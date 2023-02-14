@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Avatar, Image, Space, TablePaginationConfig } from 'antd';
-import { BasicTableRow, getBasicTableData, Pagination } from 'api/table.api';
+import { BasicTableRow, Pagination } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
@@ -80,7 +80,11 @@ export const EmployeeTable: React.FC = () => {
     {
       title: t('common.name'),
       dataIndex: 'name',
-      render: (_: string, row: any) => <span>{`${capitalize(row.lastName)}, ${capitalize(row.firstName)} ${capitalize(row.middleName)}`}</span>,
+      render: (_: string, row: any) => (
+        <span>{`${capitalize(row.lastName)}, ${capitalize(
+          row.firstName,
+        )} ${capitalize(row.middleName)}`}</span>
+      ),
       filterMode: 'tree',
       filterSearch: true,
       filters: [

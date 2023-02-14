@@ -11,5 +11,5 @@ export default {
   nightMode: nightModeReducer,
   theme: themeReducer,
   pwa: pwaReducer,
-  employee: employeeReducer
+  employee: employeeReducer,
 };

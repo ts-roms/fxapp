@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Space, TablePaginationConfig } from 'antd';
-import {
-  BasicTableRow,
-  Pagination,
-} from 'api/table.api';
+import { BasicTableRow, Pagination } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
@@ -38,7 +35,7 @@ export const UsersTable: React.FC = () => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
-            pagination: { total: 10},// res.pagination,
+            pagination: { total: 10 }, // res.pagination,
             loading: false,
           });
         }
@@ -72,7 +69,11 @@ export const UsersTable: React.FC = () => {
     {
       title: t('common.name'),
       dataIndex: 'name',
-      render: (_: string, row: any) => <span>{`${capitalize(row.lastName)} ${capitalize(row.firstName)}`}</span>,
+      render: (_: string, row: any) => (
+        <span>{`${capitalize(row.lastName)} ${capitalize(
+          row.firstName,
+        )}`}</span>
+      ),
       filterMode: 'tree',
       filterSearch: true,
       filters: [
@@ -132,7 +133,9 @@ export const UsersTable: React.FC = () => {
     {
       title: t('profile.nav.payments.status.title'),
       dataIndex: 'isActive',
-      render: (active: boolean) => (<span>{active ? 'Active' : 'Deactivated'}</span>),
+      render: (active: boolean) => (
+        <span>{active ? 'Active' : 'Deactivated'}</span>
+      ),
     },
     {
       title: t('tables.actions'),

@@ -1,6 +1,5 @@
-import { httpApi } from "./http.api"
-import { BasicTableData, Pagination } from "./table.api";
-
+import { httpApi } from './http.api';
+import { BasicTableData, Pagination } from './table.api';
 
 export interface CreateEmployeeRequest {
   salutation: string;
@@ -26,14 +25,18 @@ export interface CreateEmployeeRequest {
 
 export const getEmployees = (
   pagination: Pagination,
-  pageSize: number
+  pageSize: number,
 ): Promise<BasicTableData> => {
-  return httpApi.get('api/v1/employee/list')
+  return httpApi
+    .get('api/v1/employee/list')
     .then(({ data }) => data)
     .catch((e) => e);
-}
+};
 
-export const create = (employeeDate: CreateEmployeeRequest): Promise<undefined> => {
-  return httpApi.post<undefined>('api/v1/employee/create', { ...employeeDate })
+export const create = (
+  employeeDate: CreateEmployeeRequest,
+): Promise<undefined> => {
+  return httpApi
+    .post<undefined>('api/v1/employee/create', { ...employeeDate })
     .then(({ data }) => data);
-}
+};

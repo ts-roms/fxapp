@@ -30,15 +30,17 @@ export const BulkCollectionTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getEditableTableData(pagination, initialPagination.pageSize!).then((res) => {
-        if (isMounted.current) {
-          setTableData({
-            data: res.data,
-            pagination: res.pagination,
-            loading: false,
-          });
-        }
-      });
+      getEditableTableData(pagination, initialPagination.pageSize!).then(
+        (res) => {
+          if (isMounted.current) {
+            setTableData({
+              data: res.data,
+              pagination: res.pagination,
+              loading: false,
+            });
+          }
+        },
+      );
     },
     [isMounted],
   );
