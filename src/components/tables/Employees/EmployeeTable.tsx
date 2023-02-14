@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { notificationController } from 'controllers/notificationController';
 import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
+import { getEmployees } from '@app/api/employee.api';
+import { capitalize } from '@app/utils/utils';
 
 const initialPagination: Pagination = {
   current: 1,
@@ -30,7 +32,7 @@ export const EmployeeTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getBasicTableData(pagination, initialPagination.pageSize!).then((res) => {
+      getEmployees(pagination, initialPagination.pageSize!).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
@@ -67,7 +69,7 @@ export const EmployeeTable: React.FC = () => {
   const columns: ColumnsType<BasicTableRow> = [
     {
       title: 'Image',
-      dataIndex: 'image',
+      dataIndex: 'photo',
       render: (image: any) => (
         <Avatar
           size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
@@ -78,7 +80,7 @@ export const EmployeeTable: React.FC = () => {
     {
       title: t('common.name'),
       dataIndex: 'name',
-      render: (text: string) => <span>{text}</span>,
+      render: (_: string, row: any) => <span>{`${capitalize(row.lastName)}, ${capitalize(row.firstName)} ${capitalize(row.middleName)}`}</span>,
       filterMode: 'tree',
       filterSearch: true,
       filters: [
@@ -142,10 +144,11 @@ export const EmployeeTable: React.FC = () => {
     },
     {
       title: 'Status',
-      dataIndex: 'status',
+      dataIndex: 'active',
       render: (status: string) => (
         <span>
-          <Status text={status} color="" />
+          {status}
+          <Status text={'status'} color="#EREREE" />
         </span>
       ),
       filterMode: 'tree',

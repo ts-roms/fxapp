@@ -76,8 +76,7 @@ export const getMarkAreaData = (data: string[] | number[]): MarkArea[][] =>
     },
   ]);
 
-export const capitalize = (word: string): string =>
-  `${word[0].toUpperCase()}${word.slice(1)}`;
+export const capitalize = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
 
 export const hexToRGB = (hex: string): string => {
   const r = parseInt(hex.slice(1, 3), 16),
@@ -239,3 +238,11 @@ export const getPaymentCardTypeIcon = (type: string): string | null => {
       return null;
   }
 };
+
+export const extractData = (formData: any) => {
+  const field = {};
+  formData.map((data: any) => {
+    return {...field, [data.name]: data.value}
+  })
+  return field;
+}

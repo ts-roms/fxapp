@@ -7,7 +7,7 @@ const EmployeePage: React.FC = () => {
 
   return (
     <>
-      <PageTitle>{t('common.employees')}</PageTitle>
+      <PageTitle>{t('common.users')}</PageTitle>
       <Employees />
     </>
   );

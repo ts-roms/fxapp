@@ -7,9 +7,12 @@ import { Step2 } from './Steps/Step2';
 import { Step3 } from './Steps/Step3';
 import { Step4 } from './Steps/Step4';
 import { notificationController } from '@app/controllers/notificationController';
-import { mergeBy } from '@app/utils/utils';
+import { extractData, mergeBy } from '@app/utils/utils';
 import * as S from './EmployeeForm.styles';
 import { Steps } from './EmployeeForm.styles';
+import { doCreate } from '@app/store/slices/employeeSlice';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { CreateEmployeeRequest } from '@app/api/employee.api';
 interface FormValues {
   [key: string]: string | undefined;
 }
@@ -18,6 +21,28 @@ interface FieldData {
   name: string | number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value?: any;
+}
+
+interface EmployeeFormData {
+  salutation: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  gender: string;
+  dob: string;
+  contactNumber: string;
+  emailAddress: string;
+  street: string;
+  city: string;
+  state: string;
+  province: string;
+  country: string;
+  postalCode: string;
+  joiningDate: string;
+  branch: string;
+  loanOfficer: string;
+  salaryRange: string;
+  description: string;
 }
 
 interface IEmplopyeeForm {
@@ -31,6 +56,8 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
   const { open, setOpen } = eForm;
   const [current, setCurrent] = useState(0);
   const [form] = BaseForm.useForm();
+  const dispatch = useAppDispatch();
+
   const [fields, setFields] = useState<FieldData[]>([
     { name: 'salutation', value: '' },
     { name: 'firstName', value: '' },
@@ -39,7 +66,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     { name: 'gender', value: '' },
     { name: 'dob', value: '' },
     { name: 'upload', value: '' },
-    { name: 'phone', value: '' },
+    { name: 'contactNumber', value: '' },
     { name: 'emailAddress', value: '' },
     { name: 'street', value: '' },
     { name: 'city', value: '' },
@@ -54,6 +81,30 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     { name: 'description', value: '' },
     { name: 'customFields', value: '' },
   ]);
+
+  const [employee, setEmployee] = useState<EmployeeFormData>({
+    salutation: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    gender: '',
+    dob: '',
+    contactNumber: '',
+    emailAddress: '',
+    street: '',
+    city: '',
+    state: '',
+    province: '',
+    country: '',
+    postalCode: '',
+    joiningDate: '',
+    branch: '',
+    loanOfficer: '',
+    salaryRange: '',
+    description: '',
+  });
+
+
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
 
@@ -65,7 +116,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     gender: t('forms.fields.field', { name: 'Gender' }),
     dob: t('forms.fields.field', { name: 'Date of Birth' }),
     upload: t('forms.fields.field', { name: 'Photo' }),
-    phone: t('forms.fields.field', { name: 'Contact Number' }),
+    contactNumber: t('forms.fields.field', { name: 'Contact Number' }),
     emailAddress: t('forms.fields.field', { name: 'Email Address' }),
     street: t('forms.fields.field', { name: 'Street' }),
     city: t('forms.fields.field', { name: 'City' }),
@@ -104,12 +155,15 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
 
   const onFinish = () => {
     setIsLoading(true);
-    setTimeout(() => {
+    dispatch(doCreate(employee))
+    .unwrap()
+    .then((res) => {
       notificationController.success({ message: t('common.success') });
-      setIsLoading(false);
-      setCurrent(0);
-      setOpen(!open);
-    }, 1500);
+      console.log('res', res);
+    })
+    setIsLoading(false);
+    setCurrent(0);
+    setOpen(!open);
   };
 
   const steps = [
@@ -139,13 +193,20 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
       name="employeeForm"
       form={form}
       fields={fields}
-      onFieldsChange={(_, allFields) => {
+      onFieldsChange={(field, allFields) => {
         const currentFields = allFields.map((item) => ({
           name: Array.isArray(item.name) ? item.name[0] : '',
           value: item.value,
         }));
         const uniqueData = mergeBy(fields, currentFields, 'name');
         setFields(uniqueData);
+
+        const fieldValue = String(
+          field[0].name === 'dob' || field[0].name === 'joiningDate'
+            ? field[0].value.format('YYYY-MM-DD')
+            : field[0].value
+        );
+        setEmployee({ ...employee, [field[0].name.toString()]: fieldValue });
       }}
     >
       <Steps
@@ -168,7 +229,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
             loading={isLoading}
             style={{ width: 150 }}
           >
-            {t('forms.stepFormLabels.done')}
+            {t('forms.stepFormLabels.submit')}
           </Button>
         )}
         {current > 0 && (

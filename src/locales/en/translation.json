@@ -236,7 +236,8 @@
     "zipcode": "Zipcode",
     "delete": "Delete",
     "payments": "Payments",
-    "employees": "Employees"
+    "employees": "Employees",
+    "users": "Users"
   },
   "medical-dashboard": {
     "activity": {
@@ -444,7 +445,8 @@
       "salutation": "Salutation",
       "salutationError": "Salutation is required",
       "zipCodeError": "Zip code is required",
-      "fieldError": "{{field}} is required"
+      "fieldError": "{{field}} is required",
+      "submit": "Submit"
     },
     "validationForm": "Validation form",
     "validationFormLabels": {

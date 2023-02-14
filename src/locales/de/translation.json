@@ -236,7 +236,8 @@
     "zipcode": "Postleitzahl",
     "delete": "Löschen",
     "payments": "Payments",
-    "employees": "Employees"
+    "employees": "Employees",
+    "users": "Users"
   },
   "medical-dashboard": {
     "activity": {
@@ -444,7 +445,8 @@
       "salutation": "Anrede",
       "salutationError": "Anrede ist erforderlich",
       "zipCodeError": "Postleitzahl ist erforderlich",
-      "fieldError": "{{field}} is required"
+      "fieldError": "{{field}} is required",
+      "submit": "Submit"
     },
     "validationForm": "Validierungsformular",
     "validationFormLabels": {
