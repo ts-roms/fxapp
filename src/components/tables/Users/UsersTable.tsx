@@ -1,19 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Col, Row, Space, TablePaginationConfig } from 'antd';
+import { Space, TablePaginationConfig } from 'antd';
 import {
   BasicTableRow,
-  getBasicTableData,
   Pagination,
-  Tag,
 } from 'api/table.api';
 import { Table } from 'components/common/Table/Table';
 import { ColumnsType } from 'antd/es/table';
 import { Button } from 'components/common/buttons/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { defineColorByPriority } from '@app/utils/utils';
+import { capitalize } from '@app/utils/utils';
 import { notificationController } from 'controllers/notificationController';
-import { Status } from '@app/components/profile/profileCard/profileFormNav/nav/payments/paymentHistory/Status/Status';
 import { useMounted } from '@app/hooks/useMounted';
+import { getUsers } from '@app/api/systems/users.api';
 
 const initialPagination: Pagination = {
   current: 1,
@@ -36,11 +34,11 @@ export const UsersTable: React.FC = () => {
   const fetch = useCallback(
     (pagination: Pagination) => {
       setTableData((tableData) => ({ ...tableData, loading: true }));
-      getBasicTableData(pagination, initialPagination.pageSize!).then((res) => {
+      getUsers(pagination, initialPagination.pageSize!).then((res) => {
         if (isMounted.current) {
           setTableData({
             data: res.data,
-            pagination: res.pagination,
+            pagination: { total: 10},// res.pagination,
             loading: false,
           });
         }
@@ -74,7 +72,7 @@ export const UsersTable: React.FC = () => {
     {
       title: t('common.name'),
       dataIndex: 'name',
-      render: (text: string) => <span>{text}</span>,
+      render: (_: string, row: any) => <span>{`${capitalize(row.lastName)} ${capitalize(row.firstName)}`}</span>,
       filterMode: 'tree',
       filterSearch: true,
       filters: [
@@ -123,39 +121,24 @@ export const UsersTable: React.FC = () => {
         record.name.includes(value.toString()),
     },
     {
-      title: t('common.age'),
-      dataIndex: 'age',
-      sorter: (a: BasicTableRow, b: BasicTableRow) => a.age - b.age,
+      title: t('common.email'),
+      dataIndex: 'email',
       showSorterTooltip: false,
     },
     {
-      title: t('common.address'),
-      dataIndex: 'address',
+      title: t('common.phone'),
+      dataIndex: 'mobileNumber',
     },
     {
-      title: t('common.tags'),
-      key: 'tags',
-      dataIndex: 'tags',
-      render: (tags: Tag[]) => (
-        <Row gutter={[10, 10]}>
-          {tags.map((tag: Tag) => {
-            return (
-              <Col key={tag.value}>
-                <Status
-                  color={defineColorByPriority(tag.priority)}
-                  text={tag.value.toUpperCase()}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      ),
+      title: t('profile.nav.payments.status.title'),
+      dataIndex: 'isActive',
+      render: (active: boolean) => (<span>{active ? 'Active' : 'Deactivated'}</span>),
     },
     {
       title: t('tables.actions'),
       dataIndex: 'actions',
       width: '15%',
-      render: (text: string, record: { name: string; key: number }) => {
+      render: (_: string, record: { name: string; key: number }) => {
         return (
           <Space>
             <Button
