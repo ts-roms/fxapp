@@ -7,12 +7,11 @@ import { Step2 } from './Steps/Step2';
 import { Step3 } from './Steps/Step3';
 import { Step4 } from './Steps/Step4';
 import { notificationController } from '@app/controllers/notificationController';
-import { extractData, mergeBy } from '@app/utils/utils';
+import { mergeBy } from '@app/utils/utils';
 import * as S from './EmployeeForm.styles';
 import { Steps } from './EmployeeForm.styles';
 import { doCreate } from '@app/store/slices/employeeSlice';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { CreateEmployeeRequest } from '@app/api/employee.api';
 interface FormValues {
   [key: string]: string | undefined;
 }
@@ -104,7 +103,6 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
     description: '',
   });
 
-
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
 
@@ -156,11 +154,11 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
   const onFinish = () => {
     setIsLoading(true);
     dispatch(doCreate(employee))
-    .unwrap()
-    .then((res) => {
-      notificationController.success({ message: t('common.success') });
-      console.log('res', res);
-    })
+      .unwrap()
+      .then((res) => {
+        notificationController.success({ message: t('common.success') });
+        console.log('res', res);
+      });
     setIsLoading(false);
     setCurrent(0);
     setOpen(!open);
@@ -204,7 +202,7 @@ export const EmployeeForm: React.FC<IEmplopyeeForm> = (
         const fieldValue = String(
           field[0].name === 'dob' || field[0].name === 'joiningDate'
             ? field[0].value.format('YYYY-MM-DD')
-            : field[0].value
+            : field[0].value,
         );
         setEmployee({ ...employee, [field[0].name.toString()]: fieldValue });
       }}

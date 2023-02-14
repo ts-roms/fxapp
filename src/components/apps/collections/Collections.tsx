@@ -24,8 +24,8 @@ export const Collections: React.FC = () => {
               type="ghost"
               icon={<DownloadOutlined />}
               onClick={() => {
-                setOpen((open) => !open)
-                setType(CollectionTypeEnum.BULK)
+                setOpen((open) => !open);
+                setType(CollectionTypeEnum.BULK);
               }}
               style={{
                 marginRight: 10,
@@ -37,8 +37,8 @@ export const Collections: React.FC = () => {
               type="ghost"
               icon={<PlusOutlined />}
               onClick={() => {
-                setOpen((open) => !open)
-                setType(CollectionTypeEnum.SINGLE)
+                setOpen((open) => !open);
+                setType(CollectionTypeEnum.SINGLE);
               }}
             >
               {t('actions.new', { name: 'Payment' })}

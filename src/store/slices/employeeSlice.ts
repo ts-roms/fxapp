@@ -1,21 +1,19 @@
-import { create, CreateEmployeeRequest } from "@app/api/employee.api";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { create, CreateEmployeeRequest } from '@app/api/employee.api';
+import { IEmployeeModel } from '@app/domain/EmployeeModel';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-
-export interface EmployeeSlice {
-
+export interface IEmployeeState {
+  employee: IEmployeeModel | undefined;
 }
 
-const initialState: EmployeeSlice = {
+const initialState: IEmployeeState = {
+  employee: undefined,
+};
 
-}
-
-export const doCreate = createAsyncThunk( 
+export const doCreate = createAsyncThunk(
   'employee/doCreate',
-  async (createPayload: CreateEmployeeRequest) => 
-  create(createPayload) 
-)
-
+  async (createPayload: CreateEmployeeRequest) => create(createPayload),
+);
 
 const employeeSlice = createSlice({
   name: 'employee',
@@ -23,8 +21,9 @@ const employeeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(doCreate.fulfilled, (state, action) => {
-    })
-  }
+      state.employee = action.payload;
+    });
+  },
 });
 
 export default employeeSlice.reducer;

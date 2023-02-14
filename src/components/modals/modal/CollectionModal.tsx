@@ -30,14 +30,11 @@ const CollectionModal: React.FC<ICollectionModal> = (
       title={`${capitalize(type.toLocaleLowerCase())} Payment Form`}
       width={`${isBulk ? '90' : '50'}%`}
     >
-      { 
-        !isBulk ? (
-          <CollectionForm open={open} setOpen={setOpen} />
-        ) : (
-          <BulkCollectionForm open={open} setOpen={setOpen} />
-        )
-      }
-      
+      {!isBulk ? (
+        <CollectionForm open={open} setOpen={setOpen} />
+      ) : (
+        <BulkCollectionForm open={open} setOpen={setOpen} />
+      )}
     </Modal>
   );
 };
