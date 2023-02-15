@@ -101,15 +101,22 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     ],
   },
   {
-    title: 'Accounting',
-    key: 'configuration-accounting',
+    title: 'Loan',
+    key: 'configuration-loan',
     icon: <AuditOutlined />,
     children: [
       {
         title: 'Loans',
         key: 'accounting-report',
-        url: '/configuration/loans',
+        url: '/configuration/loan',
       },
+    ],
+  },
+  {
+    title: 'Accounting',
+    key: 'configuration-accounting',
+    icon: <AuditOutlined />,
+    children: [
       {
         title: 'common.kanban',
         key: 'accounting-charts',

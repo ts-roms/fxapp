@@ -237,7 +237,8 @@
     "delete": "Delete",
     "payments": "Payments",
     "employees": "Employees",
-    "users": "Users"
+    "users": "Users",
+    "loan": "Loan"
   },
   "medical-dashboard": {
     "activity": {
