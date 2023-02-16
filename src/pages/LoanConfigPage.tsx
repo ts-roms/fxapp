@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';
 import { LoanConfig } from '@app/components/apps/configuration/loan/Loan';
 
-const PaymentsPage: React.FC = () => {
+const LoanConfigPage: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -14,4 +14,4 @@ const PaymentsPage: React.FC = () => {
   );
 };
 
-export default PaymentsPage;
+export default LoanConfigPage;

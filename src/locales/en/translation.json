@@ -238,7 +238,9 @@
     "payments": "Payments",
     "employees": "Employees",
     "users": "Users",
-    "loan": "Loan"
+    "loan": "Loan",
+    "loanForm": "Loan Form",
+    "chartOfAccount": "Charts of Account"
   },
   "medical-dashboard": {
     "activity": {

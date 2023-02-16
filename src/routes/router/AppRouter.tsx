@@ -36,6 +36,8 @@ const BranchesPage = React.lazy(() => import('@app/pages/BranchesPage'));
 const UsersPage = React.lazy(() => import('@app/pages/UsersPage'));
 
 const LoanConfigPage = React.lazy(() => import('@app/pages/LoanConfigPage'));
+const LoanFormPage = React.lazy(() => import('@app/pages/LoanFormPage'));
+const ChartsOfAccountPage = React.lazy(() => import('@app/pages/ChartsOfAccountPage'));
 
 export const DASHBOARD_PATH = '/';
 
@@ -55,6 +57,8 @@ const Employee = withLoading(EmployeePage);
 const Branches = withLoading(BranchesPage);
 const Users = withLoading(UsersPage);
 const LoanConfig = withLoading(LoanConfigPage);
+const LoanForm = withLoading(LoanFormPage);
+const ChartOfAccount = withLoading(ChartsOfAccountPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -89,6 +93,11 @@ export const AppRouter: React.FC = () => {
           </Route>
           <Route path="configuration">
             <Route path="loan" element={<LoanConfig />} />
+            <Route path="loan-form" element={<LoanForm />} />
+
+            <Route path="accounting">
+              <Route path="chart-of-account" element={<ChartOfAccount />} />
+            </Route>
           </Route>
           <Route path="profile" element={<ProfileLayout />}>
             <Route path="personal-info" element={<PersonalInfo />} />

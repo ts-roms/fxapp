@@ -107,8 +107,13 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     children: [
       {
         title: 'Loans',
-        key: 'accounting-report',
+        key: 'configuration-loan-config',
         url: '/configuration/loan',
+      },
+      {
+        title: 'Loan Form',
+        key: 'configuration-loan-form-config',
+        url: '/configuration/loan-form',
       },
     ],
   },
@@ -118,9 +123,9 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     icon: <AuditOutlined />,
     children: [
       {
-        title: 'common.kanban',
+        title: 'common.chartOfAccount',
         key: 'accounting-charts',
-        url: '/configuration/kanban',
+        url: '/configuration/accounting/chart-of-account',
       },
     ],
   },
