@@ -1,12 +1,12 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { BranchesForm } from '../forms/BranchForm/BranchesForm';
+import { ChartsOfAccountForm } from '../forms/Accounting/ChartsOfAccountForm';
 
 interface IBranchesModal {
   open: boolean;
   setOpen: (e: boolean) => void;
 }
 
-const BranchesModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
+const CharsOfAccountModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
   const { open, setOpen } = formModal;
   return (
     <Modal
@@ -14,16 +14,15 @@ const BranchesModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
       open={open}
       onCancel={() => setOpen(!open)}
       closable={false}
-      size={'large'}
       footer={null}
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
-      title={`Branch Form`}
+      title={`Charts of Account`}
     >
-      <BranchesForm open={open} setOpen={setOpen} />
+      <ChartsOfAccountForm open={open} setOpen={setOpen} />
     </Modal>
   );
 };
 
-export default BranchesModal;
+export default CharsOfAccountModal;

@@ -101,19 +101,31 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     ],
   },
   {
+    title: 'Loan',
+    key: 'configuration-loan',
+    icon: <AuditOutlined />,
+    children: [
+      {
+        title: 'Loans',
+        key: 'configuration-loan-config',
+        url: '/configuration/loan',
+      },
+      {
+        title: 'Loan Form',
+        key: 'configuration-loan-form-config',
+        url: '/configuration/loan-form',
+      },
+    ],
+  },
+  {
     title: 'Accounting',
     key: 'configuration-accounting',
     icon: <AuditOutlined />,
     children: [
       {
-        title: 'Loans',
-        key: 'accounting-report',
-        url: '/configuration/loans',
-      },
-      {
-        title: 'common.kanban',
+        title: 'common.chartOfAccount',
         key: 'accounting-charts',
-        url: '/configuration/kanban',
+        url: '/configuration/accounting/chart-of-account',
       },
     ],
   },

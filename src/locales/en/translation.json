@@ -237,7 +237,10 @@
     "delete": "Delete",
     "payments": "Payments",
     "employees": "Employees",
-    "users": "Users"
+    "users": "Users",
+    "loan": "Loan",
+    "loanForm": "Loan Form",
+    "chartOfAccount": "Charts of Account"
   },
   "medical-dashboard": {
     "activity": {

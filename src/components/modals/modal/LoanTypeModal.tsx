@@ -1,12 +1,12 @@
 import { Modal } from '@app/components/common/Modal/Modal';
-import { BranchesForm } from '../forms/BranchForm/BranchesForm';
+import { LoanTypeForm } from '../forms/LoanTypeForm/LoanTypeForm';
 
 interface IBranchesModal {
   open: boolean;
   setOpen: (e: boolean) => void;
 }
 
-const BranchesModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
+const LoanTypeModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
   const { open, setOpen } = formModal;
   return (
     <Modal
@@ -14,16 +14,16 @@ const BranchesModal: React.FC<IBranchesModal> = (formModal: IBranchesModal) => {
       open={open}
       onCancel={() => setOpen(!open)}
       closable={false}
-      size={'large'}
       footer={null}
       keyboard={false}
       destroyOnClose={true}
       maskClosable={false}
-      title={`Branch Form`}
+      title={`Loan Type Configuration`}
+      width={'70%'}
     >
-      <BranchesForm open={open} setOpen={setOpen} />
+      <LoanTypeForm open={open} setOpen={setOpen} />
     </Modal>
   );
 };
 
-export default BranchesModal;
+export default LoanTypeModal;
