@@ -115,7 +115,7 @@ export const ChartsOfAccountForm: React.FC<IChartsOfAccount> = (
                   {
                     required: true,
                     message: t('forms.stepFormLabels.fieldError', {
-                      field: `Account Name`,
+                      field: `GL Code`,
                     }),
                   },
                 ]}
@@ -132,7 +132,7 @@ export const ChartsOfAccountForm: React.FC<IChartsOfAccount> = (
                   {
                     required: true,
                     message: t('forms.stepFormLabels.fieldError', {
-                      field: `Account Name`,
+                      field: `Account Type`,
                     }),
                   },
                 ]}
