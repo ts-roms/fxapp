@@ -40,7 +40,7 @@
                         <div class="form-group row">
 						    <div class="col-md-12">	
 
-								<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ _lang('Password') }}" required>
+								<input id="password" type="password" autocomplete="false" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ _lang('Password') }}" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">

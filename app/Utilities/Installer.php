@@ -106,13 +106,13 @@ class Installer {
 		return $requirements;
 	}
 
-	public static function createDbTables($host, $database, $username, $password) {
-		if (!static::isDbValid($host, $database, $username, $password)) {
+	public static function createDbTables($host, $port, $database, $username, $password) {
+		if (!static::isDbValid($host, $port, $database, $username, $password)) {
 			return false;
 		}
 
 		// Set database details
-		static::saveDbVariables($host, 3306, $database, $username, $password);
+		static::saveDbVariables($host, $port, $database, $username, $password);
 
 		// Try to increase the maximum execution time
 		@set_time_limit(300); // 5 minutes
@@ -139,21 +139,20 @@ class Installer {
 	 *
 	 * @return bool
 	 */
-	public static function isDbValid($host, $database, $username, $password) {
+	public static function isDbValid($host, $port, $database, $username, $password) {
 		Config::set('database.connections.install_test', [
 			'host' => $host,
-			'port' => env('DB_PORT', '3306'),
+			'port' => $port,
 			'database' => $database,
 			'username' => $username,
 			'password' => $password,
-			'driver' => env('DB_CONNECTION', 'mysql'),
-			'charset' => env('DB_CHARSET', 'utf8mb4'),
+			'driver' => 'mysql',
+			'charset' => 'utf8mb4',
 		]);
 
 		try {
 			DB::connection('install_test')->getPdo();
 		} catch (\Exception $e) {
-			;
 			return false;
 		}
 

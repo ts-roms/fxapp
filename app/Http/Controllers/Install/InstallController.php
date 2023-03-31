@@ -28,10 +28,11 @@ class InstallController extends Controller {
     public function process_install(Request $request) {
         $host     = $request->hostname;
         $database = $request->database;
+        $port     = $request->port;
         $username = $request->username;
         $password = $request->password;
 
-        if (Installer::createDbTables($host, $database, $username, $password) == false) {
+        if (Installer::createDbTables($host, $port, $database, $username, $password) == false) {
             return redirect()->back()->with("error", "Invalid Database Settings !");
         }
 
