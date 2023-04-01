@@ -22,9 +22,9 @@ class Demo {
         if (env('DEMO_MODE', 0) == 1 && auth()->user()->user_type == 'user') {
             if ($request->isMethod('POST') || $request->isMethod('PUT') || $request->isMethod('PATCH') || $request->isMethod('DELETE')) {
                 if (!$request->ajax()) {
-                    return back()->with('error', 'Sorry, This feature is disabled in demo !');
+                    return back()->with('error', 'Sorry, This feature is disabled');
                 } else {
-                    return response()->json(['result' => 'error', 'message' => 'Sorry, This feature is disabled in demo !']);
+                    return response()->json(['result' => 'error', 'message' => 'Sorry, This feature is disabled']);
                 }
             }
         }
@@ -32,9 +32,9 @@ class Demo {
         if (env('DEMO_MODE', 0) == 2) {
             if(in_array($request->getMethod(), explode('|', $notAllowed))){
                 if (!$request->ajax()) {
-                    return back()->with('error', 'Sorry, This feature is disabled in demo !');
+                    return back()->with('error', 'Sorry, This feature is disabled');
                 } else {
-                    return response()->json(['result' => 'error', 'message' => 'Sorry, This feature is disabled in demo !']);
+                    return response()->json(['result' => 'error', 'message' => 'Sorry, This feature is disabled']);
                 }
             }
         }

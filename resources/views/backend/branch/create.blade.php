@@ -5,7 +5,7 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="header-title">{{ _lang('Add New Branch') }}</h4>
+				<h4 class="header-title">{{ _lang('Add New Branch') }} a</h4>
 			</div>
 			<div class="card-body">
 			    <form method="post" class="validate" autocomplete="off" action="{{ route('branches.store') }}" enctype="multipart/form-data">

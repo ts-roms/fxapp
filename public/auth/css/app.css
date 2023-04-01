@@ -1,12 +1,12 @@
-body{
+body {
   background: #e9f2f7;
   color: #000;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
-  position:relative;
+  position: relative;
 }
 
-body::before{
+body::before {
   content: "";
   background: #d3e6f5;
   position: fixed;
@@ -17,7 +17,7 @@ body::before{
   border-radius: 50%;
 }
 
-body::after{
+body::after {
   content: "";
   background: #dbd9f1;
   position: fixed;
@@ -26,18 +26,18 @@ body::after{
   height: 500px;
   width: 500px;
   border-radius: 50%;
-  z-index:-1;
+  z-index: -1;
 }
 
-@media (max-width:768px){
-  body::before{
+@media (max-width:768px) {
+  body::before {
     top: -100px;
     left: -100px;
     height: 300px;
     width: 300px;
   }
-  
-  body::after{
+
+  body::after {
     bottom: -100px;
     right: -100px;
     height: 300px;
@@ -45,27 +45,27 @@ body::after{
   }
 }
 
-.logo{
-	max-width: 150px;
-	border-radius: 15px;
-    margin-bottom: 10px;
-	margin-top:-20px;
-    transform: translateX(-50%);
-    margin-left: 50%;
-    padding: 10px;
+.logo {
+  max-width: 150px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: -20px;
+  transform: translateX(-50%);
+  margin-left: 50%;
+  padding: 10px;
 }
 
 .custom-control-label {
-    margin-bottom: 0;
-    margin-top: 1px;
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none; 
-            user-select: none; 
+  margin-bottom: 0;
+  margin-top: 1px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
- 
+
 .card-signin {
   border: 0;
   border-radius: 5px;
@@ -82,18 +82,18 @@ body::after{
 }
 
 .login-form-head {
-    text-align: center;
-    background: #ffffff;
-    padding: 30px 15px;
-    border-bottom: 1px solid #e8e8e8;
+  text-align: center;
+  background: #ffffff;
+  padding: 30px 15px;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .login-form-head h4 {
-    letter-spacing: 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #000;
-    margin: 0;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
 }
 
 .card-signin .card-body {
@@ -114,10 +114,10 @@ body::after{
 }
 
 .form-signin .form-control {
-	padding: 12px 20px;
-	text-align: center;
-	border-left: 2px solid #2d7bff;
-	height: auto;
+  padding: 12px 20px;
+  text-align: center;
+  border-left: 2px solid #2d7bff;
+  height: auto;
 }
 
 .form-signin .form-control:focus {
@@ -140,8 +140,8 @@ body::after{
 }
 
 .form-signup .form-control {
-    padding: 12px 20px;
-    height: auto;
+  padding: 12px 20px;
+  height: auto;
 }
 
 .form-signup .form-control:focus {
@@ -150,29 +150,29 @@ body::after{
 }
 
 select.form-control {
-    padding: 12px 20px;
-    height: 51px !important;
+  padding: 12px 20px;
+  height: 51px !important;
 }
 
 
 .custom-control-label:before {
   background: #CCCCCC;
-	border-radius: 50% !important;
+  border-radius: 50% !important;
 }
 
 .custom-control {
-   display: inline-block;
+  display: inline-block;
 }
 
-.btn-register{
-	text-align: center;
+.btn-register {
+  text-align: center;
   display: block;
   color: #000000;
-	font-size: 16px !important;
+  font-size: 16px !important;
 }
 
-.btn-register:hover{
-	color: #000000;
+.btn-register:hover {
+  color: #000000;
 }
 
 .alert-success {
