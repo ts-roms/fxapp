@@ -130,7 +130,7 @@
                         <td>{{ _lang("Attachment") }}</td>
                         <td>
                            {!! $loan->attachment == "" ? '' : '<a
-                              href="'. asset('public/uploads/media/'.$loan->attachment) .'"
+                              href="'. asset('uploads/media/'.$loan->attachment) .'"
                               target="_blank"
                               >'._lang('Download').'</a
                               >' !!}

@@ -20,7 +20,7 @@
 					<tbody>
 					    @foreach($paymentgateways as $paymentgateway)
 					    <tr data-id="row_{{ $paymentgateway->id }}">
-							<td class='image'><img class="thumb-sm" src="{{ asset('public/backend/images/gateways/'.$paymentgateway->image) }}"/></td>
+							<td class='image'><img class="thumb-sm" src="{{ asset('backend/images/gateways/'.$paymentgateway->image) }}"/></td>
 							<td class='name'>{{ $paymentgateway->name }}</td>
 							<td class='status'>{!! xss_clean(status($paymentgateway->status)) !!}</td>
 

@@ -111,8 +111,11 @@ class Installer {
 			return false;
 		}
 
-		// Set database details
-		static::saveDbVariables($host, $port, $database, $username, $password);
+		/**
+		 * COMMENTED FOR TEMP
+		 */
+		// Set database details 
+		// static::saveDbVariables($host, $port, $database, $username, $password);
 
 		// Try to increase the maximum execution time
 		@set_time_limit(300); // 5 minutes
@@ -150,14 +153,17 @@ class Installer {
 			'charset' => 'utf8mb4',
 		]);
 
-		try {
-			DB::connection('install_test')->getPdo();
-		} catch (\Exception $e) {
-			return false;
-		}
+		/**
+		 * COMMENTED FOR TEMP
+		 */
+		// try {
+		// 	DB::connection('install_test')->getPdo();
+		// } catch (\Exception $e) {
+		// 	return false;
+		// }
 
-		// Purge test connection
-		DB::purge('install_test');
+		// // Purge test connection
+		// DB::purge('install_test');
 
 		return true;
 	}

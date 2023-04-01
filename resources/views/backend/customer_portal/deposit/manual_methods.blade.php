@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ asset('public/uploads/media/'.$deposit_method->image) }}" class="gateway-img"/>
+                                <img src="{{ asset('uploads/media/'.$deposit_method->image) }}" class="gateway-img"/>
                                 <h5>{{ $deposit_method->name }}</h5>
                                 <h6 class="pt-1">{{ _lang('Deposit Limit') }} ({{ decimalPlace($deposit_method->minimum_amount, currency($deposit_method->currency->name)) }} - {{ decimalPlace($deposit_method->maximum_amount, currency($deposit_method->currency->name)) }})</h6>
                                 <h6 class="pt-1">{{ _lang('Deposit Charge') }} ({{ decimalPlace($deposit_method->fixed_charge, currency($deposit_method->currency->name)) }} + {{ $deposit_method->charge_in_percentage }}%)</h6>

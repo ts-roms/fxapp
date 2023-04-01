@@ -78,7 +78,7 @@ class MemberDocumentController extends Controller {
         $memberdocument->save();
 
         //Prefix Output
-        $memberdocument->document  = '<a target="_blank" href="'.asset('public/uploads/documents/'.$memberdocument->document) .'">'. $memberdocument->document .'</a>';
+        $memberdocument->document  = '<a target="_blank" href="'.asset('uploads/documents/'.$memberdocument->document) .'">'. $memberdocument->document .'</a>';
 
         if (!$request->ajax()) {
             return redirect()->route('member_documents.create')->with('success', _lang('Saved Successfully'));
@@ -144,7 +144,7 @@ class MemberDocumentController extends Controller {
         $memberdocument->save();
 
         //Prefix Output
-        $memberdocument->document  = '<a target="_blank" href="'.asset('public/uploads/documents/'.$memberdocument->document) .'">'. $memberdocument->document .'</a>';
+        $memberdocument->document  = '<a target="_blank" href="'.asset('uploads/documents/'.$memberdocument->document) .'">'. $memberdocument->document .'</a>';
 
         if (!$request->ajax()) {
             return back()->with('success', _lang('Updated Successfully'));

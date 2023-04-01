@@ -182,7 +182,7 @@
                             @foreach($member->documents as $document)
                                 <tr>
                                     <td>{{ $document->name }}</td>
-                                    <td><a target="_blank" href="{{ asset('public/uploads/documents/'.$document->document ) }}">{{ $document->document }}</a></td>
+                                    <td><a target="_blank" href="{{ asset('uploads/documents/'.$document->document ) }}">{{ $document->document }}</a></td>
                                     <td>{{ date('d M, Y H:i:s',strtotime($document->created_at)) }}</td>
                                     <td class="text-center">
                                         <span class="dropdown">

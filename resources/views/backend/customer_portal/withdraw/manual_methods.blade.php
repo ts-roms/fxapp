@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ asset('public/uploads/media/'.$withdraw_method->image) }}" class="gateway-img"/>
+                                <img src="{{ asset('uploads/media/'.$withdraw_method->image) }}" class="gateway-img"/>
                                 <h5>{{ $withdraw_method->name }}</h5>
                                 <h6 class="pt-1">{{ _lang('Withdraw Limit') }} ({{ decimalPlace($withdraw_method->minimum_amount, currency($withdraw_method->currency->name)) }} - {{ decimalPlace($withdraw_method->maximum_amount, currency($withdraw_method->currency->name)) }})</h6>
                                 <h6 class="pt-1">{{ _lang('Withdraw Charge') }} ({{ decimalPlace($withdraw_method->fixed_charge, currency($withdraw_method->currency->name)) }} + {{ $withdraw_method->charge_in_percentage }}%)</h6>

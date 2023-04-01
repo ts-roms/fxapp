@@ -36,7 +36,7 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label class="control-label">{{ _lang('Image') }}</label>
-								<input type="text" class="dropify" name="image" data-default-file="{{ $news->image != '' ? asset('public/uploads/media/'.$news->image) : '' }}">
+								<input type="text" class="dropify" name="image" data-default-file="{{ $news->image != '' ? asset('uploads/media/'.$news->image) : '' }}">
 							</div>
 						</div>
 

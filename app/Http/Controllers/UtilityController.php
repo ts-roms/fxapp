@@ -265,7 +265,7 @@ class UtilityController extends Controller {
 
         //save file
         $file_name = 'DB-BACKUP-' . time() . '.sql';
-        $file      = 'public/backup/DB-BACKUP-' . $file_name;
+        $file      = 'backup/DB-BACKUP-' . $file_name;
         $handle    = fopen($file, 'w+');
         fwrite($handle, $return);
         fclose($handle);
@@ -287,7 +287,7 @@ class UtilityController extends Controller {
      */
     public function download_database_backup($id) {
         $databasebackup = \App\Models\DatabaseBackup::find($id);
-        $file           = 'public/backup/DB-BACKUP-' . $databasebackup->file;
+        $file           = 'backup/DB-BACKUP-' . $databasebackup->file;
         return response()->download($file);
     }
 
@@ -299,7 +299,7 @@ class UtilityController extends Controller {
      */
     public function destroy_database_backup($id) {
         $databasebackup = \App\Models\DatabaseBackup::find($id);
-        $file           = 'public/backup/DB-BACKUP-' . $databasebackup->file;
+        $file           = 'backup/DB-BACKUP-' . $databasebackup->file;
         $databasebackup->delete();
         unlink($file);
 

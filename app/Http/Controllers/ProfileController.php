@@ -69,7 +69,7 @@ class ProfileController extends Controller {
         if ($request->hasFile('profile_picture')) {
             $image     = $request->file('profile_picture');
             $file_name = "profile_" . time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->crop(300, 300)->save(base_path('public/uploads/profile/') . $file_name);
+            Image::make($image)->crop(300, 300)->save(base_path('uploads/profile/') . $file_name);
             $profile->profile_picture = $file_name;
         }
 
