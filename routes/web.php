@@ -68,6 +68,9 @@ Route::group(['middleware' => ['install']], function () {
 			//Currency List
 			Route::resource('currency', 'CurrencyController');
 
+			// Custom Fields
+			Route::resource('custom_fields', 'CustomFieldsController');
+
 			//Deposit Methods
 			Route::resource('deposit_methods', 'DepositMethodController')->except([
 				'show',
