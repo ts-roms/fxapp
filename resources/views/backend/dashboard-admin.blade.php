@@ -68,6 +68,69 @@
 </div>
 
 <div class="row">
+	<div class="col-xl-3 col-md-6">
+		<div class="card mb-4 success-card dashboard-card">
+			<div class="card-body">
+				<div class="d-flex">
+					<div class="flex-grow-1">
+						<h5>{{ _lang('Total Members') }}</h5>
+						<h4 class="pt-1 mb-0"><b>{{ $total_customer }}</b></h4>
+					</div>
+					<div>
+						<a href="{{ route('members.index') }}"><i class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card mb-4 warning-card dashboard-card">
+			<div class="card-body">
+				<div class="d-flex">
+					<div class="flex-grow-1">
+						<h5>{{ _lang('Total Members') }}</h5>
+						<h4 class="pt-1 mb-0"><b>{{ $total_customer }}</b></h4>
+					</div>
+					<div>
+						<a href="{{ route('members.index') }}"><i class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card mb-4 danger-card dashboard-card">
+			<div class="card-body">
+				<div class="d-flex">
+					<div class="flex-grow-1">
+						<h5>{{ _lang('Total Members') }}</h5>
+						<h4 class="pt-1 mb-0"><b>{{ $total_customer }}</b></h4>
+					</div>
+					<div>
+						<a href="{{ route('members.index') }}"><i class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-3 col-md-6">
+		<div class="card mb-4 primary-card dashboard-card">
+			<div class="card-body">
+				<div class="d-flex">
+					<div class="flex-grow-1">
+						<h5>{{ _lang('Total Members') }}</h5>
+						<h4 class="pt-1 mb-0"><b>{{ $total_customer }}</b></h4>
+					</div>
+					<div>
+						<a href="{{ route('members.index') }}"><i class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
 	<div class="col-md-4 col-sm-5 mb-4">
 		<div class="card h-100">
 			<div class="card-header d-flex align-items-center">

@@ -1,11 +1,15 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card card-signin p-3 my-5">
-                <div class="card-body">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="w-100 h-100">
+            </div>
+        </div>
+        <div class="col-md-4 border-left border-2">
+            <div class="my-5 h-100" style="padding-top: 10rem;">
+                <div class="card-body w-75 m-auto">
 					<img class="logo" src="{{ get_logo() }}">
 					
 					<h5 class="text-center py-4">{{ _lang('Login To Your Account') }}</h4> 

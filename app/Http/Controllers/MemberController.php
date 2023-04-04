@@ -424,7 +424,7 @@ class MemberController extends Controller {
         if (!$request->ajax()) {
             return back()->with('success', _lang('Email Send Sucessfully'));
         } else {
-            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Email Send Sucessfully'), 'data' => $contact]);
+            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Email Send Sucessfully'), 'data' => $message]);
         }
     }
 
@@ -467,7 +467,7 @@ class MemberController extends Controller {
         if (!$request->ajax()) {
             return back()->with('success', _lang('SMS Send Sucessfully'));
         } else {
-            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('SMS Send Sucessfully'), 'data' => $contact]);
+            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('SMS Send Sucessfully'), 'data' => $message]);
         }
     }
 
