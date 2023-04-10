@@ -17,14 +17,16 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\MemberRequestAccepted;
 
-class MemberController extends Controller {
+class MemberController extends Controller
+{
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
     }
 
@@ -33,11 +35,13 @@ class MemberController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         return view('backend.member.list');
     }
 
-    public function get_table_data() {
+    public function get_table_data()
+    {
         $members = Member::select('members.*')
             ->with('branch')
             ->orderBy("members.id", "desc");
@@ -48,21 +52,21 @@ class MemberController extends Controller {
             })
             ->editColumn('photo', function ($member) {
                 return '<div class="profile_picture text-center">'
-                . '<img src="' . profile_picture($member->photo) . '" class="thumb-sm img-thumbnail">'
+                    . '<img src="' . profile_picture($member->photo) . '" class="thumb-sm img-thumbnail">'
                     . '</div>';
             })
             ->addColumn('action', function ($member) {
                 return '<div class="dropdown text-center">'
-                . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
-                . '&nbsp;</button>'
-                . '<div class="dropdown-menu">'
-                . '<a class="dropdown-item" href="' . action('MemberController@edit', $member->id) . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
-                . '<a class="dropdown-item" href="' . action('MemberController@show', $member->id) . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
-                . '<a class="dropdown-item" href="' . route('member_documents.index', $member->id) . '"><i class="ti-files"></i>  ' . _lang('Documents') . '</a>'
-                . '<form action="' . action('MemberController@destroy', $member->id) . '" method="post">'
-                . csrf_field()
-                . '<input name="_method" type="hidden" value="DELETE">'
-                . '<button class="dropdown-item btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
+                    . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
+                    . '&nbsp;</button>'
+                    . '<div class="dropdown-menu">'
+                    . '<a class="dropdown-item" href="' . action('MemberController@edit', $member->id) . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
+                    . '<a class="dropdown-item" href="' . action('MemberController@show', $member->id) . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
+                    . '<a class="dropdown-item" href="' . route('member_documents.index', $member->id) . '"><i class="ti-files"></i>  ' . _lang('Documents') . '</a>'
+                    . '<form action="' . action('MemberController@destroy', $member->id) . '" method="post">'
+                    . csrf_field()
+                    . '<input name="_method" type="hidden" value="DELETE">'
+                    . '<button class="dropdown-item btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
                     . '</form>'
                     . '</div>'
                     . '</div>';
@@ -74,7 +78,8 @@ class MemberController extends Controller {
             ->make(true);
     }
 
-    public function pending_requests() {
+    public function pending_requests()
+    {
         $data            = array();
         $data['members'] = Member::where('status', 0)
             ->withoutGlobalScopes(['status'])
@@ -87,7 +92,8 @@ class MemberController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         if (!$request->ajax()) {
             return view('backend.member.create');
         } else {
@@ -101,7 +107,8 @@ class MemberController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'first_name'   => 'required',
             'last_name'    => 'required',
@@ -186,7 +193,6 @@ class MemberController extends Controller {
         } else {
             return response()->json(['result' => 'success', 'action' => 'store', 'message' => _lang('Saved Successfully'), 'data' => $member, 'table' => '#members_table']);
         }
-
     }
 
     /**
@@ -195,7 +201,8 @@ class MemberController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id) {
+    public function show(Request $request, $id)
+    {
         $member = Member::withoutGlobalScopes(['status'])->find($id);
         if (!$request->ajax()) {
             return view('backend.member.view', compact('member', 'id'));
@@ -204,7 +211,8 @@ class MemberController extends Controller {
         }
     }
 
-    public function get_member_transaction_data($member_id) {
+    public function get_member_transaction_data($member_id)
+    {
 
         $transactions = Transaction::select('transactions.*')
             ->with(['member', 'account', 'account.savings_type'])
@@ -237,15 +245,15 @@ class MemberController extends Controller {
             }, true)
             ->addColumn('action', function ($transaction) {
                 return '<div class="dropdown text-center">'
-                . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
-                . '&nbsp;</button>'
-                . '<div class="dropdown-menu">'
-                . '<a class="dropdown-item" href="' . action('TransactionController@edit', $transaction['id']) . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
-                . '<a class="dropdown-item" href="' . action('TransactionController@show', $transaction['id']) . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
-                . '<form action="' . action('TransactionController@destroy', $transaction['id']) . '" method="post">'
-                . csrf_field()
-                . '<input name="_method" type="hidden" value="DELETE">'
-                . '<button class="dropdown-item btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
+                    . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
+                    . '&nbsp;</button>'
+                    . '<div class="dropdown-menu">'
+                    . '<a class="dropdown-item" href="' . action('TransactionController@edit', $transaction['id']) . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
+                    . '<a class="dropdown-item" href="' . action('TransactionController@show', $transaction['id']) . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
+                    . '<form action="' . action('TransactionController@destroy', $transaction['id']) . '" method="post">'
+                    . csrf_field()
+                    . '<input name="_method" type="hidden" value="DELETE">'
+                    . '<button class="dropdown-item btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
                     . '</form>'
                     . '</div>'
                     . '</div>';
@@ -263,7 +271,8 @@ class MemberController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id) {
+    public function edit(Request $request, $id)
+    {
         $member = Member::withoutGlobalScopes(['status'])->find($id);
         if (!$request->ajax()) {
             return view('backend.member.edit', compact('member', 'id'));
@@ -279,7 +288,8 @@ class MemberController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $member    = Member::withoutGlobalScopes(['status'])->find($id);
         $validator = Validator::make($request->all(), [
             'first_name'   => 'required',
@@ -379,10 +389,10 @@ class MemberController extends Controller {
         } else {
             return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Updated Successfully'), 'data' => $member, 'table' => '#members_table']);
         }
-
     }
 
-    public function send_email(Request $request) {
+    public function send_email(Request $request)
+    {
         @ini_set('max_execution_time', 0);
         @set_time_limit(0);
 
@@ -428,7 +438,8 @@ class MemberController extends Controller {
         }
     }
 
-    public function send_sms(Request $request) {
+    public function send_sms(Request $request)
+    {
         @ini_set('max_execution_time', 0);
         @set_time_limit(0);
 
@@ -477,7 +488,8 @@ class MemberController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $member = Member::find($id);
         if ($member->user) {
             $member->user->delete();
@@ -486,7 +498,8 @@ class MemberController extends Controller {
         return redirect()->route('members.index')->with('success', _lang('Deleted Successfully'));
     }
 
-    public function accept_request(Request $request, $id) {
+    public function accept_request(Request $request, $id)
+    {
         if ($request->isMethod('get')) {
             $member = Member::withoutGlobalScopes(['status'])->find($id);
             return view('backend.member.modal.accept_request', compact('member'));
@@ -518,10 +531,11 @@ class MemberController extends Controller {
 
             DB::commit();
 
-            if($member->status == 1){
+            if ($member->status == 1) {
                 try {
                     $member->notify(new MemberRequestAccepted($member));
-                } catch (\Exception $e) {}     
+                } catch (\Exception $e) {
+                }
             }
 
             if (!$request->ajax()) {
@@ -529,11 +543,11 @@ class MemberController extends Controller {
             } else {
                 return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Member Request Accepted'), 'data' => $member, 'table' => '#members_table']);
             }
-
         }
     }
 
-    public function reject_request($id) {
+    public function reject_request($id)
+    {
         $member = Member::withoutGlobalScopes(['status'])->find($id);
         $member->user->delete();
         $member->delete();

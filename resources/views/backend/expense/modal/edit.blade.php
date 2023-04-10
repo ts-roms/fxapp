@@ -1,11 +1,11 @@
-<form method="post" class="ajax-screen-submit" autocomplete="off" action="{{ action('ExpenseController@update', $id) }}" enctype="multipart/form-data">
+<form method="post" class="ajax-screen-submit" autocomplete="off" action="{{ action('OtherIncomeController@update', $id) }}" enctype="multipart/form-data">
 	{{ csrf_field()}}
 	<input name="_method" type="hidden" value="PATCH">
 	<div class="row px-2">
 		<div class="col-md-12">
 			<div class="form-group">
-				<label class="control-label">{{ _lang('Expense Date') }}</label>						
-				<input type="text" class="form-control datetimepicker" name="expense_date" value="{{ $expense->getRawOriginal('expense_date') }}" required>
+				<label class="control-label">{{ _lang('Date') }}</label>						
+				<input type="text" class="form-control datetimepicker" name="other_income_date" value="{{ $expense->getRawOriginal('expense_date') }}" required>
 			</div>
 		</div>
 

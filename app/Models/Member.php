@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 
-class Member extends Model {
+           class Member extends Model {
     use Notifiable, Branch;
     /**
      * The table associated with the model.
@@ -49,5 +49,9 @@ class Member extends Model {
 
     public function documents() {
         return $this->hasMany('App\Models\MemberDocument', 'member_id');
+    }
+
+    public function contributions() {
+        return $this->hasMany('App\Models\Contribution', 'member_id');
     }
 }

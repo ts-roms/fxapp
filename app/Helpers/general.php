@@ -484,7 +484,7 @@ if (!function_exists('g_decimal_place')) {
             return money_format_2($number, $format);
         }
 
-        if ($currency_position == 'left') {
+        if (get_currency_position() == 'left') {
             return $symbol . ' ' . money_format_2($number, $format);
         } else {
             return money_format_2($number, $format) . ' ' . $symbol;
@@ -1170,4 +1170,10 @@ if ( ! function_exists('ignoreRoutes')){
 		return true;
 		
 	}
+}
+
+if (! function_exists('generate_reference')) {
+    function generate_reference($module, $length) {
+        return $module . str_pad(rand(1, 9999) * 13, $length, '0', STR_PAD_LEFT);
+    }
 }

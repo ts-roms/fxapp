@@ -65,6 +65,9 @@ Route::group(['middleware' => ['install']], function () {
 			//Expense Categories
 			Route::resource('expense_categories', 'ExpenseCategoryController')->except('show');
 
+			// OtherIncome
+			Route::resource('other_income_categories', 'OtherIncomeCategoryController')->except('show');
+
 			//Currency List
 			Route::resource('currency', 'CurrencyController');
 
@@ -113,7 +116,6 @@ Route::group(['middleware' => ['install']], function () {
 			Route::resource('notification_templates', 'NotificationTemplateController')->only([
 				'index', 'show', 'edit', 'update',
 			]);
-
 		});
 
 		/** Dynamic Permission **/
@@ -180,6 +182,10 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('expenses/get_table_data', 'ExpenseController@get_table_data');
 			Route::resource('expenses', 'ExpenseController');
 
+			//OtherIncome
+			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data');
+			Route::resource('other_income', 'OtherIncomeController');
+
 			//Loan Controller
 			Route::post('loans/get_table_data', 'LoanController@get_table_data');
 			Route::get('loans/calculator', 'LoanController@calculator')->name('loans.admin_calculator');
@@ -200,6 +206,10 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('loan_payments/get_repayment_by_loan_id/{loan_id}', 'LoanPaymentController@get_repayment_by_loan_id');
 			Route::get('loan_payments/get_table_data', 'LoanPaymentController@get_table_data');
 			Route::resource('loan_payments', 'LoanPaymentController');
+
+			// Contributions
+			Route::get('contributions/get_table_data', 'ContributionController@get_table_data');
+			Route::resource('contributions', 'ContributionController');
 
 			//Report Controller
 			Route::match(['get', 'post'], 'reports/account_statement', 'ReportController@account_statement')->name('reports.account_statement');
@@ -247,7 +257,6 @@ Route::group(['middleware' => ['install']], function () {
 			Route::match(['get', 'post'], 'reports/account_statement', 'Customer\ReportController@account_statement')->name('customer_reports.account_statement');
 			Route::match(['get', 'post'], 'reports/transactions_report', 'Customer\ReportController@transactions_report')->name('customer_reports.transactions_report');
 			Route::match(['get', 'post'], 'reports/account_balances', 'Customer\ReportController@account_balances')->name('customer_reports.account_balances');
-
 		});
 
 		Route::get('switch_language/', function () {
@@ -265,12 +274,10 @@ Route::group(['middleware' => ['install']], function () {
 			}
 			return back();
 		})->name('switch_branch');
-
 	});
-
 });
 
-Route::namespace ('Gateway')->prefix('callback')->name('callback.')->group(function () {
+Route::namespace('Gateway')->prefix('callback')->name('callback.')->group(function () {
 	//Fiat Currency
 	Route::get('paypal', 'PayPal\ProcessController@callback')->name('PayPal')->middleware('auth');
 	Route::post('stripe', 'Stripe\ProcessController@callback')->name('Stripe')->middleware('auth');

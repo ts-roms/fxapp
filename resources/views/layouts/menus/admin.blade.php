@@ -51,6 +51,8 @@
 
 <li><a href="{{ route('loan_payments.index') }}"><i
             class="fas fa-receipt"></i><span>{{ _lang('Repayments') }}</span></a></li>
+<li><a href="{{ route('contributions.index') }}"><i
+            class="fas fa-file-invoice"></i><span>{{ _lang('Contributions') }}</span></a></li>
 
 <li>
     <a href="javascript: void(0);"><i class="fas fa-landmark"></i><span>{{ _lang('Accounts') }}</span><span
@@ -112,6 +114,18 @@
                 href="{{ route('expenses.index') }}">{{ _lang('All Expense') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('expense_categories.index') }}">{{ _lang('Expense Categories') }}</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="javascript: void(0);"><i
+            class="fas fa-hand-holding-usd"></i><span>{{ _lang('Other Income') }}</span><span class="menu-arrow"><i
+                class="mdi mdi-chevron-right"></i></span></a>
+    <ul class="nav-second-level" aria-expanded="false">
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('other_income.index') }}">{{ _lang('All Other Income') }}</a></li>
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('other_income_categories.index') }}">{{ _lang('Other Income Categories') }}</a></li>
     </ul>
 </li>
 

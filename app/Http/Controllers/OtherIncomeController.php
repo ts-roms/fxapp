@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contribution;
-use App\Models\Expense;
+use App\Models\OtherIncome;
 use DataTables;
 use Illuminate\Http\Request;
 use Validator;
 
-class ExpenseController extends Controller
+class OtherIncomeController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -28,7 +26,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        return view('backend.expense.list');
+        $other_income = OtherIncome::all();
+        return view('backend.other_income.list', compact('other_income'));
     }
 
     public function get_table_data()
@@ -36,22 +35,22 @@ class ExpenseController extends Controller
 
         $currency = currency(get_base_currency());
 
-        $expenses = Expense::select('expenses.*')
-            ->with('expense_category')
-            ->orderBy("expenses.id", "desc");
+        $other_incomes = OtherIncome::select('other_income.*')
+            ->with('other_income_category')
+            ->orderBy("other_income.id", "desc");
 
-        return Datatables::eloquent($expenses)
-            ->editColumn('amount', function ($expense) use ($currency) {
-                return decimalPlace($expense->amount, $currency);
+        return DataTables::eloquent($other_incomes)
+            ->editColumn('amount', function ($other_income) use ($currency) {
+                return decimalPlace($other_income->amount, $currency);
             })
-            ->addColumn('action', function ($expense) {
+            ->addColumn('action', function ($other_income) {
                 return '<div class="dropdown text-center">'
                     . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
                     . '&nbsp;</button>'
                     . '<div class="dropdown-menu">'
-                    . '<a class="dropdown-item ajax-modal" href="' . action('ExpenseController@edit', $expense['id']) . '" data-title="' . _lang('Expense Details') . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
-                    . '<a class="dropdown-item ajax-modal" href="' . action('ExpenseController@show', $expense['id']) . '" data-title="' . _lang('Update Expense') . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
-                    . '<form action="' . action('ExpenseController@destroy', $expense['id']) . '" method="post">'
+                    . '<a class="dropdown-item ajax-modal" href="' . action('OtherIncomeController@edit', $other_income->id) . '" data-title="' . _lang('Update Other Income') . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
+                    . '<a class="dropdown-item ajax-modal" href="' . action('OtherIncomeController@show', $other_income->id) . '" data-title="' . _lang('Other Income Details') . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
+                    . '<form action="' . action('OtherIncomeController@destroy', $other_income->id) . '" method="post">'
                     . csrf_field()
                     . '<input name="_method" type="hidden" value="DELETE">'
                     . '<button class="dropdown-item btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
@@ -59,8 +58,8 @@ class ExpenseController extends Controller
                     . '</div>'
                     . '</div>';
             })
-            ->setRowId(function ($expense) {
-                return "row_" . $expense->id;
+            ->setRowId(function ($other_income) {
+                return "row_" . $other_income->id;
             })
             ->rawColumns(['amount', 'action'])
             ->make(true);
@@ -76,9 +75,10 @@ class ExpenseController extends Controller
         if (!$request->ajax()) {
             return back();
         } else {
-            return view('backend.expense.modal.create');
+            return view('backend.other_income.modal.create');
         }
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -89,8 +89,8 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'expense_date'        => 'required',
-            'expense_category_id' => 'required',
+            'other_income_date'        => 'required',
+            'other_income_category_id' => 'required',
             'amount'              => 'required|numeric',
             'attachment'          => 'nullable|mimes:jpeg,JPEG,png,PNG,jpg,doc,pdf,docx,zip',
         ]);
@@ -99,7 +99,7 @@ class ExpenseController extends Controller
             if ($request->ajax()) {
                 return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
             } else {
-                return redirect()->route('expenses.create')
+                return redirect()->route('other_income.create')
                     ->withErrors($validator)
                     ->withInput();
             }
@@ -112,22 +112,22 @@ class ExpenseController extends Controller
             $file->move(public_path() . "/uploads/media/", $attachment);
         }
 
-        $expense                      = new Expense();
-        $expense->expense_date        = $request->input('expense_date');
-        $expense->expense_category_id = $request->input('expense_category_id');
-        $expense->amount              = $request->input('amount');
-        $expense->reference           = $request->input('reference');
-        $expense->note                = $request->input('note');
-        $expense->attachment          = $attachment;
-        $expense->created_user_id     = auth()->id();
-        $expense->branch_id           = auth()->user()->branch_id;
+        $other_income                      = new OtherIncome();
+        $other_income->other_income_date        = $request->input('other_income_date');
+        $other_income->other_income_category_id = $request->input('other_income_category_id');
+        $other_income->amount              = $request->input('amount');
+        $other_income->reference           = $request->input('reference');
+        $other_income->notes                = $request->input('notes');
+        $other_income->attachment          = $attachment;
+        $other_income->created_user_id     = auth()->id();
+        $other_income->branch_id           = auth()->user()->branch_id;
 
-        $expense->save();
+        $other_income->save();
 
         if (!$request->ajax()) {
-            return redirect()->route('expenses.create')->with('success', _lang('Saved Successfully'));
+            return redirect()->route('other_income.create')->with('success', _lang('Saved Successfully'));
         } else {
-            return response()->json(['result' => 'success', 'action' => 'store', 'message' => _lang('Saved Successfully'), 'data' => $expense, 'table' => '#expenses_table']);
+            return response()->json(['result' => 'success', 'action' => 'store', 'message' => _lang('Saved Successfully'), 'data' => $other_income, 'table' => '#other_income_table']);
         }
     }
 
@@ -139,15 +139,15 @@ class ExpenseController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $expense = Expense::find($id);
+        $other_income = OtherIncome::find($id);
         if (!$request->ajax()) {
             return back();
         } else {
-            return view('backend.expense.modal.view', compact('expense', 'id'));
+            return view('backend.other_income.modal.view', compact('other_income', 'id'));
         }
     }
 
-    /**
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -155,15 +155,15 @@ class ExpenseController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $expense = Expense::find($id);
+        $other_income = OtherIncome::find($id);
         if (!$request->ajax()) {
             return back();
         } else {
-            return view('backend.expense.modal.edit', compact('expense', 'id'));
+            return view('backend.other_income.modal.edit', compact('other_income', 'id'));
         }
     }
 
-    /**
+        /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -173,8 +173,8 @@ class ExpenseController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'expense_date'        => 'required',
-            'expense_category_id' => 'required',
+            'other_income_date'        => 'required',
+            'other_income_category_id' => 'required',
             'amount'              => 'required|numeric',
             'attachment'          => 'nullable|mimes:jpeg,JPEG,png,PNG,jpg,doc,pdf,docx,zip',
         ]);
@@ -183,7 +183,7 @@ class ExpenseController extends Controller
             if ($request->ajax()) {
                 return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
             } else {
-                return redirect()->route('expenses.edit', $id)
+                return redirect()->route('other_income.edit', $id)
                     ->withErrors($validator)
                     ->withInput();
             }
@@ -195,24 +195,23 @@ class ExpenseController extends Controller
             $file->move(public_path() . "/uploads/media/", $attachment);
         }
 
-        $expense                      = Expense::find($id);
-        $expense->expense_date        = $request->input('expense_date');
-        $expense->expense_category_id = $request->input('expense_category_id');
-        $expense->amount              = $request->input('amount');
-        $expense->reference           = $request->input('reference');
-        $expense->note                = $request->input('note');
+        $other_income                      = OtherIncome::find($id);
+        $other_income->other_income_date        = $request->input('other_income_date');
+        $other_income->other_income_category_id = $request->input('other_income_category_id');
+        $other_income->amount              = $request->input('amount');
+        $other_income->reference           = $request->input('reference');
+        $other_income->notes                = $request->input('notes');
         if ($request->hasfile('attachment')) {
-            $expense->attachment = $attachment;
+            $other_income->attachment = $attachment;
         }
-        $expense->updated_user_id = auth()->id();
-        $expense->branch_id       = auth()->user()->branch_id;
+        $other_income->updated_user_id = auth()->id();
 
-        $expense->save();
+        $other_income->save();
 
         if (!$request->ajax()) {
-            return redirect()->route('expenses.index')->with('success', _lang('Updated Successfully'));
+            return redirect()->route('other_income.index')->with('success', _lang('Updated Successfully'));
         } else {
-            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Updated Successfully'), 'data' => $expense, 'table' => '#expenses_table']);
+            return response()->json(['result' => 'success', 'action' => 'update', 'message' => _lang('Updated Successfully'), 'data' => $other_income, 'table' => '#other_income_table']);
         }
     }
 
@@ -224,8 +223,8 @@ class ExpenseController extends Controller
      */
     public function destroy($id)
     {
-        $expense = Expense::find($id);
-        $expense->delete();
-        return redirect()->route('expenses.index')->with('success', _lang('Deleted Successfully'));
+        $other_income = OtherIncome::find($id);
+        $other_income->delete();
+        return redirect()->route('other_income.index')->with('success', _lang('Deleted Successfully'));
     }
 }

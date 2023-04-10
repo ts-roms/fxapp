@@ -14,21 +14,9 @@ class CurrencySeeder extends Seeder {
     public function run() {
         DB::table('currency')->insert([
             [
-                'name'          => 'USD',
-                'exchange_rate' => 1.000000,
+                'name'          => 'PHP',
+                'exchange_rate' => 50.000000,
                 'base_currency' => 1,
-                'status'        => 1,
-            ],
-            [
-                'name'          => 'EUR',
-                'exchange_rate' => 0.850000,
-                'base_currency' => 0,
-                'status'        => 1,
-            ],
-            [
-                'name'          => 'INR',
-                'exchange_rate' => 74.500000,
-                'base_currency' => 0,
                 'status'        => 1,
             ],
         ]);

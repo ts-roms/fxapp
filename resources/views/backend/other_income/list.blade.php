@@ -3,22 +3,21 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span class="panel-title">{{ _lang('Loan Repayments') }}</span>
-                    <a class="btn btn-primary btn-xs float-right" href="{{ route('loan_payments.create') }}"><i
-                            class="ti-plus"></i>&nbsp;{{ _lang('Add Repayment') }}</a>
+            <div class="card no-export">
+                <div class="card-header d-flex align-items-center">
+                    <span class="panel-title">{{ _lang('Other Income') }}</span>
+                    <a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="{{ _lang('Add New Other Income') }}"
+                        href="{{ route('other_income.create') }}"><i class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
                 </div>
                 <div class="card-body">
-                    <table id="loan_payments_table" class="table table-bordered">
+                    <table id="other_income_table" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>{{ _lang('Loan ID') }}</th>
-                                <th>{{ _lang('Payment Date') }}</th>
-                                <th>{{ _lang('Principal Amount') }}</th>
-                                <th>{{ _lang('Interest') }}</th>
-                                <th>{{ _lang('Late Penalties') }}</th>
-                                <th>{{ _lang('Total Amount') }}</th>
+                                <th>{{ _lang('Date') }}</th>
+                                <th>{{ _lang('Other Income Category') }}</th>
+                                <th>{{ _lang('Amount') }}</th>
+                                <th>{{ _lang('Reference') }}</th>
+                                <th>{{ _lang('Notes') }}</th>
                                 <th class="text-center">{{ _lang('Action') }}</th>
                             </tr>
                         </thead>
@@ -33,38 +32,34 @@
 
 @section('js-script')
     <script>
-        $(function() {
+        (function($) {
+
             "use strict";
 
-            $('#loan_payments_table').DataTable({
+            $('#other_income_table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('admin/loan_payments/get_table_data') }}',
+                ajax: '{{ url('admin/other_income/get_table_data') }}',
                 "columns": [{
-                        data: 'loan.loan_id',
-                        name: 'loan.loan_id'
+                        data: 'other_income_date',
+                        name: 'other_income_date'
                     },
                     {
-                        data: 'paid_at',
-                        name: 'paid_at'
+                        data: 'other_income_category.name',
+                        name: 'other_income_category.name'
                     },
                     {
-                        data: 'repayment_amount',
-                        name: 'repayment_amount'
+                        data: 'amount',
+                        name: 'amount'
                     },
                     {
-                        data: 'interest',
-                        name: 'interest'
+                        data: 'reference',
+                        name: 'reference'
                     },
                     {
-                        data: 'late_penalties',
-                        name: 'late_penalties'
-                    },
-                    {
-                        data: 'total_amount',
-                        name: 'total_amount'
-                    },
-                    {
+                        data: 'notes',
+                        name: 'notes'
+                    }, {
                         data: "action",
                         name: "action"
                     },
@@ -92,8 +87,12 @@
                         "previous": "<i class='ti-angle-left'></i>",
                         "next": "<i class='ti-angle-right'></i>",
                     }
-                }
+                },
+                drawCallback: function() {
+                    $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
+                },
+
             });
-        });
+        })(jQuery);
     </script>
 @endsection

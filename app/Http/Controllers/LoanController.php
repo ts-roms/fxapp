@@ -51,7 +51,7 @@ class LoanController extends Controller {
 			->with('currency')
 			->with('loan_product')
 			->orderBy("loans.id", "desc");
-
+		
 		return Datatables::eloquent($loans)
 			->filter(function ($query) use ($request) {
 				if ($request->has('status')) {

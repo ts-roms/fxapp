@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Member No') }}</label>
                                     <input type="text" class="form-control" name="member_no"
-                                        value="{{ 'EID' . str_pad(rand(1, 9999) * 13, 6, '0', STR_PAD_LEFT) }}" required readonly>
+                                        value="{{ generate_reference('EID', 6) }}" required readonly>
                                 </div>
                             </div>
 
