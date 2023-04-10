@@ -263,6 +263,46 @@
 		return false;
 	});
 
+	$(document).on('click', '.btn-blacklisted', function () {
+		//Sweet Alert for delete action
+		Swal.fire({
+			title: $lang_alert_title,
+			text: $lang_blacklist_member,
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: $lang_blacklist_button_text,
+			cancelButtonText: $lang_cancel_button_text
+		}).then((result) => {
+			if (result.value) {
+				$(this).closest('form').submit();
+			}
+		});
+
+		return false;
+	});
+
+	$(document).on('click', '.btn-unblock', function () {
+		//Sweet Alert for delete action
+		Swal.fire({
+			title: $lang_alert_title,
+			text: $lang_unblock_member,
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: $lang_unblock_button_text,
+			cancelButtonText: $lang_cancel_button_text
+		}).then((result) => {
+			if (result.value) {
+				$(this).closest('form').submit();
+			}
+		});
+
+		return false;
+	});
+
 	$(".select2").select2();
 
 

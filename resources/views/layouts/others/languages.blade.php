@@ -9,7 +9,11 @@
 
 	var $lang_alert_title = "{{ _lang('Are you sure?') }}";
 	var $lang_alert_message = "{{ _lang('Once deleted, you will not be able to recover this information !') }}";
+	var $lang_blacklist_member = "{{ _lang('Once blacklisted, Member will be disabled') }}";
+	var $lang_unblock_member = "{{ _lang('Member will now be enabled') }}"
 	var $lang_confirm_button_text = "{{ _lang('Yes, delete it!') }}";
+	var $lang_unblock_button_text = "{{ _lang('Yes, Unblock it!') }}"
+	var $lang_blacklist_button_text = "{{ _lang('Yes, Blacklist it!') }}"
 	var $lang_cancel_button_text = "{{ _lang('Cancel') }}";
     var $lang_no_data_found = "{{ _lang('No Data Found') }}";
 	var $lang_showing = "{{ _lang('Showing') }}";

@@ -14,7 +14,7 @@ class AddStatusToMembersTable extends Migration
     public function up()
     {
         Schema::table('members', function (Blueprint $table) {
-            $table->tinyInteger('status')->default(1)->after('user_id');
+            $table->enum('status', ['active', 'pending', 'blacklisted', 'resigned'])->default('active')->after('user_id');
         });
     }
 

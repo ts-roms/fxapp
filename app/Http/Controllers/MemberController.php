@@ -56,6 +56,10 @@ class MemberController extends Controller
                     . '</div>';
             })
             ->addColumn('action', function ($member) {
+                $action = $member->status == 'blacklisted' ? action('MemberController@unblock', $member->id) : action('MemberController@blacklist', $member->id);
+                $label = $member->status == 'blacklisted' ? _lang('Unblock') : _lang('Blacklisted');
+                $class =  $member->status == 'blacklisted' ? 'btn-unblock' : 'btn-blacklisted';
+
                 return '<div class="dropdown text-center">'
                     . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
                     . '&nbsp;</button>'
@@ -63,6 +67,11 @@ class MemberController extends Controller
                     . '<a class="dropdown-item" href="' . action('MemberController@edit', $member->id) . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
                     . '<a class="dropdown-item" href="' . action('MemberController@show', $member->id) . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
                     . '<a class="dropdown-item" href="' . route('member_documents.index', $member->id) . '"><i class="ti-files"></i>  ' . _lang('Documents') . '</a>'
+                    . '<form action="' . $action . '" method="post">'
+                    . csrf_field()
+                    . '<input name="_method" type="hidden" value="PUT">'
+                    . '<button class="dropdown-item ' . $class . '" type="submit"><i class="ti-shield"></i> ' . $label . '</button>'
+                    . '</form>'
                     . '<form action="' . action('MemberController@destroy', $member->id) . '" method="post">'
                     . csrf_field()
                     . '<input name="_method" type="hidden" value="DELETE">'
@@ -75,6 +84,11 @@ class MemberController extends Controller
                 return "row_" . $member->id;
             })
             ->rawColumns(['photo', 'action'])
+            ->setRowClass(function ($member) {
+                if ($member->status == 'blacklisted') {
+                    return 'bg-warning';
+                }
+            })
             ->make(true);
     }
 
@@ -523,7 +537,7 @@ class MemberController extends Controller
 
             $member            = Member::withoutGlobalScopes(['status'])->find($id);
             $member->member_no = $request->member_no;
-            $member->status    = 1;
+            $member->status    = 'active';
             $member->save();
 
             $member->user->status = 1;
@@ -531,7 +545,7 @@ class MemberController extends Controller
 
             DB::commit();
 
-            if ($member->status == 1) {
+            if ($member->status == 'active') {
                 try {
                     $member->notify(new MemberRequestAccepted($member));
                 } catch (\Exception $e) {
@@ -552,5 +566,25 @@ class MemberController extends Controller
         $member->user->delete();
         $member->delete();
         return redirect()->back()->with('error', _lang('Member Request Rejected'));
+    }
+
+    public function blacklist($id)
+    {
+        DB::beginTransaction();
+        $member = Member::find($id);
+        $member->status = 'blacklisted';
+        $member->save();
+        DB::commit();
+        return redirect()->route('members.index')->with('success', _lang('Updated Successfully'));
+    }
+
+    public function unblock($id)
+    {
+        DB::beginTransaction();
+        $member = Member::find($id);
+        $member->status = 'active';
+        $member->save();
+        DB::commit();
+        return redirect()->route('members.index')->with('success', _lang('Updated Successfully'));
     }
 }

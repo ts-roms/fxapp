@@ -14,11 +14,11 @@
                             class="ti-agenda"></i>&nbsp;{{ _lang('Loans') }}</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#member_contributions"><i
                             class="ti-agenda"></i>&nbsp;{{ _lang('Contributions') }}</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
+                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
                             class="ti-files"></i>&nbsp;{{ _lang('KYC Documents') }}</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#email"><i
+                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#email"><i
                             class="ti-email"></i>&nbsp;{{ _lang('Send Email') }}</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sms"><i
+                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#sms"><i
                             class="ti-comment-alt"></i>&nbsp;{{ _lang('Send SMS') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ action('MemberController@edit', $member->id) }}"><i
                             class="ti-pencil-alt"></i>&nbsp;{{ _lang('Edit Member Details') }}</a></li>

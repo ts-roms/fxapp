@@ -19,14 +19,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class LoanController extends Controller {
+class LoanController extends Controller
+{
 
 	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
 	}
 
@@ -35,7 +37,8 @@ class LoanController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index(Request $request, $status = '') {
+	public function index(Request $request, $status = '')
+	{
 		if ($status == 'pending') {
 			$status = 0;
 		} else if ($status == 'active') {
@@ -44,14 +47,15 @@ class LoanController extends Controller {
 		return view('backend.loan.list', compact('status'));
 	}
 
-	public function get_table_data(Request $request) {
+	public function get_table_data(Request $request)
+	{
 
 		$loans = Loan::select('loans.*')
 			->with('borrower')
 			->with('currency')
 			->with('loan_product')
 			->orderBy("loans.id", "desc");
-		
+
 		return Datatables::eloquent($loans)
 			->filter(function ($query) use ($request) {
 				if ($request->has('status')) {
@@ -84,17 +88,28 @@ class LoanController extends Controller {
 			}, true)
 			->addColumn('action', function ($loan) {
 				return '<form action="' . action('LoanController@destroy', $loan['id']) . '" class="text-center" method="post">'
-				. '<a href="' . action('LoanController@show', $loan['id']) . '" class="btn btn-primary btn-xs"><i class="ti-eye"></i> ' . _lang('View') . '</a>&nbsp;'
-				. '<a href="' . action('LoanController@edit', $loan['id']) . '" class="btn btn-warning btn-xs"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>&nbsp;'
-				. csrf_field()
-				. '<input name="_method" type="hidden" value="DELETE">'
-				. '<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
+					. '<a href="' . action('LoanController@show', $loan['id']) . '" class="btn btn-primary btn-xs"><i class="ti-eye"></i> ' . _lang('View') . '</a>&nbsp;'
+					. '<a href="' . action('LoanController@edit', $loan['id']) . '" class="btn btn-warning btn-xs"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>&nbsp;'
+					. csrf_field()
+					. '<input name="_method" type="hidden" value="DELETE">'
+					. '<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-trash"></i> ' . _lang('Delete') . '</button>'
 					. '</form>';
 			})
 			->setRowId(function ($loan) {
 				return "row_" . $loan->id;
 			})
 			->rawColumns(['status', 'action'])
+			->setRowClass(function ($loan) {
+				if ($loan->status == 0) {
+					return 'bg-warning';
+				} else if ($loan->status == 1) {
+					return 'bg-success';
+				} else if ($loan->status == 2) {
+					return 'bg-info';
+				} else if ($loan->status == 3) {
+					return 'bg-danger';
+				}
+			})
 			->make(true);
 	}
 
@@ -103,7 +118,8 @@ class LoanController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create(Request $request) {
+	public function create(Request $request)
+	{
 		if (!$request->ajax()) {
 			return view('backend.loan.create');
 		} else {
@@ -117,7 +133,8 @@ class LoanController extends Controller {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
 		@ini_set('max_execution_time', 0);
 		@set_time_limit(0);
 
@@ -203,7 +220,6 @@ class LoanController extends Controller {
 		} else {
 			return response()->json(['result' => 'success', 'action' => 'store', 'message' => _lang('New Loan added successfully'), 'data' => $loan, 'table' => '#loans_table']);
 		}
-
 	}
 
 	/**
@@ -212,7 +228,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Request $request, $id) {
+	public function show(Request $request, $id)
+	{
 		$loan = Loan::find($id);
 		$loancollaterals = LoanCollateral::where('loan_id', $loan->id)
 			->orderBy("id", "desc")
@@ -225,7 +242,6 @@ class LoanController extends Controller {
 		$payments = LoanPayment::where('loan_id', $loan->id)->orderBy('id', 'desc')->get();
 
 		return view('backend.loan.view', compact('loan', 'loancollaterals', 'repayments', 'payments', 'guarantors'));
-
 	}
 
 	/**
@@ -234,7 +250,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function approve(Request $request, $id) {
+	public function approve(Request $request, $id)
+	{
 		DB::beginTransaction();
 
 		$loan = Loan::find($id);
@@ -291,10 +308,10 @@ class LoanController extends Controller {
 
 		try {
 			$loan->borrower->notify(new ApprovedLoanRequest($loan));
-		} catch (\Exception $e) {}
+		} catch (\Exception $e) {
+		}
 
 		return back()->with('success', _lang('Loan Request Approved'));
-
 	}
 
 	/**
@@ -303,7 +320,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function reject(Request $request, $id) {
+	public function reject(Request $request, $id)
+	{
 		$loan = Loan::find($id);
 		/** If not pending */
 		if ($loan->status != 0) {
@@ -314,7 +332,8 @@ class LoanController extends Controller {
 
 		try {
 			$loan->borrower->notify(new RejectLoanRequest($loan));
-		} catch (\Exception $e) {}
+		} catch (\Exception $e) {
+		}
 
 		return back()->with('success', _lang('Loan Request Rejected'));
 	}
@@ -325,7 +344,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request, $id) {
+	public function edit(Request $request, $id)
+	{
 		$loan = Loan::find($id);
 		if ($loan->status == 2) {
 			return back()->with('error', _lang('Sorry, This Loan is already completed'));
@@ -335,7 +355,6 @@ class LoanController extends Controller {
 		} else {
 			return view('backend.loan.modal.edit', compact('loan', 'id'));
 		}
-
 	}
 
 	/**
@@ -345,7 +364,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id) {
+	public function update(Request $request, $id)
+	{
 		@ini_set('max_execution_time', 0);
 		@set_time_limit(0);
 
@@ -450,7 +470,8 @@ class LoanController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id) {
+	public function destroy($id)
+	{
 		DB::beginTransaction();
 
 		$loan = Loan::find($id);
@@ -474,7 +495,8 @@ class LoanController extends Controller {
 		return redirect()->route('loans.index')->with('success', _lang('Deleted successfully'));
 	}
 
-	public function calculator() {
+	public function calculator()
+	{
 		$data = array();
 		$data['first_payment_date'] = '';
 		$data['apply_amount'] = '';
@@ -486,7 +508,8 @@ class LoanController extends Controller {
 		return view('backend.loan.calculator', $data);
 	}
 
-	public function calculate(Request $request) {
+	public function calculate(Request $request)
+	{
 		$validator = Validator::make($request->all(), [
 			'apply_amount' => 'required|numeric',
 			'interest_rate' => 'required',
@@ -521,25 +544,21 @@ class LoanController extends Controller {
 			$calculator = new Calculator($apply_amount, $first_payment_date, $interest_rate, $term, $term_period, $late_payment_penalties);
 			$table_data = $calculator->get_flat_rate();
 			$data['payable_amount'] = $calculator->payable_amount;
-
 		} else if ($interest_type == 'fixed_rate') {
 
 			$calculator = new Calculator($apply_amount, $first_payment_date, $interest_rate, $term, $term_period, $late_payment_penalties);
 			$table_data = $calculator->get_fixed_rate();
 			$data['payable_amount'] = $calculator->payable_amount;
-
 		} else if ($interest_type == 'mortgage') {
 
 			$calculator = new Calculator($apply_amount, $first_payment_date, $interest_rate, $term, $term_period, $late_payment_penalties);
 			$table_data = $calculator->get_mortgage();
 			$data['payable_amount'] = $calculator->payable_amount;
-
 		} else if ($interest_type == 'one_time') {
 
 			$calculator = new Calculator($apply_amount, $first_payment_date, $interest_rate, 1, $term_period, $late_payment_penalties);
 			$table_data = $calculator->get_one_time();
 			$data['payable_amount'] = $calculator->payable_amount;
-
 		}
 
 		$data['table_data'] = $table_data;
@@ -552,7 +571,5 @@ class LoanController extends Controller {
 		$data['late_payment_penalties'] = $request->late_payment_penalties;
 
 		return view('backend.loan.calculator', $data);
-
 	}
-
 }

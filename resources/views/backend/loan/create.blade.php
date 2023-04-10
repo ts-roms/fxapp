@@ -43,7 +43,7 @@
                                         data-selected="{{ old('borrower_id') }}" name="borrower_id" id="borrower_id"
                                         required>
                                         <option value="">{{ _lang('Select One') }}</option>
-                                        @foreach (\App\Models\Member::all() as $member)
+                                        @foreach (\App\Models\Member::where('status', 'active')->get() as $member)
                                             <option value="{{ $member->id }}">
                                                 {{ $member->first_name . ' ' . $member->last_name . ' (' . $member->member_no . ')' }}
                                             </option>

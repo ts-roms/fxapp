@@ -138,6 +138,8 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('members/get_table_data', 'MemberController@get_table_data');
 			Route::post('members/send_email', 'MemberController@send_email')->name('members.send_email');
 			Route::post('members/send_sms', 'MemberController@send_sms')->name('members.send_sms');
+			Route::put('members/blacklist/{id}', 'MemberController@blacklist')->name('members.blacklist');
+			Route::put('members/unblock/{id}', 'MemberController@unblock')->name('members.unblock');
 			Route::resource('members', 'MemberController')->middleware("demo:PUT|PATCH|DELETE");
 
 			//Members Documents

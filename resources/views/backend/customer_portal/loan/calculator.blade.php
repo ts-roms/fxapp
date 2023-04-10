@@ -37,9 +37,6 @@
 								<select class="form-control auto-select" data-selected="{{ old('interest_type',$interest_type) }}" name="interest_type" id="interest_type" required>
 									<option value="">{{ _lang('Select One') }}</option>
 									<option value="flat_rate">{{ _lang('Flat Rate') }}</option>
-									<option value="fixed_rate">{{ _lang('Fixed Rate') }}</option>
-									<option value="mortgage">{{ _lang('Mortgage amortization') }}</option>
-									<option value="one_time">{{ _lang('One-time payment') }}</option>
 								</select>
 							</div>
 						</div>
