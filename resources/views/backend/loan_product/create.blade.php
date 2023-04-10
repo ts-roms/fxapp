@@ -34,7 +34,7 @@
 
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="control-label">{{ _lang('Interest Rate Per Year') }}</label>
+								<label class="control-label">{{ _lang('Interest Rate') }}</label>
 								<input type="text" class="form-control float-field" name="interest_rate" value="{{ old('interest_rate') }}" required>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 							<div class="form-group">
 								<label class="control-label">{{ _lang('Late Payment Penalties') }}</label>
 								<div class="input-group">
-									<input type="text" class="form-control float-field" name="late_payment_penalties" value="{{ old('late_payment_penalties') }}" required>
+									<input type="text" class="form-control float-field" name="late_payment_penalties" value="0" readonly>
 									<div class="input-group-append">
 										<span class="input-group-text">%</span>
 									</div>

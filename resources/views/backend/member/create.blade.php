@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('First Name') }}</label>
                                     <input type="text" class="form-control" name="first_name"
-                                        value="{{ old('first_name') }}" required>
+                                        value="{{ old('first_name') }}" required placeholder="{{ _lang('First Name') }}">
                                 </div>
                             </div>
 
@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Last Name') }}</label>
                                     <input type="text" class="form-control" name="last_name"
-                                        value="{{ old('last_name') }}" required>
+                                        value="{{ old('last_name') }}" placeholder="{{ _lang('Last Name') }}" required>
                                 </div>
                             </div>
 
@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Business Name') }}</label>
                                     <input type="text" class="form-control" name="business_name"
-                                        value="{{ old('business_name') }}">
+                                        value="{{ old('business_name') }}" readonly disabled>
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Email') }}</label>
-                                    <input type="text" class="form-control" name="email" value="{{ old('email') }}">
+                                    <input type="text" class="form-control" name="email" placeholder="{{ _lang('Email') }}" value="{{ old('email') }}">
                                 </div>
                             </div>
 
@@ -91,7 +91,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Mobile') }}</label>
-                                    <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}">
+                                    <input type="text" class="form-control" name="mobile" placeholder="{{ _lang('Mobile') }}" value="{{ old('mobile') }}">
                                 </div>
                             </div>
 
@@ -110,21 +110,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('City') }}</label>
-                                    <input type="text" class="form-control" name="city" value="{{ old('city') }}">
+                                    <input type="text" class="form-control" name="city" placeholder="{{ _lang('City') }}" value="{{ old('city') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('State') }}</label>
-                                    <input type="text" class="form-control" name="state" value="{{ old('state') }}">
+                                    <input type="text" class="form-control" name="state" placeholder="{{ _lang('State') }}" value="{{ old('state') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Zip') }}</label>
-                                    <input type="text" class="form-control" name="zip"
+                                    <input type="text" class="form-control" name="zip" placeholder="{{ _lang('Zip') }}"
                                         value="{{ old('zip') }}">
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Credit Source') }}</label>
-                                    <input type="text" class="form-control" name="credit_source"
+                                    <input type="text" class="form-control" name="credit_source" placeholder="{{ _lang('Credit Source') }}"
                                         value="{{ old('credit_source') }}">
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Address') }}</label>
-                                    <textarea class="form-control" name="address">{{ old('address') }}</textarea>
+                                    <textarea class="form-control" name="address" placeholder="{{ _lang('Address') }}">{{ old('address') }}</textarea>
                                 </div>
                             </div>
 
@@ -161,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 hidden">
                 <div class="card">
                     <div class="card-header">
                         <div class="togglebutton">
