@@ -123,14 +123,14 @@
                                         {!! $loan->attachment == ''
                                             ? ''
                                             : '<a
-                                                                                                                                                                                              href="' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              href="' .
                                                 asset('uploads/media/' . $loan->attachment) .
                                                 '"
-                                                                                                                                                                                              target="_blank"
-                                                                                                                                                                                              >' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              target="_blank"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              >' .
                                                 _lang('Download') .
                                                 '</a
-                                                                                                                                                                                              >' !!}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              >' !!}
                                     </td>
                                 </tr>
                                 @if ($loan->status == 1)
@@ -236,6 +236,7 @@
                                         <th class="text-right">{{ _lang('Interest') }}</th>
                                         <th class="text-right">{{ _lang('Balance') }}</th>
                                         <th class="text-center">{{ _lang('Status') }}</th>
+                                        <th class="">{{ _lang('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -264,6 +265,16 @@
                                                     {!! xss_clean(show_status(_lang('Unpaid'), 'warning')) !!}
                                                 @else
                                                     {!! xss_clean(show_status(_lang('Paid'), 'success')) !!}
+                                                @endif
+                                            </td>
+                                            <td class="text-center items-center">
+                                                @if ($repayment['status'] == 0 && date('Y-m-d') < $repayment->getRawOriginal('repayment_date'))
+                                                    <a class="btn btn-primary btn-xs ml-auto ajax-modal"
+                                                        href="{{ action('LoanController@payment', $repayment->id) }}"
+                                                        data-title="{{ _lang('Repayments') }}">{{ _lang('Pay Now') }}</a>
+                                                @else
+                                                    <button type="button" class="btn btn-info btn-xs ml-auto"
+                                                        disabled>{{ _lang('Paid') }}</button>
                                                 @endif
                                             </td>
                                         </tr>

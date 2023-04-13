@@ -46,7 +46,7 @@
 
 		<div class="col-md-12">
 			<div class="form-group">
-				<label class="control-label">{{ _lang('Attachment') }}</label></br>						
+				<label class="control-label">{{ _lang('Attachment') }}</label><br />						
 				<input type="file" name="attachment">
 			</div>
 		</div>

@@ -3,7 +3,8 @@
 use App\Models\SavingsAccount;
 
 if (!function_exists('_lang')) {
-    function _lang($string = '') {
+    function _lang($string = '')
+    {
 
         $target_lang = get_language();
 
@@ -26,7 +27,8 @@ if (!function_exists('_lang')) {
 }
 
 if (!function_exists('_dlang')) {
-    function _dlang($string = '') {
+    function _dlang($string = '')
+    {
 
         //Get Target language
         $target_lang = get_option('language');
@@ -50,14 +52,16 @@ if (!function_exists('_dlang')) {
 }
 
 if (!function_exists('startsWith')) {
-    function startsWith($haystack, $needle) {
+    function startsWith($haystack, $needle)
+    {
         $length = strlen($needle);
         return (substr($haystack, 0, $length) === $needle);
     }
 }
 
 if (!function_exists('get_initials')) {
-    function get_initials($string) {
+    function get_initials($string)
+    {
         $words    = explode(" ", $string);
         $initials = null;
         foreach ($words as $w) {
@@ -68,7 +72,8 @@ if (!function_exists('get_initials')) {
 }
 
 if (!function_exists('create_option')) {
-    function create_option($table, $value, $display, $selected = '', $where = NULL, $concat = ' ') {
+    function create_option($table, $value, $display, $selected = '', $where = NULL, $concat = ' ')
+    {
         $options   = '';
         $condition = '';
         if ($where != NULL) {
@@ -106,7 +111,8 @@ if (!function_exists('create_option')) {
 }
 
 if (!function_exists('object_to_string')) {
-    function object_to_string($object, $col, $quote = false) {
+    function object_to_string($object, $col, $quote = false)
+    {
         $string = "";
         foreach ($object as $data) {
             if ($quote == true) {
@@ -121,7 +127,8 @@ if (!function_exists('object_to_string')) {
 }
 
 if (!function_exists('get_table')) {
-    function get_table($table, $where = NULL) {
+    function get_table($table, $where = NULL)
+    {
         $condition = "";
         if ($where != NULL) {
             $condition .= "WHERE ";
@@ -135,7 +142,8 @@ if (!function_exists('get_table')) {
 }
 
 if (!function_exists('user_count')) {
-    function user_count($user_type) {
+    function user_count($user_type)
+    {
         $count = \App\Models\User::where("user_type", $user_type)
             ->selectRaw("COUNT(id) as total")
             ->first()->total;
@@ -144,7 +152,8 @@ if (!function_exists('user_count')) {
 }
 
 if (!function_exists('has_permission')) {
-    function has_permission($name) {
+    function has_permission($name)
+    {
         $permission_list = \Auth::user()->role->permissions;
         $permission      = $permission_list->firstWhere('permission', $name);
 
@@ -156,7 +165,8 @@ if (!function_exists('has_permission')) {
 }
 
 if (!function_exists('get_logo')) {
-    function get_logo() {
+    function get_logo()
+    {
         $logo = get_option("logo");
         if ($logo == "") {
             return asset("backend/images/company-logo.png");
@@ -166,7 +176,8 @@ if (!function_exists('get_logo')) {
 }
 
 if (!function_exists('get_favicon')) {
-    function get_favicon() {
+    function get_favicon()
+    {
         $favicon = get_option("favicon");
         if ($favicon == "") {
             return asset("backend/images/favicon.png");
@@ -176,7 +187,8 @@ if (!function_exists('get_favicon')) {
 }
 
 if (!function_exists('profile_picture')) {
-    function profile_picture($profile_picture = '') {
+    function profile_picture($profile_picture = '')
+    {
         if ($profile_picture == '') {
             $profile_picture = Auth::user()->profile_picture;
         }
@@ -190,7 +202,8 @@ if (!function_exists('profile_picture')) {
 }
 
 if (!function_exists('sql_escape')) {
-    function sql_escape($unsafe_str) {
+    function sql_escape($unsafe_str)
+    {
         if (get_magic_quotes_gpc()) {
             $unsafe_str = stripslashes($unsafe_str);
         }
@@ -199,7 +212,8 @@ if (!function_exists('sql_escape')) {
 }
 
 if (!function_exists('get_option')) {
-    function get_option($name, $optional = '') {
+    function get_option($name, $optional = '')
+    {
         $value = Cache::get($name);
 
         if ($value == "") {
@@ -212,23 +226,23 @@ if (!function_exists('get_option')) {
             }
         }
         return $value;
-
     }
 }
 
 if (!function_exists('get_setting')) {
-    function get_setting($settings, $name, $optional = '') {
+    function get_setting($settings, $name, $optional = '')
+    {
         $row = $settings->firstWhere('name', $name);
         if ($row != null) {
             return $row->value;
         }
         return $optional;
-
     }
 }
 
 if (!function_exists('get_trans_option')) {
-    function get_trans_option($name, $optional = '') {
+    function get_trans_option($name, $optional = '')
+    {
         $value = Cache::get($name . "-" . get_language());
 
         if ($value == "" || $value == NULL) {
@@ -249,7 +263,8 @@ if (!function_exists('get_trans_option')) {
 
 if (!function_exists('navigationTree')) {
 
-    function navigationTree($object, $currentParent, $controller, $currLevel = 0, $prevLevel = -1) {
+    function navigationTree($object, $currentParent, $controller, $currLevel = 0, $prevLevel = -1)
+    {
         foreach ($object as $menu) {
             if ($currentParent == $menu->parent_id) {
                 if ($currLevel > $prevLevel) {
@@ -273,12 +288,12 @@ if (!function_exists('navigationTree')) {
         if ($currLevel == $prevLevel) {
             echo "</li> </ol>";
         }
-
     }
 }
 
 if (!function_exists('show_navigation')) {
-    function show_navigation($nav_id, $main_class = '', $nav_link_class = '', $dp_1_class = '', $dp_2_class = '', $icon_type = 'down') {
+    function show_navigation($nav_id, $main_class = '', $nav_link_class = '', $dp_1_class = '', $dp_2_class = '', $icon_type = 'down')
+    {
 
         $navigation = \App\Models\Navigation::where('id', $nav_id)
             ->where('status', 1)->first();
@@ -286,13 +301,13 @@ if (!function_exists('show_navigation')) {
             $navigation_items = $navigation->navigationItems()->where('status', 1)->get();
             buildNavigation($navigation_items, $main_class, $nav_link_class, $dp_1_class, $dp_2_class, $icon_type);
         }
-
     }
 }
 
 if (!function_exists('buildNavigation')) {
 
-    function buildNavigation($navigation_items, $main_class = '', $nav_link_class = '', $dropdown_1_class = '', $dropdown_2_class = '', $icon_type = 'down', $currentParent = 0, $currLevel = 0, $prevLevel = -1) {
+    function buildNavigation($navigation_items, $main_class = '', $nav_link_class = '', $dropdown_1_class = '', $dropdown_2_class = '', $icon_type = 'down', $currentParent = 0, $currLevel = 0, $prevLevel = -1)
+    {
         foreach ($navigation_items as $nav_item) {
             if ($currentParent == $nav_item->parent_id) {
 
@@ -346,12 +361,12 @@ if (!function_exists('buildNavigation')) {
         if ($currLevel == $prevLevel) {
             echo "</li> </ul>";
         }
-
     }
 }
 
 if (!function_exists('get_array_option')) {
-    function get_array_option($name, $key = '', $optional = '') {
+    function get_array_option($name, $key = '', $optional = '')
+    {
         if ($key == '') {
             if (session('language') == '') {
                 $key = get_option('language');
@@ -373,12 +388,12 @@ if (!function_exists('get_array_option')) {
             return $value;
         }
         return $optional;
-
     }
 }
 
 if (!function_exists('get_array_data')) {
-    function get_array_data($data, $key = '') {
+    function get_array_data($data, $key = '')
+    {
         if ($key == '') {
             if (session('language') == '') {
                 $key = get_option('language');
@@ -394,12 +409,12 @@ if (!function_exists('get_array_data')) {
         }
 
         return $data;
-
     }
 }
 
 if (!function_exists('update_option')) {
-    function update_option($name, $value) {
+    function update_option($name, $value)
+    {
         date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
 
         $data               = array();
@@ -417,7 +432,8 @@ if (!function_exists('update_option')) {
 
 if (!function_exists('timezone_list')) {
 
-    function timezone_list() {
+    function timezone_list()
+    {
         $zones_array = array();
         $timestamp   = time();
         foreach (timezone_identifiers_list() as $key => $zone) {
@@ -427,12 +443,12 @@ if (!function_exists('timezone_list')) {
         }
         return $zones_array;
     }
-
 }
 
 if (!function_exists('create_timezone_option')) {
 
-    function create_timezone_option($old = "") {
+    function create_timezone_option($old = "")
+    {
         $option    = "";
         $timestamp = time();
         foreach (timezone_identifiers_list() as $key => $zone) {
@@ -442,11 +458,11 @@ if (!function_exists('create_timezone_option')) {
         }
         echo $option;
     }
-
 }
 
 if (!function_exists('get_country_list')) {
-    function get_country_list($old_data = '') {
+    function get_country_list($old_data = '')
+    {
         if ($old_data == '') {
             echo file_get_contents(app_path() . '/Helpers/country.txt');
         } else {
@@ -460,7 +476,8 @@ if (!function_exists('get_country_list')) {
 }
 
 if (!function_exists('decimalPlace')) {
-    function decimalPlace($number, $symbol = '', $format = '') {
+    function decimalPlace($number, $symbol = '', $format = '')
+    {
 
         if ($symbol == '') {
             return money_format_2($number, $format);
@@ -469,16 +486,15 @@ if (!function_exists('decimalPlace')) {
         if (get_currency_position() == 'right') {
             return money_format_2($number, $format) . $symbol;
         } else {
-            return $symbol . money_format_2($number, $format);
+            return $symbol . ' ' . money_format_2($number, $format);
         }
-
     }
-
 }
 
 /* Method use for Global amount only */
 if (!function_exists('g_decimal_place')) {
-    function g_decimal_place($number, $symbol = '', $format = '') {
+    function g_decimal_place($number, $symbol = '', $format = '')
+    {
 
         if ($symbol == '') {
             return money_format_2($number, $format);
@@ -489,12 +505,12 @@ if (!function_exists('g_decimal_place')) {
         } else {
             return money_format_2($number, $format) . ' ' . $symbol;
         }
-
     }
 }
 
 if (!function_exists('money_format_2')) {
-    function money_format_2($floatcurr, $curr = 'USD') {
+    function money_format_2($floatcurr, $curr = 'USD')
+    {
         $currencies['ARS'] = array(2, ',', '.'); //  Argentine Peso
         $currencies['AMD'] = array(2, '.', ','); //  Armenian Dram
         $currencies['AWG'] = array(2, '.', ','); //  Aruban Guilder
@@ -606,13 +622,13 @@ if (!function_exists('money_format_2')) {
         } else {
             return number_format($floatcurr, $currencies['USD'][0], $currencies['USD'][1], $currencies['USD'][2]);
         }
-
     }
 }
 
 if (!function_exists('formatinr')) {
     // custom function to generate: ##,##,###.##
-    function formatinr($input) {
+    function formatinr($input)
+    {
         $dec = "";
         $pos = strpos($input, ".");
         if ($pos === FALSE) {
@@ -634,7 +650,8 @@ if (!function_exists('formatinr')) {
 }
 
 if (!function_exists('load_language')) {
-    function load_language($active = '') {
+    function load_language($active = '')
+    {
         $path    = resource_path() . "/language";
         $files   = scandir($path);
         $options = "";
@@ -653,14 +670,14 @@ if (!function_exists('load_language')) {
             }
 
             $options .= "<option value='$name' $selected>" . $name . "</option>";
-
         }
         echo $options;
     }
 }
 
 if (!function_exists('get_language_list')) {
-    function get_language_list() {
+    function get_language_list()
+    {
         $path  = resource_path() . "/language";
         $files = scandir($path);
         $array = array();
@@ -672,7 +689,6 @@ if (!function_exists('get_language_list')) {
             }
 
             $array[] = $name;
-
         }
         return $array;
     }
@@ -680,18 +696,19 @@ if (!function_exists('get_language_list')) {
 
 if (!function_exists('process_string')) {
 
-    function process_string($search_replace, $string) {
+    function process_string($search_replace, $string)
+    {
         $result = $string;
         foreach ($search_replace as $key => $value) {
             $result = str_replace($key, $value, $result);
         }
         return $result;
     }
-
 }
 
 if (!function_exists('permission_list')) {
-    function permission_list() {
+    function permission_list()
+    {
 
         $permission_list = \App\Models\AccessControl::where("role_id", Auth::user()->role_id)
             ->pluck('permission')->toArray();
@@ -700,7 +717,8 @@ if (!function_exists('permission_list')) {
 }
 
 if (!function_exists('get_currency_list')) {
-    function get_currency_list($old_data = '', $serialize = false) {
+    function get_currency_list($old_data = '', $serialize = false)
+    {
         $currency_list = file_get_contents(app_path() . '/Helpers/currency.txt');
 
         if ($old_data == "") {
@@ -725,19 +743,20 @@ if (!function_exists('get_currency_list')) {
 }
 
 if (!function_exists('get_currency_symbol')) {
-    function get_currency_symbol($currency_code) {
+    function get_currency_symbol($currency_code)
+    {
         include app_path() . '/Helpers/currency_symbol.php';
 
         if (array_key_exists($currency_code, $currency_symbols)) {
             return $currency_symbols[$currency_code];
         }
         return $currency_code;
-
     }
 }
 
 if (!function_exists('status')) {
-    function status($status) {
+    function status($status)
+    {
         if ($status == 0) {
             return "<span class='badge badge-danger'>" . _lang('Deactivated') . "</span>";
         } else if ($status == 1) {
@@ -747,7 +766,8 @@ if (!function_exists('status')) {
 }
 
 if (!function_exists('transaction_status')) {
-    function transaction_status($status) {
+    function transaction_status($status)
+    {
         if ($status == 0) {
             return "<span class='badge badge-warning'>" . _lang('Pending') . "</span>";
         } else if ($status == 1) {
@@ -759,13 +779,15 @@ if (!function_exists('transaction_status')) {
 }
 
 if (!function_exists('show_status')) {
-    function show_status($value, $status) {
+    function show_status($value, $status)
+    {
         return "<span class='badge badge-$status'>" . $value . "</span>";
     }
 }
 
 if (!function_exists('user_status')) {
-    function user_status($status) {
+    function user_status($status)
+    {
         if ($status == 1) {
             return "<span class='badge badge-success'>" . _lang('Active') . "</span>";
         } else if ($status == 0) {
@@ -776,7 +798,8 @@ if (!function_exists('user_status')) {
 
 //Request Count
 if (!function_exists('request_count')) {
-    function request_count($request, $html = false, $class = "sidebar-notification-count") {
+    function request_count($request, $html = false, $class = "sidebar-notification-count")
+    {
         if ($request == 'pending_loans') {
             $notification_count = \App\Models\Loan::where('status', 0)->count();
         } else if ($request == 'deposit_requests') {
@@ -794,12 +817,12 @@ if (!function_exists('request_count')) {
         if ($notification_count > 0) {
             return '<span class="' . $class . '">' . $notification_count . '</span>';
         }
-
     }
 }
 
 if (!function_exists('file_icon')) {
-    function file_icon($mime_type) {
+    function file_icon($mime_type)
+    {
         static $font_awesome_file_icon_classes = [
             // Images
             'image'                                                                     => 'fa-file-image',
@@ -843,7 +866,8 @@ if (!function_exists('file_icon')) {
 }
 
 if (!function_exists('update_currency_exchange_rate')) {
-    function update_currency_exchange_rate() {
+    function update_currency_exchange_rate()
+    {
         date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
 
         $start = new \Carbon\Carbon(get_option('currency_update_time', date("Y-m-d H:i:s", strtotime('-24 hours', time()))));
@@ -902,9 +926,10 @@ if (!function_exists('update_currency_exchange_rate')) {
 }
 
 if (!function_exists('convert_currency')) {
-    function convert_currency($from_currency, $to_currency, $amount) {
+    function convert_currency($from_currency, $to_currency, $amount)
+    {
         if ($from_currency == $to_currency || $amount == 0) {
-            return (double) $amount;
+            return (float) $amount;
         }
         $currency1 = \App\Models\Currency::where('name', $from_currency)->first()->exchange_rate;
         $currency2 = \App\Models\Currency::where('name', $to_currency)->first()->exchange_rate;
@@ -915,7 +940,8 @@ if (!function_exists('convert_currency')) {
 }
 
 if (!function_exists('convert_currency_2')) {
-    function convert_currency_2($currency1_rate, $currency2_rate, $amount) {
+    function convert_currency_2($currency1_rate, $currency2_rate, $amount)
+    {
         $currency1 = $currency1_rate;
         $currency2 = $currency2_rate;
 
@@ -925,13 +951,15 @@ if (!function_exists('convert_currency_2')) {
 }
 
 if (!function_exists('get_country_codes')) {
-    function get_country_codes() {
+    function get_country_codes()
+    {
         return json_decode(file_get_contents(app_path() . '/Helpers/country.json'), true);
     }
 }
 
 if (!function_exists('xss_clean')) {
-    function xss_clean($data) {
+    function xss_clean($data)
+    {
         // Fix &entity\n;
         $data = str_replace(array('&amp;', '&lt;', '&gt;'), array('&amp;amp;', '&amp;lt;', '&amp;gt;'), $data);
         $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
@@ -966,7 +994,8 @@ if (!function_exists('xss_clean')) {
 }
 
 if (!function_exists('get_all_account_balances')) {
-    function get_account_details($member_id) {
+    function get_account_details($member_id)
+    {
 
         $accounts = SavingsAccount::select('savings_accounts.*', DB::raw("((SELECT IFNULL(SUM(amount),0)
         FROM transactions WHERE dr_cr = 'cr' AND status = 2 AND savings_account_id = savings_accounts.id) -
@@ -984,7 +1013,8 @@ if (!function_exists('get_all_account_balances')) {
 }
 
 if (!function_exists('get_account_balance')) {
-    function get_account_balance($account_id, $member_id) {
+    function get_account_balance($account_id, $member_id)
+    {
         $blockedAmount = App\Models\Guarantor::join('loans', 'loans.id', 'guarantors.loan_id')
             ->whereRaw('loans.status = 0 OR loans.status = 1')
             ->where('guarantors.member_id', $member_id)
@@ -1001,7 +1031,8 @@ if (!function_exists('get_account_balance')) {
 
 if (!function_exists('get_blocked_balance')) {
 
-    function get_blocked_balance($account_id, $member_id) {
+    function get_blocked_balance($account_id, $member_id)
+    {
 
         $blockedAmount = App\Models\Guarantor::join('loans', 'loans.id', 'guarantors.loan_id')
             ->whereRaw('loans.status = 0 OR loans.status = 1')
@@ -1011,12 +1042,12 @@ if (!function_exists('get_blocked_balance')) {
 
         return $blockedAmount;
     }
-
 }
 
 // convert seconds into time
 if (!function_exists('time_from_seconds')) {
-    function time_from_seconds($seconds) {
+    function time_from_seconds($seconds)
+    {
         $h = floor($seconds / 3600);
         $m = floor(($seconds % 3600) / 60);
         $s = $seconds - ($h * 3600) - ($m * 60);
@@ -1026,29 +1057,30 @@ if (!function_exists('time_from_seconds')) {
 
 /* Intelligent Functions */
 if (!function_exists('get_language')) {
-	function get_language($force = false) {
+    function get_language($force = false)
+    {
 
-		$language = $force == false ? session('language') : '';
+        $language = $force == false ? session('language') : '';
 
-		if ($language == '') {
-			$language = Cache::get('language');
-		}
+        if ($language == '') {
+            $language = Cache::get('language');
+        }
 
-		if ($language == '') {
-			$language = get_option('language');
-			if ($language == '') {
-				\Cache::put('language', 'language');
-			} else {
-				\Cache::put('language', $language);
-			}
-
-		}
-		return $language;
-	}
+        if ($language == '') {
+            $language = get_option('language');
+            if ($language == '') {
+                \Cache::put('language', 'language');
+            } else {
+                \Cache::put('language', $language);
+            }
+        }
+        return $language;
+    }
 }
 
 if (!function_exists('get_currency_position')) {
-    function get_currency_position() {
+    function get_currency_position()
+    {
         $currency_position = Cache::get('currency_position');
 
         if ($currency_position == '') {
@@ -1061,7 +1093,8 @@ if (!function_exists('get_currency_position')) {
 }
 
 if (!function_exists('base_currency_id')) {
-    function base_currency_id() {
+    function base_currency_id()
+    {
         $base_currency_id = Cache::get('base_currency_id');
 
         if ($base_currency_id == '') {
@@ -1080,7 +1113,8 @@ if (!function_exists('base_currency_id')) {
 }
 
 if (!function_exists('get_base_currency')) {
-    function get_base_currency() {
+    function get_base_currency()
+    {
         $base_currency = Cache::get('base_currency');
 
         if ($base_currency == '') {
@@ -1099,14 +1133,16 @@ if (!function_exists('get_base_currency')) {
 }
 
 if (!function_exists('get_currency')) {
-    function get_currency($currency_id) {
+    function get_currency($currency_id)
+    {
         $currency = \App\Models\Currency::find($currency_id);
         return $currency;
     }
 }
 
 if (!function_exists('currency')) {
-    function currency($currency = '') {
+    function currency($currency = '')
+    {
         if ($currency == '') {
             $currency = get_base_currency();
         }
@@ -1115,7 +1151,8 @@ if (!function_exists('currency')) {
 }
 
 if (!function_exists('get_date_format')) {
-    function get_date_format() {
+    function get_date_format()
+    {
         $date_format = Cache::get('date_format');
 
         if ($date_format == '') {
@@ -1128,7 +1165,8 @@ if (!function_exists('get_date_format')) {
 }
 
 if (!function_exists('get_time_format')) {
-    function get_time_format() {
+    function get_time_format()
+    {
         $time_format = Cache::get('time_format');
 
         if ($time_format == '') {
@@ -1143,7 +1181,8 @@ if (!function_exists('get_time_format')) {
 }
 
 if (!function_exists('processShortCode')) {
-    function processShortCode($body, $replaceData = []) {
+    function processShortCode($body, $replaceData = [])
+    {
         $message = $body;
         foreach ($replaceData as $key => $value) {
             $message = str_replace('{{' . $key . '}}', $value, $message);
@@ -1152,28 +1191,29 @@ if (!function_exists('processShortCode')) {
     }
 }
 
-if ( ! function_exists('ignoreRoutes')){
-	function ignoreRoutes($route) {
-		$notAllowed = [
-			url('profile'),
-			url('administration'),
+if (!function_exists('ignoreRoutes')) {
+    function ignoreRoutes($route)
+    {
+        $notAllowed = [
+            url('profile'),
+            url('administration'),
             url('admin/administration'),
             url('admin/interest_calculation'),
             url('admin/permission'),
-			url('admin'),
-			url('reports')
-		];
-		
-		if (in_array(url($route), $notAllowed)){
-			return false;
-		}
-		return true;
-		
-	}
+            url('admin'),
+            url('reports')
+        ];
+
+        if (in_array(url($route), $notAllowed)) {
+            return false;
+        }
+        return true;
+    }
 }
 
-if (! function_exists('generate_reference')) {
-    function generate_reference($module, $length) {
+if (!function_exists('generate_reference')) {
+    function generate_reference($module, $length)
+    {
         return $module . str_pad(rand(1, 9999) * 13, $length, '0', STR_PAD_LEFT);
     }
 }

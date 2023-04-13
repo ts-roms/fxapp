@@ -42,7 +42,7 @@ class ContributionController extends Controller
 
     return Datatables::eloquent($contributions)
       ->editColumn('member', function ($contribution) {
-        return $contribution->member->first_name . ' ' . $contribution->member->last_name;
+        return '<a href="' . action('MemberController@show', $contribution->member_id) . '">' . $contribution->member->first_name . ' ' . $contribution->member->last_name . '</a>';
       })
       ->editColumn('capital_buildup', function ($contribution) use ($currency) {
         return decimalPlace($contribution->capital_buildup, $currency);
@@ -71,7 +71,7 @@ class ContributionController extends Controller
       ->setRowId(function ($contribution) {
         return "row_" . $contribution->id;
       })
-      ->rawColumns(['action'])
+      ->rawColumns(['action', 'member'])
       ->make(true);
   }
 

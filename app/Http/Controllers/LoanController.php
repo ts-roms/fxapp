@@ -572,4 +572,14 @@ class LoanController extends Controller
 
 		return view('backend.loan.calculator', $data);
 	}
+
+	public function payment(Request $request, $id)
+	{
+		$repayment = LoanRepayment::find($id);
+		$loan = Loan::find($repayment->loan_id);
+		if (!$request->ajax()) {
+			return back();
+		}
+		return view('backend.loan.modal.payment', compact('repayment', 'loan', 'id'));
+	}
 }

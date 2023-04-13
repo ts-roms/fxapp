@@ -52,18 +52,6 @@
                                 </div>
                             </div>
 
-                            {{-- HIDDEN --}}
-                            <div class="col-md-6 hidden">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Currency') }}</label>
-                                    <select class="form-control auto-select" data-selected="{{ old('currency_id') }}"
-                                        name="currency_id" required>
-                                        <option value="">{{ _lang('Select One') }}</option>
-                                        {{ create_option('currency', 'id', 'name', '', ['status=' => 1]) }}
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('First Payment Date') }}</label>

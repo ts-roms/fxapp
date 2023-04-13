@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BigBrother;
 use App\Models\Loan;
 use App\Models\Member;
 use App\Models\Expense;
+use App\Models\LoanRepayment;
+use App\Models\OtherIncome;
 use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Builder;
 
-class DashboardController extends Controller {
+class DashboardController extends Controller
+{
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
     }
 
@@ -23,7 +28,8 @@ class DashboardController extends Controller {
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index() {
+    public function index()
+    {
         $user      = auth()->user();
         $user_type = $user->user_type;
         $data      = array();
@@ -39,47 +45,59 @@ class DashboardController extends Controller {
                 ->orderBy('trans_date', 'desc')
                 ->get();
             $data['total_customer'] = Member::count();
+            $data['big_brother'] = BigBrother::where('status', 'active')->sum('capital');
+            $data['expenses'] = Expense::sum('amount');
+            $data['other_income'] = OtherIncome::sum('amount');
+            $data['total_interest'] = LoanRepayment::sum('interest');
         }
 
         return view("backend.dashboard-$user_type", $data);
     }
 
-    public function total_customer_widget() {
+    public function total_customer_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function deposit_requests_widget() {
+    public function deposit_requests_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function withdraw_requests_widget() {
+    public function withdraw_requests_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function loan_requests_widget() {
+    public function loan_requests_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function expense_overview_widget() {
+    public function expense_overview_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function deposit_withdraw_analytics() {
+    public function deposit_withdraw_analytics()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function recent_transaction_widget() {
+    public function recent_transaction_widget()
+    {
         // Use for Permission Only
         return redirect()->route('dashboard.index');
     }
 
-    public function json_expense_by_category() {
+    public function json_expense_by_category()
+    {
         $transactions = Expense::selectRaw('expense_category_id, IFNULL(SUM(amount), 0) as amount')
             ->with('expense_category')
             ->groupBy('expense_category_id')
@@ -92,23 +110,23 @@ class DashboardController extends Controller {
         foreach ($transactions as $transaction) {
             array_push($category, $transaction->expense_category->name);
             array_push($colors, $transaction->expense_category->color);
-            array_push($amounts, (double) $transaction->amount);
+            array_push($amounts, (float) $transaction->amount);
         }
 
         echo json_encode(array('amounts' => $amounts, 'category' => $category, 'colors' => $colors));
-
     }
 
-    public function json_deposit_withdraw_analytics($currency_id) {
+    public function json_deposit_withdraw_analytics($currency_id)
+    {
         $months       = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        $transactions = Transaction::whereHas('account.savings_type', function (Builder $query) use($currency_id) {
+        $transactions = Transaction::whereHas('account.savings_type', function (Builder $query) use ($currency_id) {
             $query->where('currency_id', $currency_id);
         })
             ->selectRaw('MONTH(trans_date) as td, type, IFNULL(SUM(amount), 0) as amount')
             ->whereRaw("(type = 'Deposit' OR type = 'Withdraw') AND status = 2")
             ->whereRaw('YEAR(trans_date) = ?', date('Y'))
             ->groupBy('td', 'type')
-            ->get();  
+            ->get();
 
         $deposit  = array();
         $withdraw = array();

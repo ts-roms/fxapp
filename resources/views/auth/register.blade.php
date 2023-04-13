@@ -6,7 +6,7 @@
         <div class="col-lg-10">
             <div class="card card-signin my-5 p-3">              
 				<div class="card-body">
-				    <img class="logo" src="{{ get_logo() }}">
+				    <img class="logo" src="{{ get_logo() }}" alt='...'>
 					
 					<h5 class="text-center py-4">{{ _lang('Create Your Account Now') }}</h4> 
 

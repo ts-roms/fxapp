@@ -188,6 +188,11 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data');
 			Route::resource('other_income', 'OtherIncomeController');
 
+			// Big Brother
+			Route::get('big_brother/get_table_data', 'BigBrotherController@get_table_data');
+			Route::put('big_brother/closeAccount/{id}', 'BigBrotherController@closeAccount')->name('big_brother.closeAccount');
+			Route::resource('big_brother', 'BigBrotherController');
+
 			//Loan Controller
 			Route::post('loans/get_table_data', 'LoanController@get_table_data');
 			Route::get('loans/calculator', 'LoanController@calculator')->name('loans.admin_calculator');
@@ -195,6 +200,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('loans/approve/{id}', 'LoanController@approve')->name('loans.approve');
 			Route::get('loans/reject/{id}', 'LoanController@reject')->name('loans.reject');
 			Route::get('loans/filter/{status?}', 'LoanController@index')->name('loans.filter')->where('status', '[A-Za-z]+');
+			Route::get('loans/payment/{id}', 'LoanController@payment')->name('loan.payment');
 			Route::resource('loans', 'LoanController');
 
 			//Loan Collateral Controller

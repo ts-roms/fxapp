@@ -4,6 +4,12 @@
     <div class="row">
         <div class="col-md-4 col-lg-3">
             <ul class="nav flex-column nav-tabs settings-tab" role="tablist">
+                @if ($member->status == 'blacklisted')
+                    <li class="nav-item bg-danger">
+                        <a class="nav-link text-center text-white bg-red"
+                            href="#">{{ Str::ucfirst($member->status) }}</a>
+                    </li>
+                @endif
                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#member_details"><i
                             class="ti-user"></i>&nbsp;{{ _lang('Member Details') }}</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#account_overview"><i
@@ -14,11 +20,11 @@
                             class="ti-agenda"></i>&nbsp;{{ _lang('Loans') }}</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#member_contributions"><i
                             class="ti-agenda"></i>&nbsp;{{ _lang('Contributions') }}</a></li>
-                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
                             class="ti-files"></i>&nbsp;{{ _lang('KYC Documents') }}</a></li>
-                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#email"><i
+                <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#email"><i
                             class="ti-email"></i>&nbsp;{{ _lang('Send Email') }}</a></li>
-                <li class="nav-item hidden"><a class="nav-link" data-toggle="tab" href="#sms"><i
+                <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#sms"><i
                             class="ti-comment-alt"></i>&nbsp;{{ _lang('Send SMS') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ action('MemberController@edit', $member->id) }}"><i
                             class="ti-pencil-alt"></i>&nbsp;{{ _lang('Edit Member Details') }}</a></li>
@@ -248,17 +254,17 @@
                                         <tr>
                                             <td>{{ $contribution->payment_date }}</td>
                                             <td>{{ $contribution->reference_no }}</td>
-                                            <td>{{ $contribution->capital_buildup }}</td>
-                                            <td>{{ $contribution->emergency_funds }}</td>
-                                            <td>{{ $contribution->mortuary_funds }}</td>
+                                            <td>{{ decimalPlace($contribution->capital_buildup, currency()) }}
+                                            </td>
+                                            <td>{{ decimalPlace($contribution->emergency_funds, currency()) }}</td>
+                                            <td>{{ decimalPlace($contribution->mortuary_funds, currency()) }}</td>
                                             <td>{{ $contribution->notes }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Total</th>
-                                        <th></th>
+                                        <th colspan="2">{{ _lang('Total Paid') }}</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -541,6 +547,29 @@
                         next: "<i class='ti-angle-right'></i>",
                     }
                 },
+                footerCallback: function(row, data, start, end, display) {
+                    let api = this.api();
+                    let intVal = function(i) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ? i : 0
+                    }
+
+
+                    let capital_buildup = api.column(2).data().reduce(function(a, b) {
+                        return intVal(a) + intVal(b.slice(1));
+                    }, 0);
+                    let emergency_funds = api.column(3).data().reduce(function(a, b) {
+                        return intVal(a) + intVal(b.slice(1));
+                    }, 0);
+                    let mortuary_funds = api.column(4).data().reduce(function(a, b) {
+                        return intVal(a) + intVal(b.slice(1));
+                    }, 0);
+
+                    $(api.column(2).footer()).html('₱ ' + parseFloat(capital_buildup).toFixed(2));
+                    $(api.column(3).footer()).html('₱ ' + parseFloat(emergency_funds).toFixed(2));
+                    $(api.column(4).footer()).html('₱ ' + parseFloat(mortuary_funds).toFixed(2));
+                }
             });
 
         })(jQuery);

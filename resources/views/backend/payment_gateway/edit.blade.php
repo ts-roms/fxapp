@@ -80,7 +80,7 @@
 									<input type="text" class="form-control" name="exchange_rate" id="exchange_rate" value="{{ $paymentgateway->exchange_rate  }}" {{ $paymentgateway->status == 1 ? 'required' : '' }}>
 									<div class="input-group-append">
 										<span class="input-group-text"><span class="gateway_currency_preview">{{ _lang('USD') }}</span></span>
-									</div></br>
+									</div><br />
 								</div>
 							</div>
 						</div>

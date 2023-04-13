@@ -11,7 +11,7 @@
 
                             <div class="card-body">
                                 
-                                <img class="logo" src="{{ get_logo() }}">
+                                <img class="logo" src="{{ get_logo() }}" alt="...">
                                     
                                 <h5 class="pt-4 pb-2 text-center"><b>{{ _lang('Verify Your Email Address') }}</b></h5> 
                                 
