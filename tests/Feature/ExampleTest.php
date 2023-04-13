@@ -7,14 +7,5 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * @test
-     * @skip
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    
 }
