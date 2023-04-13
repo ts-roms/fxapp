@@ -7,5 +7,15 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    
+    /**
+     * @test
+     * @skip
+     */
+    public function testBasicTest()
+    {
+        $this->markTestSkipped();
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
 }
