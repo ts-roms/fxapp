@@ -808,6 +808,8 @@ if (!function_exists('request_count')) {
             $notification_count = \App\Models\WithdrawRequest::where('status', 0)->count();
         } else if ($request == 'member_requests') {
             $notification_count = \App\Models\Member::withoutGlobalScopes(['status'])->where('status', 0)->count();
+        } else if ($request == 'loan_release') {
+            $notification_count = \App\Models\Loan::where('status', 1)->count();
         }
 
         if ($html == false) {

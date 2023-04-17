@@ -28,11 +28,11 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <h5>{{ _lang('Deposit Requests') }}</h5>
-                                <h4 class="pt-1 mb-0"><b>{{ request_count('deposit_requests') }}</b></h4>
+                                <h5>{{ _lang('Loan Release') }}</h5>
+                                <h4 class="pt-1 mb-0"><b>{{ request_count('loan_release') }}</b></h4>
                             </div>
                             <div>
-                                <a href="{{ route('deposit_requests.index') }}"><i
+                                <a href="{{ route('loans.filter', 'active') }}"><i
                                         class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
                             </div>
                         </div>
@@ -47,11 +47,11 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <h5>{{ _lang('Withdraw Requests') }}</h5>
+                                <h5>{{ _lang('Total Payment') }}</h5>
                                 <h4 class="pt-1 mb-0"><b>{{ request_count('withdraw_requests') }}</b></h4>
                             </div>
                             <div>
-                                <a href="{{ route('withdraw_requests.index') }}"><i
+                                <a href="{{ route('loan_payments.index') }}"><i
                                         class="ti-arrow-right"></i>&nbsp;{{ _lang('View') }}</a>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <h5>{{ _lang('Total Income') }}</h5>
+                                <h5>{{ _lang('Total Other Income') }}</h5>
                                 <h4 class="pt-1 mb-0"><b>{{ decimalPlace($other_income, currency()) }}</b></h4>
                             </div>
                             <div>

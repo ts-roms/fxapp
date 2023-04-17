@@ -62,11 +62,11 @@ Route::group(['middleware' => ['install']], function () {
 			//Loan Products
 			Route::resource('loan_products', 'LoanProductController');
 
-			//Expense Categories
-			Route::resource('expense_categories', 'ExpenseCategoryController')->except('show');
+			// //Expense Categories
+			// Route::resource('expense_categories', 'ExpenseCategoryController')->except('show');
 
 			// OtherIncome
-			Route::resource('other_income_categories', 'OtherIncomeCategoryController')->except('show');
+			// Route::resource('other_income_categories', 'OtherIncomeCategoryController')->except('show');
 
 			//Currency List
 			Route::resource('currency', 'CurrencyController');
@@ -184,9 +184,16 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('expenses/get_table_data', 'ExpenseController@get_table_data');
 			Route::resource('expenses', 'ExpenseController');
 
+			//Expense Categories
+			Route::resource('expense_categories', 'ExpenseCategoryController')->except('show');
+
+
 			//OtherIncome
 			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data');
 			Route::resource('other_income', 'OtherIncomeController');
+
+			// Other Income Categories
+			Route::resource('other_income_categories', 'OtherIncomeCategoryController')->except('show');
 
 			// Big Brother
 			Route::get('big_brother/get_table_data', 'BigBrotherController@get_table_data');
