@@ -56,9 +56,11 @@
                     href="{{ route('loans.filter', 'active') }}">{{ _lang('Active Loans') }}</a></li>
         @endif
 
-        @if (in_array('loans.calculator', $permissions))
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('loans.admin_calculator') }}">{{ _lang('Loan Calculator') }}</a></li>
+        @if (in_array('loan_products.index', $permissions))
             <li class="nav-item"><a class="nav-link"
-                    href="{{ route('loans.admin_calculator') }}">{{ _lang('Loan Calculator') }}</a></li>
+                    href="{{ route('loan_products.index') }}">{{ _lang('Loan Products') }}</a></li>
         @endif
     </ul>
 </li>
@@ -88,7 +90,7 @@
     <a href="javascript: void(0);"><i class="fas fa-coins"></i><span>{{ _lang('Deposit') }}
             {!! xss_clean($deposit_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="nav-second-level" aria-expanded="false">
-        @if (in_array('transactions.create', $permissions))
+        @if (in_array('deposit_requests.create', $permissions))
             <li class="nav-item"><a class="nav-link"
                     href="{{ route('transactions.create') }}?type=deposit">{{ _lang('Deposit Money') }}</a></li>
         @endif
@@ -108,7 +110,7 @@
     <a href="javascript: void(0);"><i class="fas fa-money-check"></i><span>{{ _lang('Withdraw') }}
             {!! xss_clean($withdraw_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="nav-second-level" aria-expanded="false">
-        @if (in_array('transactions.create', $permissions))
+        @if (in_array('withdraw_requests.create', $permissions))
             <li class="nav-item"><a class="nav-link"
                     href="{{ route('transactions.create') }}?type=withdraw">{{ _lang('Withdraw Money') }}</a></li>
         @endif

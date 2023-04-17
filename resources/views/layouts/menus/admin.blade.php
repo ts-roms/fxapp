@@ -67,31 +67,6 @@
     </ul>
 </li>
 
-<li>
-    <a href="javascript: void(0);"><i class="fas fa-coins"></i><span>{{ _lang('Deposit') }}
-            {!! xss_clean($deposit_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-    <ul class="nav-second-level" aria-expanded="false">
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('transactions.create') }}?type=deposit">{{ _lang('Deposit Money') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('deposit_requests.index') }}">
-                {{ _lang('Deposit Requests') }}
-                {!! xss_clean($deposit_requests) !!}
-            </a></li>
-    </ul>
-</li>
-
-<li>
-    <a href="javascript: void(0);"><i class="fas fa-money-check"></i><span>{{ _lang('Withdraw') }}
-            {!! xss_clean($withdraw_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-    <ul class="nav-second-level" aria-expanded="false">
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('transactions.create') }}?type=withdraw">{{ _lang('Withdraw Money') }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('withdraw_requests.index') }}">
-                {{ _lang('Withdraw Requests') }}
-                {!! xss_clean($withdraw_requests) !!}
-            </a></li>
-    </ul>
-</li>
 
 <li>
     <a href="javascript: void(0);"><i class="fas fa-wallet"></i><span>{{ _lang('Transactions') }}</span><span
@@ -110,17 +85,16 @@
     <a href="javascript: void(0);"><i class="fas fa-money-bill-wave"></i><span>{{ _lang('Expense') }}</span><span
             class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="nav-second-level" aria-expanded="false">
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('expenses.index') }}">{{ _lang('All Expense') }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('expenses.index') }}">{{ _lang('All Expense') }}</a>
+        </li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('expense_categories.index') }}">{{ _lang('Expense Categories') }}</a></li>
     </ul>
 </li>
 
 <li>
-    <a href="javascript: void(0);"><i
-            class="fas fa-hand-holding-usd"></i><span>{{ _lang('Other Income') }}</span><span class="menu-arrow"><i
-                class="mdi mdi-chevron-right"></i></span></a>
+    <a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Other Income') }}</span><span
+            class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="nav-second-level" aria-expanded="false">
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('other_income.index') }}">{{ _lang('All Other Income') }}</a></li>
@@ -130,30 +104,14 @@
 </li>
 
 <li>
-    <a href="javascript: void(0);"><i
-            class="fas fa-hand-holding-usd"></i><span>{{ _lang('Big Brother') }}</span><span class="menu-arrow"><i
-                class="mdi mdi-chevron-right"></i></span></a>
+    <a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Big Brother') }}</span><span
+            class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
     <ul class="nav-second-level" aria-expanded="false">
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('big_brother.index') }}">{{ _lang('Big Brother Funds') }}</a></li>
     </ul>
 </li>
 
-<li>
-    <a href="javascript: void(0);"><i class="fas fa-list-ul"></i><span>{{ _lang('Deposit Methods') }}</span><span
-            class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-    <ul class="nav-second-level" aria-expanded="false">
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('payment_gateways.index') }}">{{ _lang('Automatic Gateways') }}</a></li>
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('deposit_methods.index') }}">{{ _lang('Manual Gateways') }}</a></li>
-    </ul>
-</li>
-
-<li>
-    <a href="{{ route('withdraw_methods.index') }}"><i
-            class="fas fa-clipboard-list"></i><span>{{ _lang('Withdraw Methods') }}</span></a>
-</li>
 
 <li>
     <a href="javascript: void(0);"><i class="ti-user"></i><span>{{ _lang('User Management') }}</span><span
@@ -210,12 +168,6 @@
                 href="{{ route('custom_fields.index') }}">{{ _lang('Custom Fields') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('currency.index') }}">{{ _lang('Supported Currency') }}</a></li>
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('email_templates.index') }}">{{ _lang('Email Templates') }}</a></li>
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('sms_templates.index') }}">{{ _lang('SMS Templates') }}</a></li>
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('notification_templates.index') }}">{{ _lang('Notification Templates') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('database_backups.list') }}">{{ _lang('Database Backup') }}</a></li>
     </ul>

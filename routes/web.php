@@ -60,7 +60,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::resource('transaction_categories', 'TransactionCategoryController');
 
 			//Loan Products
-			Route::resource('loan_products', 'LoanProductController');
+			// Route::resource('loan_products', 'LoanProductController');
 
 			// //Expense Categories
 			// Route::resource('expense_categories', 'ExpenseCategoryController')->except('show');
@@ -209,6 +209,9 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('loans/filter/{status?}', 'LoanController@index')->name('loans.filter')->where('status', '[A-Za-z]+');
 			Route::get('loans/payment/{id}', 'LoanController@payment')->name('loan.payment');
 			Route::resource('loans', 'LoanController');
+
+			//Loan Products
+			Route::resource('loan_products', 'LoanProductController');
 
 			//Loan Collateral Controller
 			Route::get('loan_collaterals/loan/{loan_id}', 'LoanCollateralController@index')->name('loan_collaterals.index');
