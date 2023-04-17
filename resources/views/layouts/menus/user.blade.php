@@ -70,6 +70,11 @@
                 class="fas fa-receipt"></i><span>{{ _lang('Repayments') }}</span></a></li>
 @endif
 
+@if (in_array('contributions.index', $permissions))
+    <li><a href="{{ route('contributions.index') }}"><i
+                class="fas fa-file-invoice"></i><span>{{ _lang('Contributions') }}</span></a></li>
+@endif
+
 <li>
     <a href="javascript: void(0);"><i class="fas fa-landmark"></i><span>{{ _lang('Accounts') }}</span><span
             class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>

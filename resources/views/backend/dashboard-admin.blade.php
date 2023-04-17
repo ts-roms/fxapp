@@ -40,8 +40,8 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <h5>{{ _lang('Total Payment') }}</h5>
-                            <h4 class="pt-1 mb-0"><b>{{ request_count('withdraw_requests') }}</b></h4>
+                            <h5>{{ _lang('Total Payments') }}</h5>
+                            <h4 class="pt-1 mb-0"><b>{{ request_count('total_payments') }}</b></h4>
                         </div>
                         <div>
                             <a href="{{ route('loan_payments.index') }}"><i

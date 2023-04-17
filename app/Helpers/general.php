@@ -810,6 +810,8 @@ if (!function_exists('request_count')) {
             $notification_count = \App\Models\Member::withoutGlobalScopes(['status'])->where('status', 0)->count();
         } else if ($request == 'loan_release') {
             $notification_count = \App\Models\Loan::where('status', 1)->count();
+        } else if ($request == 'total_payments') {
+            $notification_count = \App\Models\LoanPayment::sum('total_amount');
         }
 
         if ($html == false) {

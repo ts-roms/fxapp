@@ -8,65 +8,50 @@
                     {{ _lang('Add Contributions') }}
                 </div>
 
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <form method="post" class="validate" autocomplete="false" action="{{ route('contributions.store') }}"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        @foreach ($members as $member)
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Member') }}</label>
-                                        <div class="input-group">
-                                            <input type="hidden" class="form-control float-field" name="member_id[]"
-                                                id="member_id" value="{{ $member->id }}" readonly>
-                                            <input type="text" class="form-control float-field" name="member_name"
-                                                id="member_name"
-                                                value="{{ $member->first_name . ' ' . $member->last_name }}" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Capital BuildUp') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control float-field" placeholder="0.00"
-                                                name="capital_buildup[]" id="capital_buildup"
-                                                value="{{ old('capital_buildup') }}" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Emergency Funds') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control float-field" placeholder="0.00"
-                                                name="emergency_funds[]" id="emergency_funds"
-                                                value="{{ old('emergency_funds') }}" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Mortuary Funds') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control float-field" placeholder="0.00"
-                                                name="mortuary_funds[]" id="mortuary_funds"
-                                                value="{{ old('mortuary_funds') }}" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Notes') }}</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control text-field" placeholder="Notes"
-                                                name="notes[]" id="notes" value="{{ old('notes') }}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>{{ _lang('Member') }}</th>
+                                    <th>{{ _lang('Capital BuildUp') }}</th>
+                                    <th>{{ _lang('Emergency Funds') }}</th>
+                                    <th>{{ _lang('Mortuary Funds') }}</th>
+                                    <th>{{ _lang('Note') }}</th>
+                                </tr>
+                            </thead>
+                            @foreach ($members as $member)
+                                <tr>
+                                    <td>
+                                        <input type="hidden" class="form-control float-field" name="member_id[]"
+                                            id="member_id" value="{{ $member->id }}" readonly>
+
+                                        {{ $member->first_name . ' ' . $member->last_name }}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm float-field"
+                                            placeholder="0.00" name="capital_buildup[]" id="capital_buildup"
+                                            value="{{ old('capital_buildup') }}" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm float-field"
+                                            placeholder="0.00" name="emergency_funds[]" id="emergency_funds"
+                                            value="{{ old('emergency_funds') }}" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm float-field"
+                                            placeholder="0.00" name="mortuary_funds[]" id="mortuary_funds"
+                                            value="{{ old('mortuary_funds') }}" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-sm text-field"
+                                            placeholder="Notes" name="notes[]" id="notes" value="{{ old('notes') }}">
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
