@@ -318,6 +318,8 @@ Route::get('install/create_user', 'Install\InstallController@create_user');
 Route::post('install/store_user', 'Install\InstallController@store_user');
 Route::get('install/system_settings', 'Install\InstallController@system_settings');
 Route::post('install/finish', 'Install\InstallController@final_touch');
+Route::get('install/activation', 'Install\InstallController@activation');
+Route::post('install/activate', 'Install\InstallController@activate');
 
 //Update System
 Route::get('migration/update', 'Install\UpdateController@update_migration');

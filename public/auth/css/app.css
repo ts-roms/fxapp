@@ -103,7 +103,6 @@ body::after {
 .form-signin {
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  text-align: center;
 }
 
 .form-signin .btn {
@@ -115,7 +114,6 @@ body::after {
 
 .form-signin .form-control {
   padding: 12px 20px;
-  text-align: center;
   border-left: 2px solid #2d7bff;
   height: auto;
 }
