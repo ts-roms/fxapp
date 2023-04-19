@@ -15,6 +15,14 @@ class CreateCustomFieldsTable extends Migration
     {
         Schema::create('custom_fields', function (Blueprint $table) {
             $table->id();
+            $table->string('field_name');
+            $table->string('field_label');
+            $table->string('belongs_to');
+            $table->string('field_type');
+            $table->boolean('required');
+            $table->string('field_class');
+            $table->boolean('active')->default(1);
+            $table->integer('created_user_id');
             $table->timestamps();
         });
     }

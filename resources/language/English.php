@@ -851,3 +851,14 @@ $language['Period From'] = 'Period From';
 $language['Period To'] = 'Period To';
 $language['Capital'] = 'Capital';
 $language['Closed'] = 'Closed';
+$language['Required'] = 'Required';
+$language['Field Name'] = 'Field Name';
+$language['Field Label'] = 'Field Label';
+$language['Field Belongs To'] = 'Field Belongs To';
+$language['Field Type'] = 'Field Type';
+$language['Charts Of Account'] = 'Charts Of Account';
+$language['All Charts Of Account'] = 'All Charts Of Account';
+$language['Account Name'] = 'Account Name';
+$language['GL Code'] = 'GL Code';
+$language['Account Type'] = 'Account Type';
+

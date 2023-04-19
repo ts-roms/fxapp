@@ -161,11 +161,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 hidden">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="togglebutton">
-                            <h4 class="header-title d-flex align-items-center">{{ _lang('Login Details') }}&nbsp;&nbsp;
+                            <h4 class="header-title d-flex align-items-center">{{ _lang('Custom Fields') }}&nbsp;&nbsp;
                                 <input type="checkbox" id="client_login" value="1" name="client_login">
                             </h4>
                         </div>

@@ -813,7 +813,7 @@
 			}, success: function (data) {
 				$(elem).find("button[type=submit]").attr("disabled", false);
 				$("#preloader").css("display", "none");
-				console.log(data);
+
 				var json = JSON.parse(data);
 				if (json['result'] == "success") {
 
