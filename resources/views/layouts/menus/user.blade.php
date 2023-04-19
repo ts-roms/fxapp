@@ -10,6 +10,12 @@
     <a href="{{ route('dashboard.index') }}"><i class="ti-dashboard"></i> <span>{{ _lang('Dashboard') }}</span></a>
 </li>
 
+@if (in_array('branches.index', $permissions))
+    <li>
+        <a href="{{ route('branches.index') }}"><i class="fas fa-building"></i><span>{{ _lang('Branches') }}</span></a>
+    </li>
+@endif
+
 <li>
     <a href="javascript: void(0);"><i class="fas fa-user-friends"></i><span>{{ _lang('Members') }}
             {!! xss_clean($member_requests) !!}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
@@ -186,6 +192,30 @@
         <ul class="nav-second-level" aria-expanded="false">
             <li class="nav-item"><a class="nav-link"
                     href="{{ route('big_brother.index') }}">{{ _lang('Big Brother Funds') }}</a></li>
+        </ul>
+    </li>
+@endif
+
+<li>
+    <a href="javascript: void(0);"><i
+            class="fas fa-hand-holding-usd"></i><span>{{ _lang('Charts Of Account') }}</span><span
+            class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+    <ul class="nav-second-level" aria-expanded="false">
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('charts_of_account.index') }}">{{ _lang('All Charts Of Account') }}</a></li>
+    </ul>
+</li>
+
+
+@if (in_array('custom_fields.index', $permissions))
+    <li>
+        <a href="javascript: void(0);"><i class="ti-world"></i><span>
+                {{ _lang('Custom Fields') }}
+                <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+        </a>
+        <ul>
+            <li class="nav-item"><a class="nav-link"
+                    href="{{ route('custom_fields.index') }}">{{ _lang('All Custom Fields') }}</a></li>
         </ul>
     </li>
 @endif

@@ -43,31 +43,30 @@
                 serverSide: true,
                 ajax: '{{ url('admin/contributions/get_table_data') }}',
                 "columns": [{
-                        data: 'member',
-                        name: 'member'
-                    }, {
-                        data: 'reference_no',
-                        name: 'reference_no'
-                    }, {
-                        data: 'capital_buildup',
-                        name: 'capital_buildup'
-                    }, {
-                        data: 'emergency_funds',
-                        name: 'emergency_funds'
-                    }, {
-                        data: 'mortuary_funds',
-                        name: 'mortuary_funds'
-                    }, {
-                        data: 'payment_date',
-                        name: 'payment_date'
-                    }, {
-                        data: 'notes',
-                        name: 'notes'
-                    }, {
-                        data: 'action',
-                        name: 'action'
-                    }
-                ],
+                    data: 'member',
+                    name: 'member'
+                }, {
+                    data: 'reference_no',
+                    name: 'reference_no'
+                }, {
+                    data: 'capital_buildup',
+                    name: 'capital_buildup'
+                }, {
+                    data: 'emergency_funds',
+                    name: 'emergency_funds'
+                }, {
+                    data: 'mortuary_funds',
+                    name: 'mortuary_funds'
+                }, {
+                    data: 'payment_date',
+                    name: 'payment_date'
+                }, {
+                    data: 'notes',
+                    name: 'notes'
+                }, {
+                    data: 'action',
+                    name: 'action'
+                }],
                 responsive: true,
                 "bStateSave": true,
                 "bAutoWidth": false,

@@ -50,8 +50,8 @@ Route::group(['middleware' => ['install']], function () {
 				'create', 'store', 'show', 'destroy',
 			]);
 
-			//Branch Controller
-			Route::resource('branches', 'BranchController');
+			// //Branch Controller
+			// Route::resource('branches', 'BranchController');
 
 			//Savings Products
 			Route::resource('savings_products', 'SavingsProductController');
@@ -71,8 +71,6 @@ Route::group(['middleware' => ['install']], function () {
 			//Currency List
 			Route::resource('currency', 'CurrencyController');
 
-			// Custom Fields
-			Route::resource('custom_fields', 'CustomFieldsController');
 
 			//Deposit Methods
 			Route::resource('deposit_methods', 'DepositMethodController')->except([
@@ -189,11 +187,25 @@ Route::group(['middleware' => ['install']], function () {
 
 
 			//OtherIncome
-			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data');
+			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data')->name('other_income.get_table_data');
 			Route::resource('other_income', 'OtherIncomeController');
 
 			// Other Income Categories
 			Route::resource('other_income_categories', 'OtherIncomeCategoryController')->except('show');
+
+
+			// Custom Fields
+			Route::get('custom_fields/get_table_data', 'CustomFieldsController@get_table_data')->name('custom_fields.get_table_data');
+			Route::resource('custom_fields', 'CustomFieldsController');
+
+			//Branch Controller
+			Route::resource('branches', 'BranchController');
+
+
+			//Charts of Account
+			Route::get('charts_of_account/get_table_data', 'ChartsOfAccountController@get_table_data')->name('charts_of_account.get_table_data');
+			Route::resource('charts_of_account', 'ChartsOfAccountController');
+
 
 			// Big Brother
 			Route::get('big_brother/get_table_data', 'BigBrotherController@get_table_data');

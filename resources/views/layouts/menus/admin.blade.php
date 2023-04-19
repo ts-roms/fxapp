@@ -112,6 +112,15 @@
     </ul>
 </li>
 
+<li>
+        <a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Charts Of Account') }}</span><span
+                class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ route('charts_of_account.index') }}">{{ _lang('All Charts Of Account') }}</a></li>
+                    </ul>
+</li>
+
 
 <li>
     <a href="javascript: void(0);"><i class="ti-user"></i><span>{{ _lang('User Management') }}</span><span
@@ -134,6 +143,17 @@
                 href="{{ route('languages.index') }}">{{ _lang('All Language') }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('languages.create') }}">{{ _lang('Add New') }}</a>
         </li>
+    </ul>
+</li>
+
+<li>
+    <a href="javascript: void(0);"><i class="ti-world"></i><span>
+            {{ _lang('Custom Fields') }}
+            <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+    </a>
+    <ul>
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('custom_fields.index') }}">{{ _lang('All Custom Fields') }}</a></li>
     </ul>
 </li>
 
@@ -164,8 +184,6 @@
     <ul class="nav-second-level" aria-expanded="false">
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('settings.update_settings') }}">{{ _lang('General Settings') }}</a></li>
-        <li class="nav-item"><a class="nav-link"
-                href="{{ route('custom_fields.index') }}">{{ _lang('Custom Fields') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('currency.index') }}">{{ _lang('Supported Currency') }}</a></li>
         <li class="nav-item"><a class="nav-link"

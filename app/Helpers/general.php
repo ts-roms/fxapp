@@ -110,6 +110,51 @@ if (!function_exists('create_option')) {
     }
 }
 
+if (!function_exists('custom_fields_option')) {
+    function custom_fields_option($type)
+    {
+
+
+        $options = '';
+
+        if ($type == 'belongs_to') {
+            $fields = array(
+                'App\Members'
+            );
+        } else if ($type == 'field_type') {
+            $fields = array(
+                'inputfield',
+                'textarea',
+                'date',
+                'number',
+                'decimal'
+            );
+        } else if ($type == 'required') {
+            $fields = array("Yes", "No");
+        }
+
+
+        foreach ($fields as $field) {
+            $options .= "<option value=" . $field . ">" . $field . "</option>";
+        }
+        echo $options;
+    }
+}
+
+if (!function_exists('charts_of_account_options')) {
+    function charts_of_account_options($selected = '')
+    {
+        $options = '';
+        $fields = array('assets', 'equity', 'expense', 'income', 'liability');
+
+        foreach ($fields as $field) {
+            $options .= "<option value=" . $field . ">" . ucwords($field) . "</option>";
+        }
+
+        echo $options;
+    }
+}
+
 if (!function_exists('object_to_string')) {
     function object_to_string($object, $col, $quote = false)
     {

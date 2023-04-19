@@ -3,62 +3,60 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="card no-export">
-                <div class="card-header">
-                    <span class="panel-title">{{ _lang('All Custom Fields') }}</span>
-                    <a class="btn btn-primary btn-xs float-right ajax-modal" data-title="{{ _lang('Add New Custom Fields') }}"
-                        href="{{ route('custom_fields.create') }}"><i class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <span class="panel-title">{{ _lang('Charts Of Account') }}</span>
+                    <a href="{{ route('charts_of_account.create') }}" data-title="{{ 'New Charts of Account' }}"
+                        class="btn btn-primary btn-xs ml-auto ajax-modal"><i
+                            class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-hovered" id="custom_fields_table">
+                    <table class="table table-bordered table-hovered" id="charts_of_account_table">
                         <thead>
                             <tr>
-                                <th>{{ _lang('Field Name') }}</th>
-                                <th>{{ _lang('Field Belongs To') }}</th>
-                                <th>{{ _lang('Field Type') }}</th>
-                                <th>{{ _lang('Required') }}</th>
-                                <th>{{ _lang('Action') }}</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                                <th>Account Type</th>
+                                <th>Notes</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
-
 
 @section('js-script')
     <script>
         (function($) {
             'use strict'
-
-            $('#custom_fields_table').DataTable({
+            $('#charts_of_account_table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('admin/custom_fields/get_table_data') }}',
+                ajax: '{{ url('admin/charts_of_account/get_table_data') }}',
                 columns: [{
-                        data: 'field_label',
-                        name: 'field_label'
+                        data: 'name',
+                        name: 'name'
                     },
                     {
-                        data: 'belongs_to',
-                        name: 'belongs_to'
+                        data: 'code',
+                        name: 'code'
                     },
                     {
-                        data: 'field_type',
-                        name: 'field_type'
+                        data: 'account_type',
+                        name: 'account_type'
                     },
                     {
-                        data: 'required',
-                        name: 'required'
+                        data: 'notes',
+                        name: 'notes'
                     },
                     {
-                        data: 'action',
-                        name: 'action'
+                        data: "action",
+                        name: "action"
                     }
                 ],
                 responsive: true,
