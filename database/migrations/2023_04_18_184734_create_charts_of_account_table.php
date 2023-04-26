@@ -16,10 +16,10 @@ class CreateChartsOfAccountTable extends Migration
         Schema::create('charts_of_account', function (Blueprint $table) {
             $table->id();
             $table->integer('parent_id');
-            $table->string('name');
-            $table->string('code');
-            $table->string('allow_manual');
-            $table->string('notes');
+            $table->string('name')->require();
+            $table->string('code')->require();
+            $table->boolean('allow_manual')->default(false);
+            $table->string('notes')->nullable();
             $table->enum('account_type', ['assets', 'equity', 'expense', 'income', 'liability'])->default('assets');
             $table->integer('created_user_id')->unsigned();
             $table->boolean('active')->default(1);

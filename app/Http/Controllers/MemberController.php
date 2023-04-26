@@ -6,6 +6,8 @@ use DataTables;
 use App\Models\User;
 use App\Models\Member;
 use App\Mail\GeneralMail;
+use App\Models\CustomFields;
+use App\Models\CustomFieldsMeta;
 use App\Models\Transaction;
 use App\Utilities\Overrider;
 use App\Utilities\SmsHelper;
@@ -108,10 +110,11 @@ class MemberController extends Controller
      */
     public function create(Request $request)
     {
+        $custom_fields = CustomFields::where('belongs_to', 'App\Members')->get();
         if (!$request->ajax()) {
-            return view('backend.member.create');
+            return view('backend.member.create', compact('custom_fields'));
         } else {
-            return view('backend.member.modal.create');
+            return view('backend.member.modal.create', compact('custom_fields'));
         }
     }
 
@@ -196,9 +199,20 @@ class MemberController extends Controller
         $member->address       = $request->input('address');
         $member->credit_source = $request->input('credit_source');
         $member->photo         = $photo;
-        //$member->custom_fields  = $request->input('custom_fields');
 
         $member->save();
+
+        $fields = CustomFields::where('belongs_to', 'App\Members')->where('active', 1)->get();
+        foreach ($fields as $field) {
+            $custom = new CustomFieldsMeta();
+            $custom->user_id = auth()->id();
+            $custom->belongs_to = 'App\Members';
+            $custom->member_id = $member->id;
+            $custom->custom_field_id = $field->id;
+            $custom->value = "testing value";
+            $custom->save();
+        }
+
 
         DB::commit();
 

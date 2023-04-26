@@ -123,11 +123,11 @@ if (!function_exists('custom_fields_option')) {
             );
         } else if ($type == 'field_type') {
             $fields = array(
-                'inputfield',
+                'text',
                 'textarea',
                 'date',
+                'file',
                 'number',
-                'decimal'
             );
         } else if ($type == 'required') {
             $fields = array("Yes", "No");
