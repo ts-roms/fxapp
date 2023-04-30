@@ -165,39 +165,42 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="togglebutton">
-                            <h4 class="header-title d-flex align-items-center">{{ _lang('Custom Fields') }}&nbsp;&nbsp;
-                                <input type="checkbox" id="client_login" value="0" name="client_login"
-                                    class="d-none">
-                            </h4>
+            @if($custom_fields->count() > 0)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="togglebutton">
+                                <h4 class="header-title d-flex align-items-center">
+                                    {{ _lang('Custom Fields') }}&nbsp;&nbsp;
+                                    <input type="checkbox" id="client_login" value="0" name="client_login"
+                                        class="d-none">
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body" id="custom_field_card">
-                        <div class="row">
-                            @foreach ($custom_fields as $field)
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ $field->field_label }}</label>
-                                        @if ($field->field_type == 'textarea')
-                                            <textarea name="{{ $field->field_name }}" class="form-control {{ $field->field_class }}"
-                                                placeholder="{{ $field->field_label }}"></textarea>
-                                        @else
-                                            <input type="{{ $field->field_type }}" class="{{ $field->field_class }}"
-                                                name="{{ $field->field_name }}" value=""
-                                                placeholder="{{ $field->field_label }}"
-                                                @if ($field->required == 1) required @endif />
-                                        @endif
+                        <div class="card-body" id="custom_field_card">
+                            <div class="row">
+                                @foreach ($custom_fields as $field)
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">{{ $field->field_label }}</label>
+                                            @if ($field->field_type == 'textarea')
+                                                <textarea name="{{ $field->field_name }}" class="form-control {{ $field->field_class }}"
+                                                    placeholder="{{ $field->field_label }}"></textarea>
+                                            @else
+                                                <input type="{{ $field->field_type }}" class="{{ $field->field_class }}"
+                                                    name="{{ $field->field_name }}" value=""
+                                                    placeholder="{{ $field->field_label }}"
+                                                    @if ($field->required == 1) required @endif />
+                                            @endif
 
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </form>
 @endsection

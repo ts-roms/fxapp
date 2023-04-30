@@ -63,4 +63,9 @@ class Member extends Model
     {
         return $this->hasMany('App\Models\Contribution', 'member_id');
     }
+
+    public function custom_fields_meta()
+    {
+        return $this->hasMany('App\Models\CustomFieldsMeta', 'member_id');
+    }
 }

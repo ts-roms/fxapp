@@ -25,10 +25,10 @@
 			</div>
 		</div>
 
-		<div class="col-md-12">
+		<div class="col-md-12" hidden>
 			<div class="form-group">
 				<label class="control-label">{{ _lang('Account Number') }}</label>							
-				<select class="form-control select2 auto-select" data-selected="{{ old('savings_account_id') }}" name="savings_account_id" id="savings_account_id" required>
+				<select class="form-control select2 auto-select" data-selected="{{ old('savings_account_id') }}" name="savings_account_id" id="savings_account_id">
 				</select>
 			</div>
 		</div>

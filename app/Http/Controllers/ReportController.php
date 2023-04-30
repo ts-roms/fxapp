@@ -7,19 +7,22 @@ use App\Models\Loan;
 use App\Models\LoanPayment;
 use App\Models\LoanRepayment;
 use App\Models\Member;
+use App\Models\OtherIncome;
 use App\Models\SavingsAccount;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ReportController extends Controller {
+class ReportController extends Controller
+{
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
     }
 
@@ -28,7 +31,8 @@ class ReportController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function account_statement(Request $request) {
+    public function account_statement(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.account_statement');
         } else if ($request->isMethod('post')) {
@@ -61,7 +65,8 @@ class ReportController extends Controller {
         }
     }
 
-    public function loan_report(Request $request) {
+    public function loan_report(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.loan_report');
         } else if ($request->isMethod('post')) {
@@ -105,7 +110,8 @@ class ReportController extends Controller {
         }
     }
 
-    public function loan_due_report(Request $request) {
+    public function loan_due_report(Request $request)
+    {
         @ini_set('max_execution_time', 0);
         @set_time_limit(0);
 
@@ -122,7 +128,8 @@ class ReportController extends Controller {
         return view('backend.reports.loan_due_report', $data);
     }
 
-    public function transactions_report(Request $request) {
+    public function transactions_report(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.transactions_report');
         } else if ($request->isMethod('post')) {
@@ -166,7 +173,8 @@ class ReportController extends Controller {
         }
     }
 
-    public function expense_report(Request $request) {
+    public function expense_report(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.expense_report');
         } else if ($request->isMethod('post')) {
@@ -201,7 +209,8 @@ class ReportController extends Controller {
         }
     }
 
-    public function account_balances(Request $request) {
+    public function account_balances(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.account_balances');
         } else if ($request->isMethod('post')) {
@@ -215,7 +224,8 @@ class ReportController extends Controller {
         }
     }
 
-    public function revenue_report(Request $request) {
+    public function revenue_report(Request $request)
+    {
         if ($request->isMethod('get')) {
             return view('backend.reports.revenue_report');
         } else if ($request->isMethod('post')) {
@@ -273,7 +283,72 @@ class ReportController extends Controller {
             $data['currency_id'] = $request->currency_id;
             return view('backend.reports.revenue_report', $data);
         }
-
     }
 
+    public function other_income_report(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('backend.reports.other_income_report');
+        } else if ($request->isMethod('post')) {
+            @ini_set('max_execution_time', 0);
+            @set_time_limit(0);
+
+            $data     = array();
+            $date1    = $request->date1;
+            $date2    = $request->date2;
+            $category = isset($request->category) ? $request->category : '';
+            $branch   = isset($request->branch) ? $request->branch : '';
+
+            $data['report_data'] = OtherIncome::select('other_income.*')
+                ->with(['other_income_category'])
+                ->when($category, function ($query, $category) {
+                    return $query->whereHas('other_income_category', function ($query) use ($category) {
+                        return $query->where('other_income_category_id', $category);
+                    });
+                })
+                ->when($branch, function ($query, $branch) {
+                    return $query->where('branch_id', $branch);
+                })
+                ->whereRaw("date(other_income.other_income_date) >= '$date1' AND date(other_income.other_income_date) <= '$date2'")
+                ->orderBy('other_income_date', 'desc')
+                ->get();
+
+            $data['date1']    = $request->date1;
+            $data['date2']    = $request->date2;
+            $data['category'] = $request->category;
+            $data['branch']   = $request->branch;
+            return view('backend.reports.other_income_report', $data);
+        }
+    }
+
+    public function members_report(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('backend.reports.members_report');
+        } else if ($request->isMethod('post')) {
+
+            @ini_set('max_execution_time', 0);
+            @set_time_limit(0);
+
+            $data = array();
+            $status = $request->status;
+            $branch = $request->branch;
+
+            $members = Member::when($status, function ($query, $status) {
+                return $query->where('status', $status);
+            })
+                ->when($branch, function ($query, $branch) {
+                    return $query->where('branch_id', $branch);
+                })
+                ->orderBy('id', 'desc')
+                ->get();
+
+
+            $data['report_data'] = $members;
+
+            $data['status'] = $status;
+            $data['branch'] = $branch;
+            return view('backend.reports.members_report', $data);
+        }
+    }
 }

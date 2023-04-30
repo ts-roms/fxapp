@@ -138,6 +138,8 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('members/send_sms', 'MemberController@send_sms')->name('members.send_sms');
 			Route::put('members/blacklist/{id}', 'MemberController@blacklist')->name('members.blacklist');
 			Route::put('members/unblock/{id}', 'MemberController@unblock')->name('members.unblock');
+			Route::get('members/create_contribution/{id}', 'MemberController@create_contribution')->name('members.create_contribution');
+			Route::post('members/post_contribution', 'MemberController@post_contribution')->name('members.post_contribution');
 			Route::resource('members', 'MemberController')->middleware("demo:PUT|PATCH|DELETE");
 
 			//Members Documents
@@ -203,7 +205,7 @@ Route::group(['middleware' => ['install']], function () {
 
 
 			//Charts of Account
-			Route::get('charts_of_account/get_table_data', 'ChartsOfAccountController@get_table_data')->name('charts_of_account.get_table_data');
+			Route::get('charts_of_account/get_table_data', 'ChartsOfAccountController@get_table_data')->name('chart_of_account.get_table_data');
 			Route::resource('charts_of_account', 'ChartsOfAccountController');
 
 
@@ -244,10 +246,12 @@ Route::group(['middleware' => ['install']], function () {
 			//Report Controller
 			Route::match(['get', 'post'], 'reports/account_statement', 'ReportController@account_statement')->name('reports.account_statement');
 			Route::match(['get', 'post'], 'reports/account_balances', 'ReportController@account_balances')->name('reports.account_balances');
+			Route::match(['get', 'post'], 'reports/members_report', 'ReportController@members_report')->name('reports.members_report');
 			Route::match(['get', 'post'], 'reports/transactions_report', 'ReportController@transactions_report')->name('reports.transactions_report');
 			Route::match(['get', 'post'], 'reports/loan_report', 'ReportController@loan_report')->name('reports.loan_report');
 			Route::get('reports/loan_due_report', 'ReportController@loan_due_report')->name('reports.loan_due_report');
 			Route::match(['get', 'post'], 'reports/expense_report', 'ReportController@expense_report')->name('reports.expense_report');
+			Route::match(['get', 'post'], 'reports/other_income_report', 'ReportController@other_income_report')->name('reports.other_income_report');
 			Route::match(['get', 'post'], 'reports/revenue_report', 'ReportController@revenue_report')->name('reports.revenue_report');
 		});
 

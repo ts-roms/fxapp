@@ -15,12 +15,8 @@ class CustomFieldsMeta extends Model
 
     protected $table = 'custom_fields_meta';
 
-    protected static function booted()
-    {
-    }
-
     public function member()
     {
-        return $this->belongsTo(Member::class, 'member_id')->withDefault();
+        return $this->belongsTo('App\Models\Member', 'member_id')->withDefault();
     }
 }

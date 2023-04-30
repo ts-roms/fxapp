@@ -22,10 +22,8 @@
                             class="ti-agenda"></i>&nbsp;{{ _lang('Contributions') }}</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
                             class="ti-files"></i>&nbsp;{{ _lang('KYC Documents') }}</a></li>
-                @if (in_array('custom_fields.index', $permissions))
-                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#custom_fields_meta"><i
-                                class="ti-files"></i>&nbsp;{{ _lang('Custom Fields') }}</a></li>
-                @endif
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#custom_fields_meta"><i
+                            class="ti-files"></i>&nbsp;{{ _lang('Custom Fields') }}</a></li>
                 <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#email"><i
                             class="ti-email"></i>&nbsp;{{ _lang('Send Email') }}</a></li>
                 <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#sms"><i
@@ -237,8 +235,11 @@
 
                 <div id="member_contributions" class="tab-pane">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex">
                             <span class="header-title">{{ _lang('Contributions') }}</span>
+                            <a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="Add Contributions for {{ $member->first_name }}"
+                                href="{{ route('members.create_contribution', $member->id) }}"><i
+                                    class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
                         </div>
 
                         <div class="card-body">
@@ -345,14 +346,14 @@
 
                 <div id="custom_fields_meta" class="tab-pane">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex align-items-center">
                             <span class="header-title">{{ _lang('Custom Fields') }}</span>
                         </div>
                         <div class="card-body">
-                            <table class="table table-responsive" id="custom_fields_table">
+                            <table class="table table-bordered" id="custom_fields_table">
                                 <thead>
                                     <tr>
-                                        <th>Label</th>
+                                        <th>Field</th>
                                         <th>Value</th>
                                     </tr>
                                 </thead>

@@ -6,6 +6,7 @@ use DataTables;
 use App\Models\User;
 use App\Models\Member;
 use App\Mail\GeneralMail;
+use App\Models\Contribution;
 use App\Models\CustomFields;
 use App\Models\CustomFieldsMeta;
 use App\Models\Transaction;
@@ -600,5 +601,48 @@ class MemberController extends Controller
         $member->save();
         DB::commit();
         return redirect()->route('members.index')->with('success', _lang('Updated Successfully'));
+    }
+
+    public function create_contribution(Request $request, $id)
+    {
+        $member = Member::withoutGlobalScopes(['status'])->find($id);
+        if (!$request->ajax()) {
+            return back();
+        }
+        return view('backend.member.modal.contributions', compact('member', 'id'));
+    }
+
+    public function post_contribution(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'capital_buildup' => 'required',
+            'emergency_funds' => 'required',
+            'mortuary_funds' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            if ($request->ajax()) {
+                return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
+            } else {
+                return redirect()->route('members.edit', $request->input('member_id'))
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+
+        DB::beginTransaction();
+        $contrib = new Contribution();
+        $contrib->member_id = $request->input('member_id');
+        $contrib->capital_buildup = $request->input('capital_buildup');
+        $contrib->emergency_funds = $request->input('emergency_funds');
+        $contrib->mortuary_funds = $request->input('mortuary_funds');
+        $contrib->reference_no = generate_reference('CMP', 6);
+        $date = $request->input('payment_date');
+        $contrib->payment_date = date('Y-m-d', strtotime($date));
+        $contrib->notes = $request->input('notes');
+        $contrib->save();
+        DB::commit();
+        return response()->json(['result' => 'success', 'action' => 'post_contribution', 'message' => _lang('Updated Successfully'), 'data' => $contrib, 'table' => '#contributions_table']);
     }
 }

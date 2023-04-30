@@ -113,12 +113,13 @@
 </li>
 
 <li>
-        <a href="javascript: void(0);"><i class="fas fa-hand-holding-usd"></i><span>{{ _lang('Charts Of Account') }}</span><span
-                class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link"
-                                href="{{ route('charts_of_account.index') }}">{{ _lang('All Charts Of Account') }}</a></li>
-                    </ul>
+    <a href="javascript: void(0);"><i
+            class="fas fa-hand-holding-usd"></i><span>{{ _lang('Charts Of Account') }}</span><span
+            class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+    <ul class="nav-second-level" aria-expanded="false">
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('charts_of_account.index') }}">{{ _lang('All Charts Of Account') }}</a></li>
+    </ul>
 </li>
 
 
@@ -164,6 +165,8 @@
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('reports.account_statement') }}">{{ _lang('Account Statement') }}</a></li>
         <li class="nav-item"><a class="nav-link"
+                href="{{ route('reports.members_report') }}">{{ _lang('Members Report') }}</a></li>
+        <li class="nav-item"><a class="nav-link"
                 href="{{ route('reports.account_balances') }}">{{ _lang('Account Balance') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('reports.loan_report') }}">{{ _lang('Loan Report') }}</a></li>
@@ -173,6 +176,8 @@
                 href="{{ route('reports.transactions_report') }}">{{ _lang('Transaction Report') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('reports.expense_report') }}">{{ _lang('Expense Report') }}</a></li>
+        <li class="nav-item"><a class="nav-link"
+                href="{{ route('reports.other_income_report') }}">{{ _lang('Other Income Report') }}</a></li>
         <li class="nav-item"><a class="nav-link"
                 href="{{ route('reports.revenue_report') }}">{{ _lang('Revenue Report') }}</a></li>
     </ul>

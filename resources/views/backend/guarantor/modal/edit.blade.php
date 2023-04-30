@@ -26,10 +26,10 @@
 			</div>
 		</div>
 
-		<div class="col-md-12">
+		<div class="col-md-12" hidden>
 			<div class="form-group">
 				<label class="control-label">{{ _lang('Account Number') }}</label>							
-				<select class="form-control select2 auto-select" data-selected="{{ $guarantor->savings_account_id }}" name="savings_account_id" id="savings_account_id" required>
+				<select class="form-control select2 auto-select" data-selected="{{ $guarantor->savings_account_id }}" name="savings_account_id" id="savings_account_id">
 				@foreach(\App\Models\SavingsAccount::where('member_id', $guarantor->member_id)->get() as $account)
 					<option value="{{ $account->id }}">{{ $account->account_number }} ({{ $account->savings_type->name.' - '.$account->savings_type->currency->name }})</option>
 				@endforeach

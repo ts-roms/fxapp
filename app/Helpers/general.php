@@ -823,6 +823,23 @@ if (!function_exists('transaction_status')) {
     }
 }
 
+if (!function_exists('member_status')) {
+    function member_status() {
+        $options = '';
+        $fields = [
+            'active',
+            'blacklisted',
+            'pending',
+            'resigned'
+        ];
+
+        foreach ($fields as $field) {
+            $options .= "<option value=" . $field . ">" . $field . "</option>";
+        }
+        echo $options;
+    }
+}
+
 if (!function_exists('show_status')) {
     function show_status($value, $status)
     {

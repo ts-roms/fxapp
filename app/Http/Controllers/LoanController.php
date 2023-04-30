@@ -255,6 +255,9 @@ class LoanController extends Controller
 		DB::beginTransaction();
 
 		$loan = Loan::find($id);
+		if ($loan->guarantors->count() < 2) {
+			return back()->with('error', _lang('Loan must have atleast 2 guarantors'));
+		}
 
 		if ($loan->status == 1) {
 			abort(403);
