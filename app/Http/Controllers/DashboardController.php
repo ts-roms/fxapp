@@ -45,7 +45,7 @@ class DashboardController extends Controller
                 ->orderBy('trans_date', 'desc')
                 ->get();
             $data['total_customer'] = Member::count();
-            $data['big_brother'] = BigBrother::where('status', 'active')->sum('capital');
+            $data['big_brother'] = BigBrother::where('status', 'active')->sum('capital') - Expense::sum('amount');
             $data['expenses'] = Expense::sum('amount');
             $data['other_income'] = OtherIncome::sum('amount');
             $data['total_interest'] = LoanRepayment::sum('interest');

@@ -230,6 +230,11 @@
                     href="{{ route('reports.account_statement') }}">{{ _lang('Account Statement') }}</a></li>
         @endif
 
+        @if (in_array('reports.members_report', $permissions))
+            <li class="nav-item"><a class="nav-link"
+                    href="{{ route('reports.members_report') }}">{{ _lang('Members Report') }}</a></li>
+        @endif
+
         @if (in_array('reports.account_balances', $permissions))
             <li class="nav-item"><a class="nav-link"
                     href="{{ route('reports.account_balances') }}">{{ _lang('Account Balance') }}</a></li>
@@ -253,6 +258,11 @@
         @if (in_array('reports.expense_report', $permissions))
             <li class="nav-item"><a class="nav-link"
                     href="{{ route('reports.expense_report') }}">{{ _lang('Expense Report') }}</a></li>
+        @endif
+
+        @if (in_array('reports.other_income_report', $permissions))
+            <li class="nav-item"><a class="nav-link"
+                    href="{{ route('reports.other_income_report') }}">{{ _lang('Other Income Report') }}</a></li>
         @endif
 
         @if (in_array('reports.revenue_report', $permissions))

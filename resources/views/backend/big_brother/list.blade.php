@@ -13,7 +13,7 @@
                             <option value="processing">{{ _lang('Processing') }}</option>
                             <option value="closed">{{ _lang('Close') }}</option>
                         </select>
-                        <a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="{{ _lang('Add New Expense') }}"
+                        <a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="{{ _lang('Add New BigBrother') }}"
                             href="{{ route('big_brother.create') }}"><i class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
                     </div>
                 </div>

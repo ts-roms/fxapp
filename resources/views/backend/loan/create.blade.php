@@ -76,13 +76,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6" hidden>
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Late Payment Penalties') }}</label>
                                     <div class="input-group">
                                         <input type="text" class="form-control float-field" name="late_payment_penalties"
-                                            value="{{ old('late_payment_penalties') }}" id="late_payment_penalties"
-                                            required>
+                                            value="0" id="late_payment_penalties" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text">%</span>
                                         </div>

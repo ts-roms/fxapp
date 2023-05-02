@@ -5,15 +5,6 @@
         <div class="col-lg-12">
 
             <div class="form-group">
-                <label class="control-label">{{ _lang('Account Details') }}</label>
-                <select class="form-control auto-select select2" data-selected="{{ old('expense_category_id') }}"
-                    name="account_id" required>
-                    <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option('expense_categories', 'id', 'name', old('expense_category_id')) }}
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label class="control-label">{{ _lang('Period From') }}</label>
                 <input type="text" class="form-control datetimepicker" name="period_from"
                     value="{{ old('period_from', now()) }}" required>
@@ -36,9 +27,13 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Notes') }}</label>
+                <input type="text" class="form-control" name="notes" value="{{ old('notes') }}">
+            </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary"><i
+                <button type="submit" class="btn btn-primary float-right"><i
                         class="ti-check-box"></i>&nbsp;{{ _lang('Submit') }}</button>
             </div>
         </div>

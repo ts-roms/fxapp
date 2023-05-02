@@ -70,7 +70,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Email') }}</label>
-                                    <input type="text" class="form-control" name="email" placeholder="{{ _lang('Email') }}" value="{{ old('email') }}">
+                                    <input type="text" class="form-control" name="email"
+                                        placeholder="{{ _lang('Email') }}" value="{{ old('email') }}">
                                 </div>
                             </div>
 
@@ -91,7 +92,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Mobile') }}</label>
-                                    <input type="text" class="form-control" name="mobile" placeholder="{{ _lang('Mobile') }}" value="{{ old('mobile') }}">
+                                    <input type="text" class="form-control" name="mobile"
+                                        placeholder="{{ _lang('Mobile') }}" value="{{ old('mobile') }}">
                                 </div>
                             </div>
 
@@ -110,30 +112,32 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('City') }}</label>
-                                    <input type="text" class="form-control" name="city" placeholder="{{ _lang('City') }}" value="{{ old('city') }}">
+                                    <input type="text" class="form-control" name="city"
+                                        placeholder="{{ _lang('City') }}" value="{{ old('city') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('State') }}</label>
-                                    <input type="text" class="form-control" name="state" placeholder="{{ _lang('State') }}" value="{{ old('state') }}">
+                                    <input type="text" class="form-control" name="state"
+                                        placeholder="{{ _lang('State') }}" value="{{ old('state') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Zip') }}</label>
-                                    <input type="text" class="form-control" name="zip" placeholder="{{ _lang('Zip') }}"
-                                        value="{{ old('zip') }}">
+                                    <input type="text" class="form-control" name="zip"
+                                        placeholder="{{ _lang('Zip') }}" value="{{ old('zip') }}">
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Credit Source') }}</label>
-                                    <input type="text" class="form-control" name="credit_source" placeholder="{{ _lang('Credit Source') }}"
-                                        value="{{ old('credit_source') }}">
+                                    <input type="text" class="form-control" name="credit_source"
+                                        placeholder="{{ _lang('Credit Source') }}" value="{{ old('credit_source') }}">
                                 </div>
                             </div>
 
@@ -161,56 +165,42 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="togglebutton">
-                            <h4 class="header-title d-flex align-items-center">{{ _lang('Custom Fields') }}&nbsp;&nbsp;
-                                <input type="checkbox" id="client_login" value="1" name="client_login">
-                            </h4>
+            @if($custom_fields->count() > 0)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="togglebutton">
+                                <h4 class="header-title d-flex align-items-center">
+                                    {{ _lang('Custom Fields') }}&nbsp;&nbsp;
+                                    <input type="checkbox" id="client_login" value="0" name="client_login"
+                                        class="d-none">
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body" id="client_login_card">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Name') }}</label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="{{ old('name') }}">
-                                </div>
-                            </div>
+                        <div class="card-body" id="custom_field_card">
+                            <div class="row">
+                                @foreach ($custom_fields as $field)
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">{{ $field->field_label }}</label>
+                                            @if ($field->field_type == 'textarea')
+                                                <textarea name="{{ $field->field_name }}" class="form-control {{ $field->field_class }}"
+                                                    placeholder="{{ $field->field_label }}"></textarea>
+                                            @else
+                                                <input type="{{ $field->field_type }}" class="{{ $field->field_class }}"
+                                                    name="{{ $field->field_name }}" value=""
+                                                    placeholder="{{ $field->field_label }}"
+                                                    @if ($field->required == 1) required @endif />
+                                            @endif
 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Email') }}</label>
-                                    <input type="text" class="form-control" name="login_email"
-                                        value="{{ old('login_email') }}">
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Password') }}</label>
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Status') }}</label>
-                                    <select class="form-control select2 auto-select" data-selected="{{ old('status') }}"
-                                        name="status">
-                                        <option value="">{{ _lang('Select One') }}</option>
-                                        <option value="1">{{ _lang('Active') }}</option>
-                                        <option value="0">{{ _lang('In Active') }}</option>
-                                    </select>
-                                </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </form>
 @endsection

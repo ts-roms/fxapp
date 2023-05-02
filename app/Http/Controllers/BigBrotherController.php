@@ -55,10 +55,7 @@ class BigBrotherController extends Controller
         $bigBrother = BigBrother::orderBy('id', 'desc');
 
         return DataTables::eloquent($bigBrother)
-            ->filter(function ($query) use ($request) {
-                $status = $request->has('status') ? $request->status : 'active';
-                $query->where('status', $status);
-            }, true)
+
             ->editColumn('capital', function ($bb) use ($currency) {
                 return decimalPlace($bb->capital, $currency);
             })
@@ -110,7 +107,6 @@ class BigBrotherController extends Controller
         $validator = Validator::make($request->all(), [
             'period_from' => 'required',
             'period_to' => 'required',
-            'account_id' => 'required',
             'capital' => 'required|numeric'
         ]);
 
@@ -125,12 +121,12 @@ class BigBrotherController extends Controller
 
         DB::beginTransaction();
         $bigBrother = new BigBrother();
-        $bigBrother->account_id = $request->input('account_id');
+        $bigBrother->account_id = 0; //$request->input('account_id');
         $bigBrother->period_from = $request->input('period_from');
         $bigBrother->period_to = $request->input('period_to');
         $bigBrother->capital = $request->input('capital');
         $bigBrother->user_id = auth()->id();
-        $bigBrother->branch_id = auth()->user()->branch_id;
+        $bigBrother->branch_id = 0; //auth()->user()->branch_id;
         $bigBrother->save();
         DB::commit();
 

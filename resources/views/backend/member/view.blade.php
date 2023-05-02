@@ -22,6 +22,8 @@
                             class="ti-agenda"></i>&nbsp;{{ _lang('Contributions') }}</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kyc_documents"><i
                             class="ti-files"></i>&nbsp;{{ _lang('KYC Documents') }}</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#custom_fields_meta"><i
+                            class="ti-files"></i>&nbsp;{{ _lang('Custom Fields') }}</a></li>
                 <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#email"><i
                             class="ti-email"></i>&nbsp;{{ _lang('Send Email') }}</a></li>
                 <li class="nav-item d-none"><a class="nav-link" data-toggle="tab" href="#sms"><i
@@ -233,8 +235,11 @@
 
                 <div id="member_contributions" class="tab-pane">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex">
                             <span class="header-title">{{ _lang('Contributions') }}</span>
+                            <a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="Add Contributions for {{ $member->first_name }}"
+                                href="{{ route('members.create_contribution', $member->id) }}"><i
+                                    class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
                         </div>
 
                         <div class="card-body">
@@ -338,6 +343,33 @@
                     </div>
                 </div>
                 <!--End KYC Documents Tab-->
+
+                <div id="custom_fields_meta" class="tab-pane">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <span class="header-title">{{ _lang('Custom Fields') }}</span>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered" id="custom_fields_table">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($member->custom_fields_meta as $field)
+                                        <tr>
+                                            <td>{{ $field->value }}</td>
+                                            <td>{{ $field->value }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Custom Fields -->
 
                 <div id="email" class="tab-pane">
                     <div class="card">
@@ -518,7 +550,6 @@
                 $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
             });
 
-
             $('#contributions_table').DataTable({
                 processing: true,
                 responsive: true,
@@ -569,6 +600,42 @@
                     $(api.column(2).footer()).html('₱ ' + parseFloat(capital_buildup).toFixed(2));
                     $(api.column(3).footer()).html('₱ ' + parseFloat(emergency_funds).toFixed(2));
                     $(api.column(4).footer()).html('₱ ' + parseFloat(mortuary_funds).toFixed(2));
+                },
+                drawCallback: function() {
+                    $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
+                }
+            });
+
+            $('#custom_fields_table').DataTable({
+                processing: true,
+                responsive: true,
+                bStateSave: true,
+                bAutoWidth: false,
+                ordering: false,
+                paging: true,
+                lengthMenu: [5, 10, 25, 50],
+                language: {
+                    decimal: "",
+                    emptyTable: "{{ _lang('No Data Found') }}",
+                    info: "{{ _lang('Showing') }} _START_ {{ _lang('to') }} _END_ {{ _lang('of') }} _TOTAL_ {{ _lang('Entries') }}",
+                    infoEmpty: "{{ _lang('Showing 0 To 0 Of 0 Entries') }}",
+                    infoFiltered: "(filtered from _MAX_ total entries)",
+                    infoPostFix: "",
+                    thousands: ",",
+                    lengthMenu: "{{ _lang('Show') }} _MENU_ {{ _lang('Entries') }}",
+                    loadingRecords: "{{ _lang('Loading...') }}",
+                    processing: "{{ _lang('Processing...') }}",
+                    search: "{{ _lang('Search') }}",
+                    zeroRecords: "{{ _lang('No matching records found') }}",
+                    paginate: {
+                        first: "{{ _lang('First') }}",
+                        last: "{{ _lang('Last') }}",
+                        previous: "<i class='ti-angle-left'></i>",
+                        next: "<i class='ti-angle-right'></i>",
+                    }
+                },
+                drawCallback: function() {
+                    $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
                 }
             });
 

@@ -7,7 +7,7 @@
 		<div class="card no-export">
 		    <div class="card-header d-flex align-items-center">
 				<span class="panel-title">{{ _lang('Expense Categories') }}</span>
-				<a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="{{ _lang('Add New Category') }}" href="{{ route('expense_categories.create') }}"><i class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
+				<a class="btn btn-primary btn-xs ml-auto ajax-modal" data-title="{{ _lang('Add Expense Category') }}" href="{{ route('expense_categories.create') }}"><i class="ti-plus"></i>&nbsp;{{ _lang('Add New') }}</a>
 			</div>
 			<div class="card-body">
 				<table id="expense_categories_table" class="table table-bordered data-table">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BigBrother;
 use App\Models\Contribution;
 use App\Models\Expense;
 use DataTables;
@@ -110,6 +111,11 @@ class ExpenseController extends Controller
             $file       = $request->file('attachment');
             $attachment = time() . $file->getClientOriginalName();
             $file->move(public_path() . "/uploads/media/", $attachment);
+        }
+        $bigBrother = BigBrother::where('status', 'active')->sum('capital');
+
+        if ($bigBrother === 0) {
+            return response()->json(['result' => 'error', 'message' => 'Big Brother funds still not funded']);
         }
 
         $expense                      = new Expense();

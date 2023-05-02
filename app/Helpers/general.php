@@ -123,11 +123,11 @@ if (!function_exists('custom_fields_option')) {
             );
         } else if ($type == 'field_type') {
             $fields = array(
-                'inputfield',
+                'text',
                 'textarea',
                 'date',
+                'file',
                 'number',
-                'decimal'
             );
         } else if ($type == 'required') {
             $fields = array("Yes", "No");
@@ -820,6 +820,23 @@ if (!function_exists('transaction_status')) {
         } else if ($status == 2) {
             return "<span class='badge badge-success'>" . _lang('Completed') . "</span>";
         }
+    }
+}
+
+if (!function_exists('member_status')) {
+    function member_status() {
+        $options = '';
+        $fields = [
+            'active',
+            'blacklisted',
+            'pending',
+            'resigned'
+        ];
+
+        foreach ($fields as $field) {
+            $options .= "<option value=" . $field . ">" . $field . "</option>";
+        }
+        echo $options;
     }
 }
 
