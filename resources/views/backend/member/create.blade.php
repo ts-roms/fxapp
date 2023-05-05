@@ -43,29 +43,17 @@
                                 </div>
                             </div>
 
-                            @if (auth()->user()->user_type == 'admin')
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Branch') }}</label>
-                                        <select class="form-control select2" name="branch_id">
-                                            <option value="">{{ get_option('default_branch_name', 'Main Branch') }}
-                                            </option>
-                                            {{ create_option('branches', 'id', 'name', auth()->user()->branch_id) }}
-                                        </select>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">{{ _lang('Branch') }}</label>
+                                    <select class="form-control select2" name="branch_id">
+                                        <option value="">{{ get_option('default_branch_name', 'Main Branch') }}
+                                        </option>
+                                        {{ create_option('branches', 'id', 'name', auth()->user()->branch_id) }}
+                                    </select>
                                 </div>
-                            @else
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ _lang('Branch') }}</label>
-                                        <select class="form-control" name="branch_id" disabled>
-                                            <option value="">{{ get_option('default_branch_name', 'Main Branch') }}
-                                            </option>
-                                            {{ create_option('branches', 'id', 'name', auth()->user()->branch_id) }}
-                                        </select>
-                                    </div>
-                                </div>
-                            @endif
+                            </div>
+
 
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -165,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            @if($custom_fields->count() > 0)
+            @if ($custom_fields->count() > 0)
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">

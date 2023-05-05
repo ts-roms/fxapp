@@ -334,6 +334,7 @@ class MemberController extends Controller
                 Rule::unique('members')->ignore($id),
             ],
             'country_code' => 'required_with:mobile',
+            'branch_id' => 'required',
             'photo'        => 'nullable|image',
             'name'         => 'required_if:client_login,1|max:191', //User Login Attribute
             'login_email'  => [
@@ -394,6 +395,7 @@ class MemberController extends Controller
             $member->user_id = $user->id;
         }
         $member->email         = $request->input('email');
+        $member->branch_id     = $request->input('branch_id');
         $member->country_code  = $request->input('country_code');
         $member->mobile        = $request->input('mobile');
         $member->business_name = $request->input('business_name');
