@@ -189,7 +189,7 @@ Route::group(['middleware' => ['install']], function () {
 
 
 			//OtherIncome
-			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data')->name('other_income.get_table_data');
+			Route::get('other_income/get_table_data', 'OtherIncomeController@get_table_data');
 			Route::resource('other_income', 'OtherIncomeController');
 
 			// Other Income Categories
