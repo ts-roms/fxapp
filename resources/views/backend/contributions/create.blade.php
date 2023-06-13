@@ -33,17 +33,17 @@
                                     <td>
                                         <input type="text" class="form-control form-control-sm float-field"
                                             placeholder="0.00" name="capital_buildup[]" id="capital_buildup"
-                                            value="{{ old('capital_buildup') }}" required>
+                                            value="{{ old('capital_buildup') }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm float-field"
                                             placeholder="0.00" name="emergency_funds[]" id="emergency_funds"
-                                            value="{{ old('emergency_funds') }}" required>
+                                            value="{{ old('emergency_funds') }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm float-field"
                                             placeholder="0.00" name="mortuary_funds[]" id="mortuary_funds"
-                                            value="{{ old('mortuary_funds') }}" required>
+                                            value="{{ old('mortuary_funds') }}">
                                     </td>
                                     <td>
                                         <input type="text" class="form-control form-control-sm text-field"
