@@ -50,8 +50,8 @@
                                     <select class="form-control auto-select"
                                         data-selected="{{ old('interest_type', 'flat_rate') }}" name="interest_type"
                                         required>
-                                        <option value="flat_rate">{{ _lang('Flat Rate') }}</option>
-                                        <option value="fixed_rate " hidden>{{ _lang('Fixed Rate') }}</option>
+                                        <option value="flat_rate" hidden>{{ _lang('Flat Rate') }}</option>
+                                        <option value="fixed_rate ">{{ _lang('Fixed Rate') }}</option>
                                         <option value="mortgage " hidden>{{ _lang('Mortgage amortization') }}</option>
                                         <option value="one_time " hidden>{{ _lang('One-time payment') }}</option>
                                     </select>
