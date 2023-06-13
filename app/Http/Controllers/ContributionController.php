@@ -100,9 +100,9 @@ class ContributionController extends Controller
     foreach ($memberId as $key => $value) {
       $contrib = new Contribution();
       $contrib->member_id = $value;
-      $contrib->capital_buildup = $request->input('capital_buildup')[$key];
-      $contrib->emergency_funds = $request->input('emergency_funds')[$key];
-      $contrib->mortuary_funds = $request->input('mortuary_funds')[$key];
+      $contrib->capital_buildup = $request->input('capital_buildup')[$key] || 0;
+      $contrib->emergency_funds = $request->input('emergency_funds')[$key] || 0;
+      $contrib->mortuary_funds = $request->input('mortuary_funds')[$key] || 0;
       $contrib->reference_no = generate_reference('CMP', 6);
       $contrib->payment_date = date('Y-m-d');
       $contrib->notes = $request->input('notes')[$key];
