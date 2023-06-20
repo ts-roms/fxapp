@@ -53,7 +53,7 @@ class LoanProductController extends Controller {
             'maximum_amount' => 'required|numeric',
             'interest_rate'  => 'required|numeric',
             'interest_type'  => 'required',
-            'term'           => 'required|integer',
+            'term'           => 'required',
             'term_period'    => 'required',
             'status'         => 'required',
         ]);
@@ -140,7 +140,7 @@ class LoanProductController extends Controller {
             'maximum_amount' => 'required|numeric',
             'interest_rate'  => 'required|numeric',
             'interest_type'  => 'required',
-            'term'           => 'required|integer',
+            'term'           => 'required',
             'term_period'    => 'required',
             'status'         => 'required',
         ]);
