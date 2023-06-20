@@ -47,6 +47,10 @@
                                     <td>{{ $loan->loan_product->name }}</td>
                                 </tr>
                                 <tr>
+                                    <td>{{ _lang('Terms') }}</td>
+                                    <td>{{ $loan->loan_product->term }} months</td>
+                                </tr>
+                                <tr>
                                     <td>{{ _lang('Borrower') }}</td>
                                     <td>{{ $loan->borrower->first_name . ' ' . $loan->borrower->last_name }}</td>
                                 </tr>
