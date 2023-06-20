@@ -61,7 +61,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Term') }}</label>
-                                    <input type="number" class="form-control" name="term" value="{{ old('term') }}"
+                                    <input type="text" class="form-control" name="term" value="{{ old('term') }}"
                                         required>
                                 </div>
                             </div>

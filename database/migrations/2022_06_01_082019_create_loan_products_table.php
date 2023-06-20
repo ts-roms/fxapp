@@ -20,7 +20,7 @@ class CreateLoanProductsTable extends Migration {
             $table->text('description')->nullable();
             $table->decimal('interest_rate', 10, 2);
             $table->string('interest_type');
-            $table->integer('term');
+            $table->string('term');
             $table->string('term_period', 15);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
