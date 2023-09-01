@@ -5,7 +5,7 @@
 		<div class="col-md-12">
 			<div class="form-group">
 				<label class="control-label">{{ _lang('Date') }}</label>						
-				<input type="text" class="form-control datetimepicker" name="other_income_date" value="{{ $expense->getRawOriginal('expense_date') }}" required>
+				<input type="text" class="form-control datetimepicker" name="expense_date" value="{{ $expense->getRawOriginal('expense_date') }}" required>
 			</div>
 		</div>
 
