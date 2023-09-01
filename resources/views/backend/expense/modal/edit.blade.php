@@ -1,4 +1,4 @@
-<form method="post" class="ajax-screen-submit" autocomplete="off" action="{{ action('ExpensesController@update', $id) }}" enctype="multipart/form-data">
+<form method="post" class="ajax-screen-submit" autocomplete="off" action="{{ action('ExpenseController@update', $id) }}" enctype="multipart/form-data">
 	{{ csrf_field()}}
 	<input name="_method" type="hidden" value="PATCH">
 	<div class="row px-2">
