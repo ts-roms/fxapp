@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label class="control-label">{{ _lang('Total Amount') }}</label>
                 <input type="text" class="form-control" name="total_amount" id="total_amount"
-                    value="{{ $repayment->amount_to_pay }}" readonly>
+                    value="{{ $repayment->amount_to_pay }}">
             </div>
             <div class="form-group">
                 <label class="control-label">{{ _lang('Remarks') }}</label>

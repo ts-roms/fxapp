@@ -276,10 +276,10 @@
                                                 @endif
                                             </td>
                                             <td class="text-center items-center">
-                                                @if ($repayment['status'] == 0 && date('Y-m-d') < $repayment->getRawOriginal('repayment_date'))
-                                                    <a class="btn btn-primary btn-xs ml-auto ajax-modal"
+                                                @if ($repayment['status'] == 0)
+                                                    <a class="btn {{ $repayment['status'] == 0 && date('Y-m-d') < $repayment->getRawOriginal('repayment_date') ? 'btn-primary' : 'btn-warning' }} btn-xs ml-auto ajax-modal"
                                                         href="{{ action('LoanController@payment', $repayment->id) }}"
-                                                        data-title="{{ _lang('Repayments') }}">{{ _lang('Pay Now') }}</a>
+                                                        data-title="{{ _lang('Repayments') }}">{{ _lang('Pay Now') }} @if($repayment['status'] == 0 && date('Y-m-d') > $repayment->getRawOriginal('repayment_date'))<i class="fas fa-exclamation-triangle"></i>@endif</a>
                                                 @else
                                                     <button type="button" class="btn btn-info btn-xs ml-auto"
                                                         disabled>{{ _lang('Paid') }}</button>
