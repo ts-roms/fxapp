@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card no-export">
                 <div class="card-header d-flex align-items-center">
-                    <h2 class="panel-title">{{ _lang('Big Brother') }}</h2>
+                    <h2 class="panel-title">{{ _lang('Cash in Bank') }}</h2>
                     <div class="ml-auto d-flex align-items-center">
                         <select name="status" class="select-filter filter-select auto-select mr-1"
                             data-selected="{{ $status }}">

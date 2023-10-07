@@ -31,7 +31,8 @@ class GuarantorController extends Controller
         if (!$request->ajax()) {
             return back();
         } else {
-            return view('backend.guarantor.modal.create');
+            $loan = Loan::find($request->loan_id);
+            return view('backend.guarantor.modal.create', compact('loan'));
         }
     }
 

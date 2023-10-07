@@ -167,7 +167,7 @@
                                 <div class="card-header d-flex align-items-center">
                                     <span>{{ _lang('Guarantors') }}</span>
                                     <a class="btn btn-primary btn-xs ml-auto ajax-modal"
-                                        href="{{ route('guarantors.create') }}"
+                                        href="{{ route('guarantors.create', ['loan_id'=>$loan->id]) }}"
                                         data-title="{{ _lang('Add Guarantor') }}"><i class="ti-plus"></i>
                                         {{ _lang('Add New') }}</a>
                                 </div>

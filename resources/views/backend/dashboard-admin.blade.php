@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <h5>{{ _lang('Big Brother') }}</h5>
+                            <h5>{{ _lang('Cash in Bank') }}</h5>
                             <h4 class="pt-1 mb-0"><b>{{ decimalPlace($big_brother, currency()) }}</b></h4>
                         </div>
                         <div>

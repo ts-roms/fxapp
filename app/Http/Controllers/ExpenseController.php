@@ -115,7 +115,7 @@ class ExpenseController extends Controller
         $bigBrother = BigBrother::where('status', 'active')->sum('capital');
 
         if ($bigBrother === 0) {
-            return response()->json(['result' => 'error', 'message' => 'Big Brother funds still not funded']);
+            return response()->json(['result' => 'error', 'message' => 'Cash in Bank funds still not funded']);
         }
 
         $expense                      = new Expense();

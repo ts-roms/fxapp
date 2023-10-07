@@ -187,11 +187,11 @@
 @if (in_array('big_brother.index', $permissions))
     <li>
         <a href="javascript: void(0);"><i
-                class="fas fa-hand-holding-usd"></i><span>{{ _lang('Big Brother') }}</span><span
+                class="fas fa-hand-holding-usd"></i><span>{{ _lang('Cash in Bank') }}</span><span
                 class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
         <ul class="nav-second-level" aria-expanded="false">
             <li class="nav-item"><a class="nav-link"
-                    href="{{ route('big_brother.index') }}">{{ _lang('Big Brother Funds') }}</a></li>
+                    href="{{ route('big_brother.index') }}">{{ _lang('Cash in Bank Funds') }}</a></li>
         </ul>
     </li>
 @endif

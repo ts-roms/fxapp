@@ -64,8 +64,8 @@ class BigBrotherController extends Controller
                     . '<button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">' . _lang('Action')
                     . '&nbsp;</button>'
                     . '<div class="dropdown-menu">'
-                    . '<a class="dropdown-item ajax-modal" href="' . action('BigBrotherController@edit', $bb->id) . '" data-title="' . _lang('Update Big Brother Funds') . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
-                    . '<a class="dropdown-item ajax-modal" href="' . action('BigBrotherController@show', $bb->id) . '" data-title="' . _lang('Big Brother Fund Details') . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
+                    . '<a class="dropdown-item ajax-modal" href="' . action('BigBrotherController@edit', $bb->id) . '" data-title="' . _lang('Update Cash in Bank Funds') . '"><i class="ti-pencil-alt"></i> ' . _lang('Edit') . '</a>'
+                    . '<a class="dropdown-item ajax-modal" href="' . action('BigBrotherController@show', $bb->id) . '" data-title="' . _lang('Cash in Bank Fund Details') . '"><i class="ti-eye"></i>  ' . _lang('View') . '</a>'
                     . '<form action="' . action('BigBrotherController@closeAccount', $bb->id) . '" method="post">'
                     . csrf_field()
                     . '<input name="_method" type="hidden" value="PUT">'

@@ -209,7 +209,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::resource('charts_of_account', 'ChartsOfAccountController');
 
 
-			// Big Brother
+			// Cash in Bank
 			Route::get('big_brother/get_table_data', 'BigBrotherController@get_table_data');
 			Route::put('big_brother/closeAccount/{id}', 'BigBrotherController@closeAccount')->name('big_brother.closeAccount');
 			Route::resource('big_brother', 'BigBrotherController');

@@ -3,8 +3,8 @@
 	<div class="row px-2">
 	    <div class="col-md-12">
 			<div class="form-group">
-				<label class="control-label">{{ _lang('Loan ID') }}</label>						
-				<select class="form-control auto-select select2" data-selected="{{ old('loan_id') }}" name="loan_id" required>
+				<label class="control-label">{{ _lang('Loan ID') }} {{ $loan->loan_id }}</label>						
+				<select class="form-control auto-select select2" data-selected="{{ $loan->loan_id }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})" name="loan_id" id="loan_id" {{ $loan->status == 1 ? 'disabled' : 'required'}}>
 					<option value="">{{ _lang('Select One') }}</option>
 					@foreach(\App\Models\Loan::where('status',0)->get() as $loan)
 					<option value="{{ $loan->id }}">{{ $loan->loan_id }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})</option>
