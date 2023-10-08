@@ -74,7 +74,7 @@
                                         id="term_period" required>
                                         <option value="">{{ _lang('Select One') }}</option>
                                         <option value="+1 day" hidden>{{ _lang('Day') }}</option>
-                                        <option value="+1 week" hidden>{{ _lang('Week') }}</option>
+                                        <option value="+1 week">{{ _lang('Week') }}</option>
                                         <option value="+1 month">{{ _lang('Month') }}</option>
                                         <option value="+1 year" hidden>{{ _lang('Year') }}</option>
                                     </select>

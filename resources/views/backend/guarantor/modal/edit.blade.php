@@ -8,7 +8,7 @@
 				<select class="form-control auto-select select2" data-selected="{{ $guarantor->loan_id }}" name="loan_id" required>
 					<option value="">{{ _lang('Select One') }}</option>
 					@foreach(\App\Models\Loan::where('status',0)->get() as $loan)
-					<option value="{{ $loan->id }}">{{ $loan->loan_id }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})</option>
+					<option value="{{ $loan->id }}">{{ $loan->borrower->first_name . ' ' . $loan->borrower->last_name . ' (' . $loan->loan_id . ')' }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})</option>
 					@endforeach
 				</select>
 			</div>

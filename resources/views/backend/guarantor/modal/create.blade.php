@@ -3,11 +3,11 @@
 	<div class="row px-2">
 	    <div class="col-md-12">
 			<div class="form-group">
-				<label class="control-label">{{ _lang('Loan ID') }} {{ $loan->loan_id }}</label>						
+				<label class="control-label">{{ _lang('Loan ID') }} {{ $loan->borrower->first_name . ' ' . $loan->borrower->last_name . ' (' . $loan->loan_id . ')' }}</label>						
 				<select class="form-control auto-select select2" data-selected="{{ $loan->loan_id }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})" name="loan_id" id="loan_id" {{ $loan->status == 1 ? 'disabled' : 'required'}}>
 					<option value="">{{ _lang('Select One') }}</option>
 					@foreach(\App\Models\Loan::where('status',0)->get() as $loan)
-					<option value="{{ $loan->id }}">{{ $loan->loan_id }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})</option>
+					<option value="{{ $loan->id }}">{{ $loan->borrower->first_name . ' ' . $loan->borrower->last_name . ' (' . $loan->loan_id . ')' }} ({{ _lang('Applied Amount').': '.decimalPlace($loan->applied_amount, currency($loan->currency->name)) }})</option>
 					@endforeach
 				</select>
 			</div>
