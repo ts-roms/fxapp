@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BigBrother;
+use App\Models\Expense;
+use App\Models\OtherIncome;
 use DataTables;
 use DB;
 use Illuminate\Http\Request;
@@ -30,7 +32,16 @@ class BigBrotherController extends Controller
     {
         //
         $status = 'active';
-        return view('backend.big_brother.list', compact('status'));
+        $totalActive = count(BigBrother::where('status', 'active')->get());
+
+        DB::beginTransaction();
+        $bb = BigBrother::where('status', 'active')->first();
+        $bb->capital = (BigBrother::where('status', 'active')->sum('capital') + OtherIncome::sum('amount')) - Expense::sum('amount');
+        $bb->total_expense = Expense::sum('amount');
+        $bb->total_cashback = OtherIncome::sum('amount');
+        $bb->save();
+        DB::commit();
+        return view('backend.big_brother.list', compact('status', 'totalActive'));
     }
 
     /**
@@ -58,6 +69,12 @@ class BigBrotherController extends Controller
 
             ->editColumn('capital', function ($bb) use ($currency) {
                 return decimalPlace($bb->capital, $currency);
+            })
+            ->editColumn('total_expense', function ($bb) use ($currency) {
+                return decimalPlace($bb->total_expense, $currency);
+            })
+            ->editColumn('total_cashback', function ($bb) use ($currency) {
+                return decimalPlace($bb->total_cashback, $currency);
             })
             ->addColumn('action', function ($bb) {
                 return '<div class="dropdown text-center">'
@@ -117,6 +134,10 @@ class BigBrotherController extends Controller
             return redirect()->route('big_brother.create')
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        if (count(BigBrother::where('status', 'active')->get()) > 0) {
+            return response()->json(['result' => 'error', 'message' => 'Cash on Bank still active']);
         }
 
         DB::beginTransaction();

@@ -8,6 +8,7 @@ use App\Models\Expense;
 use DataTables;
 use Illuminate\Http\Request;
 use Validator;
+use DB;
 
 class ExpenseController extends Controller
 {
@@ -92,7 +93,7 @@ class ExpenseController extends Controller
         $validator = Validator::make($request->all(), [
             'expense_date'        => 'required',
             'expense_category_id' => 'required',
-            'amount'              => 'required|numeric',
+            'amount'              => 'required|string|numeric',
             'attachment'          => 'nullable|mimes:jpeg,JPEG,png,PNG,jpg,doc,pdf,docx,zip',
         ]);
 
@@ -117,7 +118,7 @@ class ExpenseController extends Controller
         if ($bigBrother === 0) {
             return response()->json(['result' => 'error', 'message' => 'Cash in Bank funds still not funded']);
         }
-
+        DB::beginTransaction();
         $expense                      = new Expense();
         $expense->expense_date        = $request->input('expense_date');
         $expense->expense_category_id = $request->input('expense_category_id');
@@ -130,6 +131,7 @@ class ExpenseController extends Controller
 
         $expense->save();
 
+        DB::commit();
         if (!$request->ajax()) {
             return redirect()->route('expenses.create')->with('success', _lang('Saved Successfully'));
         } else {
@@ -181,7 +183,7 @@ class ExpenseController extends Controller
         $validator = Validator::make($request->all(), [
             'expense_date'        => 'required',
             'expense_category_id' => 'required',
-            'amount'              => 'required|numeric',
+            'amount'              => 'required|string',
             'attachment'          => 'nullable|mimes:jpeg,JPEG,png,PNG,jpg,doc,pdf,docx,zip',
         ]);
 
@@ -201,6 +203,7 @@ class ExpenseController extends Controller
             $file->move(public_path() . "/uploads/media/", $attachment);
         }
 
+        DB::beginTransaction();
         $expense                      = Expense::find($id);
         $expense->expense_date        = $request->input('expense_date');
         $expense->expense_category_id = $request->input('expense_category_id');
@@ -215,6 +218,7 @@ class ExpenseController extends Controller
 
         $expense->save();
 
+        DB::commit();
         if (!$request->ajax()) {
             return redirect()->route('expenses.index')->with('success', _lang('Updated Successfully'));
         } else {

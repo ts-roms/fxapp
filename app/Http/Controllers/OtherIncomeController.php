@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\OtherIncome;
+use App\Models\BigBrother;
 use DataTables;
+use DB;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -112,6 +114,7 @@ class OtherIncomeController extends Controller
             $file->move(public_path() . "/uploads/media/", $attachment);
         }
 
+        DB::beginTransaction();
         $other_income                      = new OtherIncome();
         $other_income->other_income_date        = $request->input('other_income_date');
         $other_income->other_income_category_id = $request->input('other_income_category_id');
@@ -123,6 +126,7 @@ class OtherIncomeController extends Controller
         $other_income->branch_id           = auth()->user()->branch_id;
 
         $other_income->save();
+        DB::commit();
 
         if (!$request->ajax()) {
             return redirect()->route('other_income.create')->with('success', _lang('Saved Successfully'));
@@ -194,7 +198,7 @@ class OtherIncomeController extends Controller
             $attachment = time() . $file->getClientOriginalName();
             $file->move(public_path() . "/uploads/media/", $attachment);
         }
-
+        DB::beginTransaction();
         $other_income                      = OtherIncome::find($id);
         $other_income->other_income_date        = $request->input('other_income_date');
         $other_income->other_income_category_id = $request->input('other_income_category_id');
@@ -207,7 +211,7 @@ class OtherIncomeController extends Controller
         $other_income->updated_user_id = auth()->id();
 
         $other_income->save();
-
+        DB::commit();
         if (!$request->ajax()) {
             return redirect()->route('other_income.index')->with('success', _lang('Updated Successfully'));
         } else {
