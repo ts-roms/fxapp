@@ -35,7 +35,7 @@
 
             "use strict";
 
-            $('#expenses_table').DataTable({
+            var expenses_table = $('#expenses_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/expenses/get_table_data') }}',
@@ -88,6 +88,10 @@
                     $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
                 },
 
+            });
+
+            $(document).on("ajax-screen-submit", function () {
+                expenses_table.draw();
             });
         })(jQuery);
     </script>

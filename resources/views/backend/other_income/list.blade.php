@@ -36,7 +36,7 @@
 
             "use strict";
 
-            $('#other_income_table').DataTable({
+            var other_income_table = $('#other_income_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/other_income/get_table_data') }}',
@@ -93,6 +93,10 @@
                 },
 
             });
+
+            $(document).on("ajax-screen-submit", function () {
+			    other_income_table.draw();
+	        });
         })(jQuery);
     </script>
 @endsection

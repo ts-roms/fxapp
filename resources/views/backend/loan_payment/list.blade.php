@@ -36,7 +36,7 @@
         $(function() {
             "use strict";
 
-            $('#loan_payments_table').DataTable({
+            var loan_payments_table = $('#loan_payments_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/loan_payments/get_table_data') }}',
@@ -93,6 +93,10 @@
                         "next": "<i class='ti-angle-right'></i>",
                     }
                 }
+            });
+
+             $(document).on("ajax-screen-submit", function () {
+                loan_payments_table.draw();
             });
         });
     </script>

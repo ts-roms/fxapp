@@ -34,7 +34,7 @@
     <script>
         (function($) {
             'use strict'
-            $('#charts_of_account_table').DataTable({
+            var charts_of_account_table = $('#charts_of_account_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/charts_of_account/get_table_data') }}',
@@ -87,6 +87,9 @@
                     $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
                 },
 
+            });
+             $(document).on("ajax-screen-submit", function () {
+                charts_of_account_table.draw();
             });
         })(jQuery)
     </script>

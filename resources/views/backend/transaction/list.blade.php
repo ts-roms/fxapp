@@ -39,7 +39,7 @@
 
 	"use strict";
 
-	$('#transactions_table').DataTable({
+	var transactions_table = $('#transactions_table').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: '{{ url('admin/transactions/get_table_data') }}',
@@ -80,6 +80,9 @@
 		drawCallback: function () {
 			$(".dataTables_paginate > .pagination").addClass("pagination-bordered");
 		}
+	});
+	$(document).on("ajax-screen-submit", function () {
+			transactions_table.draw();
 	});
 })(jQuery);
 </script>

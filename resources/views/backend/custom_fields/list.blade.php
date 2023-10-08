@@ -36,7 +36,7 @@
         (function($) {
             'use strict'
 
-            $('#custom_fields_table').DataTable({
+            var custom_fields_table = $('#custom_fields_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/custom_fields/get_table_data') }}',
@@ -89,6 +89,9 @@
                     $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
                 },
 
+            });
+            $(document).on("ajax-screen-submit", function () {
+                custom_fields_table.draw();
             });
         })(jQuery)
     </script>

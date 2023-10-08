@@ -38,7 +38,7 @@
 
             "use strict";
 
-            $('#contribution_table').DataTable({
+            var contribution_table = $('#contribution_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ url('admin/contributions/get_table_data') }}',
@@ -95,6 +95,9 @@
                     $(".dataTables_paginate > .pagination").addClass("pagination-bordered");
                 },
 
+            });
+            $(document).on("ajax-screen-submit", function () {
+                contribution_table.draw();
             });
         })(jQuery);
     </script>

@@ -37,7 +37,7 @@
 (function ($) {
 	"use strict";
 
-	$('#members_table').DataTable({
+	var members_table = $('#members_table').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: '{{ url('admin/members/get_table_data') }}',
@@ -78,7 +78,9 @@
 			$(".dataTables_paginate > .pagination").addClass("pagination-bordered");
 		}
 	});
-
+  $(document).on("ajax-screen-submit", function () {
+			members_table.draw();
+	});
 })(jQuery);
 </script>
 @endsection
