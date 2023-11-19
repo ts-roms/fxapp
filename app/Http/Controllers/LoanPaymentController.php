@@ -42,6 +42,9 @@ class LoanPaymentController extends Controller
             ->orderBy("loan_payments.id", "desc");
 
         return Datatables::eloquent($loanpayments)
+            ->editColumn('member', function($loan) {
+                return $loan->member->first_name . ' ' . $loan->member->last_name;
+            })
             ->editColumn('repayment_amount', function ($loanpayment) {
                 return decimalPlace($loanpayment->repayment_amount - $loanpayment->interest, currency($loanpayment->loan->currency->name));
             })
@@ -50,7 +53,6 @@ class LoanPaymentController extends Controller
             })
             ->addColumn('action', function ($loanpayment) {
                 return '<form action="' . action('LoanPaymentController@destroy', $loanpayment['id']) . '" class="text-center" method="post">'
-                    . '<a href="' . action('LoanPaymentController@show', $loanpayment['id']) . '" class="btn btn-primary btn-xs"><i class="ti-eye"></i>&nbsp;' . _lang('View') . '</a>&nbsp;'
                     . '<a href="' . action('LoanController@show', $loanpayment['loan_id']) . '" class="btn btn-success btn-xs"><i class="ti-file"></i>&nbsp;' . _lang('Loan Details') . '</a>&nbsp;'
                     . csrf_field()
                     . '<input name="_method" type="hidden" value="DELETE">'
@@ -209,5 +211,55 @@ class LoanPaymentController extends Controller
         DB::commit();
 
         return back()->with('success', _lang('Deleted Sucessfully'));
+    }
+
+    public function bulkCreateRepayment(Request $request) {
+
+        $loans = Loan::where('status', '1')->get();
+        
+        return view('backend.loan_payment.bulk_create', compact('loans'));
+    }
+
+    public function bulkRepayment(Request $request) {
+        DB::beginTransaction();
+        $loanId =  $request->input('loan_id');
+        foreach($loanId as $key => $value) {
+            $loan      = Loan::find($value);
+            $loanpayment                   = new LoanPayment();
+            $loanpayment->loan_id          = $value;
+            $loanpayment->paid_at          = $request->input('paid_at')[$key] ?? date('Y-m-d');
+            $loanpayment->late_penalties   = $request->input('late_penalties')[$key] ?? 0; //it's optionals
+            $loanpayment->interest         = 0;
+            $loanpayment->repayment_amount = ($request->input('pc')[$key] ?? 0) + ($request->input('nfc')[$key] ?? 0) + ($request->input('el')[$key] ?? 0);
+            $loanpayment->total_amount     = ($request->input('pc')[$key] ?? 0) + ($request->input('nfc')[$key] ?? 0) + ($request->input('el')[$key] ?? 0) + $request->input('late_penalties')[$key] ?? 0;
+            $loanpayment->remarks          = $request->input('notes')[$key];
+            $loanpayment->repayment_id     = date('Y-m-d');
+            $loanpayment->member_id        = $request->input('borrower_id')[$key];
+
+            $loanpayment->save();
+
+            //Update Loan Balance
+            $repayment = LoanRepayment::find($value);
+            $repayment->status = 1;
+            $repayment->save();
+
+            $loan->total_paid = $loan->total_paid + $repayment->amount_to_pay;
+            if ($loan->total_paid >= $loan->applied_amount) {
+                $loan->status = 2;
+            }
+            $loan->save();
+        }
+        DB::commit();
+
+        \Cache::forget('capital_buildup');
+        \Cache::forget('emergency_funds');
+        \Cache::forget('mortuary_funds');
+        \Cache::forget('notes');
+
+
+    if ($request->ajax()) {
+        return response()->json(['result' => 'success', 'message' => _lang('Loan Payment Made Sucessfully'), 'data' => [], 'table' => '#loan_payments_table']);
+     }
+     return redirect()->route('loan_payments.index')->with('success', _lang('Loan Payment Made Sucessfully'));
     }
 }

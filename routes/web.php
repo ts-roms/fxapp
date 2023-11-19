@@ -237,6 +237,8 @@ Route::group(['middleware' => ['install']], function () {
 			//Loan Payment Controller
 			Route::get('loan_payments/get_repayment_by_loan_id/{loan_id}', 'LoanPaymentController@get_repayment_by_loan_id');
 			Route::get('loan_payments/get_table_data', 'LoanPaymentController@get_table_data');
+			Route::get('loan_payments/bulk_create', 'LoanPaymentController@bulkCreateRepayment')->name('loan_payments.bulk_create');
+			Route::post('loan_repayments/bulk_payment', 'LoanPaymentController@bulkRepayment')->name('loan_payments.bulk_payment');
 			Route::resource('loan_payments', 'LoanPaymentController');
 
 			// Contributions

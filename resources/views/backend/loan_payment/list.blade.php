@@ -6,14 +6,19 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span class="panel-title">{{ _lang('Loan Repayments') }}</span>
-                    <a class="btn btn-primary btn-xs float-right" href="{{ route('loan_payments.create') }}"><i
+                    <div class="float-right">
+                    <a class="btn btn-info btn-xs" href="{{ route('loan_payments.create') }}"><i
                             class="ti-plus"></i>&nbsp;{{ _lang('Add Repayment') }}</a>
+                    <a class="btn btn-primary btn-xs" href="{{ route('loan_payments.bulk_create') }}"><i
+                            class="ti-plus"></i>&nbsp;{{ _lang('Bulk Payment') }}</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="loan_payments_table" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>{{ _lang('Loan ID') }}</th>
+                                <th>{{ _lang('Name') }}</th>
                                 <th>{{ _lang('Payment Date') }}</th>
                                 <th>{{ _lang('Principal Amount') }}</th>
                                 <th>{{ _lang('Interest') }}</th>
@@ -43,6 +48,10 @@
                 "columns": [{
                         data: 'loan.loan_id',
                         name: 'loan.loan_id'
+                    },
+                    {
+                        data: 'member',
+                        name: 'member'
                     },
                     {
                         data: 'paid_at',

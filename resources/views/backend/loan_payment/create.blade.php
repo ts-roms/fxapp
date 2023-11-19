@@ -25,7 +25,7 @@
 								<select class="form-control auto-select select2" data-selected="{{ old('loan_id') }}" id="loan_id" name="loan_id" required>
 									<option value="">{{ _lang('Select One') }}</option>
 									@foreach(\App\Models\Loan::with('currency')->where('status',1)->get() as $loan)
-										<option value="{{ $loan->id }}" data-user-id="{{ $loan->borrower_id }}" data-currency="{{ $loan->currency->name }}" data-total-due="{{ ($loan->total_payable - $loan->total_paid) }}">{{ $loan->loan_id }} ({{ _lang('Total Due').' '.decimalPlace($loan->total_payable - $loan->total_paid, currency($loan->currency->name)) }})</option>
+										<option value="{{ $loan->id }}" data-user-id="{{ $loan->borrower_id }}" data-currency="{{ $loan->currency->name }}" data-total-due="{{ ($loan->total_payable - $loan->total_paid) }}">{{ $loan->loan_id . ' - ' .  $loan->borrower->last_name . ', ' . $loan->borrower->first_name }} ({{ _lang('Total Due').' '.decimalPlace($loan->total_payable - $loan->total_paid, currency($loan->currency->name)) }})</option>
 									@endforeach
 								</select>
 							</div>

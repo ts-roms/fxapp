@@ -12,7 +12,7 @@
                     <form method="post" class="validate" autocomplete="false" action="{{ route('contributions.store') }}"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <table class="table table-hover table-bordered">
+                        <table id="member_contribution_table" class="table table-hover table-bordered">
                             <thead>
                                 <tr class="text-center">
                                     <th>{{ _lang('Member') }}</th>
@@ -74,7 +74,7 @@
 
             "use strict";
 
-
-        });
+            var member_contribution_table =   $('#member_contribution_table').DataTable();
+        })(jQuery);
     </script>
 @endsection
